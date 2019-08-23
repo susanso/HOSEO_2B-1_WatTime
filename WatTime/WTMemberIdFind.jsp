@@ -10,7 +10,7 @@
 <body>
 	<input type="button" value="아이디 찾기">
 	<input type="button" value="패스워드 찾기" onclick="passFind()">
-	<form mothod="post" id="idFindForm" name="idFindForm" action="WTMemberIdFindPro.jsp">
+	<form method="post" id="idFindForm" name="idFindForm" action="WTMemberIdFindPro.jsp">
 		<input type="text" id="memName" name="memName" placeholder="이름"><br>
 		<input type="text" id="memEmail" name="memEmail" placeholder="이메일"><br>
 		<input type="text" id="memPhone" name="memPhone" placeholder="전화번호"><br>

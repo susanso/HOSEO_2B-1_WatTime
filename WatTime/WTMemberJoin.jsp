@@ -15,19 +15,19 @@
 		<form method = "post" id = "memJoinForm" name = "memJoinForm" action = "#">
 			<!-- 아이디 -->
 			<div>
-				<div><input type="text" id="memId" name="memId" placeholder="아이디(6~15 영어, 숫자) " onkeydown="idOnkey()" required></div>
+				<div><input type="text" id="memId" name="memId" placeholder="아이디(영문,숫자 6자~15자) " onkeydown="idOnkey()" required></div>
 				<div><input type="button" id="idCheck" name="idCheck" value="중복확인" onclick="idOverlapCheck()"></div>
 				<div><span id = "idCheckText" style="display:hidden;"></span></div>
 				<div><input type="hidden" id="idHidden" name="idHidden" value="no"></div>
 			</div>
 			<!-- 비밀번호 -->
 			<div>
-				<div><input type="password" id="memPass" name="memPass" placeholder="패스워드" onblur="passSameCheck()" required></div>
+				<div><input type="password" id="memPass" name="memPass" placeholder="패스워드(영문,숫자,특수문자 조합 8자 이상)" onblur="passCheck()" required></div>
 				<div><input type="hidden" id="passHidden" name="passHidden" value="no"></div>
 			</div>
 			<!-- 비밀번호 찾기 -->
 			<div>
-				<div><input type="password" id="memPassCheck" name="memPassCheck" placeholder="패스워드 확인" onblur="passSameCheck()" required></div>
+				<div><input type="password" id="memPassCheck" name="memPassCheck" placeholder="패스워드 확인" onblur="passCheck()" required></div>
 				<div><input type="hidden" id="idHidden" name="idHidden" value="no"></div>
 				<div><span id = "passCheckText" style="display:hidden;"></span></div>
 			</div>

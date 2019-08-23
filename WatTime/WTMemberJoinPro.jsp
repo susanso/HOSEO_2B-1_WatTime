@@ -24,7 +24,7 @@
 %>
 </head>
 <script language = "JavaScript" src = "script.js"></script>
-<jsp:useBean id="regBean" class = "watTime.RegisterBean" scope = "page"></jsp:useBean>
+<jsp:useBean id="regBean" class = "WatTimePack.RegisterBean" scope = "page"></jsp:useBean>
 	<jsp:setProperty name = "regBean" property = "*"/>
 <body>
 <%

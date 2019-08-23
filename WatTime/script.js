@@ -22,7 +22,7 @@ function idOverlapCheck(){
 		var ret = window.open(url,"_blank","toolbar=no",false)
 	}
 }
-
+//중복확인 팝업 안에서 실행 
 function idReOverlapCheck(){
 	var memId = document.getElementById("memId").value;
 	var check = /^[A-za-z0-9]/g;
@@ -47,20 +47,30 @@ function useMemId(){
 	opener.document.getElementById("idHidden").value = "yes";
 	opener.document.getElementById("idCheckText").textContent=""
 	window.close();
+	call(passCheck());
 }
 //비밀번호
-function passSameCheck(){
-	var memPass = document.memJoinForm.memPass.value;
-	var memPassCheck = document.memJoinForm.memPassCheck.value;
+function passCheck(){
+	var check = !/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+	var memId = document.getElementById("memId").value;
+	var memPass = document.getElementById("memPass").value;
+	var memPassCheck = document.getElementById("memPassCheck").value;
 	
 	if(memPass == null || memPass == ""){
-		document.getElementById("passCheckText").textContent = "패스워드가 공백입니다."
+		document.getElementById("passCheckText").textContent = "패스워드가 공백입니다.";
 	}else if(memPassCheck == null || memPassCheck == ""){
-		document.getElementById("passCheckText").textContent = "패스워드 확인이 공백입니다."
+		document.getElementById("passCheckText").textContent = "패스워드 확인이 공백입니다.";
 	}else if(memPass != memPassCheck){
-		document.getElementById("passCheckText").textContent = "비밀번호가 일치하지 않습니다."
+		document.getElementById("passCheckText").textContent = "비밀번호가 일치하지 않습니다.";
+	}else if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/.test(memPass)){
+		document.getElementById("passCheckText").textContent = "영문,숫자,특수문자 조합 8자 이상 작성해야합니다.";
+	}else if(/(\w)\1\1\1/.test(memPass)){
+		document.getElementById("passCheckText").textContent = "같은 문자를 4번 이상 사용하실 수 없습니다.";
+	}else if(memId != null && memPass.search(memId) > -1){
+		document.getElementById("passCheckText").textContent = "비밀번호에 아이디가 포함되었습니다.";
 	}else{
-		document.getElementById("passCheckText").textContent = ""
+		document.getElementById("passCheckText").textContent = "";
+		document.getElementById("passHidden").value = "yes";
 	}
 }
 /*이름 유효성 검사*/
@@ -82,47 +92,7 @@ function nameCheck(){
 	
 }
 
-/*비밀번호 유효성 검사*/
-function passCheck(){
-	var id = document.getElementById("userId").value;
-	var pass = document.getElementById("userPass").value;
-	var passCheck = document.getElementById("userPassCheck").value;
-	if(pass ==""){
-		document.getElementById("passCheckText").textContent="비밀번호를 입력해주세요.";
-	}else if(passCheck==""){
-		document.getElementById("passCheckText").textContent="비밀번호 확인을 입력해주세요.";
-	}else{
-		if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/.test(pass)){            
-			document.getElementById("passCheckText").textContent="숫자, 영문자, 특수문자 조합으로 8자리 이상 사용해야 합니다.";
-	        return false;
-	    }  
-	
-	    var checkNumber = pass.search(/[0-9]/g);
-	    var checkEnglish = pass.search(/[a-z]/ig);
-	    if(checkNumber <0 || checkEnglish <0){
-	    	document.getElementById("passCheckText").textContent="숫자와 영문자를 혼용하여야 합니다.";
-	        return false;
-	    }
-	    if(/(\w)\1\1\1/.test(pass)){
-	    	document.getElementById("passCheckText").textContent="같은 문자를 4번 이상 사용하실 수 없습니다.";
-	        return false;
-	    }
-	    if(id != ""){
-		    if(pass.search(id) > -1){
-		    	document.getElementById("passCheckText").textContent="비밀번호에 아이디가 포함되었습니다.";
-		        return false;
-		    }
-	    }
-	    
-	    if(pass == passCheck){
-	    	document.getElementById("passCheckText").textContent="";
-	    	document.getElementById("userPassResult").value="check";
-	    }else if(pass != passCheck){
-	    	document.getElementById("passCheckText").textContent="비밀번호가 일치하지 않습니다.";
-	    }
-	}
-    return true;
-}
+
 /*생년월일 유효성 검사*/
 function birthCheck() {
 	var birth = document.getElementById("userBirth").value
