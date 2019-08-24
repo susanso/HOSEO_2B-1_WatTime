@@ -10,6 +10,7 @@
 	<%
 		String top="WTTop.jsp";
 		String content="WTContent.jsp";
+		String bottom="WTBottom.jsp";
 	%>
 	
 	<TABLE border ="0" cellspacing = "0" cellpadding = "0">
@@ -18,6 +19,9 @@
 		</TR>
 		<TR align = "center">
 		   	  <TD><jsp:include page="<%=content%>" flush="false"/></TD>
+		</TR>
+		<TR align = "bottom">
+		   	  <TD><jsp:include page="<%=bottom%>" flush="false"/></TD>
 		</TR>
 	</TABLE>
 </body>

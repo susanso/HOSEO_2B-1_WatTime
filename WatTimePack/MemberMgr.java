@@ -101,11 +101,14 @@ public class MemberMgr {
 		regBean.setMemExtraAddress(rs.getString("memExtraAddress"));
 		regBean.setMemAdmin(rs.getString("memAdmin"));
 		regBean.setMemJoinDate(rs.getTimestamp("memJoinDate"));
+		regBean.setBUNGI(rs.getString("BUNGI"));
+		regBean.setGUGUN(rs.getString("GUGUN"));
+		regBean.setSIDO(rs.getString("SIDO"));
 		
 		return regBean;
 	}
 	
-	public List<RegisterBean> getUserList() {
+	public List<RegisterBean> getMemList() {
 		List<RegisterBean> list = new ArrayList<>();
 		try(Connection con = DBMgr.getInstance().getConnection()){
 			PreparedStatement pstmt = con.prepareStatement("select * from memberTbl");
@@ -139,11 +142,11 @@ public class MemberMgr {
 	}
 	
 	//우편번호 찾기
-		public RegisterBean getZipcode(String address) {
+		public RegisterBean getZipcode(String memAddress) {
 			RegisterBean rslt = new RegisterBean();
 			try(Connection con = DBMgr.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("select * from zipcode where memName = ? and memEmail = ? and memPhone = ?");
-				pstmt.setString(1, address);
+				PreparedStatement pstmt = con.prepareStatement("select * from zipcode where SIDO like '%"+memAddress+"%' or GUGUN like '%"+memAddress+"%'"
+																+ "or DONG like '%"+memAddress+"%'");
 				ResultSet rs = pstmt.executeQuery();
 				
 				while(rs.next()) {

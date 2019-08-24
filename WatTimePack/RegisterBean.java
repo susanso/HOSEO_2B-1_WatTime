@@ -16,7 +16,28 @@ public class RegisterBean {
 	private String memExtraAddress;
 	private String memAdmin;
 	private Timestamp memJoinDate;
+	private String BUNGI;
+	private String GUGUN;
+	private String SIDO;
 	
+	public String getBUNGI() {
+		return BUNGI;
+	}
+	public void setBUNGI(String bUNGI) {
+		BUNGI = bUNGI;
+	}
+	public String getGUGUN() {
+		return GUGUN;
+	}
+	public void setGUGUN(String gUGUN) {
+		GUGUN = gUGUN;
+	}
+	public String getSIDO() {
+		return SIDO;
+	}
+	public void setSIDO(String sIDO) {
+		SIDO = sIDO;
+	}
 	public Timestamp getMemJoinDate() {
 		return memJoinDate;
 	}

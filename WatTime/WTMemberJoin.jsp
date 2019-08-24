@@ -28,37 +28,41 @@
 			<!-- 비밀번호 찾기 -->
 			<div>
 				<div><input type="password" id="memPassCheck" name="memPassCheck" placeholder="패스워드 확인" onblur="passCheck()" required></div>
-				<div><input type="hidden" id="idHidden" name="idHidden" value="no"></div>
+				<div><input type="hidden" id="passHidden" name="passHidden" value="no"></div>
 				<div><span id = "passCheckText" style="display:hidden;"></span></div>
 			</div>
 			<!-- 이름 -->
 			<div>
-				<div><input type="text" id="memName" name="memName" placeholder="이름" required></div>
-				<div><input type="hidden" id="nameHidden" name="idHidden" value="no"></div>
+				<div><input type="text" id="memName" name="memName" placeholder="이름" onblur="nameCheck()" required></div>
+				<div><input type="hidden" id="nameHidden" name="nameHidden" value="no"></div>
+				<div><span id = "nameCheckText" style="display:hidden;"></span></div>
 			</div>
 			<!-- 이메일 -->
 			<div>
-				<div><input type="text" id="memEmail" name="memEmail" placeholder="이메일" required></div>
-				<div><input type="hidden" id="emailHidden" name="idHidden" value="no"></div>
+				<div><input type="text" id="memEmail" name="memEmail" placeholder="이메일" onblur="emailCheck()" required></div>
+				<div><input type="hidden" id="emailHidden" name="emailHidden" value="no"></div>
+				<div><span id = "emailCheckText" style="display:hidden;"></span></div>
 			</div>
 			<!-- 전화번호-->
 			<div>
-				<div><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" required></div>
-				<div><input type="hidden" id="phoneHidden" name="idHidden" value="no"></div>
+				<div><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" onblur="phoneCheck()" required></div>
+				<div><input type="hidden" id="phoneHidden" name="phoneHidden" value="no"></div>
+				<div><span id = "phoneCheckText" style="display:hidden;"></span></div>
 			</div>
 			<!-- 생년월일 -->
 			<div>
-				<div><input type="number" id="memBirth" name="memBirth" placeholder="생년월일" required></div>
-				<div><input type="hidden" id="birthHidden" name="idHidden" value="no"></div>
+				<div><input type="number" id="memBirth" name="memBirth" placeholder="생년월일" onblur="birthCheck()" required></div>
+				<div><input type="hidden" id="birthHidden" name="birthHidden" value="no"></div>
+				<div><span id = "birthCheckText" style="display:hidden;"></span></div>
 			</div>
 			<!-- 주소 -->
-			<input type="text" id="memPostcode" placeholder="우편번호">
-			<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" id="memRoadAddress" placeholder="도로명주소">
-			<input type="text" id="memJibunAddress" placeholder="지번주소">
-			<span id="guide" style="color:#999;display:none"></span>
-			<input type="text" id="memDetailAddress" placeholder="상세주소">
-			<input type="text" id="memExtraAddress" placeholder="참고항목">
+			<input type="text" id="memPostcode" placeholder="우편번호" readonly>
+			<input type="button" onclick="zipcode()" value="우편번호 찾기"><br>
+			<input type="text" id="memRoadAddress" placeholder="도로명주소" readonly>
+			<input type="text" id="memJibunAddress" placeholder="지번주소" readonly>
+			<input type="text" id="memEtcAddress" placeholder="기타주소" readonly>
+			<input type="text" id="memDetailAddress" placeholder="상세주소" onblur="addressCheck()">
+			<div><input type="hidden" id="addressHidden" name="addressHidden" value="no"></div>
 			<!-- 생성 및 취소 -->
 			<input type="button" id="submit" name="submit" value="회원가입" onclick="joinMember()">
 		</form>
