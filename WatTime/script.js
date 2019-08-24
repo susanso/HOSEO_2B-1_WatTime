@@ -37,8 +37,11 @@ function idReOverlapCheck(){
 		alert("아이디는 영문과 숫자만 사용 가능합니다.");
 	}else{
 		url = "WTMemberIdOverlapCheck.jsp?id="+document.getElementById("memId").value
-		var ret = window.open(url,"_self","toolbar=no",false)
-	}
+		var ret = window.open(url,"_self","width=1, height=1, scrollbars=no, resizable=no, toolbars=no, menubar=no",false)
+		w = window.outerWidth - window.innerWidth;
+		h = window.outerHeight - window.innerHeight;
+		ret.resizeTo(w,h)
+	}	
 }
 //아이디 사용
 function useMemId(){

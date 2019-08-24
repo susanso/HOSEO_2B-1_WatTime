@@ -101,9 +101,6 @@ public class MemberMgr {
 		regBean.setMemExtraAddress(rs.getString("memExtraAddress"));
 		regBean.setMemAdmin(rs.getString("memAdmin"));
 		regBean.setMemJoinDate(rs.getTimestamp("memJoinDate"));
-		regBean.setBUNGI(rs.getString("BUNGI"));
-		regBean.setGUGUN(rs.getString("GUGUN"));
-		regBean.setSIDO(rs.getString("SIDO"));
 		
 		return regBean;
 	}
@@ -141,21 +138,4 @@ public class MemberMgr {
 		return rslt;
 	}
 	
-	//우편번호 찾기
-		public RegisterBean getZipcode(String memAddress) {
-			RegisterBean rslt = new RegisterBean();
-			try(Connection con = DBMgr.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("select * from zipcode where SIDO like '%"+memAddress+"%' or GUGUN like '%"+memAddress+"%'"
-																+ "or DONG like '%"+memAddress+"%'");
-				ResultSet rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					rslt = registerBeanMapper(rs);
-				}
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
-			
-			return rslt;
-		}
 }

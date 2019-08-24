@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script language = "JavaScript" src = "script.js"></script>
+	<script language = "JavaScript" src = "script.js"></script>
+	<link href = "style.css" rel = "stylesheet" type = "text/css">
 </head>
-<body>
+<body onresize="parent.resizeTo(500,300)" onload="parent.resizeTo(500,300)">
 	<%
 		//아이디 중복 확인 눌렀을 때 url 가져오는 부분
 		String url = request.getRequestURL().toString();
@@ -23,7 +24,7 @@
 		//아이디 중복 확인 찾는 메소드
 		RegisterBean member = memMgr.getMemberIdOverlapCheck(memId);
 		//아이디 중복이 아닐 경우
-		if(member.getMemId() == null){
+		if(member.getMemId() == null || member.getMemId() ==""){
 	%>
 		<%=memId %>는 사용이 가능합니다.<br>
 		<input type="hidden" id="useMemIdHD" name="useMemIdHD" value=<%=memId %>>
@@ -32,9 +33,17 @@
 		//중복일 경우
 		}else{
 	%>	
-		<%=memId %>는 중복된 아이디입니다.<br>
-		<input type="text" id="memId" name="memId" >
-		<input type="button" id="memIdReCheck" name="memIdReCheck" value="중복확인" onclick="idReOverlapCheck()">	
+		<div class="form">
+			<div>
+				<b><%=memId %></b>는 중복된 아이디입니다.<br>
+				다른 아이디를 적어주세요.
+			</div>
+			<div class="subForm">
+				<input class="inputText" type="text" id="memId" name="memId" placeholder="아이디" >
+				<input type="button" id="memIdReCheck" name="memIdReCheck" value="중복확인" onclick="idReOverlapCheck()">	
+			</div>
+			
+		</div>
 	<% 
 		}
 	%>

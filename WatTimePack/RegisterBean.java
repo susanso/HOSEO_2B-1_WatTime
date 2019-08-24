@@ -16,46 +16,11 @@ public class RegisterBean {
 	private String memExtraAddress;
 	private String memAdmin;
 	private Timestamp memJoinDate;
-	private String BUNGI;
-	private String GUGUN;
-	private String SIDO;
-	
-	public String getBUNGI() {
-		return BUNGI;
-	}
-	public void setBUNGI(String bUNGI) {
-		BUNGI = bUNGI;
-	}
-	public String getGUGUN() {
-		return GUGUN;
-	}
-	public void setGUGUN(String gUGUN) {
-		GUGUN = gUGUN;
-	}
-	public String getSIDO() {
-		return SIDO;
-	}
-	public void setSIDO(String sIDO) {
-		SIDO = sIDO;
-	}
-	public Timestamp getMemJoinDate() {
-		return memJoinDate;
-	}
-	public void setMemJoinDate(Timestamp memJoinDate) {
-		this.memJoinDate = memJoinDate;
-	}
-	public String getMemAdmin() {
-		return memAdmin;
-	}
-	public void setMemAdmin(String memAdmin) {
-		this.memAdmin = memAdmin;
-	}
-	
 	public String getMemId() {
 		return memId;
 	}
-	public void setMemId(String memberId) {
-		this.memId = memberId;
+	public void setMemId(String memId) {
+		this.memId = memId;
 	}
 	public String getMemPass() {
 		return memPass;
@@ -117,6 +82,20 @@ public class RegisterBean {
 	public void setMemExtraAddress(String memExtraAddress) {
 		this.memExtraAddress = memExtraAddress;
 	}
+	public String getMemAdmin() {
+		return memAdmin;
+	}
+	public void setMemAdmin(String memAdmin) {
+		this.memAdmin = memAdmin;
+	}
+	public Timestamp getMemJoinDate() {
+		return memJoinDate;
+	}
+	public void setMemJoinDate(Timestamp memJoinDate) {
+		this.memJoinDate = memJoinDate;
+	}
+
+
 	
 	
 	
