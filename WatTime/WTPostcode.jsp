@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" id="addressSearchForm" name="addressSearchForm" action="WTZipcodePro.jsp">
+	<form method="post" id="addressSearchForm" name="addressSearchForm" action="WTPostcodePro.jsp">
 		<input type="text" id="memAddress" name="memAddress" placeholder="주소 입력 예 : 판교">
 		<input type="button" value="우편번호 찾기" onclick="addressSearch()">	
 	</form>

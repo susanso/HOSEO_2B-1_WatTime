@@ -39,47 +39,50 @@
             </thead>
             <%
             int i = 1;
-            ZipCodeDB usedb = new ZipCodeDB();
 			request.setCharacterEncoding("UTF-8");
 			
-			usedb.connect();
-			String sql="select * from postcode where address like '%"+memAddress+"%'";
-			ResultSet rs= usedb.resultQuery(sql);
+			RegisterBean rslt = new RegisterBean();
+			try(Connection con = DBMgr.getInstance().getConnection()){
+				PreparedStatement pstmt = con.prepareStatement("select * from postcode where address like '%"+memAddress+"%'");
+				ResultSet rs = pstmt.executeQuery();
 			
-			if(rs.next()){
-				do{
-					//sql로 검색하고 나온 레코드들을 한 줄씩 받아오는 부분
-					String address=rs.getString("address");
-					String newPostcode=rs.getString("newpostcode");
-					String roadAddress=rs.getString("roadaddress");
-					String etc=rs.getString("etc");
-					//새 우편번호, 도로명 등 null일 땐 공백으로 대체
-					if(newPostcode==null) newPostcode="";
-					if(roadAddress==null)roadAddress="";
-					if(etc==null)etc="";
-            %>
-            <tbody>                
-                <tr>
-                	<td><font size=2><%=i %></font></td>
-                    <td><%=newPostcode %></td>
-                    <td><font size=2><%=address %></font></td>
-                    <td><font size=2><%=roadAddress %></font></td>
-                    <td><font size=2><%=etc %></font></td>
-                </tr>
-            </tbody>
-        <%
-        	i = i +1;
-        	}while(rs.next());
-        %>
-        	</table>
-        <% 
-        	}else{
-        %>
-        	</table>
-        	입력한 주소는 없습니다.
-        <%
-        		
-        	}
+				if(rs.next()){
+					do{
+						//sql로 검색하고 나온 레코드들을 한 줄씩 받아오는 부분
+						String address=rs.getString("address");
+						String newPostcode=rs.getString("newpostcode");
+						String roadAddress=rs.getString("roadaddress");
+						String etc=rs.getString("etc");
+						//새 우편번호, 도로명 등 null일 땐 공백으로 대체
+						if(newPostcode==null) newPostcode="";
+						if(roadAddress==null)roadAddress="";
+						if(etc==null)etc="";
+	            %>
+	            <tbody>                
+	                <tr>
+	                	<td><font size=2><%=i %></font></td>
+	                    <td><%=newPostcode %></td>
+	                    <td><font size=2><%=address %></font></td>
+	                    <td><font size=2><%=roadAddress %></font></td>
+	                    <td><font size=2><%=etc %></font></td>
+	                </tr>
+	            </tbody>
+	        <%
+	        	i = i +1;
+	        	}while(rs.next());
+	        %>
+	        	</table>
+	        <% 
+	        	}else{
+	        %>
+	        	</table>
+	        	입력한 주소는 없습니다.
+	        <%
+	        		
+        		}
+			}catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
 		%>
     </div>
     <br><br>

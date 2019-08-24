@@ -61,7 +61,7 @@
 				<!-- 주소 -->
 				<div>
 					<input class="postText" type="text" id="memPostcode" size = "10" placeholder="우편번호" readonly>
-					<input type="button" onclick="zipcode()" value="우편번호 찾기">
+					<input type="button" onclick="postcode()" value="우편번호 찾기">
 				</div>
 				<div>
 					<input class="inputText" type="text" id="memRoadAddress" placeholder="도로명주소" readonly>

@@ -184,8 +184,8 @@ function birthCheck() {
     
 }
 //우편번호찾기 팝업창 띄우기
-function zipcode(){
-	url = "WTZipcode.jsp"
+function postcode(){
+	url = "WTPostcode.jsp"
 	var ret = window.open(url,"_blank","toolbar=no, scrollbars=yes",false)
 }
 //우편번호찾기 버튼
