@@ -49,3 +49,32 @@
 .subTopMenu li {font-size:16px}
   
 #mid {background-color : #ffff00;}
+
+.member{
+	width:1300px; 
+	margin:0 auto;
+}
+.memberForm{
+	transform: translate(30%);
+}
+.memList{
+	height: 1%; overflow: hidden;
+	margin-top :20px;
+	border: 1px solid #ccc;
+	padding:8px 8px 8px 8px;
+	
+}
+.postText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border:none;
+	border-bottom:1px solid #ccc;
+	width:20%;
+}
+.inputText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border:none;
+	border-bottom:1px solid #ccc;
+	width:40%;
+}
