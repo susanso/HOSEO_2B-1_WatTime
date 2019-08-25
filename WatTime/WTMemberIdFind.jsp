@@ -8,14 +8,28 @@
 <script language = "JavaScript" src = "script.js"></script>
 </head>
 <body>
-	<input type="button" value="아이디 찾기">
-	<input type="button" value="패스워드 찾기" onclick="passFind()">
-	<form method="post" id="idFindForm" name="idFindForm" action="WTMemberIdFindPro.jsp">
-		<input type="text" id="memName" name="memName" placeholder="이름"><br>
-		<input type="text" id="memEmail" name="memEmail" placeholder="이메일"><br>
-		<input type="text" id="memPhone" name="memPhone" placeholder="전화번호"><br>
-		<input type="button" id="idFind" name="idFind" value="아이디 찾기" onclick="idFindNullCheck()">
-		<input type="button" value="돌아가기" onclick="mainBack()">
-	</form>
+	<div class="findForm">
+		<div class="btnContain">
+			<input class="btn" type="button" value="아이디 찾기" onclick="idFind()">
+			<input class="btn" type="button" value="패스워드 찾기" onclick="passFind()">
+		</div>
+		<div class="inputContain">
+			<form method="post" id="idFindForm" name="idFindForm" action="WTMemberIdFindPro.jsp">
+				<div>
+					<input class="findInputText" type="text" id="memName" name="memName" placeholder="이름">
+				</div>
+				<div>
+					<input class="findInputText" type="text" id="memEmail" name="memEmail" placeholder="이메일">
+				</div>
+				<div>
+					<input class="findInputText" type="text" id="memPhone" name="memPhone" placeholder="전화번호">
+				</div>
+				<div class="findContain">
+					<input class="findBtn" type="button" id="idFind" name="idFind" value="아이디 찾기" onclick="idFindNullCheck()">
+					<input class="findBtn" type="button" value="돌아가기" onclick="mainBack()">
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

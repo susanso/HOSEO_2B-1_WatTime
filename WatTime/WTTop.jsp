@@ -63,7 +63,7 @@
 				<ul id="topMenu">
 					<li><%=member.getMemName() %>님 </li>
 					<li><a href="../WatTime/WTLogout.jsp">로그아웃</a> </li>
-					<li><a href="#">마이페이지</a></li>
+					<li><a href="../WatTime/WTMyPage.jsp">마이페이지</a></li>
 					<li>구매후기</li>
 					<li>장바구니</li>
 					<li>고객센터</li>

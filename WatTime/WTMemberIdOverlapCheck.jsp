@@ -26,9 +26,12 @@
 		//아이디 중복이 아닐 경우
 		if(member.getMemId() == null || member.getMemId() ==""){
 	%>
-		<%=memId %>는 사용이 가능합니다.<br>
-		<input type="hidden" id="useMemIdHD" name="useMemIdHD" value=<%=memId %>>
-		<input type="button" id="useMemId" name="useMemId" value="사용하기" onclick="useMemId()">
+		
+		<div class="form">
+			<b><%=memId %></b>는 사용이 가능합니다.
+			<input type="hidden" id="useMemIdHD" name="useMemIdHD" value=<%=memId %>>
+			<input class="idCheckBtn" type="button" id="useMemId" name="useMemId" value="사용하기" onclick="useMemId()">
+		</div>
 	<%	
 		//중복일 경우
 		}else{
@@ -39,8 +42,8 @@
 				다른 아이디를 적어주세요.
 			</div>
 			<div class="subForm">
-				<input class="inputText" type="text" id="memId" name="memId" placeholder="아이디" >
-				<input type="button" id="memIdReCheck" name="memIdReCheck" value="중복확인" onclick="idReOverlapCheck()">	
+				<input class="idInputText" type="text" id="memId" name="memId" placeholder="아이디" >
+				<input class="idCheckBtn" type="button" id="memIdReCheck" name="memIdReCheck" value="중복확인" onclick="idReOverlapCheck()">	
 			</div>
 			
 		</div>

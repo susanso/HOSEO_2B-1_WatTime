@@ -56,13 +56,16 @@
 /*회원가입*/
 .member{
 	width:1300px; 
-	margin:0 auto;
+	margin:auto;
 }
 .memberForm{
-	transform: translate(25%);
+	margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
 }
 .memList{
-	width: 50%;
+	width: 100%;
 	margin-top :20px;
 	border: 1px solid #ccc;
 	padding:8px 8px 8px 8px;
@@ -73,13 +76,13 @@
 	border:none;
 	width:100%;
 }
-.idText{
+.memList .idText{
 	height: 40px;
 	padding:8px 8px 8px 8px;
 	border:none;
 	width:80%;
 }
-.postText{
+.memList  .postText{
 	height: 40px;
 	padding:8px 8px 8px 8px;
 	border:none;
@@ -93,6 +96,14 @@
 	border-bottom:1px solid #ccc;
 	width:100%;
 }
+.passInputText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border-bottom:1px solid #ccc;
+	border:none;
+	width:100%;
+	margin-bottom:8px 0px 8px 0px;
+}
 .checkBtn{
 	background-color: black;
 	border: none;
@@ -101,23 +112,37 @@
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: 1vw;
 	border-radius:8px;
 	margin:0;
 }
+.checkText{
+	font-size:12px;
+	font-color:red;
+}
 
-.btn {
-  background-color: black; 
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius:8px;
-  width: 300px;
-  margin: 9px 2px 2px 9px;
+.join{
+	
+	margin: auto;
+	width: 100%;
+	padding: 10px;
+}
+.join .btn {
+  	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 100%;
+    margin-top:1%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.addressForm{
+	padding-top:8px;
 }
 /*아이디 중복 체크 팝업*/
 .form{
@@ -134,10 +159,258 @@
 	border: 1px solid #ccc;
 	padding:8px 8px 8px 8px;
 }
-.inputText{
+.idInputText{
 	height: 40px;
 	padding:8px 8px 8px 8px;
 	border:none;
 	width:70%;
-	font-size:12pt;
+	font-size:15pt;
+}
+.idCheckBtn{
+	background-color: black;
+	border: none;
+	color: white;
+	padding: 8px 8px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1vw;
+	border-radius:8px;
+	margin:0;
+}
+/*회원가입 완료*/
+.joinForm{
+	margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.joinForm .joinTextContain{
+	transform: translate(20%);
+	margin-top:10%;
+	margin-bottom:5%;
+}
+.joinTextContain .joinText{
+	margin:auto;
+	width:100%;
+	font-size:2vw;
+}
+.joinTextContain .joinText2{
+	margin:auto;
+	width:100%;
+	font-size:2vw;
+}
+.joinForm .joinBtnContain{
+	transform: translate(10%);
+	margin-bottom:5%;
+}
+.joinBtnContain .joinBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 80%;
+    margin-top:1%;
+    margin-left: 4px;
+    margin-right: 4px;
+	
+}
+/*아이디 찾기/패스워드 찾기*/
+.findForm{
+    margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.findForm .btnContain{
+	transform: translate(20%);
+}
+.btnContain .btn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 30%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.findForm .inputContain{
+	transform: translate(20%);
+}
+.inputContain .findInputText{
+	width:60%;
+    height: 40px;
+	padding:8px 8px 8px 8px;
+	border:1px solid #ccc;
+	font-size:15pt;
+    margin-top:3%;
+}
+.findForm .finContain{
+	transform: translate(20%);
+    
+}
+.findContain .findBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 30%;
+    margin-top:3%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/*아이디 찾고 난 후*/
+.resultForm{
+    margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.resultForm .btnContain{
+	transform: translate(20%);
+}
+.resultForm .resultContain{
+	text-align: center;
+	margin-top:12%;
+	margin-bottom:10%;
+}
+.resultContain .resultText{
+	width:100%;
+	font-size:3vw;
+	
+}
+.resultForm .resultBtn{
+	transform: translate(20%);
+	margin-bottom:2%;
+    
+}
+.resultBtn .nextBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 60%;
+    margin-top:1%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/*패스워드 찾기 버튼 누른 후*/
+.newPassForm{
+    margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.newPassForm .btnContain{
+	transform: translate(20%);
+}
+.newPassForm .inputContain{
+	transform: translate(20%);
+}
+.inputContain .newPassInputText{
+	width:60%;
+    height: 40px;
+	padding:8px 8px 8px 8px;
+	border:1px solid #ccc;
+	font-size:15pt;
+    margin-top:5%;
+}
+.newPassForm .newPassContain{
+	transform: translate(0%);
+    
+}
+.newPassContain .newPassBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 61%;
+    margin-top:5%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+
+/*                      마이페이지                                           */
+.frame {
+  width: 1300px;
+  margin: auto;
+  border: 1px solid #aaa;
+}
+
+.container {
+  overflow: hidden;
+  margin-top:5%;
+}
+.nav {
+  float: left;
+  width: 130px;
+  background: #333;
+  color: #fff;
+  margin-right: 50px;
+}
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+}
+.nav-item {
+  margin: 4px 0;
+}
+.nav-link {
+  display: block;
+  text-decoration: none;
+  padding: 4px 10px;
+  color: #fff;
+}
+.nav-link:hover {
+  background: #5457de;
+}
+.nav, .content {
+  display: table-cell;
+}
+.content {
+  width: 1170px;
+  margin-top:5%;
+}
+.content .memInfo{
+	border: 1px solid #ccc;
+	width:80%;
+	
+}
+.memInfo th{
+	border: 1px solid #ccc;
+	width:20%;
+	height:10%;
+	padding: 4px;
+}
+.memInfo td{
+	border: 1px solid #ccc;
+	width:60%;
+	height:10%;
+	padding: 4px;
+}
+.memInfo .memInfoChange{
+	float:right;
 }

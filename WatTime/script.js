@@ -2,7 +2,7 @@
 //아이디  관련
 function idOnkey(){
 	document.memJoinForm.idHidden.value = "no";
-	document.getElementById("idCheckText").textContent="중복확인 해주세요."
+	document.getElementById("idCheckText").textContent="중복확인 해주세요.";
 }
 function idOverlapCheck(){
 	//아이디 유효성 검사
@@ -69,7 +69,7 @@ function passCheck(){
 		document.getElementById("passCheckText").textContent = "비밀번호가 일치하지 않습니다.";
 		document.getElementById("passHidden").value = "no";
 	}else if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/.test(memPass)){
-		document.getElementById("passCheckText").textContent = "영문,숫자,특수문자 조합 8자 이상 작성해야합니다.";
+		document.getElementById("passCheckText").textContent = "영문,숫자,특수문자 조합 8~25자로 작성해야합니다.";
 		document.getElementById("passHidden").value = "no";
 	}else if(/(\w)\1\1\1/.test(memPass)){
 		document.getElementById("passCheckText").textContent = "같은 문자를 4번 이상 사용하실 수 없습니다.";
@@ -163,6 +163,9 @@ function birthCheck() {
     }else if(birth.length < 8){
     	document.getElementById("birthCheckText").textContent="일을 적어주세요.";
     	document.getElementById("birthHidden").value="no";
+	}else if(birth.length >= 9){
+		document.getElementById("birthCheckText").textContent="날짜 형식이 아닙니다.";
+    	document.getElementById("birthHidden").value="no";
 	}else if (year < 1900 || year > adultYear){
     	document.getElementById("birthCheckText").textContent="년도를 확인하세요. "+adultYear+"년생 이전 출생자만 등록 가능합니다.";
     	document.getElementById("birthHidden").value="no";
@@ -208,7 +211,24 @@ function addressCheck(){
 }
 //회원가입 버튼
 function joinMember(){
-	ducument.memJoinForm.submit();
+	var idHiddenText = document.getElementById("idHidden").value;
+	var passHiddenText = document.getElementById("passHidden").value;
+	var nameHiddenText = document.getElementById("nameHidden").value
+	var emailHiddenText = document.getElementById("emailHidden").value
+	var birthHiddenText = document.getElementById("birthHidden").value
+	var phoneHiddenText = document.getElementById("phoneHidden").value
+	var addressHiddenText = document.getElementById("addressHidden").value
+	
+	if(idHiddenText == "no" || passHiddenText == "no" || 
+	   nameHiddenText == "no"|| emailHiddenText == "no"||
+	   birthHiddenText == "no"|| phoneHiddenText == "no"|| addressHiddenText == "no"){
+		alert("항목을 모두 채워주세요.");
+	}else if(idHiddenText == "yes" && passHiddenText == "yes" && 
+			 nameHiddenText == "yes"&& emailHiddenText == "yes"&&
+			 birthHiddenText == "yes"&& phoneHiddenText == "yes"&& addressHiddenText == "yes"){
+		document.memJoinForm.submit();
+	}
+	
 }
 
 ////로그인 화면
@@ -263,16 +283,24 @@ function passFindNullCheck(){
 	}
 }
 //새 패스워드 공백 검사
-function newPassNullCheck(){
-	if(document.newPassForm.memPass.value == ""){
-		alert("새 패스워드를 입력해주세요.");
-		document.newPassForm.memPass.focus();
-	}else if(document.newPassForm.memPassCheck.value == ""){
-		alert("새 패스워드 확인을 입력해주세요.");
-		document.newPassForm.memPassCheck.focus();
-	}else if(document.newPassForm.memPassCheck.value != document.newPassForm.memPass.value){
-		alert("패스워드가 일치하지 않습니다.");
-		document.newPassForm.memPassCheck.focus();
+function newPassCheck(){
+	var check = !/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+	var memId = document.getElementById("memId").value;
+	var memPass = document.getElementById("memPass").value;
+	var memPassCheck = document.getElementById("memPassCheck").value;
+	
+	if(memPass == null || memPass == ""){
+		alert("패스워드가 공백입니다.");
+	}else if(memPassCheck == null || memPassCheck == ""){
+		alert("패스워드 확인이 공백입니다.");
+	}else if(memPass != memPassCheck){
+		alert("비밀번호가 일치하지 않습니다.");
+	}else if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/.test(memPass)){
+		alert("영문,숫자,특수문자 조합 8~25자로 작성해야합니다.");
+	}else if(/(\w)\1\1\1/.test(memPass)){
+		alert("같은 문자를 4번 이상 사용하실 수 없습니다.");
+	}else if(memId != null && memPass.search(memId) > -1){
+		alert("비밀번호에 아이디가 포함되었습니다.");
 	}else{
 		document.newPassForm.submit();
 	}

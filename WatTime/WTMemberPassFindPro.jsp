@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script language = "JavaScript" src = "script.js"></script>
+<link href = "style.css" rel = "stylesheet" type = "text/css">
 </head>
 <body>
 	<%
@@ -31,12 +32,32 @@
 	<%
 		}else{
 	%>
-		<form method="post" id="newPassForm" name="newPassForm" action="WTMemberNewPassPro.jsp">
-			<input type="password" id="memPass" name="memPass" placeholder="새 패스워드"><br>
-			<input type="password" id="memPassCheck" name="memPassCheck" placeholder="새 패스워드 확인"><br>
-			<input type="hidden" id="memId" name="memId" value=<%=memId %>>
-			<input type="button" id="newPass" name="newPass" value = "패스워드 변경" onclick="newPassNullCheck()">
-		</form>
+		<div class="newPassForm">
+			<div class="btnContain">
+				<input class="btn" type="button" value="아이디 찾기" onclick="idFind()">
+				<input class="btn" type="button" value="패스워드 찾기" onclick="passFind()">
+			</div>
+			<div class="inputContain">
+				<form method="post" id="newPassForm" name="newPassForm" action="WTMemberNewPassPro.jsp">
+					<div>
+						<div>
+							<input class="newPassInputText" type="password" id="memPass" name="memPass" placeholder="새 패스워드"><br>
+						</div>
+						<div>
+							<input class="newPassInputText" type="password" id="memPassCheck" name="memPassCheck" placeholder="새 패스워드 확인"><br>
+						</div>
+						<div>
+							<input class="newPassInputText"type="hidden" id="memId" name="memId" value=<%=memId %>>
+						</div>
+					</div>
+					<div>
+						<div class="newPassContain">
+							<input class="newPassBtn" type="button" id="newPass" name="newPass" value = "패스워드 변경" onclick="newPassCheck()">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	<%
 		}
 	%>

@@ -13,9 +13,18 @@ public class RegisterBean {
 	private String memRoadAddress;
 	private String memJibunAddress;
 	private String memDetailAddress;
-	private String memExtraAddress;
-	private String memAdmin;
+	private String memEtcAddress;
+	private int memAdmin;
 	private Timestamp memJoinDate;
+	private int memPoint;
+	
+	
+	public int getMemPoint() {
+		return memPoint;
+	}
+	public void setMemPoint(int memPoint) {
+		this.memPoint = memPoint;
+	}
 	public String getMemId() {
 		return memId;
 	}
@@ -76,16 +85,17 @@ public class RegisterBean {
 	public void setMemDetailAddress(String memDetailAddress) {
 		this.memDetailAddress = memDetailAddress;
 	}
-	public String getMemExtraAddress() {
-		return memExtraAddress;
+
+	public String getMemEtcAddress() {
+		return memEtcAddress;
 	}
-	public void setMemExtraAddress(String memExtraAddress) {
-		this.memExtraAddress = memExtraAddress;
+	public void setMemEtcAddress(String memEtcAddress) {
+		this.memEtcAddress = memEtcAddress;
 	}
-	public String getMemAdmin() {
+	public int getMemAdmin() {
 		return memAdmin;
 	}
-	public void setMemAdmin(String memAdmin) {
+	public void setMemAdmin(int memAdmin) {
 		this.memAdmin = memAdmin;
 	}
 	public Timestamp getMemJoinDate() {
