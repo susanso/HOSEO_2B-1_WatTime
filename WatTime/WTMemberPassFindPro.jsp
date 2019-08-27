@@ -27,37 +27,16 @@
 	%>
 		<script>
 			alert("일치하는 정보의 아이디가 없습니다.");
-			location.href="../WatTime/WTMemberPassFind.jsp"
+			location.href="WTMain.jsp?pageChange=WTMemberPassFind.jsp"
 		</script>
 	<%
 		}else{
+			RequestDispatcher rd = request.getRequestDispatcher("WTMain.jsp?pageChange=WTMemberNewPass.jsp");
+			request.setAttribute("memId", memId);
+			
+		    rd.forward(request, response);
 	%>
-		<div class="newPassForm">
-			<div class="btnContain">
-				<input class="btn" type="button" value="아이디 찾기" onclick="idFind()">
-				<input class="btn" type="button" value="패스워드 찾기" onclick="passFind()">
-			</div>
-			<div class="inputContain">
-				<form method="post" id="newPassForm" name="newPassForm" action="WTMemberNewPassPro.jsp">
-					<div>
-						<div>
-							<input class="newPassInputText" type="password" id="memPass" name="memPass" placeholder="새 패스워드"><br>
-						</div>
-						<div>
-							<input class="newPassInputText" type="password" id="memPassCheck" name="memPassCheck" placeholder="새 패스워드 확인"><br>
-						</div>
-						<div>
-							<input class="newPassInputText"type="hidden" id="memId" name="memId" value=<%=memId %>>
-						</div>
-					</div>
-					<div>
-						<div class="newPassContain">
-							<input class="newPassBtn" type="button" id="newPass" name="newPass" value = "패스워드 변경" onclick="newPassCheck()">
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
+		<input type="hidden" id="memId" name="memId" value="<%=memId%>">
 	<%
 		}
 	%>

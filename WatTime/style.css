@@ -1,8 +1,11 @@
 @charset "UTF-8";
-
+.mainForm{
+	margin: auto;
+	padding:0px;
+}
 #top{ background-color : #4dead2; 
 	  width:1300px; 
-	  margin: 0 auto ;
+	  margin: auto;
 	  height:170px; }	
 .topContent {float:left; width:433px}
 
@@ -43,12 +46,11 @@
   display: table;
 }
 
-#subTop{ width:1300px; margin:0 auto; height:auto; background-color:yellow}
+#subTop{ width:1300px; margin:0 auto; height:auto;}
 .subTopMenu{ margin: 0 30px 0 0;}
 
 .subTopMenu li {font-size:16px}
-  
-#mid {background-color : #ffff00;}
+
 .title{
 	color:#fff;background-color:#000000;
 	padding: 7px;
@@ -186,7 +188,7 @@
 	padding: 10px;
 }
 .joinForm .joinTextContain{
-	transform: translate(20%);
+	text-align:center;
 	margin-top:10%;
 	margin-bottom:5%;
 }
@@ -198,7 +200,7 @@
 .joinTextContain .joinText2{
 	margin:auto;
 	width:100%;
-	font-size:2vw;
+	font-size:1vw;
 }
 .joinForm .joinBtnContain{
 	transform: translate(10%);
@@ -217,7 +219,6 @@
     margin-top:1%;
     margin-left: 4px;
     margin-right: 4px;
-	
 }
 /*아이디 찾기/패스워드 찾기*/
 .findForm{
@@ -414,3 +415,209 @@
 .memInfo .memInfoChange{
 	float:right;
 }
+/*                                                                메뉴                                                                     */
+/*  brand,man,woman,couple 을 감싸는 DIV */
+#subTopBar{ 
+         position:relaytive;
+            left:10px;
+         width:1300px;
+         height:50px;
+           }
+
+/* brand,man,woman,couple 속성*/
+.dropBtn{
+  background-color: black;
+  color: white;
+  width:325px;
+  height:50px;
+  font-size: 20px;
+  border: none;
+  float:left;
+  transition: background-color 0.5s, transform 5s;
+}
+
+/* 상위메뉴 floar 끊는 속성 */
+.dropBtn:after {content:""; display:block; clear:both;}
+
+
+/* Brand 하위메뉴 속성 */
+#brandMenu {
+  display: none;
+  position: absolute;
+  top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:360px;
+  z-index: 1;
+  }
+  /* Man 하위메뉴 속성 */
+#manMenu {
+  display: none;
+  position: absolute;
+	top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:180px;
+  z-index: 1;
+  }
+  /* Woman 하위메뉴 속성 */
+#womanMenu {
+  display: none;
+  position: absolute;
+  top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:120px;
+  z-index: 1;
+  }
+  /* Couple 하위메뉴 속성 */
+#coupleMenu {
+  display: none;
+  position: absolute;
+  top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:360px;
+  z-index: 1;
+}
+/* brand 하위메뉴 컬럼들 속성 */
+#brandMenu a {
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+/* man 하위메뉴 컬럼들 속성 */
+#manMenu a {
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+/* woman 하위메뉴 컬럼들 속성 */
+#womanMenu a {
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+/* couple 하위메뉴 컬럼들 속성 */
+#coupleMenu a {
+
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+
+/* 하위메뉴 호버시 색변경 */
+.dropdownContent a:hover {  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.8 );}
+
+/* 각 메뉴 호버시 하위메뉴 출현 */
+#brand:hover #brandMenu {display:block;}
+#man:hover #manMenu {display:block;}
+#woman:hover #womanMenu {display:block;}
+#couple:hover #coupleMenu {display:block;}
+
+/* 하위메뉴 호버시 해당 상위메뉴 색 변경  */
+#brand:hover #brandDropBtn {background-color: #585858;}
+#man:hover #manDropBtn {background-color: #585858;}
+#woman:hover #womanDropBtn {background-color: #585858;}
+#couple:hover #coupleDropBtn {background-color: #585858;}
+/*                                                                메뉴                                                                     */
+/* 로그인 부분 시작*/
+
+#LoginContent{
+	position: relative;
+	width:1300px;
+	height:600px;
+	background:white;
+}
+
+         
+#login{
+	margin:auto;
+	width:80%;
+	height:500px;
+	background:white;
+	top:50px;
+	left:100px;
+	border: 1px #ccc solid;
+}
+.LoginId,.LoginPass {width: 550px;
+height:50px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  font-size:20px;
+  resize: vertical;      
+}
+#signIn, #findInfo{  display: block;
+  text-decoration: none;
+  padding: 4px 10px;
+  color: #000;}
+
+
+
+#memLogin{
+  background:#000000;
+  color:#ffffff;
+  border:none;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;   
+  transition:800ms ease all;
+  border-radius:8px;
+}
+#memLogin:hover{
+  background:#eee;
+  color:#000000;
+}
+
+
+
+#login div{
+   font-size:16px;
+   posotion:relative;
+   margin-top: 30px;
+}
+/* 로그인 부분 종료*/

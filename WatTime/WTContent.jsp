@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-컨텐트
+<body bgcolor="#00000">
+컨
 </body>
 </html>

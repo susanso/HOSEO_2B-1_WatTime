@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 중복 체크</title>
 	<script language = "JavaScript" src = "script.js"></script>
 	<link href = "style.css" rel = "stylesheet" type = "text/css">
 </head>
@@ -50,9 +50,5 @@
 	<% 
 		}
 	%>
-		
-		
-		
-	
 </body>
 </html>

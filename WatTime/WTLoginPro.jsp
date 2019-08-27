@@ -2,6 +2,7 @@
 <%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* , WatTimePack.*" %>
 <jsp:useBean id="memMgr" class = "WatTimePack.MemberMgr" scope="page"></jsp:useBean>
 	<%
+		String pageChange;
 		request.setCharacterEncoding("utf-8");
 		String memId = request.getParameter("memId");
 		String memPass = request.getParameter("memPass");
@@ -22,7 +23,7 @@
 <body>
 	<script type="text/javascript">
 		alert("아이디/비밀번호를 확인하여 주십시오.");
-		location.href="../WatTime/WTLogin.jsp"
+		history.go(-1);
 	</script>
 </body>
 </html>

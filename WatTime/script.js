@@ -52,7 +52,7 @@ function useMemId(){
 	window.close();
 	call(passCheck());
 }
-//비밀번호 유효성 검사
+//패스워드 유효성 검사
 function passCheck(){
 	var check = !/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 	var memId = document.getElementById("memId").value;
@@ -209,6 +209,9 @@ function addressCheck(){
 	}
 	
 }
+function test(){
+	location.href="?pageChange=WTMemberJoinSuccess.jsp";
+}
 //회원가입 버튼
 function joinMember(){
 	var idHiddenText = document.getElementById("idHidden").value;
@@ -227,6 +230,7 @@ function joinMember(){
 			 nameHiddenText == "yes"&& emailHiddenText == "yes"&&
 			 birthHiddenText == "yes"&& phoneHiddenText == "yes"&& addressHiddenText == "yes"){
 		document.memJoinForm.submit();
+		
 	}
 	
 }
@@ -311,13 +315,13 @@ function mainBack(){
 }
 //아이디 찾기
 function idFind(){
-	location.href="../WatTime/WTMemberIdFind.jsp"
+	location.href="WTMain.jsp?pageChange=WTMemberIdFind.jsp"
 }
 //패스워드 찾기
 function passFind(){
-	location.href="../WatTime/WTMemberPassFind.jsp"
+	location.href="WTMain.jsp?pageChange=WTMemberPassFind.jsp"
 }
 //로그인
 function loginPage(){
-	location.href="../WatTime/WTLogin.jsp"
+	location.href="WTMain.jsp?pageChange=WTLogin.jsp"
 }
