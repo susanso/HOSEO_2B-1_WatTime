@@ -22,8 +22,8 @@
 		<div id="top">
 			<div class="topContent">
 				<ul id="topMenu">
-					<li><b><a href="?pageChange=WTLogin.jsp">로그인</a></b></li>
-					<li><a href="?pageChange=WTAgreed.jsp">회원가입</a></li>
+					<li><b><a href="WTMain.jsp?pageChange=WTLogin.jsp">로그인</a></b></li>
+					<li><a href="WTMain.jsp?pageChange=WTAgreed.jsp">회원가입</a></li>
 					<li>구매후기</li>
 					<li>장바구니</li>
 					<li>고객센터</li>
@@ -31,7 +31,7 @@
 			</div>
 			
 			<div class="topContent">
-				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="auto" height="165px"  >
+				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="auto" height="165px" onclick="mainBack()">
 			</div>
 			
 			<div class="topContent" >
@@ -189,7 +189,7 @@
 			</div>
 			
 			<div class="topContent">
-				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="auto" height="165px"  >
+				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="auto" height="165px" onclick="mainBack()" >
 			</div>
 			
 			<div class="topContent" >
@@ -330,9 +330,5 @@
 		  </div>
 	</div>
 	<%} %>
-
-<div id="bottom">
- 고객센터 등등
-</div>
 </body>
 </html>

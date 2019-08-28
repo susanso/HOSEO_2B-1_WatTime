@@ -6,9 +6,6 @@
 <title>아이디/비밀번호 찾기</title>
 <link href = "style.css" rel = "stylesheet" type = "text/css">
 <script language = "JavaScript" src = "script.js"></script>
-<%
-	String pageChange;
-%>
 </head>
 <body>
 	<div class="findForm">

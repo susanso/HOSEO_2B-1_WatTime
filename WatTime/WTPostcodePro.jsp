@@ -12,61 +12,59 @@
 <script language = "JavaScript" src = "script.js"></script>
     <!-- jQuery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- bootstrap JS -->
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    
-    <!-- bootstrap CSS -->
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+   <link href = "style.css" rel = "stylesheet" type = "text/css">
 <script>
 </Script> 
 </head>
 <body>
-	<form method="post" id="addressSearchForm" name="addressSearchForm" action="WTZipcodePro.jsp">
-		<input type="text" id="memAddress" name="memAddress" placeholder="주소 입력 예 : 판교">
-		<input type="button" value="우편번호 찾기" onclick="addressSearch()">	
-	</form><br>
-	<div class="row">
-        <table id="table" width="100%" class="table table-bordered table-hover text-center">
-            <thead>
-                <tr>
-                    <th>번호 </th>
-                    <th>우편번호</th>
-                    <th>지번 주소</th>
-                    <th>도로명 주소</th>
-                    <th>기타</th>
-                </tr>
-            </thead>
-            <%
-            int i = 1;
-			request.setCharacterEncoding("UTF-8");
-			
-			RegisterBean rslt = new RegisterBean();
-			try(Connection con = DBMgr.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("select * from postcode where address like '%"+memAddress+"%'");
-				ResultSet rs = pstmt.executeQuery();
-			
-				if(rs.next()){
-					do{
-						//sql로 검색하고 나온 레코드들을 한 줄씩 받아오는 부분
-						String address=rs.getString("address");
-						String newPostcode=rs.getString("newpostcode");
-						String roadAddress=rs.getString("roadaddress");
-						String etc=rs.getString("etc");
-						//새 우편번호, 도로명 등 null일 땐 공백으로 대체
-						if(newPostcode==null) newPostcode="";
-						if(roadAddress==null)roadAddress="";
-						if(etc==null)etc="";
-	            %>
-	            <tbody>                
-	                <tr>
-	                	<td><font size=2><%=i %></font></td>
-	                    <td><%=newPostcode %></td>
-	                    <td><font size=2><%=address %></font></td>
-	                    <td><font size=2><%=roadAddress %></font></td>
-	                    <td><font size=2><%=etc %></font></td>
-	                </tr>
-	            </tbody>
+	<div>
+		<jsp:include page="WTPostcode.jsp" flush="false"/>
+	</div>
+	<br><br>
+	
+<%
+    int i = 1;
+	request.setCharacterEncoding("UTF-8");
+	
+	RegisterBean rslt = new RegisterBean();
+	try(Connection con = DBMgr.getInstance().getConnection()){
+		PreparedStatement pstmt = con.prepareStatement("select * from postcode where address like '%"+memAddress+"%'");
+		ResultSet rs = pstmt.executeQuery();
+	
+		if(rs.next()){
+%>
+			<div class="row">
+		        <table class="postTable" id="table" width="90%" border ="1" cellspacing = "0" cellpadding = "0">
+		            <thead>
+		                <tr>
+		                    <th>번호 </th>
+		                    <th>우편번호</th>
+		                    <th>지번 주소</th>
+		                    <th>도로명 주소</th>
+		                    <th>기타</th>
+		                </tr>
+		            </thead>
+					<%
+						do{
+							//sql로 검색하고 나온 레코드들을 한 줄씩 받아오는 부분
+							String address=rs.getString("address");
+							String newPostcode=rs.getString("newpostcode");
+							String roadAddress=rs.getString("roadaddress");
+							String etc=rs.getString("etc");
+							//새 우편번호, 도로명 등 null일 땐 공백으로 대체
+							if(newPostcode==null) newPostcode="";
+							if(roadAddress==null)roadAddress="";
+							if(etc==null)etc="";
+		            %>
+		            <tbody>                
+		                <tr>
+		                	<td class="postTd"><font size=2><%=i %></font></td>
+		                    <td class="postTd"><%=newPostcode %></td>
+		                    <td class="postTd"><font size=2><%=address %></font></td>
+		                    <td class="postTd"><font size=2><%=roadAddress %></font></td>
+		                    <td class="postTd"><font size=2><%=etc %></font></td>
+		                </tr>
+		            </tbody>
 	        <%
 	        	i = i +1;
 	        	}while(rs.next());
@@ -75,10 +73,9 @@
 	        <% 
 	        	}else{
 	        %>
-	        	</table>
-	        	입력한 주소는 없습니다.
+		        	</table>
+		        	입력한 주소는 없습니다.
 	        <%
-	        		
         		}
 			}catch (SQLException e) {
 				throw new RuntimeException(e);

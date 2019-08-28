@@ -83,7 +83,7 @@
 				<!-- 생성 및 취소 -->
 				<div class="join">
 					<input type="button" class="btn" id="join" name="join" value="회원가입" onclick="joinMember()">
-					<input type="button" class="btn" id="cancel" name="cancel" value="취소" onclick="">
+					<input type="button" class="btn" id="cancel" name="cancel" value="취소" onclick="mainBack()">
 				</div>
 				
 			</form>

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>우편번호 찾기</title>
 </head>
 <body>
 	<form method="post" id="addressSearchForm" name="addressSearchForm" action="WTPostcodePro.jsp">
