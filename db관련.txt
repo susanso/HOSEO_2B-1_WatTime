@@ -1,0 +1,38 @@
+grant select, insert, update, delete, create, drop, alter
+on wattime.* to ‘wtid'@'localhost' 
+identified by ‘wtpass';
+
+grant select, insert, update, delete, create, drop, alter
+on wattime.* to ‘wtid'@'%' 
+identified by ‘wtpass';
+
+회원 테이블
+create table memberTbl(
+	memId varchar(30) not null primary key,
+	memPass varchar(40) not null,
+	memName varchar(20) not null,
+	memEmail varchar(50) not null UNIQUE,
+	memPhone varchar(20) not null UNIQUE,
+	memBirth varchar(20) not null,
+	memPostcode varchar(20) not null,
+	memRoadAddress varchar(400) not null,
+	memJibunAddress varchar(400) not null,
+	memEtcAddress varchar(400) not null,
+	memDetailAddress varchar(400) not null,
+	memPoint int(50) not null,
+	memAdmin int(1) null,
+	memJoinDate date not null
+);
+////////////////////우편번호
+
+우편번호 테이블
+CREATE TABLE `postcode` (
+  `postcode` varchar(10) NOT NULL,
+  `address` varchar(700) NOT NULL,
+  `newpostcode` varchar(10) NULL,
+  `roadaddress` varchar(400) NULL,
+  `etc` varchar(400) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+테이블 안에 텍스트 파일에 있는 값 넣기(e:\ 부분은 해당 텍스트 파일이 있는 경로로 변경)
+LOAD DATA LOCAL INFILE 'e:\\postcode2.txt' INTO TABLE postcode(postcode,address,newpostcode,roadaddress,etc);

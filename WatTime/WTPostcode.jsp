@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>우편번호 찾기</title>
 </head>
-<body>
+<body onresize="parent.resizeTo(1000,800)" onload="parent.resizeTo(1000,800)">
 	<form method="post" id="addressSearchForm" name="addressSearchForm" action="WTPostcodePro.jsp">
 		<input type="text" id="memAddress" name="memAddress" placeholder="주소 입력 예 : 판교">
 		<input type="button" value="우편번호 찾기" onclick="addressSearch()">	

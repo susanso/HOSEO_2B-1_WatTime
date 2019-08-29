@@ -34,10 +34,10 @@ function imgslide(){
 	$("#mainSlide").attr('val',$val); //변경된 이미지영역의 번호를 부여합니다.
 
 	setTimeout('imgslide()',4000); //3초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
-}
 
-</script>
 <!-- 제이쿼리 부분 -->
+}
+</script>
 </head>
 <body>
 <div id="content"> 

@@ -22,9 +22,10 @@
 	<div class="container">
 		<div class="nav">
 			<ul class="nav-list">
-			<li class="nav-item"><a href="" class="nav-link">Menu-1</a></li>
-			<li class="nav-item"><a href="" class="nav-link">Menu-2</a></li>
-			<li class="nav-item"><a href="" class="nav-link">Menu-3</a></li>
+			<li class="nav-item"><a href="" class="nav-link">회원 정보</a></li>
+			<li class="nav-item"><a href="" class="nav-link">주문내역</a></li>
+			<li class="nav-item"><a href="" class="nav-link">TicTok</a></li>
+			<li class="nav-item"><a href="" class="nav-link">TicTok</a></li>
 			</ul>
 		</div>
 	    <!-- //nav -->
@@ -40,24 +41,24 @@
 				</tr>
 				<tr>
 					<th>패스워드</th>
-					<td><input  type="password" id="memPass" name="memPass" placeholder="패스워드(영문,숫자,특수문자 조합 8~25자)" onblur="passCheck()"></td>
+					<td><input  type="password" id="memPass" name="memPass" placeholder="패스워드(영문,숫자,특수문자 조합 8~25자)" ></td>
 				</tr>
 				<tr>
 					<th>패스워드 확인</th>
-					<td><input  type="password" id="memPassCheck" name="memPassCheck" placeholder="패스워드 확인" onblur="passCheck()"></td>
+					<td><input  type="password" id="memPassCheck" name="memPassCheck" placeholder="패스워드 확인" ></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input  type="text" id="memEmail" name="memEmail" placeholder="이메일" onblur="emailCheck()" required></td>
+					<td><input  type="text" id="memEmail" name="memEmail" placeholder="이메일"  required></td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" onblur="phoneCheck()" required></td>
+					<td><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" required></td>
 				</tr>
 				<tr>
 					<th rowspan="5">주소</th>
-					<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" readonly>
-						<input  type="button" onclick="postcode()" value="우편번호 찾기"></td>
+					<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" onclick="postcode()" readonly>
+						<input  type="button" value="우편번호 찾기"></td>
 				</tr>
 				<tr>
 					<td><input  type="text" id="memRoadAddress" name="memRoadAddress" placeholder="도로명주소" readonly></td>

@@ -16,7 +16,7 @@
 <script>
 </Script> 
 </head>
-<body>
+<body onresize="parent.resizeTo(1000,800)" onload="parent.resizeTo(1000,800)">
 	<div>
 		<jsp:include page="WTPostcode.jsp" flush="false"/>
 	</div>
