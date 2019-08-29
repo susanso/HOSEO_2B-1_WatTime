@@ -1,4 +1,8 @@
 @charset "UTF-8";
+
+/*main페이지 출현*/
+#mainTop{width:100%;}
+/*main페이지 출현*/
 .mainForm{
 	margin: auto;
 	padding:0px;
@@ -10,7 +14,8 @@
 	  border-bottom:1px solid gray; }	
 .topContent {float:left; width:33%;}
 
-#topMenu {list-style-type:none;margin:0;padding:0}
+#topMenu {list-style-type:none;margin:0;padding:0
+}
 
 #topMenu li  {display:inline;}
 
@@ -425,6 +430,7 @@
 	margin:auto;
 	width:1300px;
 	height:50px;
+	border-bottom:1px solid gray;
 }
 
 /* brand,man,woman,couple 속성*/
@@ -583,6 +589,7 @@
          
 #login{
 	margin:auto;
+	margin-top:100px;
 	width:80%;
 	height:500px;
 	background:white;
@@ -647,7 +654,7 @@ height:50px;
 
 /* main content 시작 */
 
-#mainContent{
+#content{
    position:relative;
    top:0;
    left:0;

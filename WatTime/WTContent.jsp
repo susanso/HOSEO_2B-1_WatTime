@@ -40,7 +40,7 @@ function imgslide(){
 <!-- 제이쿼리 부분 -->
 </head>
 <body>
-<div id="mainContent"> 
+<div id="content"> 
 
 	<div id="bannerContent">
 	
@@ -60,7 +60,7 @@ function imgslide(){
  	
 	<div id="midelContent">
 	 <div>
-	<img src="img/brand.png">
+	<img src="img/Brand.png">
 	 </div>
 	 
 	</div>
