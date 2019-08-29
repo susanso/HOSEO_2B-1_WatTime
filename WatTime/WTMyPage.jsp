@@ -57,7 +57,7 @@
 				</tr>
 				<tr>
 					<th rowspan="5">주소</th>
-					<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" readonly>
+					<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" onclick="postcode()" readonly>
 						<input  type="button" value="우편번호 찾기"></td>
 				</tr>
 				<tr>
