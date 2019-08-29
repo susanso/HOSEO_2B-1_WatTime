@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.*;
 
 import WatTimePack.DBMgr;
 import WatTimePack.RegisterBean;
@@ -98,14 +99,14 @@ public class MemberMgr {
 		regBean.setMemRoadAddress(rs.getString("memRoadAddress"));
 		regBean.setMemJibunAddress(rs.getString("memJibunAddress"));
 		regBean.setMemDetailAddress(rs.getString("memDetailAddress"));
-		regBean.setMemExtraAddress(rs.getString("memExtraAddress"));
-		regBean.setMemAdmin(rs.getString("memAdmin"));
+		regBean.setMemEtcAddress(rs.getString("memEtcAddress"));
+		regBean.setMemPoint(rs.getInt("memPoint"));
+		regBean.setMemAdmin(rs.getInt("memAdmin"));
 		regBean.setMemJoinDate(rs.getTimestamp("memJoinDate"));
-		
 		return regBean;
 	}
 	
-	public List<RegisterBean> getUserList() {
+	public List<RegisterBean> getMemList() {
 		List<RegisterBean> list = new ArrayList<>();
 		try(Connection con = DBMgr.getInstance().getConnection()){
 			PreparedStatement pstmt = con.prepareStatement("select * from memberTbl");
@@ -138,21 +139,36 @@ public class MemberMgr {
 		return rslt;
 	}
 	
-	//우편번호 찾기
-		public RegisterBean getZipcode(String address) {
-			RegisterBean rslt = new RegisterBean();
-			try(Connection con = DBMgr.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("select * from zipcode where memName = ? and memEmail = ? and memPhone = ?");
-				pstmt.setString(1, address);
-				ResultSet rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					rslt = registerBeanMapper(rs);
-				}
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
+	//회원가입
+	public RegisterBean setMemberJoin(String memId, String memPass, String memName,String memEmail,String memPhone, String memBirth , String memPostcode, String memRoadAddress,String memJibunAddress, String memEtcAddress, String memDetailAddress) {
+		RegisterBean rslt = new RegisterBean();
+		try(Connection con = DBMgr.getInstance().getConnection()){
+			Timestamp memJoinDate = new Timestamp(System.currentTimeMillis());
+			int memPoint = 2000;
+			int memAdmin = 0;
+			PreparedStatement pstmt = con.prepareStatement("insert into memberTbl values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPass);
+			pstmt.setString(3, memName);
+			pstmt.setString(4, memEmail);
+			pstmt.setString(5, memPhone);
+			pstmt.setString(6, memBirth);
+			pstmt.setString(7, memPostcode);
+			pstmt.setString(8, memRoadAddress);
+			pstmt.setString(9, memJibunAddress);
+			pstmt.setString(10, memEtcAddress);
+			pstmt.setString(11, memDetailAddress);
+			pstmt.setInt(12, memPoint);
+			pstmt.setInt(13, memAdmin);
+			pstmt.setTimestamp(14, memJoinDate);
+			pstmt.executeUpdate();
 			
-			return rslt;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+		
+		return rslt;
+		
+	}
+	
 }

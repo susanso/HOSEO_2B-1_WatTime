@@ -4,6 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <title>이용약관</title>
+	<%
+		String pageChange;
+	%>
 	<script type="text/javascript"> 
 		function agree() { 
 			var chkbox = document.getElementsByName('agree');
@@ -17,7 +20,7 @@
 			} 
 			//체크 박스를 모두 체크 했을 경우
 			if(chk) {
-				location.href="../WatTime/WTMemberJoin.jsp"
+				location.href="?pageChange=WTMemberJoin.jsp"
 			//체크 박스가 하나라도 체크가 안돼어있을 경우
 			} else { 
 				alert("모든 약관에 동의해 주세요.") 
@@ -40,9 +43,7 @@
 	<br><br><br>
 	<input type="checkbox" name = "agree" id="chk2"/> 이용약관 동의합니다.
 	<br><br><br>
-	<a href="javascript:agree();">
-		<input type="button" class = "sv_button" value="동의">
-	</a>
+		<input type="button" class = "sv_button" value="동의" onclick="javascript:agree()" >
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type = "button" class = "sv_button" value = "취소"/>
 </body>

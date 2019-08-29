@@ -1,12 +1,13 @@
 <%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* , watTime.*" %>
-<jsp:useBean id="memMgr" class = "watTime.MemberMgr" scope="page"></jsp:useBean>
+<%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<jsp:useBean id="memMgr" class = "WatTimePack.MemberMgr" scope="page"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script language = "JavaScript" src = "script.js"></script>
+<link href = "style.css" rel = "stylesheet" type = "text/css">
 </head>
 <body>
 	<%
@@ -26,17 +27,16 @@
 	%>
 		<script>
 			alert("일치하는 정보의 아이디가 없습니다.");
-			location.href="../WatTime/WTMemberPassFind.jsp"
+			location.href="WTMain.jsp?pageChange=WTMemberPassFind.jsp"
 		</script>
 	<%
 		}else{
+			RequestDispatcher rd = request.getRequestDispatcher("WTMain.jsp?pageChange=WTMemberNewPass.jsp");
+			request.setAttribute("memId", memId);
+			
+		    rd.forward(request, response);
 	%>
-		<form method="post" id="newPassForm" name="newPassForm" action="WTMemberNewPassPro.jsp">
-			<input type="password" id="memPass" name="memPass" placeholder="새 패스워드"><br>
-			<input type="password" id="memPassCheck" name="memPassCheck" placeholder="새 패스워드 확인"><br>
-			<input type="hidden" id="memId" name="memId" value=<%=memId %>>
-			<input type="button" id="newPass" name="newPass" value = "패스워드 변경" onclick="newPassNullCheck()">
-		</form>
+		<input type="hidden" id="memId" name="memId" value="<%=memId%>">
 	<%
 		}
 	%>
