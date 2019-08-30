@@ -17,8 +17,8 @@
 				</ul>
 			</div>
 			
-			<div class="topContent">
-				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="auto" height="165px" onclick="mainBack()">
+			<div class="topContent" id="logoImg">
+				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="266px" height="auto" onclick="mainBack()">
 			</div>
 			
 			<div class="topContent" >
