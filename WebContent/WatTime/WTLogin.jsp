@@ -7,24 +7,23 @@
 <script language = "JavaScript" src = "script.js"></script>
 <title>로그인 - Wat Time</title>
 </head>
-<body align="center">
+<body>
 <div id="LoginContent">
    <form method="post" id="LoginForm" name="LoginForm" action="WTLoginPro.jsp">
       <div id="login">
-         <div>
+         
             <div><input placeholder="아이디" class="LoginId" type="text" id="memId" name="memId" maxlength="20"></div>
-         </div>
-         <div>
+        
+         
             <div><input placeholder="비밀번호"  class="LoginPass" type="password" id="memPass" name="memPass" maxlength="20"></div>
-         </div>
-         <div>
+         
+         
             <div><a id="signIn" href = "?pageChange=WTAgreed.jsp">회원가입</a></div>
             <div><a id="findInfo" href = "?pageChange=WTMemberIdFind.jsp">아이디/비밀번호 찾기</a></div>
-         </div>
-         <div>
+         
             <div><input type="button" id="memLogin" name="memLogin" value="로그인" onclick="loginNullCheck()"></div>
             
-         </div>
+         
       </div>
    </form>
    </div>

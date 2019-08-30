@@ -35,8 +35,9 @@ function imgslide(){
 
 	setTimeout('imgslide()',4000); //3초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
 
-<!-- 제이쿼리 부분 -->
+
 }
+
 </script>
 </head>
 <body>
@@ -59,8 +60,8 @@ function imgslide(){
 	</div>
  	
 	<div id="midelContent">
-	 <div>
-	<img src="img/Brand.png">
+	 <div id ="brandDiv">
+	 	<p id="brandP">BRAND</p>
 	 </div>
 	 
 	</div>
