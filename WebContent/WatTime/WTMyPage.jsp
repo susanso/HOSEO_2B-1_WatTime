@@ -30,52 +30,52 @@
 		</div>
 	    <!-- //nav -->
 		<div class="content">
-			<table class="memInfo" cellspacing = "0" cellpadding = "0">
-				<tr>
-					<th>이름</th>
-					<td><%=member.getMemName() %></td>
-				</tr>
-				<tr>
-					<th>아이디</th>
-					<td><%=member.getMemId() %></td>
-				</tr>
-				<tr>
-					<th>패스워드</th>
-					<td><input  type="password" id="memPass" name="memPass" placeholder="패스워드(영문,숫자,특수문자 조합 8~25자)" ></td>
-				</tr>
-				<tr>
-					<th>패스워드 확인</th>
-					<td><input  type="password" id="memPassCheck" name="memPassCheck" placeholder="패스워드 확인" ></td>
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td><input  type="text" id="memEmail" name="memEmail" placeholder="이메일"  required></td>
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<td><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" required></td>
-				</tr>
-				<tr>
-					<th rowspan="5">주소</th>
-					<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" onclick="postcode()" readonly>
-						<input  type="button" value="우편번호 찾기"></td>
-				</tr>
-				<tr>
-					<td><input  type="text" id="memRoadAddress" name="memRoadAddress" placeholder="도로명주소" readonly></td>
-				</tr>
-				<tr>
-					<td><input  type="text" id="memJibunAddress" name="memJibunAddress" placeholder="지번주소" readonly></td>
-				</tr>
-				<tr>
-					<td><input  type="text" id="memEtcAddress" name="memEtcAddress" placeholder="기타주소" readonly></td>
-				</tr>
-				<tr>
-					<td><input  type="text" id="memDetailAddress" name="memDetailAddress" placeholder="상세주소" onblur="addressCheck()"></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input class="memInfoChange" type="button" value="회원정보수정"></td>
-				</tr>
-			</table>
+			<form id="memberInfoForm" name="memberInfoForm" method="post" action="WTMemberInfoChange.jsp">
+				<table class="memInfo" cellspacing = "0" cellpadding = "0">
+					<tr>
+						<th>이름</th>
+						<td><%=member.getMemName() %></td>
+						<input type="hidden" id="memId" name="memId" value=<%=member.getMemId() %>/>
+					</tr>
+					<tr>
+						<th>아이디</th>
+						<td><%=member.getMemId() %></td>
+					</tr>
+					<tr>
+						<th>패스워드</th>
+						<td><input type="password" id="memPass" name="memPass" placeholder="패스워드(영문,숫자,특수문자 조합 8~25자)" ></td>
+					</tr>
+					<tr>
+						<th>패스워드 확인</th>
+						<td><input type="password" id="memPassCheck" name="memPassCheck" placeholder="패스워드 확인" ></td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td><input  type="text" id="memEmail" name="memEmail" placeholder="이메일" value=<%=member.getMemEmail() %> required></td>
+					</tr>
+					<tr>
+						<th>전화번호</th>
+						<td><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" value=<%=member.getMemPhone() %> required></td>
+					</tr>
+					<tr>
+						<th rowspan="4">주소</th>
+						<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" value=<%=member.getMemPostcode() %> readonly>
+							<input  type="button" value="우편번호 찾기" onclick="postcode()"></td>
+					</tr>
+					<tr>
+						<td><input  type="text" id="memRoadAddress" name="memRoadAddress" placeholder="도로명주소" value=<%=member.getMemRoadAddress() %> readonly></td>
+					</tr>
+					<tr>
+						<td><input  type="text" id="memEtcAddress" name="memEtcAddress" placeholder="기타주소" value=<%=member.getMemEtcAddress() %> readonly></td>
+					</tr>
+					<tr>
+						<td><input  type="text" id="memDetailAddress" name="memDetailAddress" placeholder="상세주소" value=<%=member.getMemDetailAddress() %>></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="button"  class="memInfoChange" value="회원정보수정" onclick="memberInfoChange()"></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 	  <!-- //container -->
