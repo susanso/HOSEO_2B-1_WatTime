@@ -14,8 +14,7 @@
 	  border-bottom:1px solid gray; }	
 .topContent {float:left; width:33%;}
 
-#topMenu {list-style-type:none;margin:0;padding:0
-}
+#topMenu {list-style-type:none;margin:0;padding:0}
 
 #topMenu li  {display:inline;}
 
@@ -58,5 +57,639 @@
 .subTopMenu{ margin: 0 30px 0 0;}
 
 .subTopMenu li {font-size:16px}
-  
-#mid {background-color : #ffff00;}
+
+.title{
+	color:#fff;background-color:#000000;
+	padding: 7px;
+}
+/*회원가입*/
+.member{
+	width:1300px; 
+	margin:auto;
+}
+.memberForm{
+	margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.memList{
+	width: 100%;
+	margin-top :20px;
+	border: 1px solid #ccc;
+	padding:8px 8px 8px 8px;
+}
+.singleText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border:none;
+	width:100%;
+}
+.memList .idText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border:none;
+	width:80%;
+}
+.memList  .postText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border:none;
+	border-bottom:1px solid #ccc;
+	width:40%;
+}
+.inputText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border:none;
+	border-bottom:1px solid #ccc;
+	width:100%;
+}
+.passInputText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border-bottom:1px solid #ccc;
+	border:none;
+	width:100%;
+	margin-bottom:8px 0px 8px 0px;
+}
+.checkBtn{
+	background-color: black;
+	border: none;
+	color: white;
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1vw;
+	border-radius:8px;
+	margin:0;
+}
+.checkText{
+	font-size:12px;
+	font-color:red;
+}
+
+.join{
+	
+	margin: auto;
+	width: 100%;
+	padding: 10px;
+}
+.join .btn {
+  	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 100%;
+    margin-top:1%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.addressForm{
+	padding-top:8px;
+}
+/*아이디 중복 체크 팝업*/
+.form{
+	transform: translate(5%);
+	width: 90%;
+	margin-top :20px;
+	border: 1px solid #ccc;
+	padding:8px 8px 8px 8px;
+}
+.subForm{
+	transform: translate(10%);
+	width: 80%;
+	margin-top :20px;
+	border: 1px solid #ccc;
+	padding:8px 8px 8px 8px;
+}
+.idInputText{
+	height: 40px;
+	padding:8px 8px 8px 8px;
+	border:none;
+	width:70%;
+	font-size:15pt;
+}
+.idCheckBtn{
+	background-color: black;
+	border: none;
+	color: white;
+	padding: 8px 8px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1vw;
+	border-radius:8px;
+	margin:0;
+}
+/*회원가입 완료*/
+.joinForm{
+	margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.joinForm .joinTextContain{
+	text-align:center;
+	margin-top:10%;
+	margin-bottom:5%;
+}
+.joinTextContain .joinText{
+	margin:auto;
+	width:100%;
+	font-size:2vw;
+}
+.joinTextContain .joinText2{
+	margin:auto;
+	width:100%;
+	font-size:1vw;
+}
+.joinForm .joinBtnContain{
+	transform: translate(10%);
+	margin-bottom:5%;
+}
+.joinBtnContain .joinBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 80%;
+    margin-top:1%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/*아이디 찾기/패스워드 찾기*/
+.findForm{
+    margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.findForm .btnContain{
+	transform: translate(20%);
+}
+.btnContain .btn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 30%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.findForm .inputContain{
+	transform: translate(20%);
+}
+.inputContain .findInputText{
+	width:60%;
+    height: 40px;
+	padding:8px 8px 8px 8px;
+	border:1px solid #ccc;
+	font-size:15pt;
+    margin-top:3%;
+}
+.findForm .finContain{
+	transform: translate(20%);
+    
+}
+.findContain .findBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 30%;
+    margin-top:3%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/*아이디 찾고 난 후*/
+.resultForm{
+    margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.resultForm .btnContain{
+	transform: translate(20%);
+}
+.resultForm .resultContain{
+	text-align: center;
+	margin-top:12%;
+	margin-bottom:10%;
+}
+.resultContain .resultText{
+	width:100%;
+	font-size:3vw;
+	
+}
+.resultForm .resultBtn{
+	transform: translate(20%);
+	margin-bottom:2%;
+    
+}
+.resultBtn .nextBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 60%;
+    margin-top:1%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/*패스워드 찾기 버튼 누른 후*/
+.newPassForm{
+    margin: auto;
+	width: 60%;
+	border: 2px solid #ccc;
+	padding: 10px;
+}
+.newPassForm .btnContain{
+	transform: translate(20%);
+}
+.newPassForm .inputContain{
+	transform: translate(20%);
+}
+.inputContain .newPassInputText{
+	width:60%;
+    height: 40px;
+	padding:8px 8px 8px 8px;
+	border:1px solid #ccc;
+	font-size:15pt;
+    margin-top:5%;
+}
+.newPassForm .newPassContain{
+	transform: translate(0%);
+    
+}
+.newPassContain .newPassBtn{
+	background-color: black; 
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1vw;
+	border-radius:8px;
+	width: 61%;
+    margin-top:5%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+
+/*                      마이페이지                                           */
+.frame {
+  width: 1300px;
+  margin: auto;
+  border: 1px solid #aaa;
+}
+
+.container {
+  overflow: hidden;
+  margin-top:5%;
+}
+.nav {
+  float: left;
+  width: 130px;
+  background: #333;
+  color: #fff;
+  margin-right: 50px;
+}
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+}
+.nav-item {
+  margin: 4px 0;
+}
+.nav-link {
+  display: block;
+  text-decoration: none;
+  padding: 4px 10px;
+  color: #fff;
+}
+.nav-link:hover {
+  background: #5457de;
+}
+.nav, .content {
+  display: table-cell;
+}
+.content {
+  width: 1170px;
+  margin-top:5%;
+}
+.content .memInfo{
+	border: 1px solid #ccc;
+	width:80%;
+	
+}
+.memInfo th{
+	border: 1px solid #ccc;
+	width:20%;
+	height:10%;
+	padding: 4px;
+}
+.memInfo td{
+	border: 1px solid #ccc;
+	width:60%;
+	height:10%;
+	padding: 4px;
+}
+.memInfo .memInfoChange{
+	float:right;
+}
+/*                                                                메뉴                                                                     */
+/*  brand,man,woman,couple 을 감싸는 DIV */
+#subTopBar{ 
+	position:relaytive;
+	margin:auto;
+	width:1300px;
+	height:50px;
+}
+
+/* brand,man,woman,couple 속성*/
+.dropBtn{
+  background-color:white;
+  color: black;
+  width:325px;
+  height:50px;
+  font-size: 20px;
+  border: none;
+  float:left;
+  transition: background-color 0.5s, transform 5s;
+}
+
+/* 상위메뉴 float 끊는 속성 */
+.dropBtn:after {content:""; display:block; clear:both;}
+
+
+/* Brand 하위메뉴 속성 */
+#brandMenu {
+  display: none;
+  position: absolute;
+  top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:360px;
+  z-index: 1;
+  }
+  /* Man 하위메뉴 속성 */
+#manMenu {
+  display: none;
+  position: absolute;
+	top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:180px;
+  z-index: 1;
+  }
+  /* Woman 하위메뉴 속성 */
+#womanMenu {
+  display: none;
+  position: absolute;
+  top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:120px;
+  z-index: 1;
+  }
+  /* Couple 하위메뉴 속성 */
+#coupleMenu {
+  display: none;
+  position: absolute;
+  top:228px;
+  left:auto;
+  background-color: gray;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  min-width: 1300px;
+  height:120px;
+  z-index: 1;
+}
+/* brand 하위메뉴 컬럼들 속성 */
+#brandMenu a {
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+/* man 하위메뉴 컬럼들 속성 */
+#manMenu a {
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+/* woman 하위메뉴 컬럼들 속성 */
+#womanMenu a {
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+/* couple 하위메뉴 컬럼들 속성 */
+#coupleMenu a {
+
+  font-weight:bold ;
+  text-align:center;
+  line-height:60px;
+  width:260px;
+  height:60px;
+  color: black;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  float:left;
+  left:30%;
+}
+
+/* 하위메뉴 호버시 색변경 */
+.dropdownContent a:hover {  background-color: black;
+							
+  background-color: rgba( 255, 255, 255, 0.8 );}
+
+/* 각 메뉴 호버시 하위메뉴 출현 */
+#brand:hover #brandMenu {display:block;}
+#man:hover #manMenu {display:block;}
+#woman:hover #womanMenu {display:block;}
+#couple:hover #coupleMenu {display:block;}
+
+/* 하위메뉴 호버시 해당 상위메뉴 색 변경  */
+#brand:hover #brandDropBtn {background-color: black;
+								color:white;}
+#man:hover #manDropBtn {background-color: black;
+								color:white;}
+#woman:hover #womanDropBtn {background-color: black;
+								color:white;}
+#couple:hover #coupleDropBtn {background-color: black;
+								color:white;}
+/*                                                                메뉴                                                                     */
+/* 로그인 부분 시작*/
+
+#LoginContent{
+	position: relative;
+	width:1300px;
+	height:600px;
+	background:white;
+	
+}
+
+         
+#login{
+	margin:auto;
+	width:80%;
+	height:500px;
+	background:white;
+	top:50px;
+	left:100px;
+	border: 1px #ccc solid;
+}
+.LoginId,.LoginPass {width: 550px;
+height:50px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  font-size:20px;
+  resize: vertical;      
+}
+#signIn, #findInfo{  display: block;
+  text-decoration: none;
+  padding: 4px 10px;
+  color: #000;}
+
+
+
+#memLogin{
+  background:#000000;
+  color:#ffffff;
+  border:none;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;   
+  transition:800ms ease all;
+  border-radius:8px;
+}
+#memLogin:hover{
+  background:#eee;
+  color:#000000;
+}
+
+
+
+#login div{
+   font-size:16px;
+   posotion:relative;
+   margin-top: 30px;
+}
+/* 로그인 부분 종료*/
+
+/*우편번호 찾기*/
+.row{
+	margin:auto;
+}
+.row .postTable{
+	margin:auto;
+	text-align:center;
+}
+.postTd{
+	padding-top:4px;
+	padding-bottom:4px;
+}
+/**/
+
+/* main content 시작 */
+
+#mainContent{
+   position:relative;
+   top:0;
+   left:0;
+}
+/* banner  */
+#bannerContent{}
+
+#mainSlide{
+   margin:0;
+     padding:0;
+      width: 100%;
+    }
+            
+#img1{ width: 100%;
+      list-style:none;
+      }
+      
+#img2,#img3,#img4,#img5{
+      width: 100%;
+      display:none;
+      list-style:none;
+    }
+
+.banner img{
+      width:100%;
+      height: 500px;
+    } 
+/* banner  */
+
+/* midleBanner  */
+#midelContent{
+   margin-top:40px;
+   margin:auto;
+   width:1300px;
+   height:1000px;
+   background-color:gray;
+}
+
+/* midleBanner  */
+
+/* main content 종료 */
