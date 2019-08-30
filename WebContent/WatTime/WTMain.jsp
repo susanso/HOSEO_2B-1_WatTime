@@ -18,16 +18,14 @@
 		String bottom="WTBottom.jsp";
 	%>
 	
-	<TABLE border ="0" cellspacing = "0" cellpadding = "0" class="mainForm">
-		<TR>
-		   	  <TD><jsp:include page="<%=top%>" flush="false"/></TD>
-		</TR>
-		<TR>
-		   	  <TD><jsp:include page="<%=content%>" flush="false"/></TD>
-		</TR>
-		<TR>
-		   	  <TD><jsp:include page="<%=bottom%>" flush="false"/></TD>
-		</TR>
-	</TABLE>
+	<div>
+	
+		   	 <jsp:include page="<%=top%>" flush="false"/>
+		
+		   	 <jsp:include page="<%=content%>" flush="false"/>
+		
+		   	 <jsp:include page="<%=bottom%>" flush="false"/>
+		
+	</div>
 </body>
 </html>
