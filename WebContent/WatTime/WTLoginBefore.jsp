@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="script.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -80,7 +81,7 @@
 		        <a href="#">스페라</a>
 		        <a href="#">오메가</a>
 		        <a href="#">구찌</a>
-		        <a href="#">다니엘웰링턴</a>
+		        <a href="#" onclick="brand(this.name)" name="DanielWellington">다니엘웰링턴</a>
 		      </div>
 		      
 		    </div>
@@ -91,7 +92,7 @@
 		    <div id="manMenu" class="dropdownContent" >
 		      <div>
 		        <a href="#">가이거</a>
-		        <a href="#">다니엘웰린턴</a>
+		        <a href="#">다니엘웰링턴</a>
 		        <a href="#">디젤</a>
 		        <a href="#">몬데인</a>
 		        <a href="#">벨렌티노루디</a>

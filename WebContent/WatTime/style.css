@@ -717,3 +717,11 @@ height:50px;
 /* midleBanner  */
 
 /* main content 종료 */
+
+
+
+/*상품 불러오기 테스트*/
+
+.productLi{
+	border: 1px solid #ccc;
+}

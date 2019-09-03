@@ -23,16 +23,16 @@
 	<br><br>
 	
 <%
-    int i = 1;
-	request.setCharacterEncoding("UTF-8");
-	
-	RegisterBean rslt = new RegisterBean();
-	try(Connection con = DBMgr.getInstance().getConnection()){
-		PreparedStatement pstmt = con.prepareStatement("select * from postcode where address like '%"+memAddress+"%'");
-		ResultSet rs = pstmt.executeQuery();
-	
-		if(rs.next()){
-%>
+		int i = 1;
+		request.setCharacterEncoding("UTF-8");
+		
+		WatTimeMemberDTO rslt = new WatTimeMemberDTO();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from postcode where address like '%"+memAddress+"%'");
+			ResultSet rs = pstmt.executeQuery();
+		
+			if(rs.next()){
+	%>
 			<div class="row">
 		        <table class="postTable" id="table" width="90%" border ="1" cellspacing = "0" cellpadding = "0">
 		            <thead>
