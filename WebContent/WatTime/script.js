@@ -214,18 +214,15 @@ function addressCheck(){
 	}
 	
 }
-function test(){
-	location.href="?pageChange=WTMemberJoinSuccess.jsp";
-}
 //회원가입 버튼
 function joinMember(){
 	var idHiddenText = document.getElementById("idHidden").value;
 	var passHiddenText = document.getElementById("passHidden").value;
-	var nameHiddenText = document.getElementById("nameHidden").value
-	var emailHiddenText = document.getElementById("emailHidden").value
-	var birthHiddenText = document.getElementById("birthHidden").value
-	var phoneHiddenText = document.getElementById("phoneHidden").value
-	var addressHiddenText = document.getElementById("addressHidden").value
+	var nameHiddenText = document.getElementById("nameHidden").value;
+	var emailHiddenText = document.getElementById("emailHidden").value;
+	var birthHiddenText = document.getElementById("birthHidden").value;
+	var phoneHiddenText = document.getElementById("phoneHidden").value;
+	var addressHiddenText = document.getElementById("addressHidden").value;
 	
 	if(idHiddenText == "no" || passHiddenText == "no" || 
 	   nameHiddenText == "no"|| emailHiddenText == "no"||
@@ -339,6 +336,20 @@ function memberInfoChange(){
 		alert("fdfdf");
 	}
 	
+}
+////상품 관련 페이지
+//상품 누르기
+function brand(brandEng){
+	location.href="WTMain.jsp?pageChange=WTProduct.jsp?brandEng="+brandEng;
+}
+//상품 상세보기 테스트
+function test(productCode){
+	location.href="WTMain.jsp?pageChange=WTProductSpec.jsp?Code="+productCode;
+}
+//상품 검색
+function productSearch(){
+	var text = decodeURI(document.getElementById("searchText").value);
+	location.href="WTMain.jsp?pageChange=WTTopSearchPro.jsp?text="+text;
 }
 //메인으로
 function mainBack(){

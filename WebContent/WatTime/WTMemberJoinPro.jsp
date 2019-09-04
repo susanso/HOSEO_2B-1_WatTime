@@ -1,6 +1,8 @@
 <%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
-<jsp:useBean id="memMgr" class = "WatTimePack.MemberMgr" scope="page"></jsp:useBean>
+<jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
+	<jsp:setProperty name="memberDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +10,7 @@
 <title>회원가입</title>
 <script language = "JavaScript" src = "script.js"></script>
 <link href = "style.css" rel = "stylesheet" type = "text/css">
-
-	<%	
-		String pageChange;
+<%
 		//utf-8로 텍스트 설정
 		request.setCharacterEncoding("utf-8");
 		//입력한 회원 정보를 가져옴
@@ -26,12 +26,11 @@
 		String memEtcAddress= request.getParameter("memEtcAddress");
 		String memDetailAddress =  request.getParameter("memDetailAddress");
 		//정보를 테이블에 넣기 위해 setMemberJoin메소드 실행
-		RegisterBean member = memMgr.setMemberJoin(memId, memPass, memName,  memEmail, memPhone, memBirth,  memPostcode, memRoadAddress, memJibunAddress, memEtcAddress, memDetailAddress);
-		
-	%>
+		WatTimeMemberDAO memberDAO = new WatTimeMemberDAO();
+		memberDTO = memberDAO.setMemberJoin(memId, memPass, memName,  memEmail, memPhone, memBirth,  memPostcode, memRoadAddress, memJibunAddress, memEtcAddress, memDetailAddress);
+%>
 </head>
 <body>
-	
 	<script>
 		//회원가입 성공 화면으로 넘어가는 부분
 		location.href="WTMain.jsp?pageChange=WTMemberJoinSuccess.jsp"

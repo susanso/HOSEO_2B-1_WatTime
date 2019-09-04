@@ -68,9 +68,7 @@ function wattimeContentMan(){
 </head>
 <body>
 <div id="content"> 
-
 	<div id="bannerContent">
-	
 		<ul id="mainSlide" val="1" mx="5">
 			<li id="img1" class="banner"><a href="#"><img src="img/img1.jpg" alt=""/></a></li>
 			<li id="img2" class="banner"><a href="#"><img src="img/img2.jpg" alt=""/></a></li>
@@ -79,7 +77,6 @@ function wattimeContentMan(){
 			<li id="img5" class="banner"><a href="#"><img src="img/img5.jpg" alt=""/></a></li>
 		</ul>
 	</div>
- 	
 	<div id="midelContent">
 		 <div id ="brandDiv">
 		 	<p id="brandP">Wat Time Content</p>
