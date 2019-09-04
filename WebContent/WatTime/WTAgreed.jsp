@@ -30,21 +30,28 @@
 	<link href = "style.css" rel = "stylesheet" type = "text/css">
 </head>
 <body>
-	<h2>이용약관</h2>
-	<textarea readonly="readonly" cols="150" rows="15">
-
-	</textarea>
-	<br><br><br>
-	<input type="checkbox" name = "agree" id="chk1"/> 이용약관 동의합니다.<br><br><br>
-	
-	<textarea readonly="readonly" cols="150" rows="15">
-
-	</textarea>
-	<br><br><br>
-	<input type="checkbox" name = "agree" id="chk2"/> 이용약관 동의합니다.
-	<br><br><br>
-		<input type="button" class = "sv_button" value="동의" onclick="javascript:agree()" >
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type = "button" class = "sv_button" value = "취소"/>
+	<div id="agreeMain">
+		<h1>이용약관</h1>
+		<div>
+			<textarea readonly="readonly" cols="150" rows="15" style="resize: none;"></textarea>
+		</div>
+		
+		<div>
+			<input type="checkbox" name = "agree" id="chk1"/> 이용약관 동의합니다.<br><br><br>
+		</div>
+		
+		<div>
+			<textarea readonly="readonly" cols="150" rows="15" style="resize: none;"></textarea>
+		</div>
+		
+		<div>
+			<input type="checkbox" name = "agree" id="chk2"/> 이용약관 동의합니다.
+		</div>
+		
+		<div>
+			<input type="button" class = "sv_button" value="동의" onclick="javascript:agree()" >
+			<input type = "button" class = "sv_button" value = "취소"/>
+		</div>
+	</div>
 </body>
 </html>
