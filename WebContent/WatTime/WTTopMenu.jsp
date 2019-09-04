@@ -1,7 +1,6 @@
-<%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* , WatTimePack.*" %>
-<jsp:useBean id="memMgr" class = "WatTimePack.WatTimeMemberDAO" scope="page"></jsp:useBean>  
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link href = "style.css" rel = "stylesheet" type = "text/css">
@@ -9,40 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%
-	WatTimeMemberDTO member = (WatTimeMemberDTO)session.getAttribute("member");
-%>
 <body>
-	<div id="top">
-			<div class="topContent">
-				<ul id="topMenu">
-					<li><%=member.getMemName() %>님 </li>
-					<li><a href="../WatTime/WTLogout.jsp">로그아웃</a> </li>
-					<li><a href="WTMain.jsp?pageChange=WTMyPage.jsp">마이페이지</a></li>
-					<li>구매후기</li>
-					<li>장바구니</li>
-					<li>고객센터</li>
-				</ul>
-			</div>
-			
-			<div class="topContent" id="logoImg">
-				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="266px" height="auto" onclick="mainBack()" >
-			</div>
-			
-			<div class="topContent" >
-				<div id="searchMenu">
-					<form class="search" action="가야하는.php" style="margin:auto;max-width:300px">
-					   <input type="text"  name="search2">
-					   <button type="submit"><i class="fa fa-search"></i></button>
-					</form>
-				</div>
-			</div>
-		</div>
-		
-		<div id="subTopBar">
+	<div id="subTopBar">
 		  <div id="brand" class="dropdownBtn">
 		    <button id="brandDropBtn" class="dropBtn">BRAND</button>
 		    <div id="brandMenu" class="dropdownContent">
@@ -91,7 +60,7 @@
 		        <a href="#">스페라</a>
 		        <a href="#">오메가</a>
 		        <a href="#">구찌</a>
-		        <a href="#">다니엘웰링턴</a>
+		        <a href="#" onclick="brand(this.name)" name="DanielWellington">다니엘웰링턴</a>
 		      </div>
 		      
 		    </div>

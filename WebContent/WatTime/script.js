@@ -337,14 +337,19 @@ function memberInfoChange(){
 	}
 	
 }
+////상품 관련 페이지
 //상품 누르기
 function brand(brandEng){
 	location.href="WTMain.jsp?pageChange=WTProduct.jsp?brandEng="+brandEng;
 }
-
 //상품 상세보기 테스트
 function test(productCode){
 	location.href="WTMain.jsp?pageChange=WTProductSpec.jsp?Code="+productCode;
+}
+//상품 검색
+function productSearch(){
+	var text = decodeURI(document.getElementById("searchText").value);
+	location.href="WTMain.jsp?pageChange=WTTopSearchPro.jsp?text="+text;
 }
 //메인으로
 function mainBack(){

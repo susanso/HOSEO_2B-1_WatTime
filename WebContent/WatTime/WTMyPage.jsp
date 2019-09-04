@@ -1,6 +1,8 @@
 <%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
-<jsp:useBean id="memMgr" class = "WatTimePack.WatTimeMemberDAO" scope="page"></jsp:useBean>
+<jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
+	<jsp:setProperty name="memberDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
 	<script language = "JavaScript" src = "script.js"></script>
 	<%
 		request.setCharacterEncoding("utf-8");
-			WatTimeMemberDTO member = (WatTimeMemberDTO)session.getAttribute("member");
+		memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
 	%>
 </head>
 <body>
@@ -34,12 +36,12 @@
 				<table class="memInfo" cellspacing = "0" cellpadding = "0">
 					<tr>
 						<th>이름</th>
-						<td><%=member.getMemName() %></td>
-						<input type="hidden" id="memId" name="memId" value=<%=member.getMemId() %>/>
+						<td><%=memberDTO.getMemName() %></td>
+						<input type="hidden" id="memId" name="memId" value=<%=memberDTO.getMemId() %>/>
 					</tr>
 					<tr>
 						<th>아이디</th>
-						<td><%=member.getMemId() %></td>
+						<td><%=memberDTO.getMemId() %></td>
 					</tr>
 					<tr>
 						<th>패스워드</th>
@@ -51,25 +53,25 @@
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td><input  type="text" id="memEmail" name="memEmail" placeholder="이메일" value=<%=member.getMemEmail() %> required></td>
+						<td><input  type="text" id="memEmail" name="memEmail" placeholder="이메일" value=<%=memberDTO.getMemEmail() %> required></td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
-						<td><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" value=<%=member.getMemPhone() %> required></td>
+						<td><input type="number" id="memPhone" name="memPhone" placeholder="전화번호" value=<%=memberDTO.getMemPhone() %> required></td>
 					</tr>
 					<tr>
 						<th rowspan="4">주소</th>
-						<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" value=<%=member.getMemPostcode() %> readonly>
+						<td><input  type="text" id="memPostcode" name="memPostcode" size = "10" placeholder="우편번호" value=<%=memberDTO.getMemPostcode() %> readonly>
 							<input  type="button" value="우편번호 찾기" onclick="postcode()"></td>
 					</tr>
 					<tr>
-						<td><input  type="text" id="memRoadAddress" name="memRoadAddress" placeholder="도로명주소" value=<%=member.getMemRoadAddress() %> readonly></td>
+						<td><input  type="text" id="memRoadAddress" name="memRoadAddress" placeholder="도로명주소" value=<%=memberDTO.getMemRoadAddress() %> readonly></td>
 					</tr>
 					<tr>
-						<td><input  type="text" id="memEtcAddress" name="memEtcAddress" placeholder="기타주소" value=<%=member.getMemEtcAddress() %> readonly></td>
+						<td><input  type="text" id="memEtcAddress" name="memEtcAddress" placeholder="기타주소" value=<%=memberDTO.getMemEtcAddress() %> readonly></td>
 					</tr>
 					<tr>
-						<td><input  type="text" id="memDetailAddress" name="memDetailAddress" placeholder="상세주소" value=<%=member.getMemDetailAddress() %>></td>
+						<td><input  type="text" id="memDetailAddress" name="memDetailAddress" placeholder="상세주소" value=<%=memberDTO.getMemDetailAddress() %>></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="button"  class="memInfoChange" value="회원정보수정" onclick="memberInfoChange()"></td>
