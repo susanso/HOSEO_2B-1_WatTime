@@ -803,7 +803,7 @@ height:50px;
 /* midelBanner*/
 #midelContent{
    padding:50px 0;
-   margin:40px auto;
+   margin:0 auto;
    width:1300px;
    height:1000px;
    background-color:gray;
@@ -818,8 +818,30 @@ height:50px;
 		text-align:center;
 		background:#fff;
 		font:30px 'Roboto', sans-serif;
-		margin:0 auto;
+		margin:100px auto;
 		}
+
+.mainSpan{
+	display: block; 
+	line-height: 25px; 
+	font-size: 13px; 
+	text-align: left; 
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap;
+}
+
+.subSpan{
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap; 
+	display: block; 
+	clear: both; 
+	line-height: 25px; 
+	font-size: 13px; 
+	text-align: left;
+	
+}
 /* midelBanner  */
 
 /* main content 종료 */

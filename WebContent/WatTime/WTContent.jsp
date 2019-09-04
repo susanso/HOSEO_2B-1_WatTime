@@ -90,8 +90,8 @@ function wattimeContentMan(){
 			 <div>
 				 <p>
 					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
-					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
-					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
+					 		<span class="mainSpan">[카시오[CASIO] ]</span>
+					 		<span class="subSpan">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
 					 		<span>
 					 			<strong>19,500원</strong>
 					 		</span>
@@ -100,33 +100,33 @@ function wattimeContentMan(){
 			 </div>
 			  <div >
 				 <p>
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
-					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
-					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
+					 <a href="#"><img src="img/watch/0042001.jpg" style="width:240px; height:250px;dispaly:block;"> 
+					 		<span class="mainSpan" >[ 게스[GUESS] ]</span>
+					 		<span class="subSpan">[게스시계 GUESS] W1009L3 / 여성용 메탈밴드 27mm</span>
 					 		<span>
-					 			<strong>19,500원</strong>
+					 			<strong>325,000원</strong>
 					 		</span>
 					 </a>
 				</p>
 			 </div>
 			  <div >
 				 <p>
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
-					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
-					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
+					 <a href="#"><img src="img/watch/0031001.jpg" style="width:240px; height:250px;dispaly:block;"> 
+					 		<span class="mainSpan">[ 가이거[GEIGER] ]</span>
+					 		<span class="subSpan" >[가이거시계 GEIGER] GE1180MBS 신상 오토매틱 스켈레톤 42mm 메탈시계</span>
 					 		<span>
-					 			<strong>19,500원</strong>
+					 			<strong>89,000원</strong>
 					 		</span>
 					 </a>
 				</p>
 			 </div>
 			  <div >
 				 <p>
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
-					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
-					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
+					 <a href="#"><img src="img/watch/0251001.jpg" style="width:240px; height:250px;dispaly:block;"> 
+					 		<span class="mainSpan">[태그호이어[TAG HUEUR] ]</span>
+					 		<span class="subSpan">[태그호이어시계 TAG HUEUR] CAY111A.BA0927 / 디지털 남성 메탈시계 32mm</span>
 					 		<span>
-					 			<strong>19,500원</strong>
+					 			<strong>1,537,000원</strong>
 					 		</span>
 					 </a>
 				</p>
@@ -134,10 +134,10 @@ function wattimeContentMan(){
 			  <div ><!-- 여기에 클리어 부스 해야합니다용가리 -->
 				 <p>
 					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
-					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
-					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
+					 		<span class="mainSpan">[해밀턴[HAMILTON] ]</span>
+					 		<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
 					 		<span>
-					 			<strong>19,500원</strong>
+					 			<strong>67,500원</strong>
 					 		</span>
 					 </a>
 				</p>
