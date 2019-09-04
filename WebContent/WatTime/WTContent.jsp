@@ -86,13 +86,13 @@ function wattimeContentMan(){
 		 </div>
 			 
 		 <div id="wattimeContent">
-			 <div id="wattimeSale1" class="wattimeSale"><a href="#"><img alt="" src="img/sale1.jpg" style="width:650px; height:280px ;display:block;"></a></div>					
+			 <div id="wattimeSale1" class="wattimeSale"><a href="#"><img alt="" src="img/sale1.jpg" width="650px" height="280px"></a></div>					
 			 <div id="wattimeSale2" class="wattimeSale"><a href="#"><img alt="" src="img/sale2.jpg" width="650px" height="280px"></a></div> 
 		</div>
 		<div class="wattimeSubSale" >
-			 <div style="width:260px; float:left;">
-				 <p style="dispaly:block; padding:10px;">
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:260px; height:250px;dispaly:block;"> 
+			 <div>
+				 <p>
+					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
 					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
 					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
 					 		<span>
@@ -101,9 +101,9 @@ function wattimeContentMan(){
 					 </a>
 				</p>
 			 </div>
-			  <div style="width:260px; float:left;">
-				 <p style="dispaly:block; padding:10px;">
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:260px; height:250px;dispaly:block;"> 
+			  <div >
+				 <p>
+					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
 					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
 					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
 					 		<span>
@@ -112,9 +112,9 @@ function wattimeContentMan(){
 					 </a>
 				</p>
 			 </div>
-			  <div style="width:260px; float:left;">
-				 <p style="dispaly:block; padding:10px;">
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:260px; height:250px;dispaly:block;"> 
+			  <div >
+				 <p>
+					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
 					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
 					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
 					 		<span>
@@ -123,9 +123,9 @@ function wattimeContentMan(){
 					 </a>
 				</p>
 			 </div>
-			  <div style="width:260px; float:left; ">
-				 <p style="dispaly:block; padding:10px;">
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:260px; height:250px;dispaly:block;"> 
+			  <div >
+				 <p>
+					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
 					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
 					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
 					 		<span>
@@ -134,9 +134,9 @@ function wattimeContentMan(){
 					 </a>
 				</p>
 			 </div>
-			  <div style="width:260px; float:left;"><!-- 여기에 클리어 부스 해야합니다용가리 -->
-				 <p style="dispaly:block; padding:10px;">
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:260px; height:250px;dispaly:block;"> 
+			  <div ><!-- 여기에 클리어 부스 해야합니다용가리 -->
+				 <p>
+					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
 					 		<span style="display: block; line-height: 25px; font-size: 13px; text-align: left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">[카시오[CASIO] ]</span>
 					 		<span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; clear: both; line-height: 25px; font-size: 13px; text-align: left;">[카시오시계 CASIO] A158WA-1DF (A158WA-1) / 디지털 공용 메탈시계 32X25mm</span>
 					 		<span>
@@ -148,24 +148,24 @@ function wattimeContentMan(){
 		</div>
 
 			 
-			 <div id ="brandDiv">
-			 	<p id="brandP">For Man</p>
-			 </div>
-				<div id="mainSlideMan">	
-					 <div id="slideman1">
-						 <ul id="wattimeContentMan" val="1" mx="5">
-						 	<li id="wattimeContentM1" class="contentListMan"><a href="#"><img src="img/wattimeContentM1.jpg" alt=""/></a></li>
-						 	<li id="wattimeContentM2" class="contentListMan"><a href="#"><img src="img/wattimeContentM2.jpg" alt=""/></a></li>
-						 	<li id="wattimeContentM3" class="contentListMan"><a href="#"><img src="img/wattimeContentM3.jpg" alt=""/></a></li>
-						 	<li id="wattimeContentM4" class="contentListMan"><a href="#"><img src="img/wattimeContentM4.jpg" alt=""/></a></li>
-						 	<li id="wattimeContentM5" class="contentListMan"><a href="#"><img src="img/wattimeContentM5.jpg" alt=""/></a></li>
-						 </ul>
-					 </div>
- 
-					 <div id="slideman2" alt="상품목록 보여주기">
-					 
-					 </div>
-				</div>
+		 <div id ="brandDiv">
+		 	<p id="brandP">For Man</p>
+		 </div>
+			<div id="mainSlideMan">	
+				 <div id="slideman1">
+					 <ul id="wattimeContentMan" val="1" mx="5">
+					 	<li id="wattimeContentM1" class="contentListMan"><a href="#"><img src="img/wattimeContentM1.jpg" alt=""/></a></li>
+					 	<li id="wattimeContentM2" class="contentListMan"><a href="#"><img src="img/wattimeContentM2.jpg" alt=""/></a></li>
+					 	<li id="wattimeContentM3" class="contentListMan"><a href="#"><img src="img/wattimeContentM3.jpg" alt=""/></a></li>
+					 	<li id="wattimeContentM4" class="contentListMan"><a href="#"><img src="img/wattimeContentM4.jpg" alt=""/></a></li>
+					 	<li id="wattimeContentM5" class="contentListMan"><a href="#"><img src="img/wattimeContentM5.jpg" alt=""/></a></li>
+					 </ul>
+				 </div>
+	
+				 <div id="slideman2">
+				 
+				 </div>
+			</div>
 			 
 			 <div>
 			 <div id="wattimeContentWoman" val="1" mx="5"></div>

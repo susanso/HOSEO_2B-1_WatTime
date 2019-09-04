@@ -753,21 +753,26 @@ height:50px;
 
 .wattimeSale{
 	width:650px;
-	height:275px;
+	height:280px;
 	float:left;
-	/*border-bottom:1px solid gray;*/
 }
 
-#wattimeSubSale{
-	display: inline-block;
-    float: left;
+.wattimeSubSale div {
+	width:260px; float:left;
+	border: 1px solid #ddd;
+	box-sizing:border-box;
+	  
+}
+.wattimeSubSale div p{
+	padding:10px;
+}
+.wattimeSubSale::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.wattimeSubSale{
     width: 1300px;
-    background-color:green;
-   /*
-    border-top: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;*/
-	
 }
     
 #mainSlideMan{
