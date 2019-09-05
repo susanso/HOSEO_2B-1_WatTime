@@ -774,15 +774,18 @@ height:50px;
 .wattimeSubSale{
     width: 1300px;
 }
-    
+.slideWatch{
+	width:500px;height:600px;
+}
 #mainSlideMan{
-	width:640px;
-	margin:5px 0 0 5px;
+	width:1300px;
+	height:600px;
+	margin:0;
 	background-color:red;
-
+	border: 1px solid #ccc;
 }
 #wattimeContentMan{
-	margin:20px;
+	margin:0;
 	padding:0;
 	
 }
@@ -805,7 +808,7 @@ height:50px;
    padding:50px 0;
    margin:0 auto;
    width:1300px;
-   height:1000px;
+   height:1700px;
    background-color:gray;
 }
 #brandDiv{	width:100%;

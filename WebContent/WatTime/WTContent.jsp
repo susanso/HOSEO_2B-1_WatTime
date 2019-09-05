@@ -79,7 +79,7 @@ function wattimeContentMan(){
 	</div>
 	<div id="midelContent">
 		 <div id ="brandDiv">
-		 	<p id="brandP">Wat Time Content</p>
+		 	<p id="brandP">Wat Time Focus</p>
 		 </div>
 			 
 		 <div id="wattimeContent">
@@ -131,9 +131,9 @@ function wattimeContentMan(){
 					 </a>
 				</p>
 			 </div>
-			  <div ><!-- 여기에 클리어 부스 해야합니다용가리 -->
+			  <div >
 				 <p>
-					 <a href="#"><img src="img/watch/0231001.jpg" style="width:240px; height:250px;dispaly:block;"> 
+					 <a href="#"><img src="img/watch/0301001.jpg" style="width:240px; height:250px;dispaly:block;"> 
 					 		<span class="mainSpan">[해밀턴[HAMILTON] ]</span>
 					 		<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
 					 		<span>
@@ -149,17 +149,16 @@ function wattimeContentMan(){
 		 	<p id="brandP">For Man</p>
 		 </div>
 			<div id="mainSlideMan">	
-				 <div id="slideman1">
+				 
 					 <ul id="wattimeContentMan" val="1" mx="5">
-					 	<li id="wattimeContentM1" class="contentListMan"><a href="#"><img src="img/wattimeContentM1.jpg" alt=""/></a></li>
-					 	<li id="wattimeContentM2" class="contentListMan"><a href="#"><img src="img/wattimeContentM2.jpg" alt=""/></a></li>
-					 	<li id="wattimeContentM3" class="contentListMan"><a href="#"><img src="img/wattimeContentM3.jpg" alt=""/></a></li>
-					 	<li id="wattimeContentM4" class="contentListMan"><a href="#"><img src="img/wattimeContentM4.jpg" alt=""/></a></li>
-					 	<li id="wattimeContentM5" class="contentListMan"><a href="#"><img src="img/wattimeContentM5.jpg" alt=""/></a></li>
+					 	<li id="wattimeContentM1" class="contentListMan"><a href="#"><img src="img/wattimeContentM1.jpg" class="slideWatch"/></a></li>
+					 	<li id="wattimeContentM2" class="contentListMan"><a href="#"><img src="img/wattimeContentM2.jpg" class="slideWatch"/></a></li>
+					 	<li id="wattimeContentM3" class="contentListMan"><a href="#"><img src="img/wattimeContentM3.jpg" class="slideWatch"/></a></li>
+					 	<li id="wattimeContentM4" class="contentListMan"><a href="#"><img src="img/wattimeContentM4.jpg" class="slideWatch"/></a></li>
+					 	<li id="wattimeContentM5" class="contentListMan"><a href="#"><img src="img/wattimeContentM5.jpg" class="slideWatch"/></a></li>
 					 </ul>
-				 </div>
 	
-				 <div id="slideman2">
+				 <div id="slideMan">
 				 
 				 </div>
 			</div>
