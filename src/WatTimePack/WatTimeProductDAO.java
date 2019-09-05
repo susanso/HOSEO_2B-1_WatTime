@@ -56,10 +56,27 @@ public class WatTimeProductDAO {
 		
 		return list;
 	}
-	public List<WatTimeProductDTO> getSearchProduct(String unText) {
+	//검색한 상품의 리스트 갯수
+	public int getSearchProductCount(String unText) {
+		int searchProductCount = 0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from productTbl where productName like '%"+unText+"%' or brandEng like '%"+unText+"%' or brandKor like '%"+unText+"%' or productType like '%"+unText+"%'");
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				searchProductCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return searchProductCount;
+	}
+	//검색한 상품 목록
+	public List<WatTimeProductDTO> getSearchProductList(String unText,int start, int end) {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productName like '%"+unText+"%' or brandEng like '%"+unText+"%' or brandKor like '%"+unText+"%' or productType like '%"+unText+"%'");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productName like '%"+unText+"%' or brandEng like '%"+unText+"%' or brandKor like '%"+unText+"%'or productType like'%"+unText+"%' limit ?,?");
+			pstmt.setInt(1, start-1);
+			pstmt.setInt(2, end);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {

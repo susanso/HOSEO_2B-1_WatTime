@@ -349,7 +349,7 @@ function test(productCode){
 //상품 검색
 function productSearch(){
 	var text = decodeURI(document.getElementById("searchText").value);
-	location.href="WTMain.jsp?pageChange=WTTopSearchPro.jsp?text="+text;
+	location.href="WTMain.jsp?pageChange=WTTopSearchPro.jsp?text="+text+"?pageNum=1";
 }
 //메인으로
 function mainBack(){

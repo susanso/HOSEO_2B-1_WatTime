@@ -36,7 +36,7 @@
 	//초기 배열을 빈 배열로 선언
 	List<WatTimeProductDTO> productList = null;
 	//화면에 표시할 페이지 최대 갯수
-	int pageSize = 10;
+	int pageSize = 5;
 	//URL에서 가져온 페이지 번호를 int 형으로 변환 시키고 넣음
 	int currentPage = Integer.parseInt(pageNum);
 	//처음 초기 페이지 번호 (최대 페이지를 10으로 설정하면 1, 11, 21)
