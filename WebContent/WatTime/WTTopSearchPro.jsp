@@ -12,6 +12,8 @@
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WatTime</title>
+</head>
+<body>
 <%
 	request.setCharacterEncoding("utf-8");
 	String url = request.getRequestURL().toString();
@@ -25,30 +27,24 @@
 	String searchText = url.substring(urlIndex+5,urlLength);
 	//언코드 시킨 텍스트
 	String unText = java.net.URLDecoder.decode(searchText);
+	
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
+	List<WatTimeProductDTO> productList = null;
+	
+	productList = productDAO.getSearchProduct(unText);
+	
+	for(int i = 0 ; i < productList.size() ; i++){
+		productDTO = productList.get(i);
 %>
-</head>
-<body>
-	<ul>
-<%
-		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productName like '%"+unText+"%' or brandEng like '%"+unText+"%' or brandKor like '%"+unText+"%' or productType like '%"+unText+"%'");
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				String productCode=rs.getString("productCode");
-				String productName=rs.getString("productName");
-				int productPrice=Integer.parseInt(rs.getString("productPrice"));
-%>
-				<li class="productLi">
-					<div><img src="img/<%=productCode %>.jpg" name="<%=productCode %>" onclick="test(this.name)"></div>
-					<div><%=productPrice %></div>
-				</li>
-<%
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
 
-%>
+	<ul>
+	<li class="productLi">
+		<div><img src="img/<%=productDTO.getProductCode() %>.jpg" name="<%=productDTO.getProductCode() %>" onclick="test(this.name)"></div>
+		<div><%=productDTO.getProductPrice() %></div>
+	</li>
 	</ul>
+<%
+	}		
+%>
 </body>
 </html>

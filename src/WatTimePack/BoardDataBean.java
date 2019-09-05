@@ -1,20 +1,20 @@
 package WatTimePack;
-
 import java.sql.Timestamp;
 
 public class BoardDataBean {
-	private int num;
-	private String writer;
-	private String subject;
-	private String email;
-	private String content;
-	private String passwd;
-	private Timestamp reg_date;
-	private int readcount;
-	private String ip;
-	private int ref;
-	private int re_step;
-	private int re_level;
+	private int num; 
+    private String writer;
+    private String subject;
+    private String email;
+    private String content;
+    private String passwd;
+    private Timestamp reg_date;
+    private int readcount;
+    private String ip;
+    private int ref;	//
+    private int re_step;	//기본 0으로 원글 +1로 증가하면서 
+    private int re_level;	
+    
 	public int getNum() {
 		return num;
 	}
@@ -86,9 +86,5 @@ public class BoardDataBean {
 	}
 	public void setRe_level(int re_level) {
 		this.re_level = re_level;
-	}
-	
-	
-
+	} 
 }
-	

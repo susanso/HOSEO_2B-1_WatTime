@@ -339,8 +339,8 @@ function memberInfoChange(){
 }
 ////상품 관련 페이지
 //상품 누르기
-function brand(brandEng){
-	location.href="WTMain.jsp?pageChange=WTProduct.jsp?brandEng="+brandEng;
+function brand(brandEng, type){
+	location.href="WTMain.jsp?pageChange=WTProduct.jsp?brandEng="+brandEng+"?type="+type+"?pageNum=1";
 }
 //상품 상세보기 테스트
 function test(productCode){
