@@ -65,7 +65,9 @@ TID2					스페라
 		text-align:center;
 		margin-top:30px;
 }
-
+a {
+	text-decoration:none;
+}
 
 #topMenu {list-style-type:none;margin:10px 0 0 20px;padding:0; font-size:14px;}
 
@@ -766,6 +768,7 @@ height:50px;
 .wattimeSubSale div p{
 	padding:10px;
 }
+
 .wattimeSubSale::after {
   content: "";
   clear: both;
@@ -778,12 +781,15 @@ height:50px;
 	width:500px;height:600px;
 }
 #mainSlideMan{
-	width:1300px;
+	width:500px;
 	height:600px;
 	margin:0;
-	background-color:red;
+	background-color:black;
 	border: 1px solid #ccc;
+	box-sizing:border-box;
+	float:left;
 }
+
 #wattimeContentMan{
 	margin:0;
 	padding:0;
@@ -805,22 +811,24 @@ height:50px;
 
 /* midelBanner*/
 #midelContent{
-   padding:50px 0;
-   margin:0 auto;
+   margin:-60px auto;
    width:1300px;
-   height:1700px;
-   background-color:gray;
+   height:2400px;             /*홈페이지 길이 ~!!*/
+
 }
-#brandDiv{	width:100%;
-			height:50px;
-			background:url(img/line-bg.gif) repeat-x; 
+#brandDiv{	
+			width: 100%;
+		    height: 50px;
+		    background: url(img/line-bg.gif) repeat-x;
+		    margin-bottom: 100px;
+		    margin-top: -20px;
 		 }
 #brandP{width:300px;
 		height:50px;
 		line-height:80px;
 		text-align:center;
 		background:#fff;
-		font:30px 'Roboto', sans-serif;
+		font:40px 'Roboto', sans-serif;
 		margin:100px auto;
 		}
 
@@ -845,6 +853,57 @@ height:50px;
 	text-align: left;
 	
 }
+
+#slideMan{
+	position: relative;
+    float: left;
+    width: 800px;
+    height: 600px;
+    margin: 0px;
+}
+.slideManForm::after{
+	 content:" ";
+  clear: both;
+  
+	
+}
+
+
+
+.slideManUl{
+	display: block;
+	position: relative;
+}
+.slideManUl li{
+	border: 1px solid #ddd;
+	display: inline-block;
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+
+
+.slideManClass  img{
+	
+	width: 200px;
+	margin-bottom:5px;
+}
+
+.slideManClass{
+	text-align:center;
+    float: left;
+    width: 200px;
+    height: 300px;
+    padding: 0;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+
+.slideManClass img {width:200px;height:200px;}
+
 /* midelBanner  */
 
 /* main content 종료 */
