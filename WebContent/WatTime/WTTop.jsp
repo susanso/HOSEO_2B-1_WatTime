@@ -3,7 +3,8 @@
 <%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* , WatTimePack.*" %>
 <jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
 	<jsp:setProperty name="memberDTO" property="*"/>
-</jsp:useBean>    
+</jsp:useBean>
+<%request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>

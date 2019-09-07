@@ -1,18 +1,17 @@
 <%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<%request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
 	<jsp:setProperty name="memberDTO" property="*"/>
 </jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
 <script language = "JavaScript" src = "script.js"></script>
 <link href = "style.css" rel = "stylesheet" type = "text/css">
 <%
-		//utf-8로 텍스트 설정
-		request.setCharacterEncoding("utf-8");
 		//입력한 회원 정보를 가져옴
 		String memId = request.getParameter("memId");
 		String memPass = request.getParameter("memPass");

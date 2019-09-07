@@ -15,7 +15,7 @@ public class WatTimeDBConnection {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/wattime");
+			ds = (DataSource) envCtx.lookup("jdbc/wattime2019_2b01");
 			
 		}catch(Exception eX) {
 			eX.printStackTrace();

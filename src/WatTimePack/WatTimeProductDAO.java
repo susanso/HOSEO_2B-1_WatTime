@@ -26,10 +26,10 @@ public class WatTimeProductDAO {
 		return productCount;
 	}
 	//상품 리스트 가져오는 부분
-	public List<WatTimeProductDTO> getProductList(String brand, String type,int start, int end) {
+	public List<WatTimeProductDTO> getProductList(String brand,String type, int start, int end, String sortText) {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where brandEng = ? and productType like '%"+type+"%' limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where brandEng=? and productType like '%"+type+"%' ORDER BY "+sortText+" limit ?,?");
 			pstmt.setString(1, brand);
 			pstmt.setInt(2, start-1);
 			pstmt.setInt(3, end);
@@ -71,10 +71,10 @@ public class WatTimeProductDAO {
 		return searchProductCount;
 	}
 	//검색한 상품 목록
-	public List<WatTimeProductDTO> getSearchProductList(String unText,int start, int end) {
+	public List<WatTimeProductDTO> getSearchProductList(String unText, int start, int end, String sortText) {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productName like '%"+unText+"%' or brandEng like '%"+unText+"%' or brandKor like '%"+unText+"%'or productType like'%"+unText+"%' limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productName like '%"+unText+"%' or brandEng like '%"+unText+"%' or brandKor like '%"+unText+"%'or productType like'%"+unText+"%' order by "+sortText+" limit ?,?");
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			ResultSet rs = pstmt.executeQuery();

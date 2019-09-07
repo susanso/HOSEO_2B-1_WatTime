@@ -6,14 +6,17 @@
 <%
 	String pageChange;
 	request.setCharacterEncoding("utf-8");
+	String backURL = request.getParameter("backURL");
 	String memId = request.getParameter("memId");
 	String memPass = request.getParameter("memPass");
+	String referrer = request.getParameter("referrer");
 	WatTimeMemberDAO memberDAO = new WatTimeMemberDAO();
 	memberDTO = memberDAO.getMember(memId, memPass);
 		
 	if(memberDTO.getMemId() != null){
 		session.setAttribute("member", memberDTO);
 		response.sendRedirect("../WatTime/WTMain.jsp");
+		//response.sendRedirect("../WatTime/WTMain.jsp");
 		return;
 	}else{
 %>

@@ -11,7 +11,7 @@
 <div id="LoginContent">
    <form method="post" id="LoginForm" name="LoginForm" action="WTLoginPro.jsp">
       <div id="login">
-         
+         	<input type="hidden" id="referrer">
             <div><input placeholder="아이디" class="LoginId" type="text" id="memId" name="memId" maxlength="20"></div>
         
          
@@ -21,9 +21,9 @@
             <div><a id="signIn" href = "?pageChange=WTAgreed.jsp">회원가입</a></div>
             <div><a id="findInfo" href = "?pageChange=WTMemberIdFind.jsp">아이디/비밀번호 찾기</a></div>
          
-            <div><input type="button" id="memLogin" name="memLogin" value="로그인" onclick="loginNullCheck()"></div>
-            
-         
+            <div><input type="button" id="memLogin" name="memLogin" value="로그인" onclick="loginNullCheck()">
+            	 <input type="hidden" id="backURL">
+            </div>   
       </div>
    </form>
    </div>

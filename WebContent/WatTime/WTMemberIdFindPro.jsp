@@ -1,5 +1,6 @@
 <%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<%request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
 	<jsp:setProperty name="memberDTO" property="*"/>
 </jsp:useBean>
@@ -13,8 +14,6 @@
 </head>
 <body>
 <%
-	//utf-8로 텍스트 설정
-	request.setCharacterEncoding("utf-8");
 	//작성한 이름 가져오기
 	String memName = request.getParameter("memName");
 	//작성한 이메일 가져오기
