@@ -86,7 +86,7 @@
 		<input type="hidden" id="logCheck" name="logCheck" value=<%=log %>>
 		<input type="hidden" id="memId" name="memId" value=<%=memberDTO.getMemId() %>>
 		<input type="hidden" id="memName" name="memName" value=<%=memberDTO.getMemName() %>>
-		<table border=1>
+		<table border="0">
 			<!-- 이미지 및 가격 -->
 			<tr>
 				<td rowspan="2" width="100px">
@@ -123,16 +123,10 @@
 				<td colspan="2"><img src="img/<%=productCode%>상세.jpg"></td>
 			</tr>
 			<!-- 평점 종합 -->
-			<tr>
-				테스트<br>
-				코드 : <%=productCode %><br>
-				정렬 : <%=sortText %><br>
-				카운트 : <%=count %>
-			</tr>
 			<!-- 구매후기 작성 -->
 			<tr>
 				<td>
-					<input type="text" name = "productReview" id="productReview" onkeyup="productReviewLength()" onfocus="logCheck()"maxlength="200"><br>
+					<textarea name = "productReview" id="productReview" onkeyup="productReviewLength()" onfocus="logCheck()" cols="40" rows="8" ></textarea><br>
 					<span id = "productReviewLength" >현재 문자 길이 0/200</span>
 					<select name = "score" id= "score">
 						<option value="5" checked>★★★★★</option>
@@ -172,6 +166,7 @@
 %>
 					<tr>
 						<td colspan="2">
+							<br>
 							작성자 : <%=reviewDTO.getMemName()+"      "%>작성일 : <%=reviewDTO.getReg_date()+"      "%><br>
 <%					
 							//session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
@@ -183,8 +178,8 @@
 <%
 							}
 %>						
-							별점 : <%=star %><br>
-							<%=reviewDTO.getReviewContent() %>
+							별점 : <%=star %><br><pre><%=reviewDTO.getReviewContent() %></pre>
+							<br>
 						</td>
 					</tr>
 <%
@@ -192,7 +187,7 @@
 %>
 					<tr>
 						<td>
-							<input type="text" name = "productReviewRe" id="productReviewRe" onkeyup="productReviewLength()" maxlength="200"><br>
+							<textarea name = "productReviewRe" id="productReviewRe" onkeyup="productReviewLengthRe()" cols="40" rows="8"><%=reviewDTO.getReviewContent() %></textarea><br>
 							<span id = "productReviewLengthRe" >현재 문자 길이 0/200</span><br>
 							<select name = "scoreRe" id= "scoreRe">
 								<option value="5" checked>★★★★★</option>

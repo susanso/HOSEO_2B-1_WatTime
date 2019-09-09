@@ -358,6 +358,10 @@ function productReviewLength(){
 	var productReview = document.getElementById("productReview").value;
 	document.getElementById("productReviewLength").textContent= "현재 문자 길이 "+productReview.length+"/200";
 }
+function productReviewLengthRe(){
+	var productReview = document.getElementById("productReviewRe").value;
+	document.getElementById("productReviewLengthRe").textContent= "현재 문자 길이 "+productReview.length+"/200";
+}
 //유효성 검사
 function reviewCheck(){
 	if(document.getElementById("logCheck").value =="logno"){
@@ -449,6 +453,45 @@ function productSalePrice(){
 		alert(sale);
 	}
 
+}
+////고객센터
+//FAQ 화면 include 
+function FAQPage(){
+	location.href="WTMain.jsp?pageChange=WTService.jsp?content=FAQ?pageNum=1";
+}
+//공지사항 화면 include 
+function noticePage(){
+	location.href="WTMain.jsp?pageChange=WTService.jsp?content=notice?pageNum=1";
+}
+////공지사항
+//글 목록 클릭
+function noticeListClick(noticeNum){
+	
+	var form = document.createElement("form");
+	form.setAttribute("charset", "UTF-8");
+	form.setAttribute("method", "Post"); // Get 또는 Post 입력
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTNoticeForm.jsp");
+
+	 
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "noticeNum");
+	hiddenField.setAttribute("value", noticeNum);
+	form.appendChild(hiddenField);
+	
+	document.body.appendChild(form);
+
+	form.submit();
+}
+
+//공지사항 목록으로 돌아가기
+function noticeListBack(){
+	var referrer =  document.referrer;
+	location.href = referrer;
+}
+//공지사항 글쓰기 폼
+function noticeWriteForm(){
+	location.href="WTMain.jsp?pageChange=WTNoticeWriteForm.jsp"
 }
 //메인으로
 function mainBack(){

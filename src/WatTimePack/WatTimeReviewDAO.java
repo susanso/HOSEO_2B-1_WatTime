@@ -58,7 +58,7 @@ public class WatTimeReviewDAO {
 		return list;
 	}
 
-	//댓글 테이블에 넣기
+	//구매후기 테이블에 넣기
 	public void setReview(WatTimeReviewDTO reviewDTO) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
 			String sql ="insert into reviewTbl(productCode,memId,memName,reviewScore,";
@@ -74,7 +74,6 @@ public class WatTimeReviewDAO {
 			pstmt.setInt(8, reviewDTO.getRe_step());
 			pstmt.setInt(9, reviewDTO.getRe_level());
 			pstmt.executeUpdate();
-			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -91,6 +90,7 @@ public class WatTimeReviewDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	//
 	public void setReviewModify(int num, int reviewScore, String reviewContent) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
 			PreparedStatement pstmt = con.prepareStatement("update reviewTbl set reviewScore=?, reviewContent=? where num=?");

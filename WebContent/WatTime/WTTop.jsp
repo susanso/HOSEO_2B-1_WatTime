@@ -26,7 +26,7 @@
 					<li><a href="WTMain.jsp?pageChange=WTAgreed.jsp">회원가입</a></li>
 					<li>구매후기</li>
 					<li>장바구니</li>
-					<li>고객센터</li>
+					<li><a href="WTMain.jsp?pageChange=WTService.jsp?content=FAQ?pageNum=1">고객센터</a></li>
 				</ul>
 			</div>
 			
@@ -51,7 +51,7 @@
 					<li><a href="WTMain.jsp?pageChange=WTMyPage.jsp">마이페이지</a></li>
 					<li>구매후기</li>
 					<li>장바구니</li>
-					<li>고객센터</li>
+					<li><a href="WTMain.jsp?pageChange=WTService.jsp?content=FAQ?pageNum=1">고객센터</a></li>
 				</ul>
 			</div>
 			
