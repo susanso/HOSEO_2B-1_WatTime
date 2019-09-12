@@ -29,7 +29,7 @@ public class WatTimeNoticeDAO {
 	public List<WatTimeNoticeDTO> getNoticeList(int start, int end) {
 		List<WatTimeNoticeDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from noticeTbl order by writeDate desc limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from noticeTbl ORDER BY writeDate DESC limit ?,?");
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			ResultSet rs = pstmt.executeQuery();
@@ -42,8 +42,8 @@ public class WatTimeNoticeDAO {
 					noticeDTO.setWriter(rs.getString("writer"));
 					noticeDTO.setWriteDate(rs.getTimestamp("writeDate"));
 					noticeDTO.setCount(rs.getInt("count"));
-					noticeDTO.setFilePath(rs.getString("filePath"));
-					noticeDTO.setFileName(rs.getString("fileName"));
+					noticeDTO.setFileName(rs.getString("filePath"));
+					noticeDTO.setFilePath(rs.getString("fileName"));
 					list.add(noticeDTO);
 				}while(rs.next());
 			}

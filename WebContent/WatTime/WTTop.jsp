@@ -9,9 +9,7 @@
 <html>
 <head>
 <link href = "style.css" rel = "stylesheet" type = "text/css">
-<script src="js/WTNotice.js"></script>
-<script src="js/WTReview.js"></script>
-<script src="js/WTBasket.js"></script>
+<script src="WTTop.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,8 +22,8 @@
 		<div id="top">
 			<div class="topContent">
 				<ul id="topMenu">
-					<li><b><a href="WTMain.jsp?pageChange=WTLogin.jsp">로그인</a></b></li>
-					<li><a href="WTMain.jsp?pageChange=WTAgreed.jsp">회원가입</a></li>
+					<li><b><a href="WTMain.jsp?pageChange=WTLogin/WTLogin.jsp">로그인</a></b></li>
+					<li><a href="WTMain.jsp?pageChange=WTMember/WTAgreed.jsp">회원가입</a></li>
 					<li><a href="#" onclick="reviewList()">구매후기</a></li>
 					<li><a href="#" id="" onclick="basketList(this.id)">장바구니</a></li>
 					<li><a href="#" onclick="service()">고객센터</a></li>
@@ -49,7 +47,7 @@
 			<div class="topContent">
 				<ul id="topMenu">
 					<li><%=memberDTO.getMemName() %>님 </li>
-					<li><a href="../WatTime/WTLogout.jsp">로그아웃</a> </li>
+					<li><a href="../WatTime/WTLogin/WTLogout.jsp">로그아웃</a> </li>
 					<li><a href="WTMain.jsp?pageChange=WTMyPage.jsp">마이페이지</a></li>
 					<li><a href="#" onclick="reviewList()">구매후기</a></li>
 					<li><a href="#" onclick="basketList('<%=memberDTO.getMemId()%>')">장바구니</a></li>

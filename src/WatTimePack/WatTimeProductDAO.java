@@ -276,7 +276,7 @@ public class WatTimeProductDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	//상품 등록
+	//상품 수정 정보
 	public WatTimeProductDTO getProductModifyForm(String productCode) {
 		WatTimeProductDTO productDTO = new WatTimeProductDTO();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
