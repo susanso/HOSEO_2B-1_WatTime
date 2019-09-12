@@ -13,6 +13,22 @@ public class WatTimeReviewDTO {
 	private int ref;
     private int re_step;	//기본 0으로 원글 +1로 증가하면서 
     private int re_level;
+    private String productName;
+    private String productSimpleImgFileName;
+    
+    
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getProductSimpleImgFileName() {
+		return productSimpleImgFileName;
+	}
+	public void setProductSimpleImgFileName(String productSimpleImgFileName) {
+		this.productSimpleImgFileName = productSimpleImgFileName;
+	}
 	public int getNum() {
 		return num;
 	}

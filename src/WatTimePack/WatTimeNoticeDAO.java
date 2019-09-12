@@ -98,4 +98,54 @@ public class WatTimeNoticeDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	//공지사항 수정 전 해당 글 가져오기
+	public WatTimeNoticeDTO getNoticeModifyContent(int noticeNum) {
+		WatTimeNoticeDTO noticeDTO = new WatTimeNoticeDTO();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			//조회수 증가
+			PreparedStatement pstmt = con.prepareStatement("select * from noticeTbl where num = ?");
+			pstmt.setInt(1, noticeNum);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				noticeDTO.setNum(rs.getInt("num"));
+				noticeDTO.setTitle(rs.getString("title"));
+				noticeDTO.setContent(rs.getString("content"));
+				noticeDTO.setWriter(rs.getString("writer"));
+				noticeDTO.setWriteDate(rs.getTimestamp("writeDate"));
+				noticeDTO.setCount(rs.getInt("count"));
+				noticeDTO.setFilePath(rs.getString("filePath"));
+				noticeDTO.setFileName(rs.getString("fileName"));
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return noticeDTO;
+	}
+	
+	public void setUpdateNotice(WatTimeNoticeDTO noticeDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update noticeTbl set title = ?, content = ?, fileName = ?, filePath = ? where num=?");
+			pstmt.setString(1, noticeDTO.getTitle());
+			pstmt.setString(2, noticeDTO.getContent());
+			pstmt.setString(3, noticeDTO.getFileName()); 
+			pstmt.setString(4, noticeDTO.getFilePath());
+			pstmt.setInt(5, noticeDTO.getNum());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void setNoticeDelete(int noticeNum) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("delete from noticeTbl where num = ?");
+			pstmt.setInt(1, noticeNum);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

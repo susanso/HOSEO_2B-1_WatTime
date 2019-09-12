@@ -8,11 +8,17 @@ public class WatTimeProductDTO {
 	private String brandEng;
 	private String productName;
 	private String productType;
+	private int productOriginalPrice;
+	private int productSale;
 	private int productPrice;
 	private int tictok;
 	private String productCountry;
 	private int productOrder;
 	private Timestamp productAddDate;
+	private String productSimpleImgFileName;
+	private String productSimpleImgFilePath;
+	private String productDetailImgFileName;
+	private String productDetailImgFilePath;
 	public String getProductCode() {
 		return productCode;
 	}
@@ -42,6 +48,18 @@ public class WatTimeProductDTO {
 	}
 	public void setProductType(String productType) {
 		this.productType = productType;
+	}
+	public int getProductOriginalPrice() {
+		return productOriginalPrice;
+	}
+	public void setProductOriginalPrice(int productOriginalPrice) {
+		this.productOriginalPrice = productOriginalPrice;
+	}
+	public int getProductSale() {
+		return productSale;
+	}
+	public void setProductSale(int productSale) {
+		this.productSale = productSale;
 	}
 	public int getProductPrice() {
 		return productPrice;
@@ -73,6 +91,30 @@ public class WatTimeProductDTO {
 	public void setProductAddDate(Timestamp productAddDate) {
 		this.productAddDate = productAddDate;
 	}
-	
+	public String getProductSimpleImgFileName() {
+		return productSimpleImgFileName;
+	}
+	public void setProductSimpleImgFileName(String productSimpleImgFileName) {
+		this.productSimpleImgFileName = productSimpleImgFileName;
+	}
+	public String getProductSimpleImgFilePath() {
+		return productSimpleImgFilePath;
+	}
+	public void setProductSimpleImgFilePath(String productSimpleImgFilePath) {
+		this.productSimpleImgFilePath = productSimpleImgFilePath;
+	}
+	public String getProductDetailImgFileName() {
+		return productDetailImgFileName;
+	}
+	public void setProductDetailImgFileName(String productDetailImgFileName) {
+		this.productDetailImgFileName = productDetailImgFileName;
+	}
+	public String getProductDetailImgFilePath() {
+		return productDetailImgFilePath;
+	}
+	public void setProductDetailImgFilePath(String productDetailImgFilePath) {
+		this.productDetailImgFilePath = productDetailImgFilePath;
+	}
+
 	
 }

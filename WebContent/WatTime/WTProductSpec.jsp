@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<%@ page import = "java.text.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
 <%@ page import = "java.sql.Timestamp" %>
 <%request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
@@ -16,45 +16,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="script.js"></script>
+<script src="js/WTProduct.js"></script>
 
 <title>Insert title here</title>
 </head>
 <body>
 	<form id="reviewForm" name="reviewForm" method="post" action="WTReviewPro.jsp">
 	<%
-		String url = request.getRequestURL().toString();
-		if(request.getQueryString() != null)
-			url = url +"?"+request.getQueryString();
-		//url의 전체 길이
-		int urlLength = url.length();
-		//"Code"표시의 위치를 찾음
-		int urlIndex = url.indexOf("?Code=");
-		int urlIndex2 = url.indexOf("?pageNum=");
-		int urlIndex3 = url.indexOf("?sort=");
-		int urlIndex4 = url.indexOf("?modify=");
-		//substring쪽에서 = 표시까지 출력되서 5 더함
-		String productCode = url.substring(urlIndex+6,urlIndex2);
-		String pageNum = url.substring(urlIndex2+9,urlIndex3);
-		String sort = url.substring(urlIndex3+6,urlIndex4);
-		int modify = Integer.parseInt(url.substring(urlIndex4+8,urlLength));
-		String modifyURL =url.substring(0,urlIndex4+8);
-		String pageNextURL = url.substring(0,urlIndex2);
-		String nextURL = url.substring(0,urlIndex3);
-		
+		DecimalFormat df = new DecimalFormat("#,###");
+		String pageNum = request.getParameter("pageNum");
+		String productCode = request.getParameter("productCode");
+		int modify = Integer.parseInt(request.getParameter("modify"));
+		String sort = request.getParameter("sort");
 		
 		WatTimeProductDAO productDAO = new WatTimeProductDAO();
 		productDTO = productDAO.getProductSpec(productCode);
 		
 		//초기 배열을 빈 배열로 선언
 		List<WatTimeProductDTO> productList = null;
-		String sortText = "";
-		int modifyNum = 0;
-		if(sort.equals("") || sort.equals(null)){
-			sortText = "reg_date DESC";
-	    }else if(sort.equals("highPrice")){
-	    	sortText = "reviewScore DESC";
-	    }
 		
 		int pageSize = 10;
 		//URL에서 가져온 페이지 번호를 int 형으로 변환 시키고 넣음
@@ -67,46 +46,55 @@
 	    int count = 0;
 		//???
 	    int number = 0;
+		
 	    WatTimeReviewDAO reviewDAO = new WatTimeReviewDAO();
 	    //해당 상품 구매후기 갯수 가져오기
 	    count = reviewDAO.getReviewCount(productCode);
 	    number = count-(currentPage-1)*pageSize;
 	    String log = "";
-	    List<WatTimeReviewDTO> reviewList = null;
-	  	//getProductList()메소드에 brand, type, startRow, pageSize넘겨 sql문 실행
-	    reviewList = reviewDAO.getReviewList(productCode, sortText, startRow, pageSize);
+	    
 	    if(session.getAttribute("member") == null){
 	    	log = "logno";
 	    }else{
 	    	memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
 	    }
-%>		
+%>
 		<!-- 히든 텍스트 -->
-		<input type="hidden" id="backURL" name="backURL" value=<%=url %>>
 		<input type="hidden" id="logCheck" name="logCheck" value=<%=log %>>
 		<input type="hidden" id="memId" name="memId" value=<%=memberDTO.getMemId() %>>
 		<input type="hidden" id="memName" name="memName" value=<%=memberDTO.getMemName() %>>
-		<table border="0">
+		<table border="1">
 			<!-- 이미지 및 가격 -->
 			<tr>
-				<td rowspan="2" width="100px">
-					<img src="img/<%=productCode%>.jpg">
+				<td rowspan="3" width="100px">
+					<img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
 					<input type="hidden" id="productCode" name="productCode" value="<%=productCode%>">
 				</td>
 				<td width="200px">
 					제품명 : <%=productDTO.getProductName() %><br>
 					브랜드 : <%=productDTO.getBrandEng() %><br>
-					가격 : <%=productDTO.getProductPrice() %><br>
-					TicTok : <%=productDTO.getTictok() %>
-					제조국 : <%=productDTO.getProductCountry() %>
-					
+					원가격 : <STRIKE><%=df.format(productDTO.getProductOriginalPrice()) %></STRIKE>(<font size="4pt"><%=productDTO.getProductSale() %>%↓</font>)<br>
+					소비자 가격 : <%=df.format(productDTO.getProductPrice()) %><br>
+					TicTok : <%=productDTO.getTictok() %><br>
+					제조국 : <%=productDTO.getProductCountry() %><br>
+					수량: <input type="number" id="productCount" name="productCount" value="1" min="1" max="2147483648">
 				</td>
+			</tr>
+			<tr>
+<%
+					if(memberDTO.getMemAdmin()==1){
+%>
+						<input type="button" id="productModify" value="수정하기" onclick="productModifyForm('<%=productDTO.getProductCode()%>')">
+						<input type="button" id="productDelete" value="삭제하기" onclick="productDeleteForm('<%=productDTO.getProductCode()%>')">
+<%					
+					}
+%>			
 			</tr>
 			<!-- 구매하기, 장바구니 버튼 -->
 			<tr>
 				<td>
-					<input type = "button" value="구매하기">
-					<input type = "button" value="장바구니">
+					<input type = "button" value="구매하기" onclick="test()">
+					<input type = "button" value="장바구니" onclick="basketPro(logCheck.value,productCount.value,'<%=productDTO.getProductCode()%>','<%=productDTO.getProductName()%>','<%=productDTO.getProductPrice()%>','<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=productDTO.getProductSimpleImgFileName()%>')">
 				</td>
 			</tr>
 			<!-- 버튼구역 -->
@@ -120,9 +108,65 @@
 			</tr>
 			<!-- 상세 이미지 -->
 			<tr>
-				<td colspan="2"><img src="img/<%=productCode%>상세.jpg"></td>
+				<td colspan="2"><img src="..\img\brand\<%=productDTO.getProductDetailImgFileName() %>"></td>
 			</tr>
 			<!-- 평점 종합 -->
+<% 			
+			//평점 구하기
+			float score1 = 0;
+			float score2 = 0;
+			float score3 = 0;
+			float score4 = 0;
+			float score5 = 0;
+			float reviewCount = 0;
+			float scoreAvg = 0;
+			List<WatTimeReviewDTO> reviewScore = null;
+			reviewScore = reviewDAO.getProductReviewScore(productCode);
+			for(int i = 0 ; i < reviewScore.size() ; i++){
+				reviewDTO = reviewScore.get(i);
+				if(reviewDTO.getReviewScore() == 1){
+					score1 = score1+1;
+					reviewCount= reviewCount+1;
+				}else if(reviewDTO.getReviewScore() == 2){
+					score2 = score2+1;
+					reviewCount= reviewCount+1;
+				}else if(reviewDTO.getReviewScore() == 3){
+					score3 = score3+1;
+					reviewCount= reviewCount+1;
+				}else if(reviewDTO.getReviewScore() == 4){
+					score4 = score4+1;
+					reviewCount= reviewCount+1;
+				}else if(reviewDTO.getReviewScore() == 5){
+					score5 = score5+1;
+					reviewCount= reviewCount+1;
+				}
+			}
+			//평점 식
+			if(score1==0 && score2==0 && score3==0 && score4==0 && score5==0){
+				scoreAvg = 0;
+			}else{
+				scoreAvg = ((score1*1)+(score2*2)+(score3*3)+(score4*4)+(score5*5)) / reviewCount;
+			}
+%>
+			
+			<tr >
+				<td rowspan="5">
+					평점: <%=Math.round(scoreAvg*100)/100.0 %>점
+				</td>
+				<td>1점 : <%=Math.round(score1) %>명</td>
+			</tr>
+			<tr>
+				<td>2점 : <%=Math.round(score2) %>명</td>
+			</tr>
+			<tr>
+				<td>3점 : <%=Math.round(score3) %>명</td>
+			</tr>
+			<tr>
+				<td>4점 : <%=Math.round(score4) %>명</td>
+			</tr>
+			<tr>
+				<td>5점 : <%=Math.round(score5) %>명</td>
+			</tr>
 			<!-- 구매후기 작성 -->
 			<tr>
 				<td>
@@ -137,6 +181,8 @@
 					</select>
 				</td>
 				<td>
+					<input type="hidden" id="productNameHidden" name="productNameHidden" value="<%=productDTO.getProductName()%>">
+					<input type="hidden" id="productFileNameHidden" name="productFileNameHidden" value="<%=productDTO.getProductSimpleImgFileName()%>">
 					<input type="button" id="reviewRegistration" value="구매후기 등록" onclick="reviewCheck()">
 				</td>
 			</tr>
@@ -145,8 +191,18 @@
 				<a id="review"></a>
 				<td colspan="2">구매후기 <%=count %>개</td>
 			</tr>
+			<!-- 정렬 -->
+			<tr>
+				<td>
+					<input type="button" id="reviewLastestSort" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+					<input type="button" id="reviewScoreSort" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+				</td>
+			</tr>
 			<!-- 구매후기 리스트 -->
-<%
+<%			
+			List<WatTimeReviewDTO> reviewList = null;
+				//getProductList()메소드에 brand, type, startRow, pageSize넘겨 sql문 실행
+			reviewList = reviewDAO.getReviewList(productCode, sort, startRow, pageSize);
 			for(int i = 0 ; i < reviewList.size() ; i++){
 				reviewDTO = reviewList.get(i);
 				//별점 숫자를 텍스트로 바꾸기
@@ -170,11 +226,11 @@
 							작성자 : <%=reviewDTO.getMemName()+"      "%>작성일 : <%=reviewDTO.getReg_date()+"      "%><br>
 <%					
 							//session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
-							if(session.getAttribute("member") != null && memberDTO.getMemId().toString().equals(reviewDTO.getMemId().toString())){
+							if(session.getAttribute("member") != null && (memberDTO.getMemId().toString().equals(reviewDTO.getMemId().toString())||memberDTO.getMemAdmin()==1)){
 %>						
 							
-								<input type="button" id="modify" name="modify" value="수정" onclick="reviewModifyForm('<%=modifyURL %>','<%=reviewDTO.getNum() %>')">
-								<input type="button" id="delete" name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>')"><br>
+								<input type="button" id="modify" name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
+								<input type="button" id="delete" name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
 <%
 							}
 %>						
@@ -197,7 +253,7 @@
 								<option value="1">★</option>
 							</select>
 							<br>
-							<input type="button" id="modify" value = "수정하기" onclick="reviewModify('<%=modify%>','<%=modifyURL%>','<%=reviewDTO.getProductCode()%>')">
+							<input type="button" id="modify" value = "수정하기" onclick="reviewModify('<%=reviewDTO.getProductCode()%>','<%=reviewDTO.getNum()%>','<%=sort%>')">
 							<input type="button" id="modifycencle" value = "취소" onclick="productSpec('<%=reviewDTO.getProductCode() %>')">
 						</td>
 					<tr>
@@ -226,17 +282,17 @@
 						}
 				        if (startPage > 10) { 
 %>
-				          <a href="<%=pageNextURL %>?pageNum=<%= startPage - 10 %>?sort=<%=sort%>?modify=<%=modify %>">[이전]</a>
+						<input type="button" name="back" value="이전" onclick="back('<%=startPage - 10%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
 <%      
-						}
-				        for (int i = startPage ; i <= endPage ; i++) {  
+					}
+        			for (int i = startPage ; i <= endPage ; i++) {  
 %>
-				        	<a href="<%=pageNextURL %>?pageNum=<%= i %>?sort=<%=sort%>?modify=<%=modify %>">[<%= i %>]</a>
+        				<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=modify%>','<%=productCode%>','<%=sort%>')">
 <%      
-						}
-				        
-				        if (endPage < pageCount) {  %>
-				        	<a href="<%=pageNextURL %>?pageNum=<%= startPage + 10 %>?sort=<%=sort%>?modify=<%=modify %>">[다음]</a>
+					}
+        
+			        if (endPage < pageCount) {  %>
+			        	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 10%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
 <%
 				        }
 				    }
