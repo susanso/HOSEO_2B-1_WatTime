@@ -789,8 +789,22 @@ height:50px;
 	box-sizing:border-box;
 	float:left;
 }
+#mainSlideWoman{
+	width:500px;
+	height:600px;
+	margin:0;
+	background-color:black;
+	border: 1px solid #ccc;
+	box-sizing:border-box;
+	float:left;
+}
 
 #wattimeContentMan{
+	margin:0;
+	padding:0;
+	
+}
+#wattimecontentWoman{
 	margin:0;
 	padding:0;
 	
@@ -801,8 +815,20 @@ height:50px;
 	width: 100%;
     list-style:none;
       }
+ #wattimeContentW1{ 
+	padding:0;
+	margin:0;
+	width: 100%;
+    list-style:none;
+      }     
       
  #wattimeContentM2, #wattimeContentM3, #wattimeContentM4, #wattimeContentM5 {
+	padding:0;
+	margin:0;
+	display:none;
+	list-style:none;}
+
+#wattimeContentW2, #wattimeContentW3, #wattimeContentW4 {
 	padding:0;
 	margin:0;
 	display:none;
@@ -813,7 +839,7 @@ height:50px;
 #midelContent{
    margin:-60px auto;
    width:1300px;
-   height:2400px;             /*홈페이지 길이 ~!!*/
+   height:3600px;             /*홈페이지 길이 ~!!*/
 
 }
 #brandDiv{	
@@ -856,10 +882,10 @@ height:50px;
 
 #slideMan{
 	position: relative;
-    float: left;
     width: 800px;
     height: 600px;
     margin: 0px;
+    display:inline-block;
 }
 .slideManForm::after{
 	 content:" ";
@@ -872,7 +898,7 @@ height:50px;
 
 .slideManUl{
 	display: block;
-	position: relative;
+	
 }
 .slideManUl li{
 	border: 1px solid #ddd;
@@ -935,6 +961,171 @@ height:50px;
 }
 /* -----------------약관 동의 -----------------*/
 
+
+/* -----------------bottom -----------------*/
+#infoHelp{
+	width:1300px;
+	margin:100px auto;
+	   
+		}
+		
+.infoClass{
+    float: left;
+    padding: 20px 20px;
+    border: 1px solid #cbd4d9;
+    width: 21%;
+    min-height: 278px;
+    
+		}
+
+#customerCenter ul li{
+	list-style: none;
+					}
+					
+#customerCenter button{
+		border:1px solid;
+	    display: inline-block;
+	    
+	    padding:10px;
+	    background-color:#fff;
+	    color: #000;
+	    transition: background-color 0.5s, transform 5s;
+}	
+
+#customerCenter button:hover{
+				background-color:#000;
+			    color: #fff;    
+							}
+#textSpan{
+	color:red;
+	}
+#customerText{
+			  display: block;
+			  margin-top: 15px;
+			  font-size: 13px;
+			  line-height: 200%;
+			  letter-spacing: -0.05em;
+			}
+ #customerButton{   margin: 30px auto;
+ 					text-align:center;
+ 					}
+  #customerButton button{
+  display:inline;
+  }
+ #note ul li{
+ 		width:100%;
+ 		display:inline-block;
+		font-size: 13px;
+		overflow:hidden;
+		letter-spacing: -0.05em;
+		text-overflow: ellipsis;
+	    white-space: nowrap;
+ 		margin:10px;
+ }
+.snsIcon{
+				margin:10px auto;
+				padding:8px;
+				width:65px;
+				float:left;
+				box-sizing: border-box;
+			}
+
+ #qrcord{
+ width:160px;
+ }
+ 
+#mainBottom{
+	
+	margin-top:100px;
+	display:block;
+	
+	}
+#utilMenu{
+	width: 100%;
+    margin: 0 auto;
+    height: 60px;
+    border-top: 1px solid #cbd4d9;
+    border-bottom: 1px solid #cbd4d9;
+}
+#utilMenu ul {
+    width: 1300px;
+    margin: 0 auto;
+    height: 60px;
+}
+
+#utilMenu ul li {
+    float: left;
+    margin: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    list-style: none;
+}
+
+#companyInfo {
+    width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    padding: 15px 0 0;
+}
+#footerLogo {
+    position: absolute;
+    left: 70px;
+    top: 40px;
+}
+#address {
+    text-align: left;
+    width: 730px;
+    margin: 0 auto;
+}
+#address span {
+    font-size: 12px;
+    color: #6e6d6d;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.address span .f-line {
+    display: inline-block;
+    margin: 0 8px;
+    color: #ccc;
+}
+.copyright {
+    font-size: 12px;
+    color: #6e6d6d;
+}
+.escro {
+    position: absolute;
+    top: 30px;
+    right: 45px;
+    }
+#footer_banner {
+    width: 100%;
+    margin: 30px auto 0;
+    height: 60px;
+    border-top: 1px solid #cbd4d9;
+    border-bottom: 1px solid #cbd4d9;
+}
+
+#footer_banner ul {
+    width: 700px;
+    margin: 0 auto;
+    height: 60px;
+    text-align: center;
+}
+#footer_banner ul li {
+    float: left;
+    line-height: 85px;
+    list-style: none;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+/* -----------------bottom -----------------*/
 
 
 /*상품 불러오기 테스트*/
