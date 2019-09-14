@@ -27,6 +27,7 @@
 					<li><a href="#" onclick="reviewList()">구매후기</a></li>
 					<li><a href="#" id="" onclick="basketList(this.id)">장바구니</a></li>
 					<li><a href="#" onclick="service()">고객센터</a></li>
+					<li><a href="#" onclick="comunicationPage()">커뮤니티</a></li>
 				</ul>
 			</div>
 			
@@ -34,7 +35,7 @@
 				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="266px" height="auto" onclick="mainBack()" >
 			</div>
 			<div class="topContent" >
-				<jsp:include page="WTTopSearchForm.jsp" flush="false"/>
+				<jsp:include page="WTSearch/WTTopSearchForm.jsp" flush="false"/>
 			</div>
 		</div>
 		<jsp:include page="WTTopMenu.jsp" flush="false"/>
@@ -48,10 +49,11 @@
 				<ul id="topMenu">
 					<li><%=memberDTO.getMemName() %>님 </li>
 					<li><a href="../WatTime/WTLogin/WTLogout.jsp">로그아웃</a> </li>
-					<li><a href="WTMain.jsp?pageChange=WTMyPage.jsp">마이페이지</a></li>
+					<li><a href="WTMain.jsp?pageChange=WTMypage/WTMyPage.jsp">마이페이지</a></li>
 					<li><a href="#" onclick="reviewList()">구매후기</a></li>
 					<li><a href="#" onclick="basketList('<%=memberDTO.getMemId()%>')">장바구니</a></li>
 					<li><a href="#" onclick="service()">고객센터</a></li>
+					<li><a href="#" onclick="comunicationPage()">커뮤니티</a></li>
 				</ul>
 			</div>
 			
@@ -59,7 +61,7 @@
 				<img id="Logo" alt="Logo" src="img/MainLogo.png"  width="266px" height="auto" onclick="mainBack()" >
 			</div>
 			<div class="topContent" >
-				<jsp:include page="WTTopSearchForm.jsp" flush="false"/>
+				<jsp:include page="WTSearch/WTTopSearchForm.jsp" flush="false"/>
 			</div>
 		</div>
 		<jsp:include page="WTTopMenu.jsp" flush="false"/>

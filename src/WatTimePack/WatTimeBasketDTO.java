@@ -13,8 +13,15 @@ public class WatTimeBasketDTO {
 	private int productPrice;
 	private int productCount;
 	private Timestamp basketAddDate;
+	private int tictok;
 	
 	
+	public int getTictok() {
+		return tictok;
+	}
+	public void setTictok(int tictok) {
+		this.tictok = tictok;
+	}
 	public Timestamp getBasketAddDate() {
 		return basketAddDate;
 	}

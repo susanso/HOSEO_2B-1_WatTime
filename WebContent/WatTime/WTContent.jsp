@@ -3,7 +3,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="script.js"></script>
 <link href = "style.css" rel = "stylesheet" type = "text/css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 최신버전 제이쿼리 -->
 <!-- 제이쿼리 부분 -->
