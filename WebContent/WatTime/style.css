@@ -1022,6 +1022,14 @@ height:50px;
 	    white-space: nowrap;
  		margin:10px;
  }
+#bank ul li{
+ 		width:100%;
+ 		display:inline-block;
+		font-size: 18px;
+		letter-spacing: -0.05em;
+	    white-space: nowrap;
+ 		margin:10px;
+}
 .snsIcon{
 				margin:10px auto;
 				padding:8px;
@@ -1060,7 +1068,10 @@ height:50px;
     line-height: 60px;
     list-style: none;
 }
-
+#bank li{
+	 list-style: none;
+	
+}
 #companyInfo {
     width: 1300px;
     margin: 0 auto;
