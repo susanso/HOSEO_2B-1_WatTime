@@ -1145,16 +1145,16 @@ height:50px;
 
 .productUl{
 	margin: 0 auto;
-	width:1200px;
+	width:1300px;
 	
 	
 }
 
 .productLi{
 	text-align:center;
-	margin: 0 auto;
-	border: 1px solid #ccc;
-	width: 400px;
+	margin: 10px 0 0 10px;
+    border: 1px solid #ccc;
+    width: 420px;
     list-style: none;
     float:left;
     box-sizing: border-box;
@@ -1171,8 +1171,9 @@ height:50px;
 .inputBtn{
 	margin: 20px auto;
     position: relative;
-    left: 850px;
+    left: 1300px;
 }
+
 .inputBtn input[type=button]{
 	
 	background-color: transparent !important;
@@ -1180,8 +1181,16 @@ height:50px;
     border-color: transparent;
     border: none;
     margin:5px;
-    
-
-
 }
+.move input[type=button]{
+	
+	background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent;
+    border: none;
+    margin:5px;
+	
+}
+
+
 /* -----------------product -----------------*/

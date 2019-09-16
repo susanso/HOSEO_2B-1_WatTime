@@ -112,6 +112,8 @@
 <%
 	}%>
 	</ul>
+	
+	<div class="move">
 	<% 
 	
 	//테이블의 행이 0 초과일 경우
@@ -131,21 +133,21 @@
 		}
         if (startPage > 10) { 
 %>
-			<input type="button" name="back" class="move" value="이전" onclick="back('<%=startPage - 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+			<input type="button" name="back"  value="이전" onclick="back('<%=startPage - 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
 %>
-        	<input type="button" name="pageNum"  class="move" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
+        	<input type="button" name="pageNum"   value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
 <%      
 		}
         
         if (endPage < pageCount) {  %>
-        	<input type="button" name="back" value="다음" class="move" onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+        	<input type="button" name="back" value="다음"  onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%
         }
     }
 %>
-
+</div>
 </body>
 </html>

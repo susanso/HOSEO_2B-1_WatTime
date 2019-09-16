@@ -8,7 +8,7 @@
 <html>
 <head>
 <script language = "JavaScript" src = "WTSearch/js/WTSearch.js" charset="UTF-8"></script>
-
+<link href = "style.css" rel = "stylesheet" type = "text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>WatTime</title>
 </head>
