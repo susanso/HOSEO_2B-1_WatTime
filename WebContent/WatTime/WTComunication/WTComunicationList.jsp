@@ -43,7 +43,7 @@
 	if(count==0){
 %>
 		게시글이 없습니다.
-		<input type="button" id="firstComunication" value="첫글쓰기">
+		<input type="button" id="firstComunication" value="첫글쓰기" onclick="comunicationWriteForm()">
 <%
   	}else{	
 %>
