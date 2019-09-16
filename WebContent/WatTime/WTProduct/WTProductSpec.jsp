@@ -64,54 +64,57 @@
 		<input type="hidden" id="logCheck" name="logCheck" value=<%=log %>>
 		<input type="hidden" id="memId" name="memId" value=<%=memberDTO.getMemId() %>>
 		<input type="hidden" id="memName" name="memName" value=<%=memberDTO.getMemName() %>>
-		<table border="0" padding="0">
+		<table   class="spec">
 			<!-- 이미지 및 가격 -->
 			<tr>
 				<td rowspan="2" width="100px">
-					<img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName()%>" width="300" height="300">
+					<img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName()%>" width="600px" height="600px">
 					<input type="hidden" id="productCode" name="productCode" value="<%=productCode%>">
 				</td>
-				<td width="200px">
+				<td width="200px" class="productInfo">
 <%
 					if(memberDTO.getMemAdmin()==1){
 %>
-						<input type="button" id="productModify" value="수정하기" onclick="productModifyForm('<%=productDTO.getProductCode()%>')">
-						<input type="button" id="productDelete" value="삭제하기" onclick="productDeleteForm('<%=productDTO.getProductCode()%>')"><br>
+						<input type="button" id="productModify" class="specBtn" value="수정하기" onclick="productModifyForm('<%=productDTO.getProductCode()%>')">
+						<input type="button" id="productDelete" class="specBtn" value="삭제하기" onclick="productDeleteForm('<%=productDTO.getProductCode()%>')"><br>
 <%					
 					}
 %>
-					제품명 : <%=productDTO.getProductName() %><br>
-					브랜드 : <%=productDTO.getBrandEng() %><br>
-					원가격 : <STRIKE><%=df.format(productDTO.getProductOriginalPrice()) %></STRIKE>(<font size="4pt"><%=productDTO.getProductSale() %>%↓</font>)<br>
-					소비자 가격 : <%=df.format(productDTO.getProductPrice()) %><br>
-					TicTok : <%=productDTO.getTictok() %><br>
-					제조국 : <%=productDTO.getProductCountry() %><br>
-					수량: <input type="number" id="productCount" name="productCount" value="1" min="1" max="2147483648">
+					<p><font size="6"><%=productDTO.getProductName() %></font></p>
+					<p>브랜드 : <%=productDTO.getBrandEng() %></p>
+					<p>판매가 : <font color="red"><STRIKE><%=df.format(productDTO.getProductOriginalPrice()) %></STRIKE></font>(<font size="4pt"><%=productDTO.getProductSale() %>%↓</font>)</p>
+					<p>회원가 : <%=df.format(productDTO.getProductPrice()) %>원</p>
+					<p>적립 포인트 :<b>&nbsp;<%=productDTO.getTictok() %> </b>&nbsp;TicTok</p>
+					<p>제조국 : <%=productDTO.getProductCountry() %></p>
+					<p>수량: <input type="number" id="productCount" name="productCount" value="1" min="1" max="2147483648"></p>
+					<input type="button" name="plus" class="productCountBtn" value="+" onclick="countPlus('<%=productDTO.getProductPrice() %>',productCount.value)">
+                    <input type="button" name="minus" class="productCountBtn" value="-" onclick="countMinus('<%=productDTO.getProductPrice() %>',productCount.value)">
+					<p><b><font size="6" color="#FE2E2E">총 금액 : <span id = "totalPrice"><%=df.format(productDTO.getProductPrice()) %>원</span></font></b></p>
 				</td>
 			</tr>
 			<!-- 구매하기, 장바구니 버튼 -->
-			<tr>
-				<td>
-					<input type = "button" value="구매하기" onclick="test()">
-					<input type = "button" value="장바구니" onclick="basketPro(logCheck.value,productCount.value,'<%=productDTO.getProductCode()%>','<%=productDTO.getProductName()%>','<%=productDTO.getProductPrice()%>','<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=productDTO.getProductSimpleImgFileName()%>','<%=productDTO.getTictok()%>')">
+			<tr height="150px">
+				<td class="productInfo">
+					<input type = "button" id="gotcha" value="구매하기" onclick="test()">
+					<input type = "button" class="specBtn"value="장바구니" onclick="basketPro(logCheck.value,productCount.value,'<%=productDTO.getProductCode()%>','<%=productDTO.getProductName()%>','<%=productDTO.getProductPrice()%>','<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=productDTO.getProductSimpleImgFileName()%>','<%=productDTO.getTictok()%>')">
 				</td>
 			</tr>
 			<!-- 버튼구역 -->
 			<tr>
 				<td colspan="2">
-					<input type = "button" value="상품 상세정보">
-					<input type = "button" value="배송/교환/환불">
-					<a><input type = "button" value="구매후기<%=count%>개"></a>
+					<input type = "button" class="specBtn" value="상품 상세정보">
+					<input type = "button" class="specBtn" value="배송/교환/환불">
+					<a><input type = "button"  class="specBtn"value="구매후기<%=count%>개"></a>
 				</td>
 			</tr>
 			<!-- 상세 이미지 -->
 			<tr>
-				<td colspan="2"><img src="..\img\brand\<%=productDTO.getProductDetailImgFileName() %>"></td>
+				<td colspan="2"><img src="..\img\brand\<%=productDTO.getProductDetailImgFileName() %>" width="1100px"></td>
 			</tr>
 			<!-- 배송/교환/환불 -->
 			<tr>
 				<td colspan="2">
-					<table border="1" padding="0">
+					<table  id="howService" style="background-color:#F2F2F2">
 				        <tbody>
 				          <tr>
 				              <th>배송</th>
@@ -130,13 +133,13 @@
 				            <th>교환/환불</th>
 				            <td>
 				                <div class="delivery_txt">
-				                  <strong>이런 경우 교환&amp;환불 가능</strong>
+				                  <strong><font color="blue">이런 경우 교환&amp;환불 가능</font></strong>
 				                  <ul>
 				                    <li>수령한 상품의 사이즈가 맞지 않거나 디자인,색상 등이 마음에 들지않아 교환 또는 환불을 원하시는 경우 (왕복 배송비 6000원 또는 편도 배송비 3000원 고객부담)</li>
 				                    <li>상품 수령후 사용 전 명백한 상품의 하자가 발견된 경우 (모든비용 업체부담)</li>
 				                    <li>주문한 상품과 전혀 다른 상품이 잘못 배송된 경우 (모든비용 업체부담)</li>
 				                  </ul>
-				                  <strong>이런경우 교환&amp;환불 불가능</strong>
+				                  <strong><font color="red">이런경우 교환&amp;환불 불가능</font></strong>
 				                  <ul>
 				                    <li>제품 수령 후 7일을 초과한 경우</li>
 				                    <li>포장이 훼손되어 상품의 가치가 상실된 경우 또는 초기하자를 발견 하였음에도 불구하고 상품을 훼손하거나 사용하여 상품가치를 하락 시킨 경우</li>
@@ -249,7 +252,7 @@
 				<td>
 					<input type="hidden" id="productNameHidden" name="productNameHidden" value="<%=productDTO.getProductName()%>">
 					<input type="hidden" id="productFileNameHidden" name="productFileNameHidden" value="<%=productDTO.getProductSimpleImgFileName()%>">
-					<input type="button" id="reviewRegistration" value="구매후기 등록" onclick="reviewCheck()">
+					<input type="button"  class="specBtn" id="reviewRegistration" value="구매후기 등록" onclick="reviewCheck()">
 				</td>
 			</tr>
 				
@@ -260,8 +263,8 @@
 			<!-- 정렬 -->
 			<tr>
 				<td colspan="2">
-					<input type="button" id="reviewLastestSort" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
-					<input type="button" id="reviewScoreSort" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+					<input type="button"  id="reviewLastestSort" class="specBtn" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+					<input type="button" id="reviewScoreSort" class="specBtn" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
 				</td>
 			</tr>
 			<!-- 구매후기 리스트 -->
@@ -295,8 +298,8 @@
 							if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(reviewDTO.getMemId()) ||memberDTO.getMemAdmin() == 1)){
 %>						
 							
-								<input type="button" id="modify" name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
-								<input type="button" id="delete" name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
+								<input type="button" id="modify"  class="specBtn" name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
+								<input type="button" id="delete"  class="specBtn" name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
 <%
 							}
 %>						
@@ -319,8 +322,8 @@
 								<option value="1">★</option>
 							</select>
 							<br>
-							<input type="button" id="modify" value = "수정하기" onclick="reviewModify('<%=reviewDTO.getProductCode()%>','<%=reviewDTO.getNum()%>','<%=sort%>')">
-							<input type="button" id="modifycencle" value = "취소" onclick="productSpec('<%=reviewDTO.getProductCode() %>')">
+							<input type="button" id="modify" class="specBtn" value = "수정하기" onclick="reviewModify('<%=reviewDTO.getProductCode()%>','<%=reviewDTO.getNum()%>','<%=sort%>')">
+							<input type="button" id="modifycencle" class="specBtn" value = "취소" onclick="productSpec('<%=reviewDTO.getProductCode() %>')">
 						</td>
 					<tr>
 <%		
@@ -348,7 +351,7 @@
 					}
 			        if (startPage > 10) { 
 %>
-						<input type="button" name="back" value="이전" onclick="back('<%=startPage - 10%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
+						<input type="button"  name="back" value="이전" onclick="back('<%=startPage - 10%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
 <%      
 					}
         			for (int i = startPage ; i <= endPage ; i++) {  
