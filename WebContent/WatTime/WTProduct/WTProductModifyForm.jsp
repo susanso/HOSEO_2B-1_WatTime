@@ -75,8 +75,8 @@
 						</select>
 					원가격 : <input type="number" id="productOriginalPrice" name="productOriginalPrice" value="<%=productDTO.getProductOriginalPrice()%>" onblur="productSalePrice(productOriginalPrice.value,productSale.value)" required>원<br>
 					할인율 : <input type="number" id="productSale" name="productSale" min="0" max="100" value="<%=productDTO.getProductSale()%>" onblur="productSalePrice(productOriginalPrice.value,productSale.value)">%<br>
-					소비자가격 : <input type="number" id="productPrice" name="productPrice" value="<%=productDTO.getProductPrice()%>" onblur="productSalePrice()">원<br>
-					TicTok : <input type="number" id="tictok" name="tictok" value="<%=productDTO.getTictok()%>"><br>
+					소비자가격 : <input type="number" id="productPrice" name="productPrice" value="<%=productDTO.getProductPrice()%>" readonly>원<br>
+					TicTok : <input type="number" id="tictok" name="tictok" value="<%=productDTO.getTictok()%>" readonly><br>
 					제조국 : <input type="text" id="productCountry" name="productCountry" value="<%=productDTO.getProductCountry()%>" required><br>
 				</td>
 			</tr>
