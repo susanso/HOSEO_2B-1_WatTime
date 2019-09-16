@@ -973,10 +973,9 @@ height:50px;
     float: left;
     padding: 20px 20px;
     border: 1px solid #cbd4d9;
-    width: 325px;
-    height:300px;
+    width: 21%;
     min-height: 278px;
-    box-sizing: border-box;
+    
 		}
 
 #customerCenter ul li{
@@ -1140,8 +1139,49 @@ height:50px;
 /* -----------------bottom -----------------*/
 
 
-/*상품 불러오기 테스트*/
+
+/* -----------------product -----------------*/
+
+
+.productUl{
+	margin: 0 auto;
+	width:1200px;
+	
+	
+}
 
 .productLi{
+	text-align:center;
+	margin: 0 auto;
 	border: 1px solid #ccc;
+	width: 400px;
+    list-style: none;
+    float:left;
+    box-sizing: border-box;
 }
+
+.productUl::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.move{
+	margin: 0 auto;
+}
+.inputBtn{
+	margin: 20px auto;
+    position: relative;
+    left: 850px;
+}
+.inputBtn input[type=button]{
+	
+	background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent;
+    border: none;
+    margin:5px;
+    
+
+
+}
+/* -----------------product -----------------*/
