@@ -8,7 +8,7 @@ function productSalePrice(productOriginalPrice, productSale){
 	var tictok = price * 0.01;
 	
 	document.getElementById("productPrice").value = price;
-	document.getElementById("tictok").value = Math.round(tictok);
+	document.getElementById("tictok").value = tictok;
 }
 //상품 브랜드 한글
 function brandKorCon(brand){
