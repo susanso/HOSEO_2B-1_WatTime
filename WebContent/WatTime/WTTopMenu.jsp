@@ -25,7 +25,7 @@
 		      
 		      <div>
 		        <a href="#">게스</a>
-		          <a href="#">몽블랑</a>
+		        <a href="#">몽블랑</a>
 		        <a href="#">카시오</a>
 		        <a href="#">몬데인</a>
 		        <a href="#">쥴리어스</a>
@@ -44,7 +44,7 @@
 		        <a href="#">마크제이콥스</a>
 		        <a href="#">샤넬</a>
 		        <a href="#">티쏘</a>
-		        <a href="#">루미녹스</a>
+		        <a href="#" onclick="brand(this.name, this.title)" title="" name="LUMINOX">루미녹스</a>
 		      </div>
 		      
 		      <div>
@@ -59,7 +59,7 @@
 		        <a href="#">오리스</a>
 		        <a href="#">스페라</a>
 		        <a href="#">오메가</a>
-		        <a href="#">구찌</a>
+		        <a href="#" onclick="brand(this.name, this.title)" title="" name="GUCCI">구찌</a>
 		        <a href="#" onclick="brand(this.name, this.title)" title="" name="Daniel Wellington">다니엘웰링턴</a>
 		      </div>
 		      
@@ -73,19 +73,20 @@
 		        <a href="#">가이거</a>
 		        <a href="#" onclick="brand(this.name, this.title)" title="man" name="Daniel Wellington">다니엘웰링턴</a>
 		        <a href="#">디젤</a>
+				<a href="#" onclick="brand(this.name, this.title)" title="" name="LUMINOX">루미녹스</a>
 		        <a href="#">몬데인</a>
-		        <a href="#">벨렌티노루디</a>
 		      </div>
 		      
 		      <div>
+		     	<a href="#">벨렌티노루디</a>
 		        <a href="#">보일런던</a>
 		        <a href="#">알렉산더크리스티</a>
 		        <a href="#">오메가</a>
 		        <a href="#">오베론</a>
-		        <a href="#">태그호이어</a>
 		      </div>
 		      
 		      <div>
+		     	<a href="#">태그호이어</a>
 		        <a href="#">티쏘1</a>
 		        <a href="#">포체 토트넘</a>
 		        <a href="#">포테 밀라노</a>
@@ -102,7 +103,7 @@
 		        <a href="#">DKNY</a>
 		        <a href="#">TID2</a>
 		        <a href="#">디즈니</a>
-		        <a href="#">루미녹스</a>
+		        <a href="#" onclick="brand(this.name, this.title)" title="" name="LUMINOX">루미녹스</a>
 		        <a href="#">몽블랑</a>
 		      </div>
 		      

@@ -99,4 +99,27 @@ public class WatTimeComunicationCommentsDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	//댓글 수정
+	public void setCommentUpdate(WatTimeComunicationCommentsDTO commentsDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update comunicationCommentsTbl set comment=?  where num=?");
+			pstmt.setString(1, commentsDTO.getComment());
+			pstmt.setInt(2, commentsDTO.getNum());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//댓글 삭제
+	public void setCommentDelete(int num) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("delete from comunicationcommentstbl where num = ?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

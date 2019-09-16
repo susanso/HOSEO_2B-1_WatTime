@@ -1,11 +1,21 @@
 <%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<jsp:useBean id="noticeDTO" class = "WatTimePack.WatTimeNoticeDTO" scope="page">
+	<jsp:setProperty name="noticeDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href = "style.css" rel = "stylesheet" type = "text/css">
+<link href = "../style.css" rel = "stylesheet" type = "text/css">
+<script src="WTBottom.js"></script>
 <title>Insert title here</title>
 </head>
+<%
+	WatTimeNoticeDAO noticeDAO = new WatTimeNoticeDAO();
+	List<WatTimeNoticeDTO> noticeList = null;
+	noticeList = noticeDAO.getNoticeBottomList();
+%>
 <body>
 	<div id="infoHelp">
 		<div id="customerCenter" class="infoClass">
@@ -26,12 +36,14 @@
 		<div id="note" class="infoClass">
 			<h3> 공지사항 </h3>
 			<ul>
-			<li>아무말이나적어볼게요ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ</li>
-			<li>사실정확히는 적는게 아니라</li>
-			<li>타자를 치는거지만</li>
-			<li>대충 의미는 전달 되었으니</li>
-			<li>그렇게 말하는걸로 합니다.</li>
-			<li>그렇게 말하는걸로 합니다222222.</li>
+<%
+				for(int i = 0 ; i < noticeList.size() ; i++){
+					noticeDTO = noticeList.get(i);
+%>
+					<li id="<%=noticeDTO.getNum()%>" onclick="noticeListClick(this.id)"><%=noticeDTO.getTitle() %></li>
+<%
+				}
+%>
 			</ul>
 		</div>
 		<div id="sns" class="infoClass">

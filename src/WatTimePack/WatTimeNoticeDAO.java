@@ -148,4 +148,25 @@ public class WatTimeNoticeDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	//공지사항 리스트
+	public List<WatTimeNoticeDTO> getNoticeBottomList() {
+		List<WatTimeNoticeDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from noticeTbl ORDER BY writeDate DESC limit 0,6");
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeNoticeDTO noticeDTO = new WatTimeNoticeDTO();
+					noticeDTO.setNum(rs.getInt("num"));
+					noticeDTO.setTitle(rs.getString("title"));
+					list.add(noticeDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+	}
 }
