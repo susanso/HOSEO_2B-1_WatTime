@@ -839,7 +839,7 @@ height:50px;
 #midelContent{
    margin:-60px auto;
    width:1300px;
-   height:3600px;             /*홈페이지 길이 ~!!*/
+   height:auto;             /*홈페이지 길이 ~!!*/
 
 }
 #brandDiv{	
