@@ -12,11 +12,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href = "style.css" rel = "stylesheet" type = "text/css">
 <script src="WTProduct/js/WTProduct.js"></script>
 <title>WatTime</title>
 </head>
 <body>
-	<ul>
+	
 <%
 	DecimalFormat df = new DecimalFormat("#,###");
 	String brand = request.getParameter("brandEng");
@@ -30,7 +31,7 @@
 	List<WatTimeProductDTO> productList = null;
 	
 	//화면에 표시할 게시물 갯수
-	int pageSize = 10;
+	int pageSize = 12;
 	//URL에서 가져온 페이지 번호를 int 형으로 변환 시키고 넣음
 	int currentPage = pageNum;
 	int startRow = (currentPage - 1) * pageSize + 1;
@@ -68,32 +69,51 @@
     	
     }
  %>
- 	<input type="hidden" name="brandHidden" value="<%=brand %>">
- 	<input type="hidden" name="typeHidden" value="<%=type %>">
- 	<input type="hidden" name="sortHidden" value="<%=sort %>">
-	<input type="button" id="hotProduct" name="hotProduct" value="인기상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
-	<input type="button" id="highPrice" name="highPrice" value="높은가격순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
-	<input type="button" id="rowPrice" name="rowPrice" value="낮은가격순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
-	<input type="button" id="newProduct" name="newProduct" value="신상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
-	
+	 
 <%
 	if(memberDTO.getMemAdmin()==1){
 %>
-	<input type="button" id="productAddButton" name="productAddButton" value="상품등록" onclick="productInsertForm()">
+	 <div class="inputBtn">
+	 	<input type="hidden" name="brandHidden" value="<%=brand %>">
+	 	<input type="hidden" name="typeHidden" value="<%=type %>">
+	 	<input type="hidden" name="sortHidden" value="<%=sort %>">
+		<input type="button" id="hotProduct" name="hotProduct" value="인기상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+		<input type="button" id="highPrice" name="highPrice" value="높은가격순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+		<input type="button" id="rowPrice" name="rowPrice" value="낮은가격순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+		<input type="button" id="newProduct" name="newProduct" value="신상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+		<input type="button" id="productAddButton" name="productAddButton" value="상품등록" onclick="productInsertForm()">
+	</div>
 <%
-	}else{}
+	}else{
+		%>
+		<div class="inputBtn">
+		 	<input type="hidden" name="brandHidden" value="<%=brand %>">
+		 	<input type="hidden" name="typeHidden" value="<%=type %>">
+		 	<input type="hidden" name="sortHidden" value="<%=sort %>">
+			<input type="button" id="hotProduct" name="hotProduct" value="인기상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+			<input type="button" id="highPrice" name="highPrice" value="높은가격순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+			<input type="button" id="rowPrice" name="rowPrice" value="낮은가격순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+			<input type="button" id="newProduct" name="newProduct" value="신상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
+		</div>
+		<%
+	}%>
+	<ul class="productUl">
+	<% 
 	//productList에 넣은 것을 화면에 1개씩 출력
 	for(int i = 0 ; i < productList.size() ; i++){
 		productDTO = productList.get(i);
 %>		
 		<li class="productLi" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
-			<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="200" height="250"></div>
+			<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300"></div>
 			<div><%=productDTO.getProductName() %></div>
 			<div><font color="#ccc" ><b><STRIKE><%=df.format(productDTO.getProductOriginalPrice()) %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
 			<div><%=df.format(productDTO.getProductPrice()) %>원</div>
 		</li>
 <%
-	}
+	}%>
+	</ul>
+	<% 
+	
 	//테이블의 행이 0 초과일 경우
 	if (count > 0) {
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -111,21 +131,21 @@
 		}
         if (startPage > 10) { 
 %>
-			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+			<input type="button" name="back" class="move" value="이전" onclick="back('<%=startPage - 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
 %>
-        	<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
+        	<input type="button" name="pageNum"  class="move" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
 <%      
 		}
         
         if (endPage < pageCount) {  %>
-        	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+        	<input type="button" name="back" value="다음" class="move" onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%
         }
     }
 %>
-</ul>
+
 </body>
 </html>

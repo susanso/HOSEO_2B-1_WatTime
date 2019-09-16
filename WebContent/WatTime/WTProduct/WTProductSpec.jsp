@@ -26,6 +26,7 @@
 		DecimalFormat df = new DecimalFormat("#,###");
 		String pageNum = request.getParameter("pageNum");
 		String productCode = request.getParameter("productCode");
+		productCode = new String(productCode.getBytes("8859_1"), "utf-8");
 		int modify = Integer.parseInt(request.getParameter("modify"));
 		String sort = request.getParameter("sort");
 		
