@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link href = "style.css" rel = "stylesheet" type = "text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href = "style.css	" rel = "stylesheet" type = "text/css">
 <title>WatTime</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
        String content = request.getParameter("pageChange");
 		//메인 초기화면
        if (content == null) {
-       	content = "WTContent.jsp";
+			content = "WTContent.jsp";
        }
 	String top="WTTop.jsp";
 	String bottom="WTBottom.jsp";
