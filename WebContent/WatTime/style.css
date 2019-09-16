@@ -973,9 +973,10 @@ height:50px;
     float: left;
     padding: 20px 20px;
     border: 1px solid #cbd4d9;
-    width: 21%;
+    width: 325px;
+    height:300px;
     min-height: 278px;
-    
+    box-sizing: border-box;
 		}
 
 #customerCenter ul li{
