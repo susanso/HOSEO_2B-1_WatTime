@@ -1,13 +1,20 @@
 //상품 할인율 적용
-function productSalePrice(productOriginalPrice, productSale){
-	if(productSale==""){
+function productSalePrice(){
+	
+	var productPrice = document.getElementById("productOriginalPrice").value;
+	var productSale = document.getElementById("productSale").value;
+	productPrice = parseInt(productPrice);
+	productSale = parseInt(productSale);
+	
+	if(productSale==""||productSale==null){
 		productSale = 0;
 	}
-	
-	var price = productOriginalPrice - (productOriginalPrice * (productSale/100));
-	var tictok = price * 0.01;
-	
-	document.getElementById("productPrice").value = price;
+	var price = 0;
+	var tictok = 0;
+	price = productPrice-(productPrice*(productSale/100));
+	tictok = price * 0.01;
+
+	document.getElementById("productPrice").value = Math.round(price);
 	document.getElementById("tictok").value = Math.round(tictok);
 }
 //상품 브랜드 한글

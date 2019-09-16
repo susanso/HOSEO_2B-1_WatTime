@@ -63,7 +63,7 @@
 			basketDTO = basketList.get(i);
 			totalPrice = totalPrice + basketDTO.getProductPrice()*basketDTO.getProductCount();
 %>
-		<tr>
+		<tr onclick="">
 			<td><img src="..\img\brand\<%=basketDTO.getProductSimpleImgFileName() %>"></td>
 			<td><%=basketDTO.getProductName() %></td>
 			<td><%=df.format(basketDTO.getProductPrice()*basketDTO.getProductCount()) %></td>
