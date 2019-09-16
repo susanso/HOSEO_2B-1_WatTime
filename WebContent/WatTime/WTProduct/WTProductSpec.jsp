@@ -68,7 +68,7 @@
 			<!-- 이미지 및 가격 -->
 			<tr>
 				<td rowspan="2" width="100px">
-					<img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300">
+					<img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName()%>" width="300" height="300">
 					<input type="hidden" id="productCode" name="productCode" value="<%=productCode%>">
 				</td>
 				<td width="200px">

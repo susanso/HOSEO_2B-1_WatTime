@@ -14,8 +14,6 @@
 <%
 	String productCode = request.getParameter("productCode");
 	productCode = new String(productCode.getBytes("8859_1"), "utf-8");
-
-
 	WatTimeProductDAO productDAO = new WatTimeProductDAO();
 	productDAO.setProductDelete(productCode);
 	

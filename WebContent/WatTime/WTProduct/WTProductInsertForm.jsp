@@ -59,10 +59,10 @@
 							  <option value="woman">여성</option>
 							  <option value="couple">커플</option>
 						</select>
-					원가격 : <input type="number" id="productOriginalPrice" name="productOriginalPrice" onblur="productSalePrice(productOriginalPrice.value,productSale.value)" required>원<br>
-					할인율 : <input type="number" id="productSale" name="productSale" min="0" max="100" onblur="productSalePrice(productOriginalPrice.value,productSale.value)">%<br>
-					소비자가격 : <input type="number" id="productPrice" name="productPrice" onblur="productSalePrice()">원<br>
-					TicTok : <input type="number" id="tictok" name="tictok"><br>
+					원가격 : <input type="number" id="productOriginalPrice" name="productOriginalPrice" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>원<br>
+					할인율 : <input type="number" id="productSale" name="productSale" min="0" max="100" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>%<br>
+					소비자가격 : <input type="number" id="productPrice" name="productPrice" readonly>원<br>
+					TicTok : <input type="number" id="tictok" name="tictok" readonly><br>
 					제조국 : <input type="text" id="productCountry" name="productCountry" required><br>
 				</td>
 			</tr>
