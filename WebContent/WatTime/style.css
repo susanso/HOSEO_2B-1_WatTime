@@ -1150,8 +1150,6 @@ height:50px;
 .productUl{
 	margin: 0 auto;
 	width:1200px;
-	
-	
 }
 
 .productLi{
@@ -1335,3 +1333,63 @@ font-size: 20px;
 	
 }
 /* -----------------product -----------------*/
+/* 커뮤니티 게시판 리스트*/
+#aa #comunicationList,th{
+	height:50px;
+	border:0;
+	border-collapse: collapse;
+	border-bottom: 1px solid gray;
+}
+#aa td{
+	height:50px;
+	border:0;
+	border-collapse: collapse;
+	border-bottom: 1px solid gray;
+}
+
+#aa tr{
+	height:50px;
+	border:0;
+	border-collapse: collapse;
+	border-bottom: 1px solid gray;
+}
+/* 커뮤니티 게시판 상세 폼*/
+#comunicationForm{
+	margin: 30px auto;
+	width:1300px;
+}
+.reComment{
+	border-top:1px solid gray;
+}
+#comunicationForm table{
+	width:1300px;
+	border:1px solid gray;
+	border-collapse: collapse;
+	table-layout: fixed;
+	
+}
+#comunicationForm tr{
+	border:1px solid gray;
+	padding:10px;
+	
+
+}
+#comunicationForm td{
+	padding:10px;
+	border:1px solid gray;
+}
+#comunicationContent{
+	padding:10px;
+	word-break:break-all;
+}
+.text1{
+	width: 96.8%;
+	height: 200px;	
+}
+
+.reContentImg{
+	float:left;
+}
+.commentPre{
+	white-space:pre-line;
+}

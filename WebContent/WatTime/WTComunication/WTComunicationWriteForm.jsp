@@ -36,7 +36,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<textarea id="comunicationContent" name="comunicationContent" required></textarea>
+					<textarea id="comunicationContent" class="text1" style="width:'100%';" name="comunicationContent" required></textarea>
 				</td>
 			</tr>
 			<tr >

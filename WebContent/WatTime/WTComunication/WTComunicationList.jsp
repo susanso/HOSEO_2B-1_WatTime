@@ -14,6 +14,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="WTComunication/js/WTComunicationList.js"></script>
+<link href = "style.css" rel = "stylesheet" type = "text/css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -47,17 +48,18 @@
 <%
   	}else{	
 %>
+	<div id="aa" style="width:1300px; margin: 30px auto;">
 		<select onchange="comunicationListCount(this.options[this.selectedIndex].value,'<%=pageNum%>')">
 			<option value="" selected disabled required>선택</option>
 			<option value="10">10개씩 보기</option>
 			<option value="20">20개씩 보기</option>
 			<option value="30">30개씩 보기</option>
 		</select>
-		<table border="1">
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
+		<table id="comunicationList" style="width:1300px; border-top: 1px solid gray;">
+			<th width="50px" style="text-align:center;">번호</th>
+			<th width="900px" style="text-align:center;">제목</th>
+			<th width="150px" style="text-align:center;">작성자</th>
+			<th width="200px" style="text-align:center;">작성일</th>
 <%
 			comunicationList = comunicationDAO.getComunicationRecommendationList();
 			for (int i = 0 ; i < comunicationList.size() ; i++) {
@@ -65,17 +67,17 @@
 %>
 				<tr onclick="comunicationForm('<%=comunicationDTO.getNum() %>','<%=comunicationDTO.getMemId()%>','<%=pageNum%>','<%=listCount%>')">
 					
-						<td><strong>추천</strong></td>
+						<td class="comunitiNum" style="text-align:center;"><strong>추천</strong></td>
 						<!-- 게시글 제목 -->
-						<td>
+						<td style="padding-left:20px;">
 			  				<strong><%=comunicationDTO.getTitle() %></strong>
 		  				</td>
 		  				<!-- 게시글 작성자 -->
-						<td>
+						<td style="text-align:center;">
 							<strong><%=comunicationDTO.getMemName() %></strong>
 						</td>
 						<!-- 게시글 작성일 -->
-						<td>
+						<td style="text-align:center;">
 							<strong><%=sf.format(comunicationDTO.getWriteDate()) %></strong>
 						</td>
 				</tr>
@@ -89,7 +91,7 @@
 %>
 			<tr onclick="comunicationForm('<%=comunicationDTO.getNum() %>','<%=comunicationDTO.getMemId()%>','<%=pageNum%>','<%=listCount%>')">
 				<!-- 게시글 번호 -->
-				<td>
+				<td class="comunitiNum" style="text-align:center;">
 					<%=comunicationDTO.getNum() %>
 				</td>
 <%
@@ -98,7 +100,7 @@
 				   wid=5*(comunicationDTO.getRe_level());
 %>
 					<!-- 게시글 제목 -->
-					<td>
+					<td style="padding-left:20px;">
 						<img src="img/comu/level.png" width="<%=wid%>" height="16">
 		  				<img src="img/comu//re.png">
 		  				<%=comunicationDTO.getTitle() %>
@@ -107,18 +109,18 @@
 				}else{
 %>
 					<!-- 게시글 제목 -->
-					<td>
+					<td style="padding-left:20px;">
 		  				<%=comunicationDTO.getTitle() %>
 	  				</td>
 <%
 				}
 %>
 				<!-- 게시글 작성자 -->
-				<td>
+				<td style="text-align:center;">
 					<%=comunicationDTO.getMemName() %>
 				</td>
 				<!-- 게시글 작성일 -->
-				<td>
+				<td style="text-align:center;">
 					<%=sf.format(comunicationDTO.getWriteDate()) %>
 				</td>
 			</tr>
@@ -162,11 +164,11 @@
     	for (int i = startPage ; i <= endPage ; i++) {  
     		if(pageNum==i){
 %>
-				<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
+				<input type="button" name="nowPageNum" id="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
 <%
 			}else{
 %>
-    			<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
+    			<input type="button" name="pageNum" id="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
 <%      
 			}
 		}
@@ -186,5 +188,6 @@
 	</select>
 	<input type="text" id="comunicatoinSearchText" name="comunicatoinSearchText" onkeydown="textValue(this.value)" onkeyup="textValue(this.value)">
 	<input type="button" id="searchButton" name="searchButton" value="검색" onclick="search()">
+	</div>
 </body>
 </html>

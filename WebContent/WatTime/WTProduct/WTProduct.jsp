@@ -139,7 +139,7 @@
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
-if(i==pageNum){
+			if(i==pageNum){
 %>
                 <input type="button" name="nowPageNum" id="nowPageNum"  value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
 <%
