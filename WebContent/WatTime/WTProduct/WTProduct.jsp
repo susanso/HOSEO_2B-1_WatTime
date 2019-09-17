@@ -106,15 +106,18 @@
 %>		
 		<li class="productLi" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
 			<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300"></div>
-			<div><%=productDTO.getProductName() %></div>
-			<div><font color="#ccc" ><b><STRIKE><%=df.format(productDTO.getProductOriginalPrice()) %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
-			<div><%=df.format(productDTO.getProductPrice()) %>원</div>
+			<div><h3><%=productDTO.getProductName() %></h3></div>
+			<div><font color="#FA5858" ><b><STRIKE><%=df.format(productDTO.getProductOriginalPrice()) %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
+			<div><font size="5px"><%=df.format(productDTO.getProductPrice()) %>원</font></div>
 		</li>
 <%
 	}
 %>
 	</ul>
-<% 
+	
+	<div class="move">
+	<% 
+	
 	//테이블의 행이 0 초과일 경우
 	if (count > 0) {
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -132,27 +135,26 @@
 		}
         if (startPage > 10) { 
 %>
-			<input type="button" name="back" class="move" value="이전" onclick="back('<%=startPage - 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+			<input type="button" name="back"  value="이전" id="PageNum" onclick="back('<%=startPage - 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
-        	if(i==pageNum){
+if(i==pageNum){
 %>
-				<input type="button" name="nowPageNum"  class="move" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
+                <input type="button" name="nowPageNum" id="nowPageNum"  value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
 <%
-			}else{
+            }else{
 %>
-        		<input type="button" name="pageNum"  class="move" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
-<%      
-			}
+                <input type="button" name="pageNum" id="PageNum"  value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
+<%
+            }
         }
-        
         if (endPage < pageCount) {  %>
-        	<input type="button" name="back" value="다음" class="move" onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+        	<input type="button" name="back" value="다음" id="PageNum" onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%
         }
     }
 %>
-
+</div>
 </body>
 </html>

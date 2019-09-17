@@ -68,8 +68,15 @@ TID2               스페라
 a {
    text-decoration:none;
 }
+textarea{
+	resize: none;
+}
 
-#topMenu {list-style-type:none;margin:10px 0 0 20px;padding:0; font-size:14px;}
+#topMenu {list-style-type:none;
+			margin:10px 0 0 20px;
+			padding:0; 
+			font-size:14px;
+}
 
 #topMenu li  {display:inline-block; margin-right:15px;}
 
@@ -513,8 +520,8 @@ a {
   position: absolute;
   top:228px;
   left:auto;
-  background-color: gray;
-  background-color: rgba( 255, 255, 255, 0.5 );
+  background-color: black;
+  background-color: rgba( 255, 255, 255, 0.9 );
   min-width: 1300px;
   height:360px;
   z-index: 1;
@@ -525,8 +532,8 @@ a {
   position: absolute;
    top:228px;
   left:auto;
-  background-color: gray;
-  background-color: rgba( 255, 255, 255, 0.5 );
+  background-color: black;
+  background-color: rgba( 255, 255, 255, 0.9 );
   min-width: 1300px;
   height:180px;
   z-index: 1;
@@ -537,8 +544,8 @@ a {
   position: absolute;
   top:228px;
   left:auto;
-  background-color: gray;
-  background-color: rgba( 255, 255, 255, 0.5 );
+  background-color: black;
+  background-color: rgba( 255, 255, 255, 0.9 );
   min-width: 1300px;
   height:120px;
   z-index: 1;
@@ -549,8 +556,8 @@ a {
   position: absolute;
   top:228px;
   left:auto;
-  background-color: gray;
-  background-color: rgba( 255, 255, 255, 0.5 );
+  background-color: black;
+  background-color: rgba( 255, 255, 255, 0.9 );
   min-width: 1300px;
   height:120px;
   z-index: 1;
@@ -781,22 +788,22 @@ height:50px;
    width:500px;height:600px;
 }
 #mainSlideMan{
-   width:500px;
-   height:600px;
-   margin:0;
-   background-color:black;
-   border: 1px solid #ccc;
-   box-sizing:border-box;
-   float:left;
+	width:500px;
+	height:600px;
+	margin:0;
+	
+	border: 1px solid #ccc;
+	box-sizing:border-box;
+	float:left;
 }
 #mainSlideWoman{
-   width:500px;
-   height:600px;
-   margin:0;
-   background-color:black;
-   border: 1px solid #ccc;
-   box-sizing:border-box;
-   float:left;
+	width:500px;
+	height:600px;
+	margin:0;
+	
+	border: 1px solid #ccc;
+	box-sizing:border-box;
+	float:left;
 }
 
 #wattimeContentMan{
@@ -983,14 +990,13 @@ height:50px;
                }
                
 #customerCenter button{
-      border:1px solid;
-       display: inline-block;
-       
-       padding:10px;
-       background-color:#fff;
-       color: #000;
-       transition: background-color 0.5s, transform 5s;
-}   
+		border:1px solid;
+	    display: inline-block;
+	    padding:10px;
+	    background-color:#fff;
+	    color: #000;
+	    transition: background-color 0.5s, transform 5s;
+}	
 
 #customerCenter button:hover{
             background-color:#000;
@@ -1007,11 +1013,9 @@ height:50px;
            letter-spacing: -0.05em;
          }
  #customerButton{   margin: 30px auto;
-                text-align:center;
-                }
-  #customerButton button{
-  display:inline;
-  }
+ 					text-align:center;
+ 					}
+
  #note ul li{
        width:100%;
        display:inline-block;
@@ -1144,17 +1148,17 @@ height:50px;
 
 
 .productUl{
-   margin: 0 auto;
-   width:1300px;
-   
-   
+	margin: 0 auto;
+	width:1200px;
+	
+	
 }
 
 .productLi{
-   text-align:center;
-   margin: 0 auto;
-   border: 1px solid #ccc;
-   width: 400px;
+	text-align:center;
+	margin: 10px 0 0 10px;
+    border: 1px solid #ccc;
+    width: 420px;
     list-style: none;
     float:left;
     box-sizing: border-box;
@@ -1165,14 +1169,43 @@ height:50px;
   clear: both;
   display: table;
 }
-.move{
-   margin: 0 auto;
+.move{   
+    margin: 20px auto;
+    text-align: center;
 }
+#PageNum{
+	
+	background-color:#fff;
+    background-image: none !important;
+    border-color: transparent;
+    border: none;
+    margin:5px;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    transition: background-color 0.5s, transform 5s;
+    color: #000;
+		}
+#nowPageNum{
+	background-color: black; 
+	border: none;
+	color: white;
+    margin:5px;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+			}
+
+#PageNum:hover{
+				background-color:#000;
+			    color: #fff; 
+				}
 .inputBtn{
    margin: 20px auto;
     position: relative;
     left: 1300px;
 }
+
 .inputBtn input[type=button]{
    
    background-color: transparent !important;
@@ -1181,10 +1214,124 @@ height:50px;
     border: none;
     margin:5px;
 }
-.inputBtn input[type=button]{
-   
-   
+
+.productInsert{
+	margin:30px auto;
+	width: auto;
+    height: auto;
+}
+.productInsert td{
+	margin: 40px 30px 20px 40px;
+    display: block;
+    font-size: 20px;
+
+}
+.productInsert td p{
+	margin:30px;
+}
+.productInsert td input[type=text], select, input[type=number]{
+font-size: 20px;
+
+}
+.picture{
+	text-align:center;
+}
+.productInsert  input[type=submit]{
+	background-color:#000; 
+    border: none;
+    color:#fff;
+    margin:5px;
+    width: 150px;
+    height: 75px;
+    font-size: 25px;
+}
+					
+.spec{
+	margin:30px auto;
+	text-align:center;
+	border-collapse: collapse;
+	font-family: 'Roboto', sans-serif;
+}
+.productInfo{
+	background-color:#FAFAFA;
+	border-left:1px solid #F2F2F2;
+	border-right:1px solid #F2F2F2;
+}
+	
+.productInfo p{
+	margin-top :20px;
+	text-align:left;
+}
+#gotcha{
+	padding:0;
+	background-color:#000; 
+    border: none;
+    color:#fff;
+    margin:10px;
+    width: 150px;
+    height: 75px;
+    font-size: 17px;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+	
+}
+.specBtn{
+	padding:0;
+	background-color:#000; 
+    border: none;
+    color:#fff;
+    margin:10px;
+    width: 150px;
+    height: 75px;
+    font-size: 17px;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+#gotcha:hover{
+				background-color:#FE2E2E;
+			    color:#fff; 
+			    font-size:20px;
+				}
+
+.specBtn:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+				}
+				
+.productCountBtn{
+	position: relative;
+    display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 0;
+    top: -33px;
+    font-size: 33px;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
 
+.productCountBtn:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+				}
+					
 
+.delivery_txt ul li{
+	list-style-type:none;
+			font-size:14px;
+}
+.delivery_txt ul{
+	margin-bottom:10px;
+}
+
+#howService{
+	background-color:#F2F2F2;
+	 border-collapse: collapse;
+}
+#howService th, #howService td{
+	margin: 10px;
+	 border-bottom:1px solid gray;
+	
+}
 /* -----------------product -----------------*/

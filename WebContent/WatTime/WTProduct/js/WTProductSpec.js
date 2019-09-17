@@ -34,30 +34,29 @@ function productDeleteForm(productCode){
 }
 
 ////상품 상세 페이지
-//총 상품 가격 계산
 function countPlus(price,count){
-	
-	var countNum = parseInt(count) + 1;
-	document.getElementById("productCount").value = countNum;
-	var total = price * countNum;
-	var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	document.getElementById("totalPrice").textContent = totalfomat+"원";
+
+    var countNum = parseInt(count) + 1;
+    document.getElementById("productCount").value = countNum;
+    var total = price * countNum;
+    var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById("totalPrice").textContent = totalfomat+"원";
 }
 
 function countMinus(price,count){
-	var total = 0;
-	var countNum = parseInt(count) - 1;
-	if(countNum==0){
-		alert("최소 수량은 1개입니다.");
-		document.getElementById("productCount").value = 1;
-		var totalfomat = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		document.getElementById("totalPrice").textContent = totalfomat+"원";
-	}else{
-		document.getElementById("productCount").value = countNum;
-		var total = price * countNum;
-		var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		document.getElementById("totalPrice").textContent = totalfomat+"원";
-	}
+    var total = 0;
+    var countNum = parseInt(count) - 1;
+    if(countNum==0){
+        alert("최소 수량은 1개입니다.");
+        document.getElementById("productCount").value = 1;
+        var totalfomat = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById("totalPrice").textContent = totalfomat+"원";
+    }else{
+        document.getElementById("productCount").value = countNum;
+        var total = price * countNum;
+        var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById("totalPrice").textContent = totalfomat+"원";
+    }
 }
 //구매 후기 텍스트 길이
 function productReviewLength(){
