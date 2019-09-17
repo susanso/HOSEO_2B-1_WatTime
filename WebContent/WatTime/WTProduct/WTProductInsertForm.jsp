@@ -59,12 +59,12 @@
 							  <option value="man">남성</option>
 							  <option value="woman">여성</option>
 							  <option value="couple">커플</option>
-						</select>
-					원가격 : <input type="number" id="productOriginalPrice" name="productOriginalPrice" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>원<br>
-					할인율 : <input type="number" id="productSale" name="productSale" min="0" max="100" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>%<br>
-					소비자가격 : <input type="number" id="productPrice" name="productPrice" readonly>원<br>
-					TicTok : <input type="number" id="tictok" name="tictok" readonly><br>
-					제조국 : <input type="text" id="productCountry" name="productCountry" required><br>
+							</select></p>
+					<p>원가격 : <input type="number" id="productOriginalPrice" name="productOriginalPrice" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>원</p>
+					<p>할인율 : <input type="number" style="width:293px;" id="productSale" name="productSale" min="0" max="100" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>%</p>
+					<p>소비자가격 : <input type="number" style="width:260px;" id="productPrice" name="productPrice" readonly>원</p>
+					<p>TicTok : <input type="number" style="width:300px;" id="tictok" name="tictok" readonly></p>
+					<p>제조국 : <input type="text" style="width:300px;" id="productCountry" name="productCountry" required></p>
 				</td>
 			</tr>
 			<!-- 등록버튼 -->
