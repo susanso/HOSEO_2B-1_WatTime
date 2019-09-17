@@ -96,9 +96,10 @@
 			<input type="button" id="newProduct" name="newProduct" value="신상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
 		</div>
 		<%
-	}%>
+	}
+%>
 	<ul class="productUl">
-	<% 
+<% 
 	//productList에 넣은 것을 화면에 1개씩 출력
 	for(int i = 0 ; i < productList.size() ; i++){
 		productDTO = productList.get(i);
@@ -110,10 +111,10 @@
 			<div><%=df.format(productDTO.getProductPrice()) %>원</div>
 		</li>
 <%
-	}%>
+	}
+%>
 	</ul>
-	<% 
-	
+<% 
 	//테이블의 행이 0 초과일 경우
 	if (count > 0) {
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -135,10 +136,16 @@
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
+        	if(i==pageNum){
 %>
-        	<input type="button" name="pageNum"  class="move" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
+				<input type="button" name="nowPageNum"  class="move" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
+<%
+			}else{
+%>
+        		<input type="button" name="pageNum"  class="move" value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
 <%      
-		}
+			}
+        }
         
         if (endPage < pageCount) {  %>
         	<input type="button" name="back" value="다음" class="move" onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">

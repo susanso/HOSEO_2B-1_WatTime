@@ -178,9 +178,15 @@
 <%      
 	}
     	for (int i = startPage ; i <= endPage ; i++) {  
+    		if(i==pageNum){
 %>
-    		<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>','<%=selected%>','<%=comunicatoinSearchText%>')">
+					<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>','<%=selected%>','<%=comunicatoinSearchText%>')">
+<%
+    		}else{
+%>
+    			<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>','<%=selected%>','<%=comunicatoinSearchText%>')">
 <%      
+			}
 	}
     
        if (endPage < pageCount) {  %>

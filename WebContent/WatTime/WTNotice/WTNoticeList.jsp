@@ -97,9 +97,15 @@
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
+        	if(i==pageNum){
 %>
-        	<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value)">
-<%      
+        		<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value)">
+<%      	
+			}else{
+%>
+				<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value)">
+<%
+			}
 		}
         
         if (endPage < pageCount) {  %>

@@ -42,8 +42,8 @@
     number = count-(currentPage-1)*pageSize;
 	if(count==0){
 %>
-		게시글이 없습니다.
-		<input type="button" id="firstComunication" value="첫글쓰기">
+		게시글이 없습니다.<br>
+		<input type="button" id="firstComunication" value="첫글쓰기" onclick="comunicationWriteForm()">
 <%
   	}else{	
 %>
@@ -160,10 +160,16 @@
 <%      
 	}
     	for (int i = startPage ; i <= endPage ; i++) {  
+    		if(pageNum==i){
 %>
-    		<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
+				<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
+<%
+			}else{
+%>
+    			<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
 <%      
-	}
+			}
+		}
     
        if (endPage < pageCount) {  %>
        		<input type="button" name="back" value="다음" onclick="next('<%=startPage + 10%>','<%=listCount %>')">

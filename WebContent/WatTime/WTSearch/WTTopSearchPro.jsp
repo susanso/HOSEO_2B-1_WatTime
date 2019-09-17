@@ -43,7 +43,6 @@
     //getSearchProductList()메소드에 unText, startRow, pageSize넘겨 sql문 실행
 	productList = productDAO.getSearchProductList(searchText, startRow, pageSize, sort);
 %>
-	<%=searchText %>
 	<input type="button" id="hotProduct" name="hotProduct" value="인기상품순" onclick="sort(this.name,'<%=searchText%>','<%=pageNum%>')">
 	<input type="button" id="highPrice" name="highPrice" value="높은가격순" onclick="sort(this.name,'<%=searchText%>','<%=pageNum%>')">
 	<input type="button" id="rowPrice" name="rowPrice" value="낮은가격순" onclick="sort(this.name,'<%=searchText%>','<%=pageNum%>')">
@@ -53,14 +52,12 @@
 		for(int i = 0 ; i < productList.size() ; i++){
 			productDTO = productList.get(i);
 %>
-	
 			<li class="productLi" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
 				<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" ></div>
 				<div><%=productDTO.getProductName() %></div>
 				<div><font color="#ccc" ><b><STRIKE><%=productDTO.getProductOriginalPrice() %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
 				<div><%=productDTO.getProductPrice() %>원</div>
 			</li>
-	
 <%
 	}
 %>
@@ -86,11 +83,17 @@ if (count > 0) {
 			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=searchText%>','<%=sort%>')">
 <%      
 		}
-        for (int i = startPage ; i <= endPage ; i++) {  
+	for (int i = startPage ; i <= endPage ; i++) { 
+		if(i==pageNum){
 %>
-        	<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=searchText%>','<%=sort%>')">
+			<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=searchText%>','<%=sort%>')">
+<%
+		}else{
+%>
+			<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=searchText%>','<%=sort%>')">
 <%      
 		}
+	}
         
         if (endPage < pageCount) {  %>
         	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=searchText%>','<%=sort%>')">

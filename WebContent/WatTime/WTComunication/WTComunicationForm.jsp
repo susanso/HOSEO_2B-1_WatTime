@@ -314,12 +314,17 @@
 			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 10%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%      
 	}
-    	for (int i = startPage ; i <= endPage ; i++) {  
+    	for (int i = startPage ; i <= endPage ; i++) { 
+    		if(pageNum==i){
 %>
-    		<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+				<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+<%
+			}else{
+%>
+    			<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%      
-	}
-    
+			}
+    	}
        if (endPage < pageCount) {  %>
        		<input type="button" name="back" value="다음" onclick="next('<%=startPage + 10%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%
