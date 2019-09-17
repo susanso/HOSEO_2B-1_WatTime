@@ -98,20 +98,20 @@
 	if (count > 0) {
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 		int startPage = 1 ;
-		
-		if(currentPage % 10 != 0){
-			startPage = (int)(currentPage/10)*10 + 1;
-		}else{
-			startPage = ((int)(currentPage/10)-1)*10 + 1;
-		}
-		int pageBlock = 10;
-		int endPage = startPage + pageBlock - 1;
-		if (endPage > pageCount){
-			endPage = pageCount;
-		}
-        if (startPage > 10) { 
+	
+	if(currentPage % 5 != 0){
+		startPage = (int)(currentPage/5)*5 + 1;
+	}else{
+		startPage = ((int)(currentPage/5)-1)*5 + 1;
+	}
+	int pageBlock = 5;
+	int endPage = startPage + pageBlock - 1;
+	if (endPage > pageCount){
+		endPage = pageCount;
+	}
+    if (startPage > 5) {
 %>
-		<input type="button" name="back" value="이전" onclick="back('<%=startPage - 10%>','<%=listCount%>','<%=sort%>')">
+		<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>','<%=sort%>')">
 <%      
 	}
     	for (int i = startPage ; i <= endPage ; i++) { 
@@ -126,7 +126,7 @@
 			}
     	}
        if (endPage < pageCount) {  %>
-       	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 10%>','<%=listCount %>','<%=sort%>')">
+       	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount %>','<%=sort%>')">
 <%
         }
     }

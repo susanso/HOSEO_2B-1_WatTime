@@ -69,6 +69,43 @@ function sort(sorted, searchText, pageNum){
 	
 	form.submit();
 }
+//상세보기
+function productSpec(productCode){
+	var form = document.createElement("form");
+	form.setAttribute("charset", "UTF-8");
+	form.setAttribute("method", "Post"); // Get 또는 Post 입력
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum=1");
+
+	 
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "productCode");
+	hiddenField.setAttribute("value", productCode);
+	form.appendChild(hiddenField);
+
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "pageNum");
+	hiddenField.setAttribute("value", "1");
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "modify");
+	hiddenField.setAttribute("value", 0);
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "sort");
+	hiddenField.setAttribute("value", "reg_date DESC");
+	form.appendChild(hiddenField);
+	
+	document.body.appendChild(form);
+	
+	form.submit();
+}
+
 //페이지 관련
 //이전
 function back(pageNum, searchText, sort){

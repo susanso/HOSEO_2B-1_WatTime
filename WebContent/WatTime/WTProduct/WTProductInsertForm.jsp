@@ -50,6 +50,7 @@
 							  <option value="TAG HEUER">TAG HEUER</option>
 							  <option value="TISSOT">TISSOT</option>
 							  <option value="FOCE">FOCE</option>
+							  <option value="TID">TID</option>
 							  <option value="PAULBRIAL">PAULBRIAL</option>
 							  <option value="HAMILTON">HAMILTON</option>
 							</select></p>

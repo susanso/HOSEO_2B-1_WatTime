@@ -75,5 +75,7 @@ function brandKorCon(brand){
 		document.getElementById("brandKor").value = "폴브리알";
 	}else if(brand=="HAMILTON"){
 		document.getElementById("brandKor").value = "헤밀턴";
+	}else if(brand=="TID"){
+		document.getElementById("brandKor").value = "티아이디";
 	}
 }
