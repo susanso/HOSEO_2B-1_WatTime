@@ -217,96 +217,99 @@
             scoreAvg = ((score1*1)+(score2*2)+(score3*3)+(score4*4)+(score5*5)) / reviewCount;
          }
 %>
-         
-         <tr >
-            <td rowspan="5">
-               평점: <%=Math.round(scoreAvg*100)/100.0 %>점
-            </td>
-            <td>1점 : <%=Math.round(score1) %>명</td>
-         </tr>
-         <tr>
-            <td>2점 : <%=Math.round(score2) %>명</td>
-         </tr>
-         <tr>
-            <td>3점 : <%=Math.round(score3) %>명</td>
-         </tr>
-         <tr>
-            <td>4점 : <%=Math.round(score4) %>명</td>
-         </tr>
-         <tr>
-            <td>5점 : <%=Math.round(score5) %>명</td>
-         </tr>
-         <!-- 구매후기 작성 -->
-         <tr>
-            <td>
-               <textarea name = "productReview" id="productReview" onkeyup="productReviewLength()" onfocus="logCheck()" cols="40" rows="8" ></textarea><br>
-               <span id = "productReviewLength" >현재 문자 길이 0/200</span>
-               <select name = "score" id= "score">
-                  <option value="5" checked>★★★★★</option>
-                  <option value="4">★★★★</option>
-                  <option value="3">★★★</option>
-                  <option value="2">★★</option>
-                  <option value="1">★</option>
-               </select>
-            </td>
-            <td>
-               <input type="hidden" id="productNameHidden" name="productNameHidden" value="<%=productDTO.getProductName()%>">
-               <input type="hidden" id="productFileNameHidden" name="productFileNameHidden" value="<%=productDTO.getProductSimpleImgFileName()%>">
-               <input type="button"  class="specBtn" id="reviewRegistration" value="구매후기 등록" onclick="reviewCheck()">
-            </td>
-         </tr>
-            
-         <tr>
-            <a id="review"></a>
-            <td colspan="2">구매후기 <%=count %>개</td>
-         </tr>
-         <!-- 정렬 -->
-         <tr>
-            <td colspan="2">
-               <input type="button"  id="reviewLastestSort" class="specBtn" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
-               <input type="button" id="reviewScoreSort" class="specBtn" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
-            </td>
-         </tr>
-         <!-- 구매후기 리스트 -->
-<%         
-         List<WatTimeReviewDTO> reviewList = null;
-            //getProductList()메소드에 brand, type, startRow, pageSize넘겨 sql문 실행
-         reviewList = reviewDAO.getReviewList(productCode, sort, startRow, pageSize);
-         for(int i = 0 ; i < reviewList.size() ; i++){
-            reviewDTO = reviewList.get(i);
-            //별점 숫자를 텍스트로 바꾸기
-            String star = "";
-            if(reviewDTO.getReviewScore() == 1){
-               star="★";
-            }else if(reviewDTO.getReviewScore() == 2){
-               star="★★";
-            }else if(reviewDTO.getReviewScore() == 3){
-               star="★★★";
-            }else if(reviewDTO.getReviewScore() == 4){
-               star="★★★★";
-            }else{
-               star="★★★★★";
-            }
-            if(modify != reviewDTO.getNum()){
+			
+			<tr class="reviewAvgScore">
+				<td rowspan="6"><div> 평균 평점: <%=Math.round(scoreAvg*100)/100.0 %>점</div></td>
+			</tr>
+			<tr class="reviewScore">
+				<td>1점 : <%=Math.round(score1) %>명</td>
+			</tr>
+			<tr class="reviewScore">
+				<td>2점 : <%=Math.round(score2) %>명</td>
+			</tr>
+			<tr class="reviewScore">
+				<td>3점 : <%=Math.round(score3) %>명</td>
+			</tr>
+			<tr class="reviewScore">
+				<td>4점 : <%=Math.round(score4) %>명</td>
+			</tr>
+			<tr class="reviewScore">
+				<td>5점 : <%=Math.round(score5) %>명</td>
+			</tr>
+			<!-- 구매후기 작성 -->
+			<tr>
+				<td>
+					<textarea name = "productReview" id="productReview" onkeyup="productReviewLength()" onfocus="logCheck()" cols="40" rows="8" ></textarea><br>
+					<span id = "productReviewLength" >현재 문자 길이 0/200</span>
+					<select name = "score" id= "score">
+						<option value="5" checked>★★★★★</option>
+						<option value="4">★★★★</option>
+						<option value="3">★★★</option>
+						<option value="2">★★</option>
+						<option value="1">★</option>
+					</select>
+				</td>
+				<td>
+					<input type="hidden" id="productNameHidden" name="productNameHidden" value="<%=productDTO.getProductName()%>">
+					<input type="hidden" id="productFileNameHidden" name="productFileNameHidden" value="<%=productDTO.getProductSimpleImgFileName()%>">
+					<input type="button"  class="specBtn" id="reviewRegistration" value="구매후기 등록" onclick="reviewCheck()">
+				</td>
+			</tr>
+				
+			<tr>
+				<a id="review"></a>
+				
+				<td colspan="2" style="border-top:1px solid gray">구매후기 <%=count %>개</td>
+			</tr>
+			<!-- 정렬 -->
+			<tr>
+				<td colspan="2">
+					<input type="button"  id="reviewLastestSort" class="specBtn" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+					<input type="button" id="reviewScoreSort" class="specBtn" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+				</td>
+			</tr>
+			<!-- 구매후기 리스트 -->
+<%			
+			List<WatTimeReviewDTO> reviewList = null;
+				//getProductList()메소드에 brand, type, startRow, pageSize넘겨 sql문 실행
+			reviewList = reviewDAO.getReviewList(productCode, sort, startRow, pageSize);
+			for(int i = 0 ; i < reviewList.size() ; i++){
+				reviewDTO = reviewList.get(i);
+				//별점 숫자를 텍스트로 바꾸기
+				String star = "";
+				if(reviewDTO.getReviewScore() == 1){
+					star="★";
+				}else if(reviewDTO.getReviewScore() == 2){
+					star="★★";
+				}else if(reviewDTO.getReviewScore() == 3){
+					star="★★★";
+				}else if(reviewDTO.getReviewScore() == 4){
+					star="★★★★";
+				}else{
+					star="★★★★★";
+				}
+				if(modify != reviewDTO.getNum()){
 %>
-               <tr>
-                  <td colspan="2">
-                     <br>
-                     작성자 : <%=reviewDTO.getMemName()+"      "%>작성일 : <%=sf.format(reviewDTO.getReg_date())+"      "%><br>
-<%               
-                     //session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
-                     if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(reviewDTO.getMemId()) ||memberDTO.getMemAdmin() == 1)){
-%>                  
-                     
-                        <input type="button" id="modify"  class="specBtn" name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
-                        <input type="button" id="delete"  class="specBtn" name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
+					<tr>
+						<td colspan="2" class="reviewComent">
+							
+							작성자 : <%=reviewDTO.getMemName()%>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							작성일 : <%=sf.format(reviewDTO.getReg_date())+"      "%><br>
+<%					
+							//session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
+							if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(reviewDTO.getMemId()) ||memberDTO.getMemAdmin() == 1)){
+%>						
+							
+								<input type="button" id="modify"   name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
+								<input type="button" id="delete"   name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
 <%
-                     }
-%>                  
-                     별점 : <%=star %><br><pre><%=reviewDTO.getReviewContent() %></pre>
-                     <br>
-                  </td>
-               </tr>
+							}
+%>						
+							<pre><p>별점 : <font color="red"><%=star %></font></p><br><%=reviewDTO.getReviewContent() %></pre>
+							<br>
+						</td>
+					</tr>
 <%
             }else{
 %>

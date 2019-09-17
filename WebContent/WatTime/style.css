@@ -1330,6 +1330,71 @@ font-size: 20px;
 #howService th, #howService td{
 	margin: 10px;
 	 border-bottom:1px solid gray;
+}
+.reviewComent pre{
+	display: inline-block;
+    width: 700px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.reviewComent{
+	width:650px;
+}
+.spec pre p{
+	    font-size: 23px;
+    text-align: center;
+}
+#modify,#delete {
+	display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+#modify:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+				}
+#delete:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+				}
+.reviewScore{
+	width:500px;
+}
+#productReview{
+	font-family: initial;
+    font-size: 18px;
+    width: 600px;
+    height: 120px;
+}
+
+#reviewRegistration{
+	display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+#reviewRegistration:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+				}
+.reviewAvgScore{
 	
 }
 /* -----------------product -----------------*/
