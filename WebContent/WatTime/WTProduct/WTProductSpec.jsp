@@ -218,22 +218,22 @@
 			}
 %>
 			
-			<tr >
-				<td rowspan="5">
-					평점: <%=Math.round(scoreAvg*100)/100.0 %>점
-				</td>
+			<tr class="reviewAvgScore">
+				<td rowspan="6"><div> 평균 평점: <%=Math.round(scoreAvg*100)/100.0 %>점</div></td>
+			</tr>
+			<tr class="reviewScore">
 				<td>1점 : <%=Math.round(score1) %>명</td>
 			</tr>
-			<tr>
+			<tr class="reviewScore">
 				<td>2점 : <%=Math.round(score2) %>명</td>
 			</tr>
-			<tr>
+			<tr class="reviewScore">
 				<td>3점 : <%=Math.round(score3) %>명</td>
 			</tr>
-			<tr>
+			<tr class="reviewScore">
 				<td>4점 : <%=Math.round(score4) %>명</td>
 			</tr>
-			<tr>
+			<tr class="reviewScore">
 				<td>5점 : <%=Math.round(score5) %>명</td>
 			</tr>
 			<!-- 구매후기 작성 -->
@@ -258,7 +258,8 @@
 				
 			<tr>
 				<a id="review"></a>
-				<td colspan="2">구매후기 <%=count %>개</td>
+				
+				<td colspan="2" style="border-top:1px solid gray">구매후기 <%=count %>개</td>
 			</tr>
 			<!-- 정렬 -->
 			<tr>
@@ -290,20 +291,22 @@
 				if(modify != reviewDTO.getNum()){
 %>
 					<tr>
-						<td colspan="2">
-							<br>
-							작성자 : <%=reviewDTO.getMemName()+"      "%>작성일 : <%=sf.format(reviewDTO.getReg_date())+"      "%><br>
+						<td colspan="2" class="reviewComent">
+							
+							작성자 : <%=reviewDTO.getMemName()%>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							작성일 : <%=sf.format(reviewDTO.getReg_date())+"      "%><br>
 <%					
 							//session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
 							if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(reviewDTO.getMemId()) ||memberDTO.getMemAdmin() == 1)){
 %>						
 							
-								<input type="button" id="modify"  class="specBtn" name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
-								<input type="button" id="delete"  class="specBtn" name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
+								<input type="button" id="modify"   name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
+								<input type="button" id="delete"   name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
 <%
 							}
 %>						
-							별점 : <%=star %><br><pre><%=reviewDTO.getReviewContent() %></pre>
+							<pre><p>별점 : <font color="red"><%=star %></font></p><br><%=reviewDTO.getReviewContent() %></pre>
 							<br>
 						</td>
 					</tr>
