@@ -1396,7 +1396,74 @@ font-size: 20px;
 				background-color:#D8D8D8;
 			    color:#000; 
 				}
-.reviewAvgScore{
-	
-}
+
 /* -----------------product -----------------*/
+
+/* -----------------FAQ -----------------*/
+
+.faqBar{
+	margin: 30px auto;
+    text-align: right;
+    width: 1300px;
+}
+.faqBar  input[type=button]{
+	background-color: #000;
+    border: none;
+    color: #fff;
+    width: 190px;
+    height: 27px;
+    font-size: 20px;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+
+.faqBar  input[type=button]:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+				}
+
+.tab_area{
+	
+	width: 1300px;
+	margin: 0 auto;
+}
+.tab li{
+    text-align: center;
+    height: 40px;
+    width: 157px;
+    font-size: 20px;
+    display: inline-block;
+    margin: 10px auto;
+   transition: background-color 0.5s, font-size 0.7s, transform 5s;
+    padding: 0;
+    line-height: 37px;
+}
+.tab li a{
+text-decoration:none ; color:#000000
+}
+.tab li:hover{
+	background-color:#D8D8D8;
+			    color:#000; 
+}
+#faqMainBar{
+	    display: table-cell;
+}
+.panel dl dt{
+	font-size: 20px;
+    margin-top: 20px;
+    font-family: sans-serif;
+}
+/* -----------------FAQ -----------------*/
+
+/* -----------------notice -----------------*/
+.noticeTable{
+	width:1300px;
+	margin:0px auto;
+}
+.noticeTable table{
+	margin:30px auto;
+}
+.noticeTable input[type=button]{
+	dispaly:inline-block;
+	margin:10px auto;
+}
+/* -----------------notice -----------------*/

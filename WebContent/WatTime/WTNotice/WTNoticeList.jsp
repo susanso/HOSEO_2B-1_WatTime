@@ -8,9 +8,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href = "style.css	" rel = "stylesheet" type = "text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language = "JavaScript" src = "WTNotice/js/WTNoticeList.js"></script>
-<title>Insert title here</title>
+
 <%
 	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	
@@ -35,14 +36,17 @@
     noticeList = noticeDAO.getNoticeList(startRow, endRow);
 %>
 </head>
-<body>
-	<div>
-		<input type="button" id="faq" name="faq" value="FAQ" onclick="FAQPage()">
-		<input type="button" id="notice" name="notice" value="공지사항" onclick="noticePage()">
-		<input type="button" id="review" name="review" value="구매후기" onclick="reviewPage()">
+<body >
+	<div style=" line-height: 90px ;margin:0 auto; width:1300px ; font-size:50px; height:90px;font-family: 'Roboto', sans-serif; border-top:1px solid gray; border-bottom:1px solid gray;" >
+		<div id="faqMainBar">Notice</div>
+		<div id="faqMainBar"  class="faqBar">
+			<input type="button" id="faq" name="faq" value="FAQ" onclick="FAQPage()">
+			<input type="button" id="notice" name="notice" value="공지사항" onclick="noticePage()">
+			<input type="button" id="review" name="review" value="구매후기" onclick="reviewPage()">
+		</div>
 	</div>
-	<input type="button" value="글쓰기" onclick="noticeWriteForm()">
-	<table border="1">
+	<div class="noticeTable">
+	<table border="1" style="border-collapse: collapse;">
 		<th width="50px">번호</th>
 		<th width="500px">제목</th>
 		<th width="150px">작성자</th>
@@ -108,5 +112,8 @@
         }
     }
 %>
+<input type="button" value="글쓰기" onclick="noticeWriteForm()">
+</div>
+
 </body>
 </html>

@@ -55,10 +55,10 @@
 %>
 	
 			<li class="productLi" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
-				<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" ></div>
-				<div><%=productDTO.getProductName() %></div>
-				<div><font color="#ccc" ><b><STRIKE><%=productDTO.getProductOriginalPrice() %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
-				<div><%=productDTO.getProductPrice() %>원</div>
+				<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300" ></div>
+				<div><h3><%=productDTO.getProductName() %></h3></div>
+				<div><font color="#FA5858" ><b><STRIKE><%=productDTO.getProductOriginalPrice() %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
+				<div><font size="5px"><%=productDTO.getProductPrice() %>원</font></div>
 			</li>
 	
 <%
