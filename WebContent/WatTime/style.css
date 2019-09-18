@@ -1394,76 +1394,74 @@ font-size: 20px;
 				background-color:#D8D8D8;
 			    color:#000; 
 				}
-.reviewAvgScore{
-	
-}
+
 /* -----------------product -----------------*/
-/* 커뮤니티 게시판 리스트*/
-#aa #comunicationList,th{
-	height:50px;
-	border:0;
-	border-collapse: collapse;
-	border-bottom: 1px solid gray;
-}
-#aa td{
-	height:50px;
-	border:0;
-	border-collapse: collapse;
-	border-bottom: 1px solid gray;
-}
 
-#aa tr{
-	height:50px;
-	border:0;
-	border-collapse: collapse;
-	border-bottom: 1px solid gray;
-}
-/* 커뮤니티 게시판 상세 폼*/
-#comunicationForm{
+/* -----------------FAQ -----------------*/
+
+.faqBar{
 	margin: 30px auto;
-	width:1300px;
+    text-align: right;
+    width: 1300px;
 }
-.reComment{
-	border-top:1px solid gray;
-}
-#comunicationForm table{
-	width:1300px;
-	border:1px solid gray;
-	border-collapse: collapse;
-	table-layout: fixed;
-	
-}
-#comunicationForm tr{
-	border:1px solid gray;
-	padding:10px;
-	
-
-}
-#comunicationForm td{
-	padding:10px;
-	border:1px solid gray;
-}
-#comunicationContent{
-	padding:10px;
-	word-break:break-all;
-}
-.text1{
-	width: 96.8%;
-	height: 200px;	
+.faqBar  input[type=button]{
+	background-color: #000;
+    border: none;
+    color: #fff;
+    width: 190px;
+    height: 27px;
+    font-size: 20px;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
 
-.reContentImg{
-	float:left;
+.faqBar  input[type=button]:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+				}
+
+.tab_area{
+	
+	width: 1300px;
+	margin: 0 auto;
 }
-.commentPre{
-	white-space:pre-line;
+.tab li{
+    text-align: center;
+    height: 40px;
+    width: 157px;
+    font-size: 20px;
+    display: inline-block;
+    margin: 10px auto;
+   transition: background-color 0.5s, font-size 0.7s, transform 5s;
+    padding: 0;
+    line-height: 37px;
 }
-/*구매후기*/
-#productReview{
-	display: inline-block;
+.tab li a{
+text-decoration:none ; color:#000000
+}
+.tab li:hover{
+	background-color:#D8D8D8;
+			    color:#000; 
+}
+#faqMainBar{
+	    display: table-cell;
+}
+.panel dl dt{
+	font-size: 20px;
+    margin-top: 20px;
+    font-family: sans-serif;
+}
+/* -----------------FAQ -----------------*/
+
+/* -----------------notice -----------------*/
+.noticeTable{
 	width:1300px;
+	margin:0px auto;
 }
-#productReviewTable{
-	width:1300px;
-	margin: 30px auto;
+.noticeTable table{
+	margin:30px auto;
 }
+.noticeTable input[type=button]{
+	dispaly:inline-block;
+	margin:10px auto;
+}
+/* -----------------notice -----------------*/

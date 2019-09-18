@@ -4,28 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link href = "style.css	" rel = "stylesheet" type = "text/css">
 <script language = "JavaScript" src = "WTCustomerService/js/WTFAQ.js"></script>
 </head>
 <body>
-	<div>
-		<input type="button" id="faq" name="faq" value="FAQ" onclick="FAQPage()">
-		<input type="button" id="notice" name="notice" value="공지사항" onclick="noticePage()">
-		<input type="button" id="review" name="review" value="구매후기" onclick="reviewPage()">
-	</div>
-	<div>
-		FAQ
+	
+	<div style=" line-height: 90px ;margin:0 auto; width:1300px ; font-size:50px; height:90px;font-family: 'Roboto', sans-serif; border-top:1px solid gray; border-bottom:1px solid gray;">
+		<div id="faqMainBar">FAQ </div>
+		<div id="faqMainBar" class="faqBar">
+			<input type="button" id="faq" name="faq" value="FAQ" onclick="FAQPage()">
+			<input type="button" id="notice" name="notice" value="공지사항" onclick="noticePage()">
+			<input type="button" id="review" name="review" value="구매후기" onclick="reviewPage()">
+		</div>
 	</div>
 	<div class="tab_area">
     <ul class="tab">
-      <li class="on"><a href="#panel1" class="">자주묻는질문</a></li>
+      <li><a href="#panel1" class="">자주묻는질문</a></li>
       <li><a href="#panel2" class="">주문/결제</a></li>
       <li><a href="#panel3" class="">배송문의</a></li>
       <li><a href="#panel4" class="">교환반품</a></li>
       <li><a href="#panel5" class="">변경/취소</a></li>
+      
       <li><a href="#panel6" class="">회원/적립금/쿠폰</a></li>
       <li><a href="#panel7" class="">A/S</a></li>
-      <li><a href="#panel8" class="on">상품문의</a></li>
+      <li><a href="#panel8" class="">상품문의</a></li>
     </ul>
     <!-- 자주묻는질문 -->
     <div class="panel" id="panel1">
