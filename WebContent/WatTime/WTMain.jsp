@@ -10,7 +10,7 @@
 <%
 	//컨텐트 부분에 바뀔 jsp을 넣는 변수
        String content = request.getParameter("pageChange");
-		//메인 초기화면
+		//메인 초기
        if (content == null) {
 			content = "WTContent.jsp";
        }
