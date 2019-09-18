@@ -78,7 +78,9 @@
 			}
 		}
 %>
+		<input type="button" value="글쓰기" onclick="noticeWriteForm()">
 	</table>
+	<div class="move">
 <%
 	//테이블의 행이 0 초과일 경우
 	if (count > 0) {
@@ -97,28 +99,29 @@
 		}
         if (startPage > 5) {
 %>
-			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>')">
+			<input type="button" id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>')">
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
         	if(i==pageNum){
 %>
-        		<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value)">
+        		<input type="button" id="nowPageNum" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value)">
 <%      	
 			}else{
 %>
-				<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value)">
+				<input type="button" id="PageNum" name="pageNum" value="<%=i %>" onclick="pageNum(this.value)">
 <%
 			}
 		}
         
         if (endPage < pageCount) {  %>
-        	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>')">
+        	<input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>')">
 <%
         }
     }
 %>
-<input type="button" value="글쓰기" onclick="noticeWriteForm()">
+</div>
+
 </div>
 
 </body>

@@ -22,5 +22,8 @@
 		<jsp:include page="<%=content%>" flush="false"/>
 		<jsp:include page="<%=bottom%>" flush="false"/>
 	</div>
+	<div>
+		<jsp:include page="chatbot.jsp" flush="false"/>
+	</div>
 </body>
 </html>

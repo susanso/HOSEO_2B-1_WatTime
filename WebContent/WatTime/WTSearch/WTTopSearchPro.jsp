@@ -53,7 +53,7 @@
 			productDTO = productList.get(i);
 %>
 			<li class="productLi" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
-				<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300" ></div>
+				<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="300px" height="300px" ></div>
 				<div><h3><%=productDTO.getProductName() %></h3></div>
 				<div><font color="#FA5858" ><b><STRIKE><%=productDTO.getProductOriginalPrice() %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
 				<div><font size="5px"><%=productDTO.getProductPrice() %>원</font></div>
@@ -80,23 +80,23 @@ if (count > 0) {
 	}
 	if (startPage > 5) { 
 %>
-			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=searchText%>','<%=sort%>')">
+			<input type="button" id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=searchText%>','<%=sort%>')">
 <%      
 		}
 	for (int i = startPage ; i <= endPage ; i++) { 
 		if(i==pageNum){
 %>
-			<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=searchText%>','<%=sort%>')">
+			<input type="button" id="nowPageNum" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=searchText%>','<%=sort%>')">
 <%
 		}else{
 %>
-			<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=searchText%>','<%=sort%>')">
+			<input type="button" id="PageNum" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=searchText%>','<%=sort%>')">
 <%      
 		}
 	}
         
         if (endPage < pageCount) {  %>
-        	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=searchText%>','<%=sort%>')">
+        	<input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=searchText%>','<%=sort%>')">
 <%
         }
 }

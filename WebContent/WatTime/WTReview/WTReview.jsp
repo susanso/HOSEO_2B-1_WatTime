@@ -44,7 +44,6 @@
     reviewList = reviewDAO.getReviewAllList(sort,startRow, pageSize);
 %>
 <body>
-	<div id="productReview">
 	<table border="1" id="productReviewTable">
 		<tr>
 			<td>
@@ -55,10 +54,15 @@
 					<option value="30">30개씩 보기</option>
 				</select>	
 			</td>
-			<td colspan="2">
+			<td colspan="2" style="text-align:right;">
 				<input type="button" id="reviewLastestSort" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=pageNum%>','<%=listCount%>')">
 				<input type="button" id="reviewScoreSort" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=pageNum%>','<%=listCount%>')">
 			</td>
+		</tr>
+		<tr style="text-align:center;">
+			<td class="reviewReview">이미지</td>
+			<td class="reviewReview">내용</td>
+			<td class="reviewReview">작성자/작성일</td>
 		</tr>
 		
 <%
@@ -78,15 +82,15 @@
 			}
 %>
 			<tr id = "<%=reviewDTO.getProductCode()%>"onclick="productSpecPage(this.id)">
-				<td>
+				<td width="200px">
 					<img src="..\img\brand\<%=reviewDTO.getProductSimpleImgFileName()%>" width="200px" height="200px">
 				</td>
-				<td>
+				<td width="900px">
 					<%=reviewDTO.getProductName() %><br>
 					<%=star %><br>
-					<%=reviewDTO.getReviewContent() %>
+					<pre id="reviewContent"><%=reviewDTO.getReviewContent() %></pre>
 				</td>
-				<td>
+				<td width="200px" style="text-align:center;">
 					<%=reviewDTO.getMemName() %><br>
 					<%=sf.format(reviewDTO.getReg_date()) %>
 				</td>
@@ -95,6 +99,7 @@
 		}
 %>
 	</table>
+	<div class="move">
 <%
 	if (count > 0) {
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -112,22 +117,25 @@
 	}
     if (startPage > 5) {
 %>
-		<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>','<%=sort%>')">
+		<input type="button" id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>','<%=sort%>')">
 <%      
 	}
     	for (int i = startPage ; i <= endPage ; i++) { 
     		if(i==pageNum){
 %>
-				<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>','<%=sort%>')">
+			
+				<input type="button" id="nowPageNum" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>','<%=sort%>')">
 <%
 			}else{
 %>
-    		<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>','<%=sort%>')">
+    			<input type="button" id="PageNum" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>','<%=sort%>')">
+    			
 <%      
 			}
     	}
-       if (endPage < pageCount) {  %>
-       	<input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount %>','<%=sort%>')">
+      		 if (endPage < pageCount) {  %>
+       		<input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount %>','<%=sort%>')">
+       		
 <%
         }
     }

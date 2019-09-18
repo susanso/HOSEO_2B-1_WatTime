@@ -24,7 +24,7 @@
 <%
       SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
       DecimalFormat df = new DecimalFormat("#,###");
-      String pageNum = request.getParameter("pageNum");
+      int pageNum = Integer.parseInt(request.getParameter("pageNum"));
       String productCode = request.getParameter("productCode");
       productCode = new String(productCode.getBytes("8859_1"), "utf-8");
       int modify = Integer.parseInt(request.getParameter("modify"));
@@ -38,7 +38,7 @@
       
       int pageSize = 10;
       //URL에서 가져온 페이지 번호를 int 형으로 변환 시키고 넣음
-      int currentPage = Integer.parseInt(pageNum);
+      int currentPage = pageNum;
       //처음 초기 페이지 번호 (최대 페이지를 10으로 설정하면 1, 11, 21)
        int startRow = (currentPage - 1) * pageSize + 1;
       //끝 페이지 번호 (최대 페이지를 10으로 설정하면 10, 20, 30)
@@ -306,7 +306,7 @@
 <%
 							}
 %>						
-							<pre><p>별점 : <font color="red"><%=star %></font></p><br><%=reviewDTO.getReviewContent() %></pre>
+							<pre id="productReview"><p>별점 : <font color="red"><%=star %></font></p><br><%=reviewDTO.getReviewContent() %></pre>
 							<br>
 						</td>
 					</tr>
@@ -336,7 +336,7 @@
             
    </table>
 </form>
-         
+	<div class="move">
 <%
 			if (count > 0) {
 				int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -354,21 +354,27 @@
 				}
 			   if (startPage > 5) {
 %>
-                  <input type="button"  name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
+                  <input type="button"  id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
 <%      
                }
-                 for (int i = startPage ; i <= endPage ; i++) {  
-%>                     <!--  -->
-                    <input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=modify%>','<%=productCode%>','<%=sort%>')">
+                 for (int i = startPage ; i <= endPage ; i++) { 
+                	 if(i==pageNum){
+%>
+						<input type="button" id="nowPageNum" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=modify%>','<%=productCode%>','<%=sort%>')">
+<%
+					 }else{
+%>
+                   		<input type="button" id="PageNum" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=modify%>','<%=productCode%>','<%=sort%>')">
 <%      
-               }
+					 }
+				}
         
                  if (endPage < pageCount) {  %>
-                    <input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
+                    <input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=modify%>','<%=productCode%>','<%=sort%>')">
 <%
                     }
                 }
 %>
-   
+   </div>
 </body>
 </html>
