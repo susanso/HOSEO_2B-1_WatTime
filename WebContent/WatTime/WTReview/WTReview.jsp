@@ -44,7 +44,8 @@
     reviewList = reviewDAO.getReviewAllList(sort,startRow, pageSize);
 %>
 <body>
-	<table border="1">
+	<div id="productReview">
+	<table border="1" id="productReviewTable">
 		<tr>
 			<td>
 				<select onchange="reviewListCount(this.options[this.selectedIndex].value,'<%=sort%>')">
@@ -78,7 +79,7 @@
 %>
 			<tr id = "<%=reviewDTO.getProductCode()%>"onclick="productSpecPage(this.id)">
 				<td>
-					<img src="..\img\brand\<%=reviewDTO.getProductSimpleImgFileName()%>" width="40" height="40">
+					<img src="..\img\brand\<%=reviewDTO.getProductSimpleImgFileName()%>" width="200px" height="200px">
 				</td>
 				<td>
 					<%=reviewDTO.getProductName() %><br>
@@ -131,5 +132,6 @@
         }
     }
 %>
+</div>
 </body>
 </html>

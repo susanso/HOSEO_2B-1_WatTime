@@ -1458,3 +1458,12 @@ font-size: 20px;
 .commentPre{
 	white-space:pre-line;
 }
+/*구매후기*/
+#productReview{
+	display: inline-block;
+	width:1300px;
+}
+#productReviewTable{
+	width:1300px;
+	margin: 30px auto;
+}
