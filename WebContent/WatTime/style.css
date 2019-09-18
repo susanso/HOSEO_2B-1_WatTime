@@ -50,7 +50,18 @@ TID2               스페라
 * {margin:0; padding:0;}
 /*main페이지 출현*/
 #mainTop{width:100%;}
+.pageTopBtn{
+	position: fixed;
+    bottom:20px;
+    right:180px;
+	width:60px;
+	height:60px;
+}
+
 /*main페이지 출현*/
+html{
+	scroll-behavior: smooth;
+}
 .mainForm{
    margin: auto;
    padding:0px;
@@ -1173,13 +1184,13 @@ height:50px;
 }
 #PageNum{
 	
-	background-color:#fff;
+	background-color: #fff;
     background-image: none !important;
     border-color: transparent;
     border: none;
-    margin:5px;
-    width: 20px;
-    height: 20px;
+    margin: 5px;
+    width: 35px;
+    height: 27px;
     font-size: 15px;
     transition: background-color 0.5s, transform 5s;
     color: #000;
@@ -1189,8 +1200,8 @@ height:50px;
 	border: none;
 	color: white;
     margin:5px;
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 27px;
     font-size: 15px;
 			}
 
@@ -1458,16 +1469,19 @@ text-decoration:none ; color:#000000
 
 /* -----------------notice -----------------*/
 .noticeTable{
-	width:1300px;
-	margin:0px auto;
+	width: 1300px;
+    margin: 0px auto;
+    text-align: center;
 }
 .noticeTable table{
 	margin:30px auto;
 }
 .noticeTable input[type=button]{
-	dispaly:inline-block;
+	
 	margin:10px auto;
+	
 }
+
 /* -----------------notice -----------------*/
 
 /*---------------------------구매후기 리스트------------------*/
