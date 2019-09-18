@@ -50,7 +50,18 @@ TID2               스페라
 * {margin:0; padding:0;}
 /*main페이지 출현*/
 #mainTop{width:100%;}
+.pageTopBtn{
+	position: fixed;
+    bottom:20px;
+    right:180px;
+	width:60px;
+	height:60px;
+}
+
 /*main페이지 출현*/
+html{
+	scroll-behavior: smooth;
+}
 .mainForm{
    margin: auto;
    padding:0px;

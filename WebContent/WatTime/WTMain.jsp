@@ -22,5 +22,8 @@
 		<jsp:include page="<%=content%>" flush="false"/>
 		<jsp:include page="<%=bottom%>" flush="false"/>
 	</div>
+	<div class="pageTopBtn" >
+	<a href="#top"><img src="img/top.png" alt="top" width="60px" height="60px" ></a>
+	</div>
 </body>
 </html>
