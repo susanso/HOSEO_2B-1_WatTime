@@ -1342,18 +1342,22 @@ font-size: 20px;
 	margin: 10px;
 	 border-bottom:1px solid gray;
 }
-.reviewComent pre{
+#productReview{
 	display: inline-block;
     width: 700px;
     padding: 10px;
     border: 1px solid gray;
     border-collapse: collapse;
     text-align: left;
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 30px;
+    white-space:pre-line;
+    font-family:bold;
+    background-color: #ECECEB;
 }
 .reviewComent{
 	width:650px;
+	border:1px solid gray;
 }
 .spec pre p{
 	    font-size: 23px;
@@ -1479,3 +1483,94 @@ text-decoration:none ; color:#000000
 }
 
 /* -----------------notice -----------------*/
+
+/*---------------------------구매후기 리스트------------------*/
+
+#productReviewTable{
+	width:1300px;
+	margin:30px auto;
+	border-collapse: collapse;
+}
+.reviewReview{
+	padding:20px;
+}
+#reviewContent{
+	white-space:pre-line;
+}
+
+/*------------------------커뮤니티 게시판----------------------*/
+#comunicationList{
+	border-collapse: collapse;
+	width:1300px;
+	border-top: 1px solid gray;
+	padding:10px;
+}
+.comunicationTd{
+	border-bottom: 1px solid gray;
+	padding:10px;
+}
+.comunicationTh{
+	text-align:center;
+	padding:10px;
+	border-bottom: 1px solid gray;
+}
+/*---------------------커뮤니티 게시판 폼--------------------*/
+.comunicationForm{
+	width:1300px;
+	margin:30px auto;
+	border:1px solid gray;
+	border-collapse: collapse;
+}
+.comunicationFormTr{
+	border:1px solid gray;
+}
+.comunicationFormTd{
+	border: 1px solid gray;
+	white-space:pre-line;
+}
+.textarea{
+	height:150px;
+}
+.text1{
+	margin:10px;
+	height:200px;
+	width:900px;
+}
+.comunicationBtn{
+	text-align:center;
+}
+.commentPre{
+	white-space:pre-line;
+}
+#modifycencle{
+    display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+#comunicationContentTd{
+	padding:10px;
+}
+#comunicationContent{
+	font-size:20px;
+	
+}
+#commit{
+	display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+	
+}

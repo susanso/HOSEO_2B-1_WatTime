@@ -55,11 +55,11 @@
 			<option value="20">20개씩 보기</option>
 			<option value="30">30개씩 보기</option>
 		</select>
-		<table id="comunicationList" style="width:1300px; border-top: 1px solid gray;">
-			<th width="50px" style="text-align:center;">번호</th>
-			<th width="900px" style="text-align:center;">제목</th>
-			<th width="150px" style="text-align:center;">작성자</th>
-			<th width="200px" style="text-align:center;">작성일</th>
+		<table id="comunicationList">
+			<th width="100px" class="comunicationTh">번호</th>
+			<th width="850px" class="comunicationTh">제목</th>
+			<th width="150px" class="comunicationTh">작성자</th>
+			<th width="200px" class="comunicationTh">작성일</th>
 <%
 			comunicationList = comunicationDAO.getComunicationRecommendationList();
 			for (int i = 0 ; i < comunicationList.size() ; i++) {
@@ -67,17 +67,17 @@
 %>
 				<tr onclick="comunicationForm('<%=comunicationDTO.getNum() %>','<%=comunicationDTO.getMemId()%>','<%=pageNum%>','<%=listCount%>')">
 					
-						<td class="comunitiNum" style="text-align:center;"><strong>추천</strong></td>
+						<td class="comunicationTd" style="text-align:center;"><strong>추천</strong></td>
 						<!-- 게시글 제목 -->
-						<td style="padding-left:20px;">
+						<td class="comunicationTd" style="padding-left:20px;">
 			  				<strong><%=comunicationDTO.getTitle() %></strong>
 		  				</td>
 		  				<!-- 게시글 작성자 -->
-						<td style="text-align:center;">
+						<td class="comunicationTd" style="text-align:center;">
 							<strong><%=comunicationDTO.getMemName() %></strong>
 						</td>
 						<!-- 게시글 작성일 -->
-						<td style="text-align:center;">
+						<td class="comunicationTd" style="text-align:center;">
 							<strong><%=sf.format(comunicationDTO.getWriteDate()) %></strong>
 						</td>
 				</tr>
@@ -91,7 +91,7 @@
 %>
 			<tr onclick="comunicationForm('<%=comunicationDTO.getNum() %>','<%=comunicationDTO.getMemId()%>','<%=pageNum%>','<%=listCount%>')">
 				<!-- 게시글 번호 -->
-				<td class="comunitiNum" style="text-align:center;">
+				<td class="comunicationTd" style="text-align:center;">
 					<%=comunicationDTO.getNum() %>
 				</td>
 <%
@@ -100,7 +100,7 @@
 				   wid=5*(comunicationDTO.getRe_level());
 %>
 					<!-- 게시글 제목 -->
-					<td style="padding-left:20px;">
+					<td class="comunicationTd" style="padding-left:20px;">
 						<img src="img/comu/level.png" width="<%=wid%>" height="16">
 		  				<img src="img/comu//re.png">
 		  				<%=comunicationDTO.getTitle() %>
@@ -109,18 +109,18 @@
 				}else{
 %>
 					<!-- 게시글 제목 -->
-					<td style="padding-left:20px;">
+					<td class="comunicationTd" style="padding-left:20px;">
 		  				<%=comunicationDTO.getTitle() %>
 	  				</td>
 <%
 				}
 %>
 				<!-- 게시글 작성자 -->
-				<td style="text-align:center;">
+				<td class="comunicationTd"  style="text-align:center;">
 					<%=comunicationDTO.getMemName() %>
 				</td>
 				<!-- 게시글 작성일 -->
-				<td style="text-align:center;">
+				<td class="comunicationTd" style="text-align:center;">
 					<%=sf.format(comunicationDTO.getWriteDate()) %>
 				</td>
 			</tr>
@@ -139,6 +139,7 @@
 %>
 		</tr>
 	</table>
+	<div class="move">
 <%
 	}//--count !=0 else 
 
@@ -158,7 +159,7 @@
 		}
         if (startPage > 5) {
 %>
-			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>')">
+			<input type="button" id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>')">
 <%      
 	}
     	for (int i = startPage ; i <= endPage ; i++) {  
@@ -168,17 +169,18 @@
 <%
 			}else{
 %>
-    			<input type="button" name="pageNum" id="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
+    			<input type="button" name="pageNum" id="PageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount %>')">
 <%      
 			}
 		}
     
        if (endPage < pageCount) {  %>
-       		<input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount %>')">
+       		<input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount %>')">
 <%
         }
     }
 %>
+	</div>
 	<br>
 	<select id="select">
 		<option value="title">제목</option>

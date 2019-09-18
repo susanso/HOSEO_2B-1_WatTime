@@ -44,33 +44,33 @@
 </head>
 <body>
 	<div id="comunicationForm">
-		<table border="0">
-			<tr >
-				<td width="150px" style="text-align:center;">제목</td>
-				<td colspan="6" style="text-align:center;"><%=comunicationDTO.getTitle() %></td>
+		<table class="comunicationForm">
+			<tr class="comunicationFormTr">
+				<td class="comunicationFormTd" width="150px" style="text-align:center;">제목</td>
+				<td class="comunicationFormTd" colspan="6" style="text-align:center;"><%=comunicationDTO.getTitle() %></td>
 			</tr>
-			<tr>
-				<td width="150px" style="text-align:center;">작성자</td>
-				<td style="text-align:center;"><%=comunicationDTO.getMemName() %></td>
-				<td width="150px" style="text-align:center;">작성일</td>
-				<td colspan="1" style="text-align:center;"><%=comunicationDTO.getWriteDate() %></td>
-				<td width="150px" style="text-align:center;">조회수</td>
-				<td colspan="2" style="text-align:center;"><%=comunicationDTO.getReadCount() %></td>
+			<tr class="comunicationFormTr">
+				<td class="comunicationFormTd" width="150px" style="text-align:center;">작성자</td>
+				<td class="comunicationFormTd" style="text-align:center;" width="200px"><%=comunicationDTO.getMemName() %></td>
+				<td class="comunicationFormTd" width="150px" style="text-align:center;">작성일</td>
+				<td class="comunicationFormTd" colspan="1" style="text-align:center;" width="350px"><%=comunicationDTO.getWriteDate() %></td>
+				<td class="comunicationFormTd" width="150px" style="text-align:center;">조회수</td>
+				<td class="comunicationFormTd" colspan="2" style="text-align:center;" width="300px"><%=comunicationDTO.getReadCount() %></td>
 			</tr>
-			<tr>
-				<td id="comunicationContent" colspan="7" height="500px" width="300px">
-					<%=comunicationDTO.getContent()%>
+			<tr class="comunicationFormTr">
+				<td id="comunicationContentTd" colspan="7" height="500px" width="300px">
+<pre id="comunicationContent"><%=comunicationDTO.getContent()%></pre>
 				</td>
 			</tr>
-			<tr>
+			<tr class="comunicationFormTr">
 <%
 				if(comunicationDTO.getPhoto1()!=null &&(comunicationDTO.getPhoto1().indexOf(".png")!=-1||comunicationDTO.getPhoto1().indexOf(".jpg")!=-1)){
 %>
-					<td colspan="6">
+					<td colspan="2" width="200px">
 						사진<br>
 						(사진을 클릭하면 원본 크기로 볼 수 있습니다.)
 					</td>
-					<td>
+					<td class="comunicationFormTd" width="1100px" colspan="5">
 						<img src="..\img\comunication\<%=comunicationDTO.getPhoto1() %>" width="100" height="100"  onclick="fnImgPop(this.src)">
 <%
 				}
@@ -97,7 +97,7 @@
 	%>				
 					</td>
 			</tr>
-			<tr>
+			<tr class="comunicationFormTr">
 				<td colspan="7">
 	<%
 					if(log!="no"&&memberDTO.getMemId().equals(comunicationDTO.getMemId())){
@@ -144,19 +144,19 @@
 		    
 		    commentsList = commentsDAO.getCommentsList(boardNum, startRow, pageSize);
 	%>
-			<tr>
+			<tr class="comunicationFormTr">
 				<td colspan="7">
 					댓글 : <%=count %>개
 					<input type="button" name="recommend" value="추천   <%=comunicationDTO.getRecommend()%>" onclick="recommend('<%=log %>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 					<input type="button" name="unrecommend" value="비추천   <%=comunicationDTO.getUnrecommend()%>" onclick="unrecommend('<%=log %>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 				</td>
 			</tr>
-			<tr>
+			<tr class="comunicationFormTr">
 				<td colspan="6">
 					<textarea name = "comment" id="comment" class="text1"></textarea><br>
 				</td>
-				<td>
-					<input type="button" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',comment.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
+				<td class="comunicationFormTd">
+					<input type="button" class="comunicationBtn" id="modify" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',comment.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
 				</td>
 			</tr>
 	<%
@@ -166,12 +166,11 @@
 				if(modify != commentsDTO.getNum()){
 					int wid=0; 
 					if(commentsDTO.getRe_level()>0){
-					   wid=30*(commentsDTO.getRe_level());
+					   wid=18*(commentsDTO.getRe_level());
 	%>
-					<tr>
+					<tr class="comunicationFormTr">
 					
 						<td colspan="7" class="textarea" style="padding-left:<%=wid%>px;">
-							<img src="img/comu/level.png" height="16">
 			  				<img src="img/comu//re.png" class="reContentImg">
 							<br>
 							작성자 : <%=commentsDTO.getMemName()+"      "%>작성일 : <%=sf.format(commentsDTO.getWriteDate())+"      "%><br>
@@ -195,16 +194,16 @@
 							</td>
 	<%
 							if(commentNum==commentsDTO.getNum()){
-							 	wid=30*(commentsDTO.getRe_level()+1);
+							 	wid=18*(commentsDTO.getRe_level()+1);
 	%>				
-								<tr>
+								<tr class="comunicationFormTr">
 									<td colspan="6" style="padding-left:<%=wid%>px;">
-										<img src="img/comu/level.png" height="16">
 			  							<img src="img/comu//re.png" class="reContentImg">
 										<textarea class="text1" name = "commentReply" id="commentReply"></textarea><br>
 									</td>
-									<td>
-										<input type="button" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',commentReply.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
+									<td class="comunicationFormTd">
+										<input type="button" id="commit" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',commentReply.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
+										<input type="button" id="modifycencle" value = "취소" onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 									</td>
 								</tr>
 							
@@ -214,7 +213,7 @@
 							}
 					}else{
 	%>
-						<tr>
+						<tr class="comunicationFormTr">
 							<td colspan="7" class="textarea" style="padding-left:<%=wid%>px;">
 								<br>
 								작성자 : <%=commentsDTO.getMemName()+"      "%>작성일 : <%=sf.format(commentsDTO.getWriteDate())+"      "%><br>
@@ -239,18 +238,19 @@
 						</tr>
 	<%
 						if(commentNum==commentsDTO.getNum()){
-							 wid=20*(commentsDTO.getRe_level()+1);
+							 wid=18*(commentsDTO.getRe_level()+1);
 	%>		
-							<tr>
+							<tr class="comunicationFormTr">
 								<td rowspan="1" id="reComment" style="padding-left:<%=wid%>px;">
-									<img src="img/comu/level.png"height="16">
-			  						<img src="img/comu//re.png" class="reContentImg">
+			  						
 								</td>
 								<td colspan="6">
+									<img src="img/comu//re.png" class="reContentImg">
 									<textarea class="text1" name = "commentReply" id="commentReply"></textarea><br>
 								</td>
-								<td>
-									<input type="button" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',commentReply.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
+								<td class="comunicationFormTd">
+									<input type="button" id="commit" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',commentReply.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
+									<input type="button" id="modifycencle" value = "취소" onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 								</td>
 							</tr>
 		<%				}
@@ -259,16 +259,15 @@
 				}else{
 					if(commentsDTO.getRe_level()>0){
 						int wid=0; 
-					 	wid=20*(commentsDTO.getRe_level());
+					 	wid=18*(commentsDTO.getRe_level());
 	
 	%>
-					<tr>
+					<tr class="comunicationFormTr">
 						<td colspan="6" style="padding-left:<%=wid%>px;">
-							<img src="img/comu/level.png" height="16">
-			  				<img src="img/comu//re.png" class="reContentImg">
-							<textarea class="textarea" name = "commentModify" id="commentModify"><%=commentsDTO.getComment() %></textarea>	
+			  				<img src="img/comu//re.png" class="reContentImg"><br>
+							<textarea class="text1" name = "commentModify" id="commentModify"><%=commentsDTO.getComment() %></textarea>	
 						</td>
-						<td>
+						<td class="comunicationFormTd">
 							<input type="button" id="modify" value = "수정하기" onclick="commentModify('<%=commentsDTO.getNum()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')"><br>
 							<input type="button" id="modifycencle" value = "취소" onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 						</td>
@@ -276,11 +275,11 @@
 	<%				
 					}else{
 	%>					
-					<tr>
+					<tr class="comunicationFormTr">
 						<td colspan="6">
 							<textarea class="text1" name = "commentModify" id="commentModify"><%=commentsDTO.getComment() %></textarea>	
 						</td>
-						<td>
+						<td class="comunicationFormTd">
 							<input type="button" id="modify" value = "수정하기" onclick="commentModify('<%=commentsDTO.getNum()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')"><br>
 							<input type="button" id="modifycencle" value = "취소" onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 						</td>
@@ -290,7 +289,7 @@
 		    }
 	%>
 		</table>
-	
+	<div class="move">
 <%
 	if (count > 0) {
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -308,7 +307,7 @@
 		}
 	    if (startPage > 5) { 
 %>
-			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+			<input type="button" id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%      
 
 	}
@@ -319,17 +318,17 @@
 <%
 			}else{
 %>
-    			<input type="button" name="pageNum" id="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+    			<input type="button" name="pageNum" id="PageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%      
 			}
     	}
        if (endPage < pageCount) {  %>
-       		<input type="button" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+       		<input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%
         }
     }
 %>
-
+	</div>
 </div>
 <script type="text/javascript">
 
