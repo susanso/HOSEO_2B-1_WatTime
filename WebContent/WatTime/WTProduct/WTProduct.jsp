@@ -38,7 +38,7 @@
 	//처음 초기 페이지 번호 (최대 페이지를 10으로 설정하면 1, 11, 21)
     int brandstartRow = (currentPage - 1) * pageSize + 1;
 	//끝 페이지 번호 (최대 페이지를 10으로 설정하면 10, 20, 30)
-    int endRow = currentPage * pageSize;
+    int endRow = pageSize;
 	//테이블에 조건에 맞는 행이 몇개인지 알아낼려는 변수
     int count = 0;
 	//???
@@ -96,9 +96,10 @@
 			<input type="button" id="newProduct" name="newProduct" value="신상품순" onclick="sort(this.name,'<%=brand%>','<%=type%>')">
 		</div>
 		<%
-	}%>
+	}
+%>
 	<ul class="productUl">
-	<% 
+<% 
 	//productList에 넣은 것을 화면에 1개씩 출력
 	for(int i = 0 ; i < productList.size() ; i++){
 		productDTO = productList.get(i);
@@ -110,7 +111,8 @@
 			<div><font size="5px"><%=df.format(productDTO.getProductPrice()) %>원</font></div>
 		</li>
 <%
-	}%>
+	}
+%>
 	</ul>
 	
 	<div class="move">
@@ -121,23 +123,23 @@
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 		int startPage = 1 ;
 		
-		if(currentPage % 10 != 0){
-			startPage = (int)(currentPage/10)*2 + 1;
+		if(currentPage % 5 != 0){
+			startPage = (int)(currentPage/5)*5 + 1;
 		}else{
-			startPage = ((int)(currentPage/10)-1)*10 + 1;
+			startPage = ((int)(currentPage/5)-1)*5 + 1;
 		}
-		int pageBlock = 10;
+		int pageBlock = 5;
 		int endPage = startPage + pageBlock - 1;
 		if (endPage > pageCount){
 			endPage = pageCount;
 		}
-        if (startPage > 10) { 
+        if (startPage > 5) { 
 %>
-			<input type="button" name="back"  value="이전" id="PageNum" onclick="back('<%=startPage - 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+			<input type="button" name="back"  value="이전" id="PageNum" onclick="back('<%=startPage - 5%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
-if(i==pageNum){
+			if(i==pageNum){
 %>
                 <input type="button" name="nowPageNum" id="nowPageNum"  value="<%=i %>" onclick="pageNum(this.value,'<%=brand%>','<%=type%>','<%=sort%>')">
 <%
@@ -148,11 +150,12 @@ if(i==pageNum){
             }
         }
         if (endPage < pageCount) {  %>
-        	<input type="button" name="back" value="다음" id="PageNum" onclick="next('<%=startPage + 10%>','<%=brand%>','<%=type%>','<%=sort%>')">
+        	<input type="button" name="back" value="다음" id="PageNum" onclick="next('<%=startPage + 5%>','<%=brand%>','<%=type%>','<%=sort%>')">
 <%
         }
     }
 %>
 </div>
+<%=currentPage % 10 %>
 </body>
 </html>

@@ -28,7 +28,42 @@ function productCountModify(memId, num){
 	
 	form.submit();
 }
-//
+//상품 클릭
+function goProduct(productCode){
+	var form = document.createElement("form");
+	form.setAttribute("charset", "UTF-8");
+	form.setAttribute("method", "Post"); // Get 또는 Post 입력
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum=1");
+
+	 
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "productCode");
+	hiddenField.setAttribute("value", productCode);
+	form.appendChild(hiddenField);
+
+	var hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "pageNum");
+	hiddenField.setAttribute("value", "1");
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "modify");
+	hiddenField.setAttribute("value", 0);
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "sort");
+	hiddenField.setAttribute("value", "reg_date DESC");
+	form.appendChild(hiddenField);
+	
+	document.body.appendChild(form);
+	
+	form.submit();
+}
 function productCountChange(productCount){
 	document.getElementById("productCountNum").value = productCount;
 }

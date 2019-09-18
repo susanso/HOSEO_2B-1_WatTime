@@ -63,9 +63,9 @@
 			basketDTO = basketList.get(i);
 			totalPrice = totalPrice + basketDTO.getProductPrice()*basketDTO.getProductCount();
 %>
-		<tr onclick="">
-			<td><img src="..\img\brand\<%=basketDTO.getProductSimpleImgFileName() %>"></td>
-			<td><%=basketDTO.getProductName() %></td>
+		<tr>
+			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><img src="..\img\brand\<%=basketDTO.getProductSimpleImgFileName() %>" width="300px" height="300px"></td>
+			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><%=basketDTO.getProductName() %></td>
 			<td><%=df.format(basketDTO.getProductPrice()*basketDTO.getProductCount()) %></td>
 			<td>
 				<input type="number" id="productCountNum" name="productCountNum" min="1" max="2147483647" value=<%=basketDTO.getProductCount() %> onchange="productCountChange(this.value)"><br>
@@ -92,7 +92,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td colspan="6">
 				<input type="button" id="basketAllDelete" value="모두 삭제" onclick="basketAllDelete('<%=basketDTO.getMemId()%>')">
 			</td>
 		</tr>

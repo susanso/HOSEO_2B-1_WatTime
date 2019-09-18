@@ -291,6 +291,9 @@ function reviewModify(productCode,reviewNum,sort){
 function basketPro(logCheck,productCount,productCode, productName, productPrice, memId, memName, fileName, tictok){
 	if(logCheck=="logno"){
 		alert("로그인을 해주세요");
+	}else if(productCount == 0){
+		alert("상품의 갯수가 0개입니다.");
+		document.getElementById("productCount").focus();
 	}else{
 		var form = document.createElement("form");
 		form.setAttribute("charset", "utf-8");

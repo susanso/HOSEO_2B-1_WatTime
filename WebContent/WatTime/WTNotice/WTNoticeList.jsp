@@ -86,7 +86,7 @@
 		int startPage = 1 ;
 		
 		if(currentPage % 5 != 0){
-			startPage = (int)(currentPage/5)*2 + 1;
+			startPage = (int)(currentPage/5)*5 + 1;
 		}else{
 			startPage = ((int)(currentPage/5)-1)*5 + 1;
 		}
@@ -95,15 +95,21 @@
 		if (endPage > pageCount){
 			endPage = pageCount;
 		}
-        if (startPage > 5) { 
+        if (startPage > 5) {
 %>
 			<input type="button" name="back" value="이전" onclick="back('<%=startPage - 5%>')">
 <%      
 		}
         for (int i = startPage ; i <= endPage ; i++) {  
+        	if(i==pageNum){
 %>
-        	<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value)">
-<%      
+        		<input type="button" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value)">
+<%      	
+			}else{
+%>
+				<input type="button" name="pageNum" value="<%=i %>" onclick="pageNum(this.value)">
+<%
+			}
 		}
         
         if (endPage < pageCount) {  %>

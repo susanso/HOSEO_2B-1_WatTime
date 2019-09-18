@@ -73,7 +73,7 @@
 		        <a href="#">가이거</a>
 		        <a href="#" onclick="brand(this.name, this.title)" title="man" name="Daniel Wellington">다니엘웰링턴</a>
 		        <a href="#">디젤</a>
-				<a href="#" onclick="brand(this.name, this.title)" title="" name="LUMINOX">루미녹스</a>
+				<a href="#" onclick="brand(this.name, this.title)" title="man" name="LUMINOX">루미녹스</a>
 		        <a href="#">몬데인</a>
 		      </div>
 		      

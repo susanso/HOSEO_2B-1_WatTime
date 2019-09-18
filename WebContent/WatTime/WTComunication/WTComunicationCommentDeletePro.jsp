@@ -29,11 +29,13 @@
 	<input type="hidden" id="listCount" value="<%=listCount %>">
 	
 	<script>
+		
 		var num = document.getElementById("num").value;
 		var formPageNum = document.getElementById("formPageNum").value;
 		var listPageNum = document.getElementById("listPageNum").value;
 		var listCount = document.getElementById("listCount").value;
 		
+		alert("댓글 삭제를 완료했습니다.");
 		var form = document.createElement("form");
 		form.setAttribute("charset", "utf-8");
 		form.setAttribute("method", "Post"); // Get 또는 Post 입력

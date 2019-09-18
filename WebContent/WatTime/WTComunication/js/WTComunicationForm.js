@@ -480,6 +480,7 @@ function commentModify(commentNum, num, pageNum, listPageNum, listCount){
 }
 //수정 취소
 function commentModifyCencle(num, pageNum, listPageNum, listCount){
+
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
@@ -545,11 +546,11 @@ function commentModifyCencle(num, pageNum, listPageNum, listCount){
 	form.submit();
 }
 //댓글 삭제
-function commentDelete(pageNum, listCount, boardNum, listPageNum){
+function commentDelete(commentNum,boardNum,pageNum, listCount,listPageNum){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTComunication/WTComunicationForm.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTComunication/WTComunicationCommentDeletePro.jsp");
 
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -559,7 +560,7 @@ function commentDelete(pageNum, listCount, boardNum, listPageNum){
 	
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "num");
+	hiddenField.setAttribute("name", "boardNum");
 	hiddenField.setAttribute("value", boardNum);
 	form.appendChild(hiddenField);
 	
@@ -577,33 +578,10 @@ function commentDelete(pageNum, listCount, boardNum, listPageNum){
 	
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "ref");
-	hiddenField.setAttribute("value", "0");
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "re_step");
-	hiddenField.setAttribute("value", "0");
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "re_level");
-	hiddenField.setAttribute("value", "0");
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
 	hiddenField.setAttribute("name", "commentNum");
-	hiddenField.setAttribute("value", "0");
+	hiddenField.setAttribute("value", commentNum);
 	form.appendChild(hiddenField);
 	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "modify");
-	hiddenField.setAttribute("value", "0");
-	form.appendChild(hiddenField);
 	
 	document.body.appendChild(form);
 	
