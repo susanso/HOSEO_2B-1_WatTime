@@ -1,0 +1,406 @@
+package WatTimePack;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class WatTimeComunicationDAO {
+	//커뮤니티 게시글 전체 갯수
+	public int getComunicationListCount() {
+		int comunicationListCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from comunicationTbl");
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				comunicationListCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return comunicationListCount;
+	}
+	//추천글 검색
+	public List<WatTimeComunicationDTO> getComunicationRecommendationList() {
+		List<WatTimeComunicationDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from comunicationTbl where recommend-unrecommend >= 0 order by recommend DESC, unrecommend ASC limit 0,3");
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeComunicationDTO comunicationDTO = new WatTimeComunicationDTO();
+					comunicationDTO.setNum(rs.getInt("num"));
+					comunicationDTO.setMemId(rs.getString("memId"));
+					comunicationDTO.setMemName(rs.getString("memName"));
+					comunicationDTO.setTitle(rs.getString("title"));
+					comunicationDTO.setWriteDate(rs.getTimestamp("writeDate"));
+					comunicationDTO.setRef(rs.getInt("ref"));
+					comunicationDTO.setRe_step(rs.getInt("re_step"));
+					comunicationDTO.setRe_level(rs.getInt("re_level"));
+					list.add(comunicationDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+	}
+	//커뮤니티 게시글 가져오기
+	public List<WatTimeComunicationDTO> getComunicationList(int start, int end) {
+		List<WatTimeComunicationDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from comunicationTbl order by ref desc, re_step asc limit ?,?");
+			pstmt.setInt(1, start-1);
+			pstmt.setInt(2, end);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeComunicationDTO comunicationDTO = new WatTimeComunicationDTO();
+					comunicationDTO.setNum(rs.getInt("num"));
+					comunicationDTO.setMemId(rs.getString("memId"));
+					comunicationDTO.setMemName(rs.getString("memName"));
+					comunicationDTO.setTitle(rs.getString("title"));
+					comunicationDTO.setContent(rs.getString("content"));
+					comunicationDTO.setWriteDate(rs.getTimestamp("writeDate"));
+					comunicationDTO.setReadCount(rs.getInt("readCount"));
+					comunicationDTO.setRecommend(rs.getInt("recommend"));
+					comunicationDTO.setUnrecommend(rs.getInt("unrecommend"));
+					comunicationDTO.setRef(rs.getInt("ref"));
+					comunicationDTO.setRe_step(rs.getInt("re_step"));
+					comunicationDTO.setRe_level(rs.getInt("re_level"));
+					comunicationDTO.setPhoto1(rs.getString("photo1"));
+					comunicationDTO.setPhoto2(rs.getString("photo2"));
+					comunicationDTO.setPhoto3(rs.getString("photo3"));
+					comunicationDTO.setPhoto4(rs.getString("photo4"));
+					comunicationDTO.setPhoto5(rs.getString("photo5"));
+					list.add(comunicationDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+	}
+	//커뮤니티 게시판 내용 가져오기
+	public WatTimeComunicationDTO getComunicationForm(int num) {
+		WatTimeComunicationDTO comunicationDTO = new WatTimeComunicationDTO();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			//조회수 증가
+			PreparedStatement pstmt = con.prepareStatement("update comunicationTbl set readCount=readCount+1 where num = ?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+			//내용검색
+			pstmt = con.prepareStatement("select * from comunicationTbl where num = ?");
+			pstmt.setInt(1, num);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				comunicationDTO.setNum(rs.getInt("num"));
+				comunicationDTO.setMemId(rs.getString("memId"));
+				comunicationDTO.setMemName(rs.getString("memName"));
+				comunicationDTO.setTitle(rs.getString("title"));
+				comunicationDTO.setContent(rs.getString("content"));
+				comunicationDTO.setWriteDate(rs.getTimestamp("writeDate"));
+				comunicationDTO.setReadCount(rs.getInt("readCount"));
+				comunicationDTO.setRecommend(rs.getInt("recommend"));
+				comunicationDTO.setUnrecommend(rs.getInt("unrecommend"));
+				comunicationDTO.setRef(rs.getInt("ref"));
+				comunicationDTO.setRe_step(rs.getInt("re_step"));
+				comunicationDTO.setRe_level(rs.getInt("re_level"));
+				comunicationDTO.setPhoto1(rs.getString("photo1"));
+				comunicationDTO.setPhoto2(rs.getString("photo2"));
+				comunicationDTO.setPhoto3(rs.getString("photo3"));
+				comunicationDTO.setPhoto4(rs.getString("photo4"));
+				comunicationDTO.setPhoto5(rs.getString("photo5"));
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return comunicationDTO;
+	}
+	//커뮤니티 게시글 넣기
+	public void setComunicationInsert(WatTimeComunicationDTO comunicationDTO) {
+		int number=0;
+		int num = comunicationDTO.getNum();
+		int ref = comunicationDTO.getRef();
+		int re_step = comunicationDTO.getRe_step();
+		int re_level = comunicationDTO.getRe_level();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select max(num) from comunicationTbl");
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				number=rs.getInt(1)+1;
+			}else {
+				number=1; 
+			}
+			//새글이면 0 답글이면 원글의 번호를 가져옴
+			if (num!=0) {  
+				pstmt = con.prepareStatement("update comunicationTbl set re_step=re_step+1 where ref= ? and re_step> ?");
+				pstmt.setInt(1, ref);
+				pstmt.setInt(2, re_step);
+				pstmt.executeUpdate();
+				re_step=re_step+1;
+				re_level=re_level+1;
+			}else{
+				ref=number;
+				re_step=0;
+				re_level=0;
+			}	 
+			
+			pstmt = con.prepareStatement("insert into comunicationTbl(memId,memName,title,content,writeDate,readCount,"
+					+"recommend,unrecommend,ref,re_step,re_level,photo1,photo2,photo3,photo4,photo5)"+
+					" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			pstmt.setString(1, comunicationDTO.getMemId());
+			pstmt.setString(2, comunicationDTO.getMemName());
+			pstmt.setString(3, comunicationDTO.getTitle());
+			pstmt.setString(4, comunicationDTO.getContent());
+			pstmt.setTimestamp(5, comunicationDTO.getWriteDate());
+			pstmt.setInt(6, comunicationDTO.getReadCount());
+			pstmt.setInt(7, comunicationDTO.getRecommend());
+			pstmt.setInt(8, comunicationDTO.getUnrecommend());
+			pstmt.setInt(9, ref);
+			pstmt.setInt(10, re_step);
+			pstmt.setInt(11, re_level);
+			pstmt.setString(12, comunicationDTO.getPhoto1());
+			pstmt.setString(13, comunicationDTO.getPhoto2());
+			pstmt.setString(14, comunicationDTO.getPhoto3());
+			pstmt.setString(15, comunicationDTO.getPhoto4());
+			pstmt.setString(16, comunicationDTO.getPhoto5());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//추천
+	public void setComunicationRecommend(int num) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update comunicationTbl set recommend = recommend + 1  where num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//비추천
+	public void setComunicationUnrecommend(int num) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update comunicationTbl set unrecommend = unrecommend + 1  where num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//글 수정
+	public void setComunicationUpdate(WatTimeComunicationDTO comunicationDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update comunicationTbl set content=?,title=?,photo1=?,photo2=?,photo3=?,photo4=?,photo5=? where num=?");
+			pstmt.setString(1, comunicationDTO.getContent());
+			pstmt.setString(2, comunicationDTO.getTitle());
+			pstmt.setString(3, comunicationDTO.getPhoto1());
+			pstmt.setString(4, comunicationDTO.getPhoto2());
+			pstmt.setString(5, comunicationDTO.getPhoto3());
+			pstmt.setString(6, comunicationDTO.getPhoto4());
+			pstmt.setString(7, comunicationDTO.getPhoto5());
+			pstmt.setInt(8, comunicationDTO.getNum());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//글 삭제
+	public void setComunicationDelete(int num) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("delete from comunicationTbl where num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//글 검색 갯수1
+	public int getComunicationSearchListCount1(String searchText) {
+		int comunicationListCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from comunicationTbl where title like '%"+searchText+"%'");
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				comunicationListCount = rs.getInt(1);
+			}
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return comunicationListCount;
+	}
+	//글 검색 갯수2
+	public int getComunicationSearchListCount2(String searchText) {
+		int comunicationListCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from comunicationTbl where title like '%"+searchText+"%' or content like '%"+searchText+"%'");
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				comunicationListCount = rs.getInt(1);
+			}
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return comunicationListCount;
+	}
+	//글 검색 갯수3
+	public int getComunicationSearchListCount3(String searchText) {
+		int comunicationListCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from comunicationTbl where content like '%"+searchText+"%'");
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				comunicationListCount = rs.getInt(1);
+			}
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return comunicationListCount;
+	}
+	//글 검색 갯수4
+	public int getComunicationSearchListCount4(String searchText) {
+		int comunicationListCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from comunicationTbl where memName like '%"+searchText+"%'");
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				comunicationListCount = rs.getInt(1);
+			}
+		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return comunicationListCount;
+	}
+	//검색 글 가져오기1
+	public List<WatTimeComunicationDTO> getComunicationSearchList1(String searchText, int start, int end) {
+		List<WatTimeComunicationDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+				PreparedStatement pstmt = con.prepareStatement("select * from comunicationTbl where title like '%"+searchText+"%' order by ref desc, re_step asc limit ?,?");
+				pstmt.setInt(1, start-1);
+				pstmt.setInt(2, end);
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					do {
+						WatTimeComunicationDTO comunicationDTO = new WatTimeComunicationDTO();
+						comunicationDTO.setNum(rs.getInt("num"));
+						comunicationDTO.setMemId(rs.getString("memId"));
+						comunicationDTO.setMemName(rs.getString("memName"));
+						comunicationDTO.setTitle(rs.getString("title"));
+						comunicationDTO.setContent(rs.getString("content"));
+						comunicationDTO.setWriteDate(rs.getTimestamp("writeDate"));
+						comunicationDTO.setRef(rs.getInt("ref"));
+						comunicationDTO.setRe_step(rs.getInt("re_step"));
+						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						list.add(comunicationDTO);
+					}while(rs.next());
+				}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	//검색 글 가져오기1
+	public List<WatTimeComunicationDTO> getComunicationSearchList2(String searchText, int start, int end) {
+		List<WatTimeComunicationDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+				PreparedStatement pstmt = con.prepareStatement("select * from comunicationTbl where title like '%"+searchText+"%' or content like '%"+searchText+"%' order by ref desc, re_step asc limit ?,?");
+				pstmt.setInt(1, start-1);
+				pstmt.setInt(2, end);
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					do {
+						WatTimeComunicationDTO comunicationDTO = new WatTimeComunicationDTO();
+						comunicationDTO.setNum(rs.getInt("num"));
+						comunicationDTO.setMemId(rs.getString("memId"));
+						comunicationDTO.setMemName(rs.getString("memName"));
+						comunicationDTO.setTitle(rs.getString("title"));
+						comunicationDTO.setContent(rs.getString("content"));
+						comunicationDTO.setWriteDate(rs.getTimestamp("writeDate"));
+						comunicationDTO.setRef(rs.getInt("ref"));
+						comunicationDTO.setRe_step(rs.getInt("re_step"));
+						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						list.add(comunicationDTO);
+					}while(rs.next());
+				}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	//검색 글 가져오기1
+	public List<WatTimeComunicationDTO> getComunicationSearchList3(String searchText, int start, int end) {
+		List<WatTimeComunicationDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+				PreparedStatement pstmt = con.prepareStatement("select * from comunicationTbl where title like '%"+searchText+"%' order by ref desc, re_step asc limit ?,?");
+				pstmt.setInt(1, start-1);
+				pstmt.setInt(2, end);
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					do {
+						WatTimeComunicationDTO comunicationDTO = new WatTimeComunicationDTO();
+						comunicationDTO.setNum(rs.getInt("num"));
+						comunicationDTO.setMemId(rs.getString("memId"));
+						comunicationDTO.setMemName(rs.getString("memName"));
+						comunicationDTO.setTitle(rs.getString("title"));
+						comunicationDTO.setContent(rs.getString("content"));
+						comunicationDTO.setWriteDate(rs.getTimestamp("writeDate"));
+						comunicationDTO.setRef(rs.getInt("ref"));
+						comunicationDTO.setRe_step(rs.getInt("re_step"));
+						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						list.add(comunicationDTO);
+					}while(rs.next());
+				}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	//검색 글 가져오기1
+	public List<WatTimeComunicationDTO> getComunicationSearchList4(String searchText, int start, int end) {
+		List<WatTimeComunicationDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+				PreparedStatement pstmt = con.prepareStatement("select * from comunicationTbl where memName like '%"+searchText+"%' order by ref desc, re_step asc limit ?,?");
+				pstmt.setInt(1, start-1);
+				pstmt.setInt(2, end);
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					do {
+						WatTimeComunicationDTO comunicationDTO = new WatTimeComunicationDTO();
+						comunicationDTO.setNum(rs.getInt("num"));
+						comunicationDTO.setMemId(rs.getString("memId"));
+						comunicationDTO.setMemName(rs.getString("memName"));
+						comunicationDTO.setTitle(rs.getString("title"));
+						comunicationDTO.setContent(rs.getString("content"));
+						comunicationDTO.setWriteDate(rs.getTimestamp("writeDate"));
+						comunicationDTO.setRef(rs.getInt("ref"));
+						comunicationDTO.setRe_step(rs.getInt("re_step"));
+						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						list.add(comunicationDTO);
+					}while(rs.next());
+				}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+}
