@@ -186,7 +186,7 @@ function wattimeContentWoman(){
 %>	
 							<div class="slideManClass">
 								<p>
-									<a href="#"><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
+									<a><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
 									<br>
 									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
 									<span class="subSpan"><%=productDTO.getProductName() %></span>
@@ -203,6 +203,7 @@ function wattimeContentWoman(){
 					</li>
 				</ul>
 			</div>
+			<!-- 여자 -->
 			 <div id ="brandDiv">
 			 	<p id="brandP">For Woman</p>
 			 </div>
@@ -218,95 +219,29 @@ function wattimeContentWoman(){
 				<ul class="slideManUl">
 					<li>
 						<div class="slideManForm">
+<%
+							productList = productDAO.getProductMainWomanList();
+							//productList에 넣은 것을 화면에 1개씩 출력
+							for(int i = 0 ; i < productList.size() ; i++){
+								productDTO = productList.get(i);
+%>	
+						
 							<div class="slideManClass">
 								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
+									<a><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
 									<br>
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
+									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
+									<span class="subSpan"><%=productDTO.getProductName() %></span>
 							 		<span> 
-							 			<strong>67,500원</strong>
+							 			<strong><%=df.format(productDTO.getProductPrice()) %>원</strong>
 							 		</span> 
 							 		</a>
 								</p>
 							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-										<span>[해밀턴[HAMILTON] ]</span>	
-										<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-								 		<span>
-								 			<strong>67,500원</strong>
-								 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
+						
+<%
+							}
+%>
 						</div>
 					</li>
 				</ul>

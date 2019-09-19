@@ -20,7 +20,7 @@ function productSalePrice(){
 //상품 브랜드 한글
 function brandKorCon(brand){
 	if(brand=="DKNY"){
-		document.getElementById("brandKor").value = "도나카란";
+		document.getElementById("brandKor").value = "도나캐런뉴욕";
 	}else if(brand=="GEIGER"){
 		document.getElementById("brandKor").value = "가이거";
 	}else if(brand=="GUESS"){
