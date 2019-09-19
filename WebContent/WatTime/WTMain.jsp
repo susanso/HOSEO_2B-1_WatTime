@@ -25,6 +25,7 @@
 	<div class="pageTopBtn" >
 	<a href="#top"><img src="img/top.png" alt="top" width="60px" height="60px" ></a>
 	</div>
+	<!-- 챗봇 -->
 	<div>
 		<jsp:include page="chatbot.jsp" flush="false"/>
 	</div>
