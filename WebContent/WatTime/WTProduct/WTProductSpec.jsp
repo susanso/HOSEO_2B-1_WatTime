@@ -100,24 +100,35 @@
             </td>
          </tr>
          <!-- 버튼구역 -->
-         <tr>
+         <tr id="productDetailImg" >
             <td colspan="2">
-               <input type = "button" class="specBtn" value="상품 상세정보">
-               <input type = "button" class="specBtn" value="배송/교환/환불">
-               <a><input type = "button"  class="specBtn"value="구매후기<%=count%>개"></a>
+            <div class="autoMove">
+            <input type = "button" class="specBtn" value="상품 상세정보" onclick="location.href='#productDetailImg'">
+            <input type = "button" class="specBtn" value="배송/교환/환불" onclick="location.href='#howDelivery'">
+            <input type = "button"  class="specBtn"value="구매후기<%=count%>개" onclick="location.href='#reviewAvgScore'">
+            </div>
             </td>
          </tr>
          <!-- 상세 이미지 -->
          <tr>
-            <td colspan="2"><img src="..\img\brand\<%=productDTO.getProductDetailImgFileName() %>" width="1100px"></td>
+            <td colspan="2"><img src="..\img\brand\<%=productDTO.getProductDetailImgFileName() %>" width="1100px" ></td>
          </tr>
+         <tr id="howDelivery">
+			 <td colspan="2">
+            <div class="autoMove">
+            <input type = "button" class="specBtn" value="상품 상세정보" onclick="location.href='#productDetailImg'">
+            <input type = "button" class="specBtn" value="배송/교환/환불" onclick="location.href='#howDelivery'">
+            <input type = "button"  class="specBtn"value="구매후기<%=count%>개" onclick="location.href='#reviewAvgScore'">
+            </div>
+            </td>
+		</tr>
          <!-- 배송/교환/환불 -->
          <tr>
             <td colspan="2">
                <table  id="howService" style="background-color:#F2F2F2">
                     <tbody>
                       <tr>
-                          <th>배송</th>
+                          <th >배송</th>
                           <td>
                             <div class="delivery_txt">
                               <ul>
@@ -217,8 +228,16 @@
             scoreAvg = ((score1*1)+(score2*2)+(score3*3)+(score4*4)+(score5*5)) / reviewCount;
          }
 %>
-			
-			<tr class="reviewAvgScore">
+			<tr id="reviewAvgScore">
+			 <td colspan="2">
+            <div class="autoMove">
+            <input type = "button" class="specBtn" value="상품 상세정보" onclick="location.href='#productDetailImg'">
+            <input type = "button" class="specBtn" value="배송/교환/환불" onclick="location.href='#howDelivery'">
+            <input type = "button"  class="specBtn"value="구매후기<%=count%>개" onclick="location.href='#reviewAvgScore'">
+            </div>
+            </td>
+			</tr>
+			<tr class="reviewAvgScore" >
 				<td rowspan="6"><div> 평균 평점: <%=Math.round(scoreAvg*100)/100.0 %>점</div></td>
 			</tr>
 			<tr class="reviewScore">

@@ -151,6 +151,7 @@ function scoreSort(productCode, modify, pageNum){
 	document.body.appendChild(form);
 	
 	form.submit();
+	
 }
 //구매후기 삭제
 function reviewDelete(memId, reviewNum, sort, pageNum, productCode){
