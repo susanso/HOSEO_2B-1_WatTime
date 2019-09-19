@@ -1,4 +1,10 @@
-<%@ page language = "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import = "java.text.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<%request.setCharacterEncoding("UTF-8"); %>
+<jsp:useBean id="productDTO" class = "WatTimePack.WatTimeProductDTO" scope="page">
+	<jsp:setProperty name="productDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,44 +18,26 @@
 //페이지가 로딩될때 함수를 실행합니다
 
 imgslide(); 
-
-
 function imgslide(){
-	
-  $val = $("#mainSlide").attr("val"); //현재 이미지 번호를 가져옵니다
-
-  $mx = $("#mainSlide").attr("mx"); //총 이미지 개수를 가져옵니다
-  
-   
+	$val = $("#mainSlide").attr("val"); //현재 이미지 번호를 가져옵니다
+	$mx = $("#mainSlide").attr("mx"); //총 이미지 개수를 가져옵니다
 	$("#img"+$val).hide(); //현재 이미지를 사라지게 합니다.
-
-	if( $val == $mx )
-		
-		{ $val = 1; } //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
-
-	else{ $val++; } //마지막 번호가 아니라면 카운트를 증가시켜줍니다
-
+	if( $val == $mx ){
+		$val = 1;
+	} //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
+	else{
+		$val++;
+	} //마지막 번호가 아니라면 카운트를 증가시켜줍니다
 	$("#img"+$val).fadeIn(400); //변경된 번호의 이미지영역을 나타나게 합니다.괄호 안에 숫자는 페이드인 되는 시간을 나타냅니다.
-	
 	$("#mainSlide").attr('val',$val); //변경된 이미지영역의 번호를 부여합니다.
-
 	setTimeout('imgslide()',4000); //3초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
-
- return 0;
+	return 0;
 }
-
-
 wattimeContentMan(); 
-
 function wattimeContentMan(){
-	
   $val = $("#wattimeContentMan").attr("val"); //현재 이미지 번호를 가져옵니다
-
   $mx = $("#wattimeContentMan").attr("mx"); //총 이미지 개수를 가져옵니다
-  
-   
 	$("#wattimeContentM"+$val).hide(); //현재 이미지를 사라지게 합니다.
-
 	if( $val == $mx )
 		
 		{ $val = 1; } //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
@@ -90,6 +78,12 @@ function wattimeContentWoman(){
 }
 </script>
 </head>
+<%
+	DecimalFormat df = new DecimalFormat("#,###");
+	List<WatTimeProductDTO> productList = null;
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
+	productList = productDAO.getProductMainManList();
+%>
 <body>
 	<div id="content"> 
 		<div id="bannerContent">
@@ -168,7 +162,7 @@ function wattimeContentWoman(){
 				 </div>
 			</div>
 	
-				 
+			<!-- 남자  -->
 			 <div id ="brandDiv">
 			 	<p id="brandP">For  Man</p>
 			 </div>
@@ -185,95 +179,26 @@ function wattimeContentWoman(){
 				<ul class="slideManUl">
 					<li>
 						<div class="slideManForm">
+<%
+						//productList에 넣은 것을 화면에 1개씩 출력
+						for(int i = 0 ; i < productList.size() ; i++){
+							productDTO = productList.get(i);
+%>	
 							<div class="slideManClass">
 								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
+									<a href="#"><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
 									<br>
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
+									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
+									<span class="subSpan"><%=productDTO.getProductName() %></span>
 							 		<span> 
-							 			<strong>67,500원</strong>
+							 			<strong><%=df.format(productDTO.getProductPrice()) %>원</strong>
 							 		</span> 
 							 		</a>
 								</p>
 							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-										<span>[해밀턴[HAMILTON] ]</span>	
-										<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-								 		<span>
-								 			<strong>67,500원</strong>
-								 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
-							<div class="slideManClass">
-								<p>
-									<a href="#"><img alt="시계사진" src="img/watch/0251001.jpg">
-									<span>[해밀턴[HAMILTON] ]</span>
-									<span class="subSpan">[해밀턴시계 HAMILTON] H32405551 / 디지털 남성 가죽시계 32X25mm</span>
-							 		<span>
-							 			<strong>67,500원</strong>
-							 		</span>
-							 		</a>
-								</p>
-							</div>
+<%
+						}
+%>
 						</div>
 					</li>
 				</ul>
