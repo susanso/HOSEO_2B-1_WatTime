@@ -62,33 +62,61 @@ public class WatTimeProductDAO {
 		return list;
 	}
 	//메인 남자
-		public List<WatTimeProductDTO> getProductMainManList() {
-			List<WatTimeProductDTO> list = new ArrayList<>();
-			try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' order by productOrder DESC limit 0,8");
-				ResultSet rs = pstmt.executeQuery();
-				if(rs.next()) {
-					do {
-						WatTimeProductDTO productDTO = new WatTimeProductDTO();
-						productDTO.setProductCode(rs.getString("productCode"));
-						productDTO.setBrandKor(rs.getString("brandKor"));
-						productDTO.setBrandEng(rs.getString("brandEng"));
-						productDTO.setProductName(rs.getString("productName"));
-						productDTO.setProductType(rs.getString("productType"));
-						productDTO.setProductOriginalPrice(rs.getInt("productOriginalPrice"));
-						productDTO.setProductSale(rs.getInt("productSale"));
-						productDTO.setProductPrice(rs.getInt("productPrice"));
-						productDTO.setTictok(rs.getInt("tictok"));
-						productDTO.setProductSimpleImgFileName(rs.getString("productSimpleImgFileName"));
-						list.add(productDTO);
-					}while(rs.next());
-				}
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
+	public List<WatTimeProductDTO> getProductMainManList() {
+		List<WatTimeProductDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' order by productOrder DESC limit 0,8");
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeProductDTO productDTO = new WatTimeProductDTO();
+					productDTO.setProductCode(rs.getString("productCode"));
+					productDTO.setBrandKor(rs.getString("brandKor"));
+					productDTO.setBrandEng(rs.getString("brandEng"));
+					productDTO.setProductName(rs.getString("productName"));
+					productDTO.setProductType(rs.getString("productType"));
+					productDTO.setProductOriginalPrice(rs.getInt("productOriginalPrice"));
+					productDTO.setProductSale(rs.getInt("productSale"));
+					productDTO.setProductPrice(rs.getInt("productPrice"));
+					productDTO.setTictok(rs.getInt("tictok"));
+					productDTO.setProductSimpleImgFileName(rs.getString("productSimpleImgFileName"));
+					list.add(productDTO);
+				}while(rs.next());
 			}
-			
-			return list;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+		
+		return list;
+	}
+	//메인 여자
+	public List<WatTimeProductDTO> getProductMainWomanList() {
+		List<WatTimeProductDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'woman' order by productOrder DESC limit 0,8");
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeProductDTO productDTO = new WatTimeProductDTO();
+					productDTO.setProductCode(rs.getString("productCode"));
+					productDTO.setBrandKor(rs.getString("brandKor"));
+					productDTO.setBrandEng(rs.getString("brandEng"));
+					productDTO.setProductName(rs.getString("productName"));
+					productDTO.setProductType(rs.getString("productType"));
+					productDTO.setProductOriginalPrice(rs.getInt("productOriginalPrice"));
+					productDTO.setProductSale(rs.getInt("productSale"));
+					productDTO.setProductPrice(rs.getInt("productPrice"));
+					productDTO.setTictok(rs.getInt("tictok"));
+					productDTO.setProductSimpleImgFileName(rs.getString("productSimpleImgFileName"));
+					list.add(productDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+	}
 	//성별 브랜드의 상품 갯수
 	public int getProductTypeCount(String type) {
 		int productCount=0;
