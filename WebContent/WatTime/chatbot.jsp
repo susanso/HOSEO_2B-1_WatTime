@@ -7,21 +7,48 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 <div id="frogue-container" class="position-right-bottom"
-		  data-chatbot="1f15afd1-78cc-46b9-8db6-be375bd2aefb"
-		  data-user="사용자ID"
-		  data-init-key="value">
-	 </div>
-
-​
-	<script>
-		(function(d, s, id){
-							var js, fjs = d.getElementsByTagName(s)[0];
-							if (d.getElementById(id)) {return;}
-							js = d.createElement(s); js.id = id;
-							js.src = "https:\/\/danbee.ai/js/plugins/frogue-embed/frogue-embed.min.js";
-							fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'frogue-embed'));
-	</script>
+	<!-- Channel Plugin Scripts -->
+<script>
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+  ChannelIO('boot', {
+    "pluginKey": "027f4500-5446-4b52-8bfc-213114a9a59e"
+  });
+</script>
+<!-- End Channel Plugin -->
 </body>
 </html>

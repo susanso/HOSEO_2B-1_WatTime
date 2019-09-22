@@ -186,7 +186,7 @@ function wattimeContentWoman(){
 %>	
 							<div class="slideManClass">
 								<p>
-									<a><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
+									<a	><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
 									<br>
 									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
 									<span class="subSpan"><%=productDTO.getProductName() %></span>
@@ -238,7 +238,6 @@ function wattimeContentWoman(){
 							 		</a>
 								</p>
 							</div>
-						
 <%
 							}
 %>

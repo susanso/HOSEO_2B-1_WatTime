@@ -20,7 +20,7 @@
 		<jsp:include page="../WTMember/WTPostcode.jsp" flush="false"/>
 	</div>
 	<br><br>
-	
+
 <%
 		int i = 1;
 		request.setCharacterEncoding("UTF-8");

@@ -16,4 +16,12 @@
     <res-auth>Container</res-auth>
   </resource-ref>
   
+	<!--   <servlet>
+	  	<servlet-name>servletText</servlet-name>
+	  	<servlet-class>com.javalec.ex.servletText</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	  	<servlet-name>servletText</servlet-name>
+	  	<url-pattern>/servletText</url-pattern>
+	  </servlet-mapping> -->
 </web-app>
