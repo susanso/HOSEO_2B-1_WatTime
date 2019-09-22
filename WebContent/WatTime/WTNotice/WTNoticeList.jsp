@@ -67,15 +67,15 @@
 				noticeDTO = noticeList.get(i);
 				
 %>	
-			<tr onclick="noticeListClick('<%=noticeDTO.getNum() %>','<%=pageNum%>')">
+			<tr class="noticeListTr" onclick="noticeListClick('<%=noticeDTO.getNum() %>','<%=pageNum%>')">
 				<!-- 번호 -->
-				<td><%=noticeDTO.getNum() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getNum() %></td>
 				<!-- 제목 -->
-				<td><%=noticeDTO.getTitle() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getTitle() %></td>
 				<!-- 작성자 -->
-				<td><%=noticeDTO.getWriter() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getWriter() %></td>
 				<!-- 작성일 -->
-				<td><%=noticeDTO.getWriteDate() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getWriteDate() %></td>
 			</tr>
 <%
 			}

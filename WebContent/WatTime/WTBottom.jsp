@@ -29,7 +29,6 @@
 						<b>평일 : 09:00~09:01/ 주말,공휴일 휴무</b>
 					</li>
 					<li id="customerButton">
-					<button>게시판 바로가기</button>
 					</li>
 				</ul>
 		</div>
