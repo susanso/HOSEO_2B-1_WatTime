@@ -15,24 +15,24 @@
 </head>
 <body>
 	<form method="post" action="WTNotice/WTNoticeWritePro.jsp" id="noticeForm" enctype="multipart/form-data">
-		<table border="1">
+		<table border="0" class="noticeWriteForm">
 			<tr>
-				<td>제목</td>
-				<td><input type="text" id="noticeTitle" name="noticeTitle" required></td>
+				<td class="noticeWriteFormTdRight">제목</td>
+				<td><input type="text" class="noticeWriteFormTdLeft" id="noticeTitle" name="noticeTitle" required></td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="2" style="height:300px;">
 					<textarea id="noticeContent" name="noticeContent" required></textarea>
 				</td>
 			</tr>
 			<tr>
-				<td>이미지 업로드</td>
-				<td>
+				<td class="noticeWriteFormTdImg">이미지 업로드</td>
+				<td  style="border:1px solid black;">
 					<input type="file" id="filename1" name="filename1" size=40>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" name="imgButton" id="imgButton" value="글쓰기"></td>
+				<td colspan="2"><input type="submit" class="noticeWriteBtn" name="imgButton" id="imgButton" value="글쓰기"></td>
 			</tr>
 		</table>
 	</form>

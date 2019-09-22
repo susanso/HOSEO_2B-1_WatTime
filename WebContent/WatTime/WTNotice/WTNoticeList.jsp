@@ -49,7 +49,7 @@
 		</div>
 	</div>
 	<div class="noticeTable">
-	<table border="1" style="border-collapse: collapse;">
+	<table border="1" style="border-collapse: collapse; width:1300px;">
 		<th width="50px">번호</th>
 		<th width="500px">제목</th>
 		<th width="150px">작성자</th>
@@ -89,7 +89,7 @@
 
 %>
 			<tr>
-				<td colspan="4">
+				<td colspan="4" >
 					<input type="button" value="글쓰기" onclick="noticeWriteForm()">
 				</td>
 			</tr>
