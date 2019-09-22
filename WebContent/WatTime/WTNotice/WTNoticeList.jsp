@@ -49,11 +49,11 @@
 		</div>
 	</div>
 	<div class="noticeTable">
-	<table border="1" style="border-collapse: collapse;">
-		<th width="50px">번호</th>
-		<th width="500px">제목</th>
-		<th width="150px">작성자</th>
-		<th width="200px">작성일</th>
+	<table id="noticeListTable" border="0">
+		<th class="noticeListTh" width="50px">번호</th>
+		<th class="noticeListTh" width="500px">제목</th>
+		<th class="noticeListTh" width="150px">작성자</th>
+		<th class="noticeListTh" width="200px">작성일</th>
 
 <%
 		if(noticeList.size() == 0){
@@ -67,15 +67,15 @@
 				noticeDTO = noticeList.get(i);
 				
 %>	
-			<tr onclick="noticeListClick('<%=noticeDTO.getNum() %>','<%=pageNum%>')">
+			<tr class="noticeListTr" onclick="noticeListClick('<%=noticeDTO.getNum() %>','<%=pageNum%>')">
 				<!-- 번호 -->
-				<td><%=noticeDTO.getNum() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getNum() %></td>
 				<!-- 제목 -->
-				<td><%=noticeDTO.getTitle() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getTitle() %></td>
 				<!-- 작성자 -->
-				<td><%=noticeDTO.getWriter() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getWriter() %></td>
 				<!-- 작성일 -->
-				<td><%=noticeDTO.getWriteDate() %></td>
+				<td class="noticeListTd"><%=noticeDTO.getWriteDate() %></td>
 			</tr>
 <%
 			}

@@ -1645,5 +1645,41 @@ text-decoration:none ; color:#000000
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 	
 }
-
-/*-------------------------공지사항 리스트-------------------------------*/
+/*-------------------------공지사항 폼-------------------------------*/
+#noticeForm{
+	width:1300px;
+	margin:30px auto;
+	
+}
+#noticeFormTable{
+	width:1300px;
+	border-collapse: collapse;
+	border:1px solid gray;
+}
+.noticeFormTr{
+	text-align:center;
+	border:1px solid gray;
+}
+.noticeFormTd{
+	text-align:center;
+	border:1px solid gray;
+	padding:10px;
+}
+.noticeFormButton{
+    margin:10px auto;
+    display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+ 
+.noticeFormButton:hover{
+    background-color:#D8D8D8;
+    color:#000;
+}
