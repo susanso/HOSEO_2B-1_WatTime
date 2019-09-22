@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <link href = "style.css" rel = "stylesheet" type = "text/css">
+<script src="WTProduct/js/WTProduct.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 최신버전 제이쿼리 -->
 
 
@@ -121,9 +122,9 @@
 						for(int i = 0 ; i < productList.size() ; i++){
 							productDTO = productList.get(i);
 %>	
-							<div class="slideManClass">
+							<div class="slideManClass" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
 								<p>
-									<a	><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
+									<a><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
 									<br>
 									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
 									<span class="subSpan"><%=productDTO.getProductName() %></span>
@@ -163,7 +164,7 @@
 								productDTO = productList.get(i);
 %>	
 						
-							<div class="slideManClass">
+							<div class="slideManClass" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
 								<p>
 									<a><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
 									<br>

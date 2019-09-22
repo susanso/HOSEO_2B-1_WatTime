@@ -558,12 +558,12 @@ position: fixed;
 #manMenu {
   display: none;
   position: absolute;
-   top:228px;
+  top:228px;
   left:auto;
   background-color: black;
   background-color: rgba( 255, 255, 255, 0.9 );
   min-width: 1300px;
-  height:180px;
+  height:360px;
   z-index: 1;
   }
   /* Woman 하위메뉴 속성 */
@@ -575,7 +575,7 @@ position: fixed;
   background-color: black;
   background-color: rgba( 255, 255, 255, 0.9 );
   min-width: 1300px;
-  height:120px;
+  height:300px;
   z-index: 1;
   }
   /* Couple 하위메뉴 속성 */
@@ -911,7 +911,7 @@ height:50px;
    clear: both; 
    line-height: 25px; 
    font-size: 13px; 
-   text-align: left;
+   text-align: center;
    
 }
 
@@ -1645,3 +1645,5 @@ text-decoration:none ; color:#000000
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 	
 }
+
+/*-------------------------공지사항 리스트-------------------------------*/

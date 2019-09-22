@@ -65,8 +65,6 @@
     
     if(session.getAttribute("member")!=null){
     	memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
-    }else{
-    	
     }
  %>
 	 
