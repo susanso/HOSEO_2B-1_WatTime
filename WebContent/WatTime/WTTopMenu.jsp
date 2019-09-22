@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="subTopBarBody">
 	<div id="subTopBar">
 		  <div id="brand" class="dropdownBtn">
 		    <button id="brandDropBtn" class="dropBtn" onclick="allBrand()">BRAND</button>
@@ -136,6 +137,7 @@
 		      </div>
 		    </div>
 		  </div>
+	</div>
 	</div>
 </body>
 </html>

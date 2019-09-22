@@ -88,7 +88,7 @@
 				<td style="width:900px; padding:10px;">
 				<p>
 					<span><%=reviewDTO.getProductName() %></span>
-					<span><%=star %></span>
+					<span><font color="red" size="5"><%=star %></font></span>
 					<pre id="reviewContent"><%=reviewDTO.getReviewContent() %></pre>
 				</p>
 				</td>
