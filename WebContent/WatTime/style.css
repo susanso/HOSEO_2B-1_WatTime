@@ -1264,15 +1264,23 @@ font-size: 20px;
 .picture{
 	text-align:center;
 }
-.productInsert  input[type=submit]{
+.picture input[type=submit] {
+	padding:0;
 	background-color:#000; 
     border: none;
     color:#fff;
-    margin:5px;
+    margin:10px;
     width: 150px;
     height: 75px;
-    font-size: 25px;
+    font-size: 17px;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
+.picture input[type=submit]:hover{
+	background-color:#D8D8D8;
+    color:#000; 
+
+	}
+
 					
 .spec{
 	margin:30px auto;
@@ -1654,6 +1662,7 @@ text-decoration:none ; color:#000000
 	padding:10px;
 	border-bottom: 1px solid gray;
 }
+	
 /*---------------------커뮤니티 게시판 폼--------------------*/
 .comunicationForm{
 	width:1300px;
@@ -1694,12 +1703,17 @@ text-decoration:none ; color:#000000
     line-height: 0;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
+#modifycencle:hover{
+	background-color:#D8D8D8;
+    color:#000; 
+			    }
+			    
 #comunicationContentTd{
 	padding:10px;
 }
 #comunicationContent{
 	font-size:20px;
-	
+	width: 98%;
 }
 #commit{
 	display: inline-block;
@@ -1712,9 +1726,33 @@ text-decoration:none ; color:#000000
     font-size: 15px;
     line-height: 0;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
-	
 }
 
+#commit:hover{
+	background-color:#D8D8D8;
+    color:#000; 
+			    }
+#comunicationTitle{
+    width: 763px;
+    margin: 0;
+    height: 21px;
+}
+.ComunicationWriteBtn{
+		display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+.ComunicationWriteBtn:hover{
+	background-color:#D8D8D8;
+    color:#000; 
+			    }
 /*-------------------------공지사항 리스트-------------------------------*/
 
 /*-------------------------장바구니 리스트-------------------------------*/

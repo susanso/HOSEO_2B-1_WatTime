@@ -67,7 +67,7 @@
 %>
 				<tr onclick="comunicationForm('<%=comunicationDTO.getNum() %>','<%=comunicationDTO.getMemId()%>','<%=pageNum%>','<%=listCount%>')">
 					
-						<td class="comunicationTd" style="text-align:center;"><strong>추천</strong></td>
+						<td class="comunicationTd" style="text-align:center;"><font color="red"><strong>추천</strong></font></td>
 						<!-- 게시글 제목 -->
 						<td class="comunicationTd" style="padding-left:20px;">
 			  				<strong><%=comunicationDTO.getTitle() %></strong>

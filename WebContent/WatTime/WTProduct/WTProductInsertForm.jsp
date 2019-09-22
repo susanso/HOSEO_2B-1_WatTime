@@ -78,7 +78,6 @@
 			<!-- 상세 이미지 -->
 			<tr>
 				<td colspan="2" class="picture">
-					
 					<input type = "submit" value="등록하기" >
 				</td>
 			</tr>

@@ -29,9 +29,9 @@
 		<input type="hidden" name="re_step" value="<%=re_step%>">
 		<input type="hidden" name="re_level" value="<%=re_level%>">
 		<!-- 글쓰기 폼 -->
-		<table border="1">
+		<table border="1" style="width: 900px;margin:10px auto;border-collapse: collapse;">
 			<tr>
-				<td>제목</td>
+				<td style="text-align-last: center;">제목</td>
 				<td><input type="text" id="comunicationTitle" name="comunicationTitle" required></td>
 			</tr>
 			<tr>
@@ -40,7 +40,7 @@
 				</td>
 			</tr>
 			<tr >
-				<td rowspan="6">
+				<td rowspan="6" style="text-align: center;">
 					이미지 업로드<br>
 					(사진은 최대 5개까지만 됩니다.)
 				</td>
@@ -71,8 +71,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="submit" name="imgButton" id="imgButton" value="글쓰기">
+				<td colspan="2" style="text-align: center;">
+					<input type="submit" name="imgButton" id="imgButton" class="ComunicationWriteBtn"value="글쓰기">
 				</td>
 			</tr>
 		</table>
