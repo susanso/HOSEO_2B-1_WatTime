@@ -43,7 +43,7 @@
 	
 %>
 <body>
-	<table border="1">
+	<table border="1" class="basketListTable">
 		<th>이미지</th>
 		<th>상품명</th>
 		<th>상품 가격</th>
@@ -68,16 +68,17 @@
 			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><%=basketDTO.getProductName() %></td>
 			<td><%=df.format(basketDTO.getProductPrice()*basketDTO.getProductCount()) %></td>
 			<td>
-				<input type="number" id="productCountNum" name="productCountNum" min="1" max="2147483647" value=<%=basketDTO.getProductCount() %> onchange="productCountChange(this.value)"><br>
+				<input type="number" style="text-align:center;" id="productCountNum" name="productCountNum"  min="1" max="2147483647" value=<%=basketDTO.getProductCount() %> onchange="productCountChange(this.value)"><br>
 				<!-- , -->
-				<input type="button" id="productBasketModify" value="수정" onclick="productCountModify('<%=basketDTO.getMemId()%>','<%=basketDTO.getNum()%>')">
+				<input type="button" id="productBasketModify" value="수정" class="basketBtn" onclick="productCountModify('<%=basketDTO.getMemId()%>','<%=basketDTO.getNum()%>')">
+			
 			</td>
 			<td>
 				<%=df.format(basketDTO.getTictok()*basketDTO.getProductCount()) %>
 			</td>
 
 			<td>
-				<input type="button" id="<%=basketDTO.getNum() %>" value="삭제" onclick="basketOneDelete(this.id,'<%=basketDTO.getMemId()%>')"><br>
+				<input type="button" class="basketBtn" id="<%=basketDTO.getNum() %>" value="삭제" onclick="basketOneDelete(this.id,'<%=basketDTO.getMemId()%>')"><br>
 				<br>
 			</td>
 		</tr>
@@ -85,15 +86,15 @@
 		}
 %>
 		<tr>
-			<td colspan="5">
-			</td>
-			<td>
-				합계 : <%=df.format(totalPrice) %>
+			<td colspan="6" style="text-align:right;">
+			
+			<font size="5">	합계 : <%=df.format(totalPrice) %></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</td>
 		</tr>
 		<tr>
 			<td colspan="6">
-				<input type="button" id="basketAllDelete" value="모두 삭제" onclick="basketAllDelete('<%=basketDTO.getMemId()%>')">
+				<input type="button" id="basketAllDelete" value="모두 삭제" class="basketBtn" onclick="basketAllDelete('<%=basketDTO.getMemId()%>')">
+				<input type="button" value="모두 구매" class="basketBtn">
 			</td>
 		</tr>
 <%

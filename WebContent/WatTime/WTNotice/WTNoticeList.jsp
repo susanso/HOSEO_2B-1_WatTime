@@ -49,11 +49,11 @@
 		</div>
 	</div>
 	<div class="noticeTable">
-	<table id="noticeListTable" border="0">
-		<th class="noticeListTh" width="50px">번호</th>
-		<th class="noticeListTh" width="500px">제목</th>
-		<th class="noticeListTh" width="150px">작성자</th>
-		<th class="noticeListTh" width="200px">작성일</th>
+	<table border="1" style="border-collapse: collapse; width:1300px;">
+		<th width="50px">번호</th>
+		<th width="500px">제목</th>
+		<th width="150px">작성자</th>
+		<th width="200px">작성일</th>
 
 <%
 		if(noticeList.size() == 0){
@@ -89,7 +89,7 @@
 
 %>
 			<tr>
-				<td colspan="4">
+				<td colspan="4" >
 					<input type="button" value="글쓰기" onclick="noticeWriteForm()">
 				</td>
 			</tr>
