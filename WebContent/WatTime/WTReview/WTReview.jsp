@@ -46,7 +46,7 @@
 <body>
 	<table border="1" id="productReviewTable">
 		<tr>
-			<td>
+			<td style="text-align:center;">
 				<select onchange="reviewListCount(this.options[this.selectedIndex].value,'<%=sort%>')">
 					<option value="" selected disabled required>선택</option>
 					<option value="10">10개씩 보기</option>
@@ -85,10 +85,12 @@
 				<td width="200px">
 					<img src="..\img\brand\<%=reviewDTO.getProductSimpleImgFileName()%>" width="200px" height="200px">
 				</td>
-				<td width="900px">
-					<%=reviewDTO.getProductName() %><br>
-					<%=star %><br>
+				<td style="width:900px; padding:10px;">
+				<p>
+					<span><%=reviewDTO.getProductName() %></span>
+					<span><font color="red" size="5"><%=star %></font></span>
 					<pre id="reviewContent"><%=reviewDTO.getReviewContent() %></pre>
+				</p>
 				</td>
 				<td width="200px" style="text-align:center;">
 					<%=reviewDTO.getMemName() %><br>

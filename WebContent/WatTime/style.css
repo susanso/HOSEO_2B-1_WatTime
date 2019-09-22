@@ -62,6 +62,7 @@ TID2               스페라
 html{
 	scroll-behavior: smooth;
 }
+
 .mainForm{
    margin: auto;
    padding:0px;
@@ -93,20 +94,22 @@ textarea{
 
 #topMenu a {
    text-decoration:none; color:#333; }
+   
+.search {position:relative; right:10px;}
 
 .search input[type=text] {
-  position:relative; top:60px; left:50px;
+  position:absolute; top:60px; right:50px;
   padding: 10px;
   font-size: 17px;
   border: 1px solid #ddd;
   float: left;
-  width: 180px;
+  width: 250px;
   background: #f1f1f1;
 }
 
 .search button {
-  position:relative; top:60px; left:50px;
-  width: 20%;
+  position:absolute; top:60px; right:0px;
+  width: 50px;
   padding: 10px;
   background: black;
   color: white;
@@ -500,13 +503,27 @@ textarea{
 /*---------------- 메뉴    ---------------     */
 
 /*  brand,man,woman,couple 을 감싸는 DIV */
+.subTopBarBody{
+	position:relaytive;
+	width:100%;
+	 border-bottom:1px solid gray;
+	 background-color:#fff;
+}
 #subTopBar{ 
    position:relaytive;
    margin:auto;
    width:1300px;
    height:50px;
-   border-bottom:1px solid gray;
+  
+   z-index:3;
 }
+
+.jbFixed {
+position: fixed;
+        top: 0px;
+        width:100%;
+        z-index:4;
+      }
 
 /* brand,man,woman,couple 속성*/
 .dropBtn{
@@ -899,7 +916,6 @@ height:50px;
 }
 
 #slideMan{
-   position: relative;
     width: 800px;
     height: 600px;
     margin: 0px;
@@ -921,9 +937,7 @@ height:50px;
 .slideManUl li{
    border: 1px solid #ddd;
    display: inline-block;
-   position: absolute;
-    left: 0;
-    top: 0;
+
     width: 100%;
 }
 
@@ -993,8 +1007,9 @@ height:50px;
     border: 1px solid #cbd4d9;
     width: 21%;
     min-height: 278px;
-    
+    border-left:0px
       }
+#infoHelp div:nth-child(1) {border-left:1px solid #cbd4d9;}
 
 #customerCenter ul li{
    list-style: none;
@@ -1156,7 +1171,11 @@ height:50px;
 
 
 /* -----------------product -----------------*/
-
+.autoMove{
+	width:300px;
+	display:inline;
+	
+}
 
 .productUl{
 	margin: 0 auto;
@@ -1460,10 +1479,28 @@ text-decoration:none ; color:#000000
 #faqMainBar{
 	    display: table-cell;
 }
+.panel{
+	font-family: 'Noto Sans Korean', AppleSDGothicNeo-Regular, "Malgun Gothic", dotum, sans-serif;
+}
+
+
+.panel dd:before {
+    content: 'A . ';
+    position: absolute;
+    left: 18px;
+}
+
+.panel dd {
+    padding: 10px 0 20px 40px;
+    font-size: 14px;
+    line-height: 2;
+    border-top: 1px dashed #ddd;
+    position: relative;
+}
+
 .panel dl dt{
 	font-size: 20px;
     margin-top: 20px;
-    font-family: sans-serif;
 }
 /* -----------------FAQ -----------------*/
 
@@ -1491,6 +1528,40 @@ text-decoration:none ; color:#000000
 	margin:30px auto;
 	border-collapse: collapse;
 }
+#reviewLastestSort {
+    display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+#reviewLastestSort:hover{
+				background-color:#D8D8D8;
+			    color:#000; 
+			    }
+			    
+#reviewScoreSort {
+    display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+#reviewScoreSort:hover{
+	background-color:#D8D8D8;
+    color:#000; 
+			    }
+			    
 .reviewReview{
 	padding:20px;
 }
