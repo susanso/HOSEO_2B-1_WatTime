@@ -131,8 +131,8 @@
 <%
 			if(memberDTO.getMemId()!=null){
 %>
-				<td colspan="4">
-					<input type="button" name="newComunication" value="글쓰기" onclick="comunicationWriteForm()">
+				<td colspan="4" style="text-align:center;">
+					<input type="button" class="ComunicationWriteBtn" name="newComunication" value="글쓰기" onclick="comunicationWriteForm()">
 				</td>
 <%
 			}
@@ -181,7 +181,7 @@
     }
 %>
 	</div>
-	<br>
+	<div class="noticeSearch">
 	<select id="select">
 		<option value="title">제목</option>
 		<option value="titleContent">제목+내용</option>
@@ -190,6 +190,7 @@
 	</select>
 	<input type="text" id="comunicatoinSearchText" name="comunicatoinSearchText" onkeydown="textValue(this.value)" onkeyup="textValue(this.value)">
 	<input type="button" id="searchButton" name="searchButton" value="검색" onclick="search()">
+	</div>
 	</div>
 </body>
 </html>

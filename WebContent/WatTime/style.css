@@ -50,14 +50,27 @@ TID2               스페라
 * {margin:0; padding:0;}
 /*main페이지 출현*/
 #mainTop{width:100%;}
-.pageTopBtn{
-	position: fixed;
-    bottom:20px;
-    right:180px;
-	width:60px;
-	height:60px;
-}
 
+.autoPageMove{
+	position: fixed;
+    bottom: 22px;
+    right: 83px;
+    width: 210px;
+    height: 65px;
+	
+}
+.pageTopBtn{
+	float: left;
+}
+.pageBottomBtn{
+	float: left;
+    margin: 0 10px 0 10px;
+}
+.pageHomemBtn::after{
+	content: "";
+  clear: both;
+  display: table;
+}
 /*main페이지 출현*/
 html{
 	scroll-behavior: smooth;
@@ -1231,7 +1244,7 @@ height:50px;
 .inputBtn{
    margin: 20px auto;
     position: relative;
-    left: 1300px;
+    left: 1220px;
 }
 
 .inputBtn input[type=button]{
@@ -1657,12 +1670,75 @@ text-decoration:none ; color:#000000
 	border-bottom: 1px solid gray;
 	padding:10px;
 }
+.noticeSearch{
+	width: 1300px;
+    position: relative;
+    top: -118px;
+    left: 950px;
+}
+.noticeSearch select{
+	float: left;
+    height: 40px;
+}
+.noticeSearch input[type=text]{
+	padding: 0 0 0 10px;
+    height: 36px;
+    float: left;
+}
+.noticeSearch input[type=button]{
+	display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 0;
+    width: 48px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+.noticeSearch input[type=button]:hover{
+background-color:#D8D8D8;
+   color:#000; 
+		    }
+
 .comunicationTh{
 	text-align:center;
 	padding:10px;
 	border-bottom: 1px solid gray;
 }
-	
+.ComunicationBtn{
+	display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+.ComunicationBtn:hover{
+background-color:#D8D8D8;
+   color:#000; 
+		    }
+.comunicationFormBtn{
+	display: inline-block;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    margin: 5px;
+    width: 110px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 0;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
+}
+.comunicationFormBtn:hover{
+background-color:#D8D8D8;
+   color:#000; 
+		    }
 /*---------------------커뮤니티 게시판 폼--------------------*/
 .comunicationForm{
 	width:1300px;
@@ -1742,7 +1818,7 @@ text-decoration:none ; color:#000000
     background-color: #000;
     border: none;
     color: #fff;
-    margin: 5px;
+    margin: 5px ;
     width: 110px;
     height: 40px;
     font-size: 15px;
