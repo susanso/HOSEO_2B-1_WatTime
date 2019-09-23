@@ -334,7 +334,7 @@
 %>
                <tr>
                   <td>
-                     <textarea name = "productReviewRe" id="productReviewRe" onkeyup="productReviewLengthRe()" cols="40" rows="8"><%=reviewDTO.getReviewContent() %></textarea><br>
+                     <textarea name = "productReviewRe" id="productReviewRe" onkeyup="productReviewLengthRe()" cols="40" rows="8" autofocus><%=reviewDTO.getReviewContent() %></textarea><br>
                      <span id = "productReviewLengthRe" >현재 문자 길이 0/200</span><br>
                      <select name = "scoreRe" id= "scoreRe">
                         <option value="5" checked>★★★★★</option>

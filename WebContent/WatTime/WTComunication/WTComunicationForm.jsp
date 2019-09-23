@@ -265,7 +265,7 @@
 					<tr class="comunicationFormTr">
 						<td colspan="6" style="padding-left:<%=wid%>px;">
 			  				<img src="img/comu//re.png" class="reContentImg"><br>
-							<textarea class="text1" name = "commentModify" id="commentModify"><%=commentsDTO.getComment() %></textarea>	
+							<textarea class="text1" name = "commentModify" id="commentModify" autofocus><%=commentsDTO.getComment() %></textarea>	
 						</td>
 						<td class="comunicationFormTd">
 							<input type="button" id="modify" value = "수정하기" onclick="commentModify('<%=commentsDTO.getNum()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')"><br>
@@ -277,7 +277,7 @@
 	%>					
 					<tr class="comunicationFormTr">
 						<td colspan="6">
-							<textarea class="text1" name = "commentModify" id="commentModify"><%=commentsDTO.getComment() %></textarea>	
+							<textarea class="text1" name = "commentModify" id="commentModify" autofocus><%=commentsDTO.getComment() %></textarea>	
 						</td>
 						<td class="comunicationFormTd">
 							<input type="button" id="modify" value = "수정하기" onclick="commentModify('<%=commentsDTO.getNum()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')"><br>
