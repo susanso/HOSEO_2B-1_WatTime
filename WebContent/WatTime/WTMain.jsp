@@ -27,8 +27,16 @@
 		<jsp:include page="<%=content%>" flush="false"/>
 		<jsp:include page="<%=bottom%>" flush="false"/>
 	</div>
-	<div class="pageTopBtn" >
-	<a href="#"><img src="img/top.png" alt="top" width="60px" height="60px" ></a>
+	<div class="autoPageMove">
+		<div class="pageTopBtn" >
+			<a href="#"><img src="img/top.png" alt="top" width="60px" height="60px" ></a>
+		</div>
+		<div class="pageBottomBtn">
+			<a href="#mainBottom"><img src="img/bottom.png" alt="bottom" width="60px" height="60px" ></a>
+		</div>
+		<div class="pageHomeBtn" >
+			<a href="WTMain.jsp"><img src="img/home.png" alt="home" width="60px" height="60px" ></a>
+		</div>
 	</div>
 	<!-- 챗봇 -->
 	<div>

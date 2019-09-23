@@ -102,18 +102,18 @@
 	<%
 					if(log!="no"&&memberDTO.getMemId().equals(comunicationDTO.getMemId())){
 	%>					<!--  -->
-						<input type="button" value="글수정" onclick="comunicationModifyForm('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-						<input type="button" value="글삭제" onclick="comunicationDelete('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
+						<input type="button" class="ComunicationBtn" value="글수정" onclick="comunicationModifyForm('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
+						<input type="button"  class="ComunicationBtn" value="글삭제" onclick="comunicationDelete('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 						
 	<%
 					}
 					if(session.getAttribute("member") != null){
 	%>
-						<input type="button" value="답글" onclick="replyPage('<%=comunicationDTO.getNum()%>','<%=comunicationDTO.getRef() %>','<%=comunicationDTO.getRe_step()%>','<%=comunicationDTO.getRe_level()%>')">
+						<input type="button" class="ComunicationBtn"  value="답글" onclick="replyPage('<%=comunicationDTO.getNum()%>','<%=comunicationDTO.getRef() %>','<%=comunicationDTO.getRe_step()%>','<%=comunicationDTO.getRe_level()%>')">
 	<%			
 					}
 	%>
-					<input type="button" value="목록" onclick="listBack('<%=pageNum%>','<%=listCount%>')">
+					<input type="button" class="ComunicationBtn"  value="목록" onclick="listBack('<%=pageNum%>','<%=listCount%>')">
 				</td>
 			</tr>
 			
@@ -147,8 +147,8 @@
 			<tr class="comunicationFormTr">
 				<td colspan="7">
 					댓글 : <%=count %>개
-					<input type="button" name="recommend" value="추천   <%=comunicationDTO.getRecommend()%>" onclick="recommend('<%=log %>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-					<input type="button" name="unrecommend" value="비추천   <%=comunicationDTO.getUnrecommend()%>" onclick="unrecommend('<%=log %>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
+					<input type="button" name="recommend" class="ComunicationBtn"  value="추천   <%=comunicationDTO.getRecommend()%>" onclick="recommend('<%=log %>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
+					<input type="button" name="unrecommend" class="ComunicationBtn"  value="비추천   <%=comunicationDTO.getUnrecommend()%>" onclick="unrecommend('<%=log %>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 				</td>
 			</tr>
 			<tr class="comunicationFormTr">

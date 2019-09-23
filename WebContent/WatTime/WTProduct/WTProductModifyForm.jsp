@@ -25,17 +25,17 @@
 %>
 <body>
 	<form method="post" action="WTProduct/WTProductModifyPro.jsp" id="productInsertForm" enctype="multipart/form-data">
-		<table border=1>
+		<table class="productInsert">
 			<!-- 이미지 및 가격 -->
 			<tr>
-				<td rowspan="2">
-					미리보기 사진 등록<br>
+				<td rowspan="2" class="picture">
+					<h2>미리보기 사진 등록</h2><br>
 					<input type="file" id="productSimpleImg" name="productSimpleImg" size=40 required>
 				</td>
 				<td>
-					제품코드 : <input type="text" id="productCode" name="productCode" value="<%=productDTO.getProductCode()%>" required><br>
-					제품명 : <input type="text" id="productName" name="productName" value="<%=productDTO.getProductName()%>" required><br>
-					브랜드 : <select id ="brand" name="brand" value= "<%=productDTO.getBrandEng() %>" onchange="brandKorCon(this.options[this.selectedIndex].text)">
+					<p>제품코드 : <input type="text" style="width:280px;" id="productCode" name="productCode" value="<%=productDTO.getProductCode()%>" required></p>
+					<p>제품명 : <input type="text" style="width:299px;" id="productName" name="productName" value="<%=productDTO.getProductName()%>" required></p>
+					<p>브랜드 : <select class="brandSelect" style="width:300px;" id ="brand" name="brand" value= "<%=productDTO.getBrandEng() %>" onchange="brandKorCon(this.options[this.selectedIndex].text)">
 							  <option value="" selected disabled required>선택</option>
 							  <option value="DKNY">DKNY</option>
 							  <option value="GEIGER">GEIGER</option>
@@ -65,35 +65,37 @@
 							  <option value="FOCE">FOCE</option>
 							  <option value="PAULBRIAL">PAULBRIAL</option>
 							  <option value="HAMILTON">HAMILTON</option>
-							</select><br>
-					브랜드(한글):<input type="text" id="brandKor" name="brandKor" required><br>
-					타입 :<select id ="type" name="type">
+							</select></p>
+					<p>브랜드(한글):<input type="text" style="width:258px;" id="brandKor" name="brandKor" required></p>
+					<p>타입 :<select id ="type" style="width:325px;" name="type">
 							  <option value="" selected disabled required>선택</option>
 							  <option value="man">남성</option>
 							  <option value="woman">여성</option>
 							  <option value="couple">커플</option>
-						</select><br>
-					원가격 : <input type="number" id="productOriginalPrice" name="productOriginalPrice" value="<%=productDTO.getProductOriginalPrice()%>" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>원<br>
-					할인율 : <input type="number" id="productSale" name="productSale" min="0" max="100" value="<%=productDTO.getProductSale()%>" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()">%<br>
-					소비자가격 : <input type="number" id="productPrice" name="productPrice" value="<%=productDTO.getProductPrice()%>" readonly>원<br>
-					TicTok : <input type="number" id="tictok" name="tictok" value="<%=productDTO.getTictok()%>" readonly ><br>
-					제조국 : <input type="text" id="productCountry" name="productCountry" value="<%=productDTO.getProductCountry()%>" required><br>
+						</select></p>
+					<p>원가격 : <input type="number" id="productOriginalPrice" name="productOriginalPrice" value="<%=productDTO.getProductOriginalPrice()%>" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()" required>원</p>
+					<p>할인율 : <input type="number" id="productSale" name="productSale" min="0" max="100" value="<%=productDTO.getProductSale()%>" onblur="productSalePrice()" onkeyup="productSalePrice()" onkeydown="productSalePrice()">%</p>
+					<p>소비자가격 : <input type="number" id="productPrice" name="productPrice" value="<%=productDTO.getProductPrice()%>" readonly>원</p>
+					<p>TicTok : <input type="number" id="tictok" name="tictok" value="<%=productDTO.getTictok()%>" readonly ></p>
+					<p>제조국 : <input type="text" id="productCountry" name="productCountry" value="<%=productDTO.getProductCountry()%>" required></p>
 				</td>
 			</tr>
 			<!-- 등록버튼 -->
-			<tr>
-				<td>
-					<input type = "submit" value="수정하기">
-				</td>
-			</tr>
+
+					
 			<!-- 상세 이미지 -->
 			<tr>
-				<td colspan="2">
+				<td class="picture">
 					상세 사진 등록<br>
 					<input type="file" id="productDetailImg" name="productDetailImg" size=100 required>
 				</td>
 			</tr>
-		</table>
+			<tr>
+				<td colspan="2" class="picture">
+				<input type = "submit" value="수정하기">
+				</td>
+			</tr>
+		</table>	
 	</form>
 </body>
 </html>
