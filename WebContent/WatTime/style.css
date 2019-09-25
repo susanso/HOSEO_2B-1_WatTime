@@ -51,6 +51,18 @@ TID2               스페라
 /*main페이지 출현*/
 #mainTop{width:100%;}
 
+pre{
+	line-height: 1.7em;
+    letter-spacing: 0.15em;
+    font-size: 20px;
+    font-family: sans-serif;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-break:break-all;
+}
 .autoPageMove{
 	position: fixed;
     bottom: 22px;
@@ -955,10 +967,13 @@ height:50px;
 }
 
 
-
-.slideManClass  img{
+.slideManClass p{
+	padding:10px 0 5px 10px;	
+}
+.slideManClass img{
    
-   width: 200px;
+   width: 190px;
+    height: 200px;
    margin-bottom:5px;
 }
 
@@ -973,7 +988,7 @@ height:50px;
 }
 
 
-.slideManClass img {width:200px;height:200px;}
+
 
 /* midelBanner  */
 
@@ -1255,6 +1270,9 @@ height:50px;
     border: none;
     margin:5px;
 }
+#productCount{
+	width:60px;
+}
 
 .productInsert{
 	margin:30px auto;
@@ -1272,8 +1290,8 @@ height:50px;
 }
 .productInsert td input[type=text], select, input[type=number]{
 font-size: 20px;
-
 }
+    width: 60px;
 .picture{
 	text-align:center;
 }
@@ -1356,6 +1374,7 @@ font-size: 20px;
     height: 30px;
     line-height: 0;
     top: -33px;
+    left: -32px;
     font-size: 33px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
@@ -1384,16 +1403,16 @@ font-size: 20px;
 }
 #productReview{
 	display: inline-block;
-    width: 700px;
     padding: 10px;
-    border: 1px solid gray;
     border-collapse: collapse;
     text-align: left;
-    font-size: 16px;
     margin-bottom: 30px;
-    white-space:pre-line;
-    font-family:bold;
-    background-color: #ECECEB;
+    white-space: pre-line;
+	font-family: initial;
+    font-size: 18px;
+	width: 731px;
+    height: auto;
+
 }
 .reviewComent{
 	width:650px;
@@ -1425,12 +1444,6 @@ font-size: 20px;
 				}
 .reviewScore{
 	width:500px;
-}
-#productReview{
-	font-family: initial;
-    font-size: 18px;
-    width: 600px;
-    height: 120px;
 }
 
 #reviewRegistration{
@@ -1660,6 +1673,12 @@ text-decoration:none ; color:#000000
 }
 
 /*------------------------커뮤니티 게시판----------------------*/
+.reContentImg{
+    padding: 0px 0 189px 0;
+	width:30px;
+	height:30px;
+	
+}
 #comunicationList{
 	border-collapse: collapse;
 	width:1300px;

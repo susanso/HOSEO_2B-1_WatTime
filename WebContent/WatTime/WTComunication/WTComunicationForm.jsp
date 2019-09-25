@@ -205,7 +205,7 @@
 					<tr class="comunicationFormTr">
 					
 						<td colspan="7" class="textarea" style="padding-left:<%=wid%>px;">
-			  				<img src="img/comu//re.png" class="reContentImg">
+			  				<img src="img/comu//arrow.png" class="reContentImg">
 							<br>
 							작성자 : <%=commentsDTO.getMemName()+"      "%>작성일 : <%=sf.format(commentsDTO.getWriteDate())+"      "%><br>
 <%						
@@ -232,7 +232,7 @@
 %>				
 								<tr class="comunicationFormTr">
 									<td colspan="6" style="padding-left:<%=wid%>px;">
-			  							<img src="img/comu//re.png" class="reContentImg">
+			  							<img src="img/comu//arrow.png" class="reContentImg">
 										<textarea class="text1" name = "commentReply" id="commentReply"></textarea><br>
 									</td>
 									<td class="comunicationFormTd">
@@ -280,7 +280,7 @@
 			  						
 								</td>
 								<td colspan="6">
-									<img src="img/comu//re.png" class="reContentImg"><br>
+									<img src="img/comu//arrow.png" class="reContentImg">
 									<textarea class="text1" name = "commentReply" id="commentReply"></textarea><br>
 								</td>
 								<td class="comunicationFormTd">
@@ -301,8 +301,8 @@
 %>
 					<tr class="comunicationFormTr">
 						<td colspan="6" style="padding-left:<%=wid%>px;">
-			  				<img src="img/comu//re.png" class="reContentImg"><br>
-							<textarea class="text1" name = "commentModify" id="commentModify" autofocus><%=commentsDTO.getComment() %></textarea>	
+			  				<img src="img/comu//arrow.png" class="reContentImg">
+							<textarea class="text1" name = "commentModify" id="commentModify"><%=commentsDTO.getComment() %></textarea>	
 						</td>
 						<td class="comunicationFormTd">
 							<input type="button" id="modify" value = "수정하기" onclick="commentModify('<%=commentsDTO.getNum()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')"><br>

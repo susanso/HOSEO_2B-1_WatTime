@@ -102,7 +102,7 @@
 					<!-- 게시글 제목 -->
 					<td class="comunicationTd" style="padding-left:20px;">
 						<img src="img/comu/level.png" width="<%=wid%>" height="16">
-		  				<img src="img/comu//re.png">
+		  				<img src="img/comu//arrow.png" style="width:20px; heihgt:20px ; margin: 0 0 -4px 0;">
 		  				<%=comunicationDTO.getTitle() %>
 	  				</td>
 <%
