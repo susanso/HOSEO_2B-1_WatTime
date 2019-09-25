@@ -41,7 +41,6 @@
 	//저장할 곳의 경로
 	String realFolder = scontext.getRealPath(savefile);
 	try{
-		
 		MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy()); 
 		
 		Enumeration<?> files = multi.getFileNames();
@@ -50,6 +49,7 @@
 		photo3 = (String)files.nextElement();
 		photo2 = (String)files.nextElement();
 		photo1 = (String)files.nextElement();
+		
 		photo1 = multi.getFilesystemName(photo1);
 		photo2 = multi.getFilesystemName(photo2);
 		photo3 = multi.getFilesystemName(photo3);

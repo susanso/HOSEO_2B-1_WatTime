@@ -21,24 +21,29 @@
 <title>Insert title here</title>
 </head>
 <%
+	//날짜 포맷(뒷 시간에 초 뒤 .0이 붙어서 없애기 위해 포맷)
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	//리스트에서 클릭한 게시글의 번호
 	int num = Integer.parseInt(request.getParameter("num"));
+	//현재 상세 페이지의 번호
 	int pageNum = Integer.parseInt(request.getParameter("formPageNum"));
+	//리스트 페이지의 번호
 	int listPageNum = Integer.parseInt(request.getParameter("listPageNum"));
+	//리스트 페이지의 리스트 갯수
 	int listCount = Integer.parseInt(request.getParameter("listCount"));
 	//댓글 수정 번호
 	int modify = Integer.parseInt(request.getParameter("modify"));
-	
 
 	String log = "";
+	//로그인 세션 가져오기
 	if(session.getAttribute("member") != null){
 		memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
 	}else{
 		log = "no";
 	}
-	
+	//DAO 생성
 	WatTimeComunicationDAO comunicationDAO = new WatTimeComunicationDAO();
-	
+	//getComunicationForm에 게시글 번호를 보내 실행
 	comunicationDTO = comunicationDAO.getComunicationForm(num);
 %>
 </head>
@@ -64,34 +69,54 @@
 			</tr>
 			<tr class="comunicationFormTr">
 <%
-				if(comunicationDTO.getPhoto1()!=null &&(comunicationDTO.getPhoto1().indexOf(".png")!=-1||comunicationDTO.getPhoto1().indexOf(".jpg")!=-1)){
+				//사진1번이 존재하고 확장자가 .png거나 .jpg이면 화면에 표시
+				if(comunicationDTO.getPhoto1()!=null 
+					&&(comunicationDTO.getPhoto1().indexOf(".png")!=-1
+					||comunicationDTO.getPhoto1().indexOf(".jpg")!=-1)){
 %>
 					<td colspan="2" width="200px">
 						사진<br>
 						(사진을 클릭하면 원본 크기로 볼 수 있습니다.)
 					</td>
 					<td class="comunicationFormTd" width="1100px" colspan="5">
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto1() %>" width="100" height="100"  onclick="fnImgPop(this.src)">
+						<img src="..\img\comunication\<%=comunicationDTO.getPhoto1() %>" 
+							 width="100" height="100"  onclick="fnImgPop(this.src)">
 <%
 				}
-				if(comunicationDTO.getPhoto2()!=null &&(comunicationDTO.getPhoto2().indexOf(".png")!=-1||comunicationDTO.getPhoto2().indexOf(".jpg")!=-1)){
+				//사진2번이 존재하고 확장자가 .png거나 .jpg이면 화면에 표시
+				if(comunicationDTO.getPhoto2()!=null 
+						&& (comunicationDTO.getPhoto2().indexOf(".png")!=-1
+						|| comunicationDTO.getPhoto2().indexOf(".jpg")!=-1)){
 %>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto2() %>" width="100" height="100" onclick="fnImgPop(this.src)">
+						<img src="..\img\comunication\<%=comunicationDTO.getPhoto2() %>"
+							 width="100" height="100" onclick="fnImgPop(this.src)">
 <%
 				}
-				if(comunicationDTO.getPhoto3()!=null &&(comunicationDTO.getPhoto3().indexOf(".png")!=-1||comunicationDTO.getPhoto3().indexOf(".jpg")!=-1)){
+				//사진3번이 존재하고 확장자가 .png거나 .jpg이면 화면에 표시
+				if(comunicationDTO.getPhoto3()!=null 
+						&&(comunicationDTO.getPhoto3().indexOf(".png")!=-1
+						||comunicationDTO.getPhoto3().indexOf(".jpg")!=-1)){
 %>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto3() %>" width="100" height="100" onclick="fnImgPop(this.src)">
+						<img src="..\img\comunication\<%=comunicationDTO.getPhoto3() %>" 
+							 width="100" height="100" onclick="fnImgPop(this.src)">
 	<%
 				}
-				if(comunicationDTO.getPhoto4()!=null &&(comunicationDTO.getPhoto4().indexOf(".png")!=-1||comunicationDTO.getPhoto4().indexOf(".jpg")!=-1)){
+				//사진4번이 존재하고 확장자가 .png거나 .jpg이면 화면에 표시
+				if(comunicationDTO.getPhoto4()!=null 
+						&&(comunicationDTO.getPhoto4().indexOf(".png")!=-1
+						||comunicationDTO.getPhoto4().indexOf(".jpg")!=-1)){
 	%>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto4() %>" width="100" height="100" onclick="fnImgPop(this.src)">
+						<img src="..\img\comunication\<%=comunicationDTO.getPhoto4() %>"
+							 width="100" height="100" onclick="fnImgPop(this.src)">
 	<%
 				}
-				if(comunicationDTO.getPhoto5()!=null &&(comunicationDTO.getPhoto5().indexOf(".png")!=-1||comunicationDTO.getPhoto5().indexOf(".jpg")!=-1)){
+				//사진5번이 존재하고 확장자가 .png거나 .jpg이면 화면에 표시
+				if(comunicationDTO.getPhoto5()!=null 
+						&&(comunicationDTO.getPhoto5().indexOf(".png")!=-1
+						||comunicationDTO.getPhoto5().indexOf(".jpg")!=-1)){
 	%>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto5() %>" width="100" height="100" onclick="fnImgPop(this.src)">
+						<img src="..\img\comunication\<%=comunicationDTO.getPhoto5() %>"
+							 width="100" height="100" onclick="fnImgPop(this.src)">
 	<%
 				}
 	%>				
@@ -100,33 +125,42 @@
 			<tr class="comunicationFormTr">
 				<td colspan="7">
 	<%
+					//현재 게시물의 작성자 아이디가 일치 할 때
 					if(log!="no"&&memberDTO.getMemId().equals(comunicationDTO.getMemId())){
-	%>					<!--  -->
-						<input type="button" class="ComunicationBtn" value="글수정" onclick="comunicationModifyForm('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-						<input type="button"  class="ComunicationBtn" value="글삭제" onclick="comunicationDelete('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-						
+	%>					
+						<input type="button" class="ComunicationBtn" value="글수정" 
+							   onclick="comunicationModifyForm('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
+						<input type="button" class="ComunicationBtn" value="글삭제"
+							   onclick="comunicationDelete('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 	<%
 					}
+					//로그인 세션이 있을 때
 					if(session.getAttribute("member") != null){
 	%>
-						<input type="button" class="ComunicationBtn"  value="답글" onclick="replyPage('<%=comunicationDTO.getNum()%>','<%=comunicationDTO.getRef() %>','<%=comunicationDTO.getRe_step()%>','<%=comunicationDTO.getRe_level()%>')">
+						<input type="button" class="ComunicationBtn"  value="답글"
+							   onclick="replyPage('<%=comunicationDTO.getNum()%>','<%=comunicationDTO.getRef() %>','<%=comunicationDTO.getRe_step()%>','<%=comunicationDTO.getRe_level()%>')">
 	<%			
 					}
 	%>
-					<input type="button" class="ComunicationBtn"  value="목록" onclick="listBack('<%=pageNum%>','<%=listCount%>')">
+					<!-- 목록 버튼 -->
+					<input type="button" class="ComunicationBtn"  value="목록" 
+						   onclick="listBack('<%=pageNum%>','<%=listCount%>')">
 				</td>
 			</tr>
 			
 	<%
 			//댓글의 댓글 번호
 			int commentNum = Integer.parseInt(request.getParameter("commentNum"));
+			//글 번호
 			int ref = Integer.parseInt(request.getParameter("ref"));
+			//해당 댓글의 들여쓰기
 			int re_step = Integer.parseInt(request.getParameter("re_step"));
+			//해당 댓글의 
 			int re_level = Integer.parseInt(request.getParameter("re_level"));
+			//해당 페이지에 표시할 갯수
 			int pageSize = 10;
-			//URL에서 가져온 페이지 번호를 int 형으로 변환 시키고 넣음
 			int currentPage = pageNum;
-			//처음 초기 페이지 번호 (최대 페이지를 10으로 설정하면 1, 11, 21)
+			//페이징 그룹에서 처음이 될 번호
 		    int startRow = (currentPage - 1) * pageSize + 1;
 			//끝 페이지 번호 (최대 페이지를 10으로 설정하면 10, 20, 30)
 		    int endRow = pageSize;
@@ -143,7 +177,7 @@
 		    List<WatTimeComunicationCommentsDTO> commentsList = null;
 		    
 		    commentsList = commentsDAO.getCommentsList(boardNum, startRow, pageSize);
-	%>
+%>
 			<tr class="comunicationFormTr">
 				<td colspan="7">
 					댓글 : <%=count %>개
@@ -159,7 +193,7 @@
 					<input type="button" class="comunicationBtn" id="modify" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',comment.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
 				</td>
 			</tr>
-	<%
+<%
 		    for(int i = 0 ; i < commentsList.size() ; i++){
 		    	commentsDTO = commentsList.get(i);
 		    	//수정할 댓글 번호가 일치하지 않을 때 화면에 출력
@@ -167,35 +201,35 @@
 					int wid=0; 
 					if(commentsDTO.getRe_level()>0){
 					   wid=18*(commentsDTO.getRe_level());
-	%>
+%>
 					<tr class="comunicationFormTr">
 					
 						<td colspan="7" class="textarea" style="padding-left:<%=wid%>px;">
 			  				<img src="img/comu//re.png" class="reContentImg">
 							<br>
 							작성자 : <%=commentsDTO.getMemName()+"      "%>작성일 : <%=sf.format(commentsDTO.getWriteDate())+"      "%><br>
-	<%						
+<%						
 							//session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
 							if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(commentsDTO.getMemId()) ||memberDTO.getMemAdmin() == 1)){
-	%>						
+%>						
 								<input type="button" id="modify" name="modify" value="수정" onclick="commentModifyForm('<%=commentsDTO.getNum()%>','<%=commentsDTO.getRef()%>','<%=commentsDTO.getRe_step()%>','<%=commentsDTO.getRe_level()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 								<input type="button" id="delete" name="delete" value="삭제" onclick="commentDelete('<%=commentsDTO.getNum()%>','<%=comunicationDTO.getNum()%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-	<%
+<%
 							}
 							if(session.getAttribute("member") != null){
-	%>						
+%>						
 								<input type="button" id="delete" name="delete" value="답글" onclick="replyComment('<%=commentsDTO.getNum()%>','<%=commentsDTO.getRef()%>','<%=commentsDTO.getRe_step()%>','<%=commentsDTO.getRe_level()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-	<%
+<%
 							}
-	%>
+%>
 							<div>
 								<pre class="commentPre"><%=commentsDTO.getComment() %></pre>
 							</div>
 							</td>
-	<%
+<%
 							if(commentNum==commentsDTO.getNum()){
 							 	wid=18*(commentsDTO.getRe_level()+1);
-	%>				
+%>				
 								<tr class="comunicationFormTr">
 									<td colspan="6" style="padding-left:<%=wid%>px;">
 			  							<img src="img/comu//re.png" class="reContentImg">
@@ -209,51 +243,54 @@
 							
 							</tr>
 	
-	<%
+<%
 							}
 					}else{
-	%>
+%>
 						<tr class="comunicationFormTr">
 							<td colspan="7" class="textarea" style="padding-left:<%=wid%>px;">
 								<br>
 								작성자 : <%=commentsDTO.getMemName()+"      "%>작성일 : <%=sf.format(commentsDTO.getWriteDate())+"      "%><br>
-	<%							
+<%							
 								//session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
 								if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(commentsDTO.getMemId()) ||memberDTO.getMemAdmin() == 1)){
-	%>						
+%>						
 									<input type="button" id="modify" name="modify" value="수정" onclick="commentModifyForm('<%=commentsDTO.getNum()%>','<%=commentsDTO.getRef()%>','<%=commentsDTO.getRe_step()%>','<%=commentsDTO.getRe_level()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 									<input type="button" id="delete" name="delete" value="삭제" onclick="commentDelete('<%=commentsDTO.getNum()%>','<%=comunicationDTO.getNum()%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-	<%
+<%
 								}
 								if(session.getAttribute("member") != null){
-	%>						
-									<input type="button" id="delete" name="delete" value="답글" onclick="replyComment('<%=commentsDTO.getNum()%>','<%=commentsDTO.getRef()%>','<%=commentsDTO.getRe_step()%>','<%=commentsDTO.getRe_level()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
-	<%
+%>						
+									<input type="button" id="delete" name="delete" value="답글"
+										   onclick="replyComment('<%=commentsDTO.getNum()%>','<%=commentsDTO.getRef()%>','<%=commentsDTO.getRe_step()%>','<%=commentsDTO.getRe_level()%>','<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
+<%
 								}
-	%>
+%>
 							<div>
 								<pre class="commentPre"><%=commentsDTO.getComment() %></pre>
 							</div>
 							</td>
 						</tr>
-	<%
+<%
 						if(commentNum==commentsDTO.getNum()){
 							 wid=18*(commentsDTO.getRe_level()+1);
-	%>		
+%>		
 							<tr class="comunicationFormTr">
 								<td rowspan="1" id="reComment" style="padding-left:<%=wid%>px;">
 			  						
 								</td>
 								<td colspan="6">
-									<img src="img/comu//re.png" class="reContentImg">
+									<img src="img/comu//re.png" class="reContentImg"><br>
 									<textarea class="text1" name = "commentReply" id="commentReply"></textarea><br>
 								</td>
 								<td class="comunicationFormTd">
-									<input type="button" id="commit" name="commentSubmit" value="등록" onclick="commentSubmit('<%=boardNum%>',commentReply.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
-									<input type="button" id="modifycencle" value = "취소" onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
+									<input type="button" id="commit" name="commentSubmit" value="등록" 
+										   onclick="commentSubmit('<%=boardNum%>',commentReply.value,'<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=log%>','<%=ref%>','<%=re_step%>','<%=re_level%>','<%=commentNum%>','<%=listPageNum%>','<%=listCount%>','<%=commentNum%>','<%=pageNum%>')">
+									<input type="button" id="modifycencle" value = "취소"
+										   onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 								</td>
 							</tr>
-		<%				}
+<%						}
 					}
 				//수정할 댓글 번호가 일치 할 때 수정 폼이 나옴
 				}else{
@@ -261,7 +298,7 @@
 						int wid=0; 
 					 	wid=18*(commentsDTO.getRe_level());
 	
-	%>
+%>
 					<tr class="comunicationFormTr">
 						<td colspan="6" style="padding-left:<%=wid%>px;">
 			  				<img src="img/comu//re.png" class="reContentImg"><br>
@@ -272,9 +309,9 @@
 							<input type="button" id="modifycencle" value = "취소" onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 						</td>
 					</tr>
-	<%				
+<%				
 					}else{
-	%>					
+%>					
 					<tr class="comunicationFormTr">
 						<td colspan="6">
 							<textarea class="text1" name = "commentModify" id="commentModify" autofocus><%=commentsDTO.getComment() %></textarea>	
@@ -284,10 +321,10 @@
 							<input type="button" id="modifycencle" value = "취소" onclick="commentModifyCencle('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">
 						</td>
 					</tr>
-	<%				}
+<%					}
 				}
 		    }
-	%>
+%>
 		</table>
 	<div class="move">
 <%
@@ -307,23 +344,27 @@
 		}
 	    if (startPage > 5) { 
 %>
-			<input type="button" id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+			<input type="button" id="PageNum" name="back" value="이전"
+				   onclick="back('<%=startPage - 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%      
 
 	}
     	for (int i = startPage ; i <= endPage ; i++) { 
     		if(pageNum==i){
 %>
-				<input type="button" name="nowPageNum" id="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+				<input type="button" name="nowPageNum" id="nowPageNum" value="<%=i %>" 
+					   onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%
 			}else{
 %>
-    			<input type="button" name="pageNum" id="PageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+    			<input type="button" name="pageNum" id="PageNum" value="<%=i %>"
+    				   onclick="pageNum(this.value,'<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%      
 			}
     	}
        if (endPage < pageCount) {  %>
-       		<input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
+       		<input type="button" id="PageNum" name="back" value="다음" 
+       			   onclick="next('<%=startPage + 5%>','<%=listCount%>','<%=num%>','<%=listPageNum%>')">
 <%
         }
     }
@@ -331,7 +372,6 @@
 	</div>
 </div>
 <script type="text/javascript">
-
  function fnImgPop(url){
   var img=new Image();
   img.src=url;
@@ -342,5 +382,4 @@
   var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
   OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+url+"' width='"+win_width+"'>");
  }
-
 </script>
