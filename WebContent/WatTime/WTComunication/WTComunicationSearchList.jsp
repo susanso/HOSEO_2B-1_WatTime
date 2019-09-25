@@ -53,7 +53,9 @@
 	}
 	if(count==0){
 %>
+	<div style="text-align:center; margin-top:150px; margin-bottom:150px;">
 		검색한 게시글이 없습니다.
+	</div>
 <%
   	}else{	
 %>

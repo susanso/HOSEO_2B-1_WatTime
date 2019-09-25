@@ -11,9 +11,28 @@
 <meta charset="UTF-8">
 <link href = "style.css" rel = "stylesheet" type = "text/css">
 <script src="WTProduct/js/WTProduct.js"></script>
+<script src="../code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 최신버전 제이쿼리 -->
-
-
+<!-- <script>
+	
+	$(function() {
+		  $("#newProduct").click(function() {
+		   var allData = "select * from productTbl order by productAddDate DESC limit 0,5";
+		   alert(allData);
+		   $.ajax({
+		    type : "POST",
+		    //dataType: "json",
+		    dataType : "text",
+		    url : "../servlet.WatTimeProductServlet",
+		    data : {"sql": allData},
+		    success : function(data) {
+		     alert(data);
+		    }
+		   });
+		  });
+		 });
+</script>
+ -->
 </head>
 <%
 	DecimalFormat df = new DecimalFormat("#,###");
@@ -87,7 +106,7 @@
 						 </a>
 					</p>
 				 </div>
-				  <div >
+				  <div>
 					 <p>
 						 <a href="#"><img src="img/watch/0301001.jpg" style="width:240px; height:250px;dispaly:block;"> 
 						 		<span class="mainSpan">[해밀턴[HAMILTON] ]</span>
@@ -251,6 +270,7 @@ function wattimeContentWoman(){
 	setTimeout('wattimeContentWoman()',6000); //6초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
 
 }
+
 </script>
 </body>
 </html>

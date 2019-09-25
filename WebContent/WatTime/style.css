@@ -1692,7 +1692,6 @@ text-decoration:none ; color:#000000
 .noticeSearch{
 	width: 1300px;
     position: relative;
-    top: -118px;
     left: 950px;
 }
 .noticeSearch select{
