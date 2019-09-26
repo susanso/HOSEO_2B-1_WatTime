@@ -27,7 +27,6 @@
 	int maxSize = 1024*1024*5;
 	String encType = "UTF-8";
 	//저장할 폴더
-	String savefile = "img/brand";
 	ServletContext scontext = getServletContext();
 	//저장할 곳의 경로
 	//String realFolder = scontext.getRealPath(savefile);

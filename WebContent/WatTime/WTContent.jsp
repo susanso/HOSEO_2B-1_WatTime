@@ -185,7 +185,7 @@
 						
 							<div class="slideManClass" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
 								<p>
-									<a><img alt="시계사진" src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>">
+									<a><img alt="시계사진" src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>">
 									<br>
 									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
 									<span class="subSpan"><%=productDTO.getProductName() %></span>

@@ -182,7 +182,7 @@
 			</tr>
 			<tr>
 				<td>
-					이름
+					주문 메세지
 				</td>
 				<td>
 					<input type="text" name="deliveryMemName">
