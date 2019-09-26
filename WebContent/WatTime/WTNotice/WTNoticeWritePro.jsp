@@ -14,11 +14,10 @@
 	String filename1 = "";
 	int maxSize = 1024*1024*5;
 	String encType = "UTF-8";
-	//저장할 폴더
-	String savefile = "img/notice";
+
 	ServletContext scontext = getServletContext();
 	//저장할 곳의 경로
-	realFolder = scontext.getRealPath(savefile);
+	realFolder = scontext.getRealPath("/WatTime/img/notice");
 	String file1="";
 	String noticeTitle = "";
 	String noticeContent = "";

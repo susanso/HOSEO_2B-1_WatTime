@@ -35,7 +35,6 @@ function productDeleteForm(productCode){
 
 ////상품 상세 페이지
 function countPlus(price,count){
-
     var countNum = parseInt(count) + 1;
     document.getElementById("productCount").value = countNum;
     var total = price * countNum;
@@ -54,6 +53,19 @@ function countMinus(price,count){
     }else{
         document.getElementById("productCount").value = countNum;
         var total = price * countNum;
+        var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById("totalPrice").textContent = totalfomat+"원";
+    }
+}
+function countChange(price,count){
+	var total = 0;
+    if(count==0){
+        alert("최소 수량은 1개입니다.");
+        document.getElementById("productCount").value = 1;
+        var totalfomat = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById("totalPrice").textContent = totalfomat+"원";
+    }else{
+        var total = price * count;
         var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         document.getElementById("totalPrice").textContent = totalfomat+"원";
     }
@@ -354,7 +366,32 @@ function basketPro(logCheck,productCount,productCode, productName, productPrice,
 		form.submit();
 	}
 }
+//구매 버튼
+function buy(productCode,log,productCount){
+	if(log=="logno"){
+		alert("로그인을 해주세요");
+	}else{
+		var form = document.createElement("form");
+		form.setAttribute("charset", "utf-8");
+		form.setAttribute("method", "Post"); // Get 또는 Post 입력
+		form.setAttribute("action", "WTMain.jsp?pageChange=WTBuy/WTBuyForm.jsp");
 
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "productCode");
+		hiddenField.setAttribute("value", productCode);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "productCount");
+		hiddenField.setAttribute("value", productCount);
+		form.appendChild(hiddenField);
+		
+		document.body.appendChild(form);
+		form.submit();
+	}
+}
 //페이지 관련
 //이전
 function back(pageNum, modify, productCode, sort){

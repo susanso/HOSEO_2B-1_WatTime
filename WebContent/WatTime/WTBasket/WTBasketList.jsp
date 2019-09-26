@@ -6,6 +6,9 @@
 <jsp:useBean id="basketDTO" class = "WatTimePack.WatTimeBasketDTO" scope="page">
 	<jsp:setProperty name="basketDTO" property="*"/>
 </jsp:useBean>
+<jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
+   <jsp:setProperty name="memberDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,31 +18,14 @@
 </head>
 <%
 	DecimalFormat df = new DecimalFormat("#,###");
-	String memId = request.getParameter("memId");
-	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+	if(session.getAttribute("member") != null){
+	    memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
+	}
 	
 	List<WatTimeBasketDTO> basketList = null;
 	WatTimeBasketDAO basketDAO = new WatTimeBasketDAO();
-	
-	
-	//화면에 표시할 게시물 갯수
-	int pageSize = 5;
-	//URL에서 가져온 페이지 번호를 int 형으로 변환 시키고 넣음
-	int currentPage = pageNum;
-	int startRow = (currentPage - 1) * pageSize + 1;
-	//처음 초기 페이지 번호 (최대 페이지를 10으로 설정하면 1, 11, 21)
-    int brandstartRow = (currentPage - 1) * pageSize + 1;
-	//끝 페이지 번호 (최대 페이지를 10으로 설정하면 10, 20, 30)
-    int endRow = pageSize;
-	//테이블에 조건에 맞는 행이 몇개인지 알아낼려는 변수
-    int count = 0;
-	//???
-    int number = 0;
-	
-    count = basketDAO.getBasketListCount(memId);
-    number = count-(currentPage-1)*pageSize;
-  	//getProductList()메소드에 brand, type, startRow, pageSize넘겨 sql문 실행
-  	basketList = basketDAO.getMemberBasketList(memId,startRow, pageSize);
+
+  	basketList = basketDAO.getMemberBasketList(memberDTO.getMemId());
 	
 %>
 <body>
@@ -64,13 +50,15 @@
 			totalPrice = totalPrice + basketDTO.getProductPrice()*basketDTO.getProductCount();
 %>
 		<tr>
-			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><img src="..\img\brand\<%=basketDTO.getProductSimpleImgFileName() %>" width="300px" height="300px"></td>
+			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><img src="../WatTime/img/brand/<%=basketDTO.getProductSimpleImgFileName() %>" width="300px" height="300px"></td>
 			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><%=basketDTO.getProductName() %></td>
 			<td><%=df.format(basketDTO.getProductPrice()*basketDTO.getProductCount()) %></td>
 			<td>
-				<input type="number" style="text-align:center;" id="productCountNum" name="productCountNum"  min="1" max="2147483647" value=<%=basketDTO.getProductCount() %> onchange="productCountChange(this.value)"><br>
+				<input type="number" style="text-align:center;" id="productCountNum" name="productCountNum"
+					   min="1" max="2147483647" value=<%=basketDTO.getProductCount() %> onchange="productCountChange(this.value)"><br>
 				<!-- , -->
-				<input type="button" id="productBasketModify" value="수정" class="basketBtn" onclick="productCountModify('<%=basketDTO.getMemId()%>','<%=basketDTO.getNum()%>')">
+				<input type="button" id="productBasketModify" value="수정" class="basketBtn"
+					   onclick="productCountModify('<%=basketDTO.getMemId()%>','<%=basketDTO.getNum()%>')">
 			
 			</td>
 			<td>
@@ -78,7 +66,8 @@
 			</td>
 
 			<td>
-				<input type="button" class="basketBtn" id="<%=basketDTO.getNum() %>" value="삭제" onclick="basketOneDelete(this.id,'<%=basketDTO.getMemId()%>')"><br>
+				<input type="button" class="basketBtn" id="<%=basketDTO.getNum() %>" value="삭제" 
+					   onclick="basketOneDelete(this.id,'<%=basketDTO.getMemId()%>')"><br>
 				<br>
 			</td>
 		</tr>
@@ -93,8 +82,9 @@
 		</tr>
 		<tr>
 			<td colspan="6">
-				<input type="button" id="basketAllDelete" value="모두 삭제" class="basketBtn" onclick="basketAllDelete('<%=basketDTO.getMemId()%>')">
-				<input type="button" value="모두 구매" class="basketBtn">
+				<input type="button" id="basketAllDelete" value="모두 삭제" class="basketBtn" 
+					   onclick="basketAllDelete('<%=basketDTO.getMemId()%>')">
+				<input type="button" value="모두 구매" class="basketBtn" onclick="buy()">
 			</td>
 		</tr>
 <%

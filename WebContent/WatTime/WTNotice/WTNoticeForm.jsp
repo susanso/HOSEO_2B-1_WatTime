@@ -44,7 +44,7 @@
 <%
 					if(noticeDTO.getFileName()!=null){
 %>
-					<img src="..\img\notice\<%=noticeDTO.getFileName() %>">
+					<img src="../WatTime/img/notice/<%=noticeDTO.getFileName() %>">
 <%
 					}
 %>

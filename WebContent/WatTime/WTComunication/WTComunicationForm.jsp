@@ -55,12 +55,24 @@
 				<td class="comunicationFormTd" colspan="6" style="text-align:center;"><%=comunicationDTO.getTitle() %></td>
 			</tr>
 			<tr class="comunicationFormTr">
-				<td class="comunicationFormTd" width="150px" style="text-align:center;">작성자</td>
-				<td class="comunicationFormTd" style="text-align:center;" width="200px"><%=comunicationDTO.getMemName() %></td>
-				<td class="comunicationFormTd" width="150px" style="text-align:center;">작성일</td>
-				<td class="comunicationFormTd" colspan="1" style="text-align:center;" width="350px"><%=comunicationDTO.getWriteDate() %></td>
-				<td class="comunicationFormTd" width="150px" style="text-align:center;">조회수</td>
-				<td class="comunicationFormTd" colspan="2" style="text-align:center;" width="300px"><%=comunicationDTO.getReadCount() %></td>
+				<td class="comunicationFormTd" width="150px" style="text-align:center;">
+					작성자
+				</td>
+				<td class="comunicationFormTd" style="text-align:center;" width="200px">
+					<%=comunicationDTO.getMemName() %>
+				</td>
+				<td class="comunicationFormTd" width="150px" style="text-align:center;">
+					작성일
+				</td>
+				<td class="comunicationFormTd" colspan="1" style="text-align:center;" width="350px">
+					<%=comunicationDTO.getWriteDate() %>
+				</td>
+				<td class="comunicationFormTd" width="150px" style="text-align:center;">
+					조회수
+				</td>
+				<td class="comunicationFormTd" colspan="2" style="text-align:center;" width="300px">
+					<%=comunicationDTO.getReadCount() %>
+				</td>
 			</tr>
 			<tr class="comunicationFormTr">
 				<td id="comunicationContentTd" colspan="7" height="500px" width="300px">
@@ -79,7 +91,7 @@
 						(사진을 클릭하면 원본 크기로 볼 수 있습니다.)
 					</td>
 					<td class="comunicationFormTd" width="1100px" colspan="5">
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto1() %>" 
+						<img src="../WatTime/img/comunication/<%=comunicationDTO.getPhoto1() %>" 
 							 width="100" height="100"  onclick="fnImgPop(this.src)">
 <%
 				}
@@ -88,7 +100,7 @@
 						&& (comunicationDTO.getPhoto2().indexOf(".png")!=-1
 						|| comunicationDTO.getPhoto2().indexOf(".jpg")!=-1)){
 %>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto2() %>"
+						<img src="../WatTime/img/comunication/<%=comunicationDTO.getPhoto2() %>"
 							 width="100" height="100" onclick="fnImgPop(this.src)">
 <%
 				}
@@ -97,7 +109,7 @@
 						&&(comunicationDTO.getPhoto3().indexOf(".png")!=-1
 						||comunicationDTO.getPhoto3().indexOf(".jpg")!=-1)){
 %>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto3() %>" 
+						<img src="../WatTime/img/comunication/<%=comunicationDTO.getPhoto3() %>" 
 							 width="100" height="100" onclick="fnImgPop(this.src)">
 	<%
 				}
@@ -106,7 +118,7 @@
 						&&(comunicationDTO.getPhoto4().indexOf(".png")!=-1
 						||comunicationDTO.getPhoto4().indexOf(".jpg")!=-1)){
 	%>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto4() %>"
+						<img src="../WatTime/img/comunication/<%=comunicationDTO.getPhoto4() %>"
 							 width="100" height="100" onclick="fnImgPop(this.src)">
 	<%
 				}
@@ -115,7 +127,7 @@
 						&&(comunicationDTO.getPhoto5().indexOf(".png")!=-1
 						||comunicationDTO.getPhoto5().indexOf(".jpg")!=-1)){
 	%>
-						<img src="..\img\comunication\<%=comunicationDTO.getPhoto5() %>"
+						<img src="../WatTime/img/comunication/<%=comunicationDTO.getPhoto5() %>"
 							 width="100" height="100" onclick="fnImgPop(this.src)">
 	<%
 				}

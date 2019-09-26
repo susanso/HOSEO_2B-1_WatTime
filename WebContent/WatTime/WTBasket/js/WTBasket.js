@@ -112,6 +112,16 @@ function basketAllDelete(memId){
 	form.submit();
 	
 }
+//모두 구매
+function buy(){
+	var form = document.createElement("form");
+	form.setAttribute("charset", "utf-8");
+	form.setAttribute("method", "Post"); // Get 또는 Post 입력
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTBuy/WTBuyForm.jsp");
+	
+	document.body.appendChild(form);
+	form.submit();
+}
 //페이지 관련
 //이전
 function back(pageNum){
