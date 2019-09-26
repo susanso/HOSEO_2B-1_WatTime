@@ -103,7 +103,7 @@
 		productDTO = productList.get(i);
 %>		
 		<li class="productLi" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
-			<div><img src="..\img\brand\<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300"></div>
+			<div><img src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300"></div>
 			<div><%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>]</div>
 			<div><h3><%=productDTO.getProductName() %></h3></div>
 			<div><font color="#FA5858" ><b><STRIKE><%=df.format(productDTO.getProductOriginalPrice()) %>원</b></STRIKE></font>&nbsp;&nbsp;&nbsp;<%=productDTO.getProductSale() %>%할인</div>
@@ -155,6 +155,5 @@
     }
 %>
 </div>
-<%=currentPage % 10 %>
 </body>
 </html>

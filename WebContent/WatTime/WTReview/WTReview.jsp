@@ -55,8 +55,10 @@
 				</select>	
 			</td>
 			<td colspan="2" style="text-align:right;">
-				<input type="button" id="reviewLastestSort" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=pageNum%>','<%=listCount%>')">
-				<input type="button" id="reviewScoreSort" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=pageNum%>','<%=listCount%>')">
+				<input type="button" id="reviewLastestSort" name="reviewLastestSort" value="최신순"
+					   onclick="reviewLastest('<%=pageNum%>','<%=listCount%>')">
+				<input type="button" id="reviewScoreSort" name="reviewScoreSort" value="별점순" 
+					   onclick="scoreSort('<%=pageNum%>','<%=listCount%>')">
 			</td>
 		</tr>
 		<tr style="text-align:center;">

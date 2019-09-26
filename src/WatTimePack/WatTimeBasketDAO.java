@@ -59,13 +59,11 @@ public class WatTimeBasketDAO {
 		return basketCount;
 	}
 	//회원 장바구니 검색
-	public List<WatTimeBasketDTO> getMemberBasketList(String memId, int start, int end) {
+	public List<WatTimeBasketDTO> getMemberBasketList(String memId) {
 		List<WatTimeBasketDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from basketTbl where memId = ? order by basketAddDate DESC limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from basketTbl where memId = ? order by basketAddDate DESC");
 			pstmt.setString(1, memId);
-			pstmt.setInt(2, start-1);
-			pstmt.setInt(3, end);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
