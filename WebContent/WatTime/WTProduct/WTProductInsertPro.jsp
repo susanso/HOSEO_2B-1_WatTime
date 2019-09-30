@@ -32,7 +32,6 @@
 	//저장할 곳의 경로
 	//String realFolder = scontext.getRealPath(savefile);
 	String realFolder = scontext.getRealPath("/WatTime/img/brand");
-
 	try{
 		
 		MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy()); 
