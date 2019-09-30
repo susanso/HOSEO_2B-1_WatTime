@@ -529,13 +529,12 @@ textarea{
 
 /*  brand,man,woman,couple 을 감싸는 DIV */
 .subTopBarBody{
-	position:relaytive;
 	width:100%;
 	 border-bottom:1px solid gray;
 	 background-color:#fff;
 }
 #subTopBar{ 
-   position:relaytive;
+ 
    margin:auto;
    width:1300px;
    height:50px;
@@ -1033,9 +1032,11 @@ height:50px;
     float: left;
     padding: 20px 20px;
     border: 1px solid #cbd4d9;
-    width: 21%;
-    min-height: 278px;
-    border-left:0px
+    width: 325px;
+    min-height: 242px;
+    border-left: 0px;
+    box-sizing: border-box;
+    
       }
 #infoHelp div:nth-child(1) {border-left:1px solid #cbd4d9;}
 
@@ -1089,15 +1090,21 @@ height:50px;
        margin:10px;
 }
 .snsIcon{
-            margin:10px auto;
-            padding:8px;
-            width:65px;
-            float:left;
-            box-sizing: border-box;
-         }
-
+	margin-top: 13px;
+    padding: 3px;
+    width: 64px;
+    float: left;
+    box-sizing: border-box;
+    
+    }
+.snsInfo{
+	height: 100px;
+    width: 140px;
+    float: left;
+    }
  #qrcord{
- width:160px;
+    margin-top: 14px;
+    width: 144px;
  }
  
 #mainBottom{
@@ -1315,11 +1322,13 @@ font-size: 20px;
 					
 .spec{
 	margin:30px auto;
+	width:1300px;
 	text-align:center;
 	border-collapse: collapse;
 	font-family: 'Roboto', sans-serif;
 }
 .productInfo{
+	padding-left: 30px;
 	background-color:#FAFAFA;
 	border-left:1px solid #F2F2F2;
 	border-right:1px solid #F2F2F2;
@@ -1336,21 +1345,22 @@ font-size: 20px;
     color:#fff;
     margin:10px;
     width: 150px;
-    height: 75px;
+    height: 65px;
     font-size: 17px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
-	
+	border-radius: 8px;
 }
 .specBtn{
-	padding:0;
-	background-color:#000; 
+	padding: 0;
+    background-color: #000;
     border: none;
-    color:#fff;
-    margin:10px;
+    color: #fff;
+    margin: 50px 10px 10px 10px;
     width: 150px;
-    height: 75px;
+    height: 65px;
     font-size: 17px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
+    border-radius: 8px;
 }
 #gotcha:hover{
 				background-color:#FE2E2E;
@@ -1374,7 +1384,7 @@ font-size: 20px;
     height: 30px;
     line-height: 0;
     top: -33px;
-    left: -32px;
+    left: -120px;
     font-size: 33px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
@@ -1394,6 +1404,7 @@ font-size: 20px;
 }
 
 #howService{
+	margin:auto;
 	background-color:#F2F2F2;
 	 border-collapse: collapse;
 }

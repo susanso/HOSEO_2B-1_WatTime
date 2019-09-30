@@ -25,11 +25,9 @@
 						Wat Time에서 고객센터 연결이 불가능 하실 경우<br>
 						궁금하신 내용을 <span id="textSpan">실시간톡으로 문의</span>해주시면<br>
 						보다 빠르게 처리 하실수 있습니다<br>
-						고객센터 : 08217<br>
+						<br>
+					<b>고객센터 : 08217</b><br>
 						<b>평일 : 09:00~09:01/ 주말,공휴일 휴무</b>
-					</li>
-					<li id="customerButton">
-					</li>
 				</ul>
 		</div>
 		<div id="note" class="infoClass">
@@ -47,10 +45,12 @@
 		</div>
 		<div id="sns" class="infoClass">
 			<h3> 소셜 네트워크 </h3>
-			<div><a href="" ><img src="img/facebook.png"class="snsIcon"></a></div>
-			<div><a href=""><img src="img/youtube.png" class="snsIcon"></a></div>
-			<div><a href=""><img src="img/instargram.png" class="snsIcon"></a></div>
-			<div id="lastImg"><a href="" ><img src="img/tweeter.png"  class="snsIcon"></a></div>
+			<div class="snsInfo">
+				<a href="" ><img src="img/facebook.png"class="snsIcon"></a>
+				<a href=""><img src="img/youtube.png" class="snsIcon"></a>
+				<a href=""><img src="img/instargram.png" class="snsIcon"></a>
+				<a href="" ><img src="img/tweeter.png"  class="snsIcon"></a>
+			</div>
 			<div style="text-align:center;"><img src="img/qrcord.png" id="qrcord"></div>
 		</div>
 		<div id="bank" class="infoClass">
@@ -59,8 +59,6 @@
 			<li><h4>예금주:Wat Time Korea</h4></li>
 			<li> 국민 </li>
 			<li> 5090. 0101. 570. 143</li>
-			<li> 신한</li>
-			<li> 432. 23343. 234326</li>
 			</ul>
 		</div>
 		

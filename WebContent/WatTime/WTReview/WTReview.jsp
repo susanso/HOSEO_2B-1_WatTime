@@ -85,7 +85,7 @@
 %>
 			<tr id = "<%=reviewDTO.getProductCode()%>"onclick="productSpecPage(this.id)">
 				<td width="200px">
-					<img src="..\img\brand\<%=reviewDTO.getProductSimpleImgFileName()%>" width="200px" height="200px">
+					<img src="../WatTime/img/brand/<%=reviewDTO.getProductSimpleImgFileName()%>" width="200px" height="200px">
 				</td>
 				<td style="width:900px; padding:10px;">
 				<p>
