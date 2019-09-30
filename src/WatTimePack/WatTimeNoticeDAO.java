@@ -153,7 +153,7 @@ public class WatTimeNoticeDAO {
 	public List<WatTimeNoticeDTO> getNoticeBottomList() {
 		List<WatTimeNoticeDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from noticeTbl ORDER BY writeDate DESC limit 0,6");
+			PreparedStatement pstmt = con.prepareStatement("select * from noticeTbl ORDER BY writeDate DESC limit 0,4");
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {

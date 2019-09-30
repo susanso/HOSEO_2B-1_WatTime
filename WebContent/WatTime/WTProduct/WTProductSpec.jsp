@@ -62,15 +62,15 @@
 		<input type="hidden" id="logCheck" name="logCheck" value=<%=log %>>
 		<input type="hidden" id="memId" name="memId" value=<%=memberDTO.getMemId() %>>
 		<input type="hidden" id="memName" name="memName" value=<%=memberDTO.getMemName() %>>
-		<table   class="spec">
+		<table class="spec">
          	<!-- 이미지 및 가격 -->
 	         <tr>
-	            <td rowspan="2" width="100px">
+	            <td rowspan="2" width="500px" >
 	               <img src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName()%>"
-	               		width="600px" height="600px">
+	               		width="400px" height="400px">
 	               <input type="hidden" id="productCode" name="productCode" value="<%=productCode%>">
 	            </td>
-	            <td width="200px" class="productInfo">
+	            <td width="700px" class="productInfo">
 <%
 					if(memberDTO.getMemAdmin()==1){
 %>

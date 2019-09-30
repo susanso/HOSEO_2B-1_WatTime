@@ -101,14 +101,10 @@
 	    // td.eq(index)를 통해 값을 가져올 수도 있다.
 	    var no = td.eq(0).text();
 	    var newPostcode = td.eq(1).text();
-	    var address = td.eq(2).text();
 	    var roadAddress = td.eq(3).text();
-	    var etc = td.eq(4).text();
 	    
 	    opener.document.getElementById("memPostcode").value = newPostcode;
 		opener.document.getElementById("memRoadAddress").value = roadAddress;
-		opener.document.getElementById("memJibunAddress").value= address;
-		opener.document.getElementById("memEtcAddress").value= etc;
 		opener.document.getElementById("memDetailAddress").value= "";
 		window.close();
 	});

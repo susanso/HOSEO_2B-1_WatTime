@@ -46,13 +46,13 @@
 	
 	<script> 
        $( document ).ready( function() {
-         var jbOffset = $( '.mainTopFixed' ).offset();
+         var jbOffset = $( '.subTopBarBody' ).offset();
          $( window ).scroll( function() {
            if ( $( document ).scrollTop() > jbOffset.top ) {
-             $( '.mainTopFixed' ).addClass( 'jbFixed' );
+             $( '.subTopBarBody' ).addClass( 'jbFixed' );
            }
            else {
-             $( '.mainTopFixed' ).removeClass( 'jbFixed' );
+             $( '.subTopBarBody' ).removeClass( 'jbFixed' );
            }
          });
        } );
