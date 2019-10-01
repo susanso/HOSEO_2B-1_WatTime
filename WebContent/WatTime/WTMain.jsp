@@ -50,9 +50,12 @@
          $( window ).scroll( function() {
            if ( $( document ).scrollTop() > jbOffset.top ) {
              $( '.subTopBarBody' ).addClass( 'jbFixed' );
+
+             
            }
            else {
              $( '.subTopBarBody' ).removeClass( 'jbFixed' );
+
            }
          });
        } );

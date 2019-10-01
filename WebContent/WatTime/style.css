@@ -538,18 +538,61 @@ textarea{
    margin:auto;
    width:1300px;
    height:50px;
-  
    z-index:3;
 }
 
 .jbFixed {
-position: fixed;
+		position: fixed;
         top: 0px;
         width:100%;
         z-index:4;
       }
 
-/* brand,man,woman,couple 속성*/
+.jbFixed #brandMenu {
+	display: none;
+    position: absolute;
+  	top:50px;
+    left: auto;
+    background-color: black;
+    background-color: rgba( 255, 255, 255, 0.9 );
+    min-width: 1300px;
+    height: auto;
+    z-index: 1;
+}
+.jbFixed #coupleMenu {
+	display: none;
+    position: absolute;
+  	top:50px;
+    left: auto;
+    background-color: black;
+    background-color: rgba( 255, 255, 255, 0.9 );
+    min-width: 1300px;
+    height: auto;
+    z-index: 1;
+}
+.jbFixed #manMenu {
+	display: none;
+    position: absolute;
+  	top:50px;
+    left: auto;
+    background-color: black;
+    background-color: rgba( 255, 255, 255, 0.9 );
+    min-width: 1300px;
+    height: auto;
+    z-index: 1;
+}
+.jbFixed #womanMenu {
+	display: none;
+    position: absolute;
+  	top:50px;
+    left: auto;
+    background-color: black;
+    background-color: rgba( 255, 255, 255, 0.9 );
+    min-width: 1300px;
+    height: auto;
+    z-index: 1;
+}
+
 .dropBtn{
   font-family: 'Roboto', sans-serif;
   background-color:white;
@@ -561,13 +604,8 @@ position: fixed;
   float:left;
   transition: background-color 0.5s, transform 5s;
 }
-
-/* 상위메뉴 float 끊는 속성 */
-.dropBtn:after {content:""; display:block; clear:both;}
-
-
-/* Brand 하위메뉴 속성 */
-#brandMenu {
+/* hover 하위메뉴 속성 */
+.dropdownContent {
   display: none;
   position: absolute;
   top:228px;
@@ -575,90 +613,11 @@ position: fixed;
   background-color: black;
   background-color: rgba( 255, 255, 255, 0.9 );
   min-width: 1300px;
-  height:360px;
+  height: auto;
   z-index: 1;
   }
-  /* Man 하위메뉴 속성 */
-#manMenu {
-  display: none;
-  position: absolute;
-  top:228px;
-  left:auto;
-  background-color: black;
-  background-color: rgba( 255, 255, 255, 0.9 );
-  min-width: 1300px;
-  height:360px;
-  z-index: 1;
-  }
-  /* Woman 하위메뉴 속성 */
-#womanMenu {
-  display: none;
-  position: absolute;
-  top:228px;
-  left:auto;
-  background-color: black;
-  background-color: rgba( 255, 255, 255, 0.9 );
-  min-width: 1300px;
-  height:300px;
-  z-index: 1;
-  }
-  /* Couple 하위메뉴 속성 */
-#coupleMenu {
-  display: none;
-  position: absolute;
-  top:228px;
-  left:auto;
-  background-color: black;
-  background-color: rgba( 255, 255, 255, 0.9 );
-  min-width: 1300px;
-  height:120px;
-  z-index: 1;
-}
-/* brand 하위메뉴 컬럼들 속성 */
-#brandMenu a {
-  font-weight:bold ;
-  text-align:center;
-  line-height:60px;
-  width:260px;
-  height:60px;
-  color: black;
-  margin:0;
-  padding:0;
-  text-decoration: none;
-  float:left;
-  left:30%;
-}
-/* man 하위메뉴 컬럼들 속성 */
-#manMenu a {
-  font-weight:bold ;
-  text-align:center;
-  line-height:60px;
-  width:260px;
-  height:60px;
-  color: black;
-  margin:0;
-  padding:0;
-  text-decoration: none;
-  float:left;
-  left:30%;
-}
-/* woman 하위메뉴 컬럼들 속성 */
-#womanMenu a {
-  font-weight:bold ;
-  text-align:center;
-  line-height:60px;
-  width:260px;
-  height:60px;
-  color: black;
-  margin:0;
-  padding:0;
-  text-decoration: none;
-  float:left;
-  left:30%;
-}
-/* couple 하위메뉴 컬럼들 속성 */
-#coupleMenu a {
-
+ 
+.dropdownContent a {
   font-weight:bold ;
   text-align:center;
   line-height:60px;
@@ -692,7 +651,8 @@ position: fixed;
                         color:white;}
 #couple:hover #coupleDropBtn {background-color: black;
                         color:white;}
-/*                                                                메뉴                                                                     */
+/* 메뉴  */
+
 /* 로그인 부분 시작*/
 
 #LoginContent{
