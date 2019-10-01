@@ -65,5 +65,12 @@ function order(){
 	}else if(bankDeposit==true){
 		alert("무통장 입금");
 	}
-	
+}
+
+//위 정보와 동일
+function contentSame(){
+	document.getElementById("deliveryMemName").value = document.getElementById("memName").value;
+	document.getElementById("deliveryMemPhone").value = document.getElementById("memPhone").value;
+	document.getElementById("memPostcode").value = document.getElementById("postCode").value;
+	document.getElementById("memRoadAddress").value = document.getElementById("roadAddress").value;
 }

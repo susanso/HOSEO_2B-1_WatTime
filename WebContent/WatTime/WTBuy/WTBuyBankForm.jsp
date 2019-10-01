@@ -26,6 +26,9 @@
 	String totalPrice = request.getParameter("totalPriceHidden");
 	String productTitle = request.getParameter("productTitleHidden");
 	String paymentMethod = request.getParameter("paymentMethod");
+%>
+	<input type="hidden" id="paymentMethod" name="paymentMethod" value="<%=paymentMethod%>">
+<%
 	//카드 결제
 	if(paymentMethod.equals("card")){
 %>
