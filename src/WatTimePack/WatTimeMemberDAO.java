@@ -170,5 +170,39 @@ public class WatTimeMemberDAO {
 		return rslt;
 		
 	}
-	
+	//포인트 적립
+	public WatTimeMemberDTO setUpdateTicTok(WatTimeMemberDTO memberDTO) {
+		ResultSet rs = null;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memPoint = ? where memId = ?");
+			pstmt.setInt(1, memberDTO.getMemPoint());
+			pstmt.setString(2, memberDTO.getMemId());
+			pstmt.executeUpdate();
+			
+			pstmt = con.prepareStatement("select * from memberTbl where memId=?");
+			pstmt.setString(1, memberDTO.getMemId());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				memberDTO.setMemId(rs.getString("memId"));
+				memberDTO.setMemPass(rs.getString("memPass"));
+				memberDTO.setMemName(rs.getString("memName"));
+				memberDTO.setMemEmail(rs.getString("memEmail"));
+				memberDTO.setMemPhone(rs.getString("memPhone"));
+				memberDTO.setMemBirth(rs.getString("memBirth"));
+				memberDTO.setMemPostcode(rs.getString("memPostcode"));
+				memberDTO.setMemRoadAddress(rs.getString("memRoadAddress"));
+				memberDTO.setMemJibunAddress(rs.getString("memJibunAddress"));
+				memberDTO.setMemDetailAddress(rs.getString("memDetailAddress"));
+				memberDTO.setMemEtcAddress(rs.getString("memEtcAddress"));
+				memberDTO.setMemPoint(rs.getInt("memPoint"));
+				memberDTO.setMemAdmin(rs.getInt("memAdmin"));
+				memberDTO.setMemJoinDate(rs.getTimestamp("memJoinDate"));
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return memberDTO;
+	}
 }

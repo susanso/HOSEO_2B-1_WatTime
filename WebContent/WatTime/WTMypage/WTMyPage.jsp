@@ -19,7 +19,7 @@
 	
 	<div class="frame">
 		
-	
+	<%=memberDTO.getMemPoint() %>
 	<!-- //header -->
 	<div class="container">
 		<div class="nav">

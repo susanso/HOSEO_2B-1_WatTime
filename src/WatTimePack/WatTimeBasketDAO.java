@@ -109,15 +109,27 @@ public class WatTimeBasketDAO {
 		}
 	}
 	//장바구니 하나 삭제
-		public void setBasketOneDelete(String memId, int num) {
-			try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("delete from basketTbl where memId = ? and num = ?");
-				pstmt.setString(1, memId);
-				pstmt.setInt(2, num);
-				pstmt.executeUpdate();
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
+	public void setBasketOneDelete(String memId, int num) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("delete from basketTbl where memId = ? and num = ?");
+			pstmt.setString(1, memId);
+			pstmt.setInt(2, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+	}
+	//orderProductTbl에 insert 후 해당 아이디 장바구니 비우기
+	public void setDeleteBasket(WatTimeBasketDTO basketDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("delete from basketTbl where memId=? and memName=? and productName=?");
+			pstmt.setString(1, basketDTO.getMemId());
+			pstmt.setString(2, basketDTO.getMemName());
+			pstmt.setString(3, basketDTO.getProductName());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 }

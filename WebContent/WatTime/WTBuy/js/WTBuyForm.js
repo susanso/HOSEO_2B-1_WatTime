@@ -27,6 +27,9 @@ function allTicTok(TicTok,total){
 	//보유 TicTok이 1000 미만일 때
 	if(TicTok<1000){
 		alert("포인트는 1,000 TicTok부터 사용이 가능합니다.");
+	}else if(parseInt(TicTok)>=parseInt(total)){
+		document.getElementById("useTicTok").value=total;
+		document.getElementById("totalPrice").textContent= "0";
 	}else{
 		var totalPrice = total - TicTok;
 		document.getElementById("useTicTok").value=TicTok;
