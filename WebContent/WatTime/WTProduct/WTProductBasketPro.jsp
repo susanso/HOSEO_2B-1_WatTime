@@ -6,6 +6,9 @@
 <jsp:useBean id="basketDTO" class = "WatTimePack.WatTimeBasketDTO" scope="page">
 	<jsp:setProperty name="basketDTO" property="*"/>
 </jsp:useBean>
+<jsp:useBean id="productDTO" class = "WatTimePack.WatTimeProductDTO" scope="page">
+   <jsp:setProperty name="productDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,6 +38,8 @@
 	basketDTO.setBasketAddDate(new Timestamp(System.currentTimeMillis()));
 	
 	WatTimeBasketDAO basketDAO = new WatTimeBasketDAO();
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
+	
 	int count = basketDAO.getBasketOverlapCheck(memId,productCode);
 	
 	if(count != 0){
@@ -81,7 +86,7 @@
 <%
 	}else{
 		basketDAO.setBasket(basketDTO);
-	
+		productDAO.setProductVolumeChange(productCode,productCount);
 %>
 		<body>
 			<input type="hidden" id="productCode" name="productCode" value=<%=productCode %>>

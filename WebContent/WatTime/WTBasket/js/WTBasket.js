@@ -1,5 +1,5 @@
 //장바구니 갯수 수정
-function productCountModify(memId, num){
+function productCountModify(memId, num, productCode){
 	var productCount = document.getElementById("productCountNum").value;
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
@@ -22,6 +22,12 @@ function productCountModify(memId, num){
 	hiddenField.setAttribute("type", "hidden");
 	hiddenField.setAttribute("name", "productCount");
 	hiddenField.setAttribute("value", productCount);
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "productCode");
+	hiddenField.setAttribute("value", productCode);
 	form.appendChild(hiddenField);
 	
 	document.body.appendChild(form);
@@ -68,7 +74,7 @@ function productCountChange(productCount){
 	document.getElementById("productCountNum").value = productCount;
 }
 //한개 삭제
-function basketOneDelete(num,memId){
+function basketOneDelete(num,memId,productCode){
 
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
@@ -85,6 +91,12 @@ function basketOneDelete(num,memId){
 	hiddenField.setAttribute("type", "hidden");
 	hiddenField.setAttribute("name", "memId");
 	hiddenField.setAttribute("value", memId);
+	form.appendChild(hiddenField);
+	
+	hiddenField = document.createElement("input");
+	hiddenField.setAttribute("type", "hidden");
+	hiddenField.setAttribute("name", "productCode");
+	hiddenField.setAttribute("value", productCode);
 	form.appendChild(hiddenField);
 	
 	document.body.appendChild(form);

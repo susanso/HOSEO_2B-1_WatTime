@@ -66,6 +66,7 @@
 					<p>소비자가격 : <input type="number" style="width:260px;" id="productPrice" name="productPrice" readonly>원</p>
 					<p>TicTok : <input type="number" style="width:300px;" id="tictok" name="tictok" readonly></p>
 					<p>제조국 : <input type="text" style="width:300px;" id="productCountry" name="productCountry" required></p>
+					<p>재고량 : <input type="number" style="width:300px;" id="productVolume" name="productVolume" value="0"></p>
 				</td>
 			</tr>
 			<!-- 등록버튼 -->

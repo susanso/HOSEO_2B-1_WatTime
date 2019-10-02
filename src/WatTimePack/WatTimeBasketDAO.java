@@ -131,5 +131,20 @@ public class WatTimeBasketDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	
+	//수량 수정 전 초기 개수
+	public int getBasketCount(String memId,int num) {
+		int basketCount = 0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from basketTbl where memId = ? and num=?");
+			pstmt.setString(1, memId);
+			pstmt.setInt(2, num);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				basketCount = rs.getInt("productCount");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return basketCount;
+	}
 }

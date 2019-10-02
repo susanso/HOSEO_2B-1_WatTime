@@ -45,6 +45,10 @@ function totalPriceCul(TicTok,total,Retention){
 	if(TicTok>RetentionFormat){
 		alert("입력한 수치가 보유 TicTok보다 큽니다.");
 		document.getElementById("useTicTok").value=0;
+	}else if(parseInt(TicTok)>=parseInt(total)){
+		alert("입력한 수치가 상품 가격보다 큽니다.");
+		document.getElementById("useTicTok").value=0;
+		document.getElementById("totalPrice").textContent = total;
 	}else{
 		document.getElementById("totalPrice").textContent = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}

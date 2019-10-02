@@ -19,6 +19,8 @@ public class WatTimeProductDTO {
 	private String productSimpleImgFilePath;
 	private String productDetailImgFileName;
 	private String productDetailImgFilePath;
+	private int productVolume;
+	
 	public String getProductCode() {
 		return productCode;
 	}
@@ -115,6 +117,12 @@ public class WatTimeProductDTO {
 	public void setProductDetailImgFilePath(String productDetailImgFilePath) {
 		this.productDetailImgFilePath = productDetailImgFilePath;
 	}
-
+	public int getProductVolume() {
+		return productVolume;
+	}
+	public void setProductVolume(int productVolume) {
+		this.productVolume = productVolume;
+	}
+	
 	
 }

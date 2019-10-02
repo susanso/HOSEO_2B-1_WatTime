@@ -17,11 +17,15 @@
 <jsp:useBean id="basketDTO" class = "WatTimePack.WatTimeBasketDTO" scope="page">
 	<jsp:setProperty name="basketDTO" property="*"/>
 </jsp:useBean>
+<jsp:useBean id="productDTO" class = "WatTimePack.WatTimeProductDTO" scope="page">
+   <jsp:setProperty name="productDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <%
 	//세션을 다시 부여하기 전 상태를 가져옴(세션을 새로 부여하여 적립 포인트 등 새로고침을 위해)
@@ -109,6 +113,8 @@
 		
 		orderProductDAO.setProduct(orderProductDTO);
 		
+		productDTO.setProductName(product[i]);
+		//productDTO.
 		//해당 장바구니 목록 삭제
 		basketDTO.setMemId(memberDTO.getMemId());
 		basketDTO.setMemName(memberDTO.getMemName());
@@ -120,12 +126,10 @@
 	memberDTO.setMemPoint(((memberDTO.getMemPoint()-useTicTok)+TicTok));
 	memberDTO = memberDAO.setUpdateTicTok(memberDTO);
 	session.setAttribute("member", memberDTO);
-
+	
+	response.sendRedirect("../WTMain.jsp");
 %>
 <body>
-	<script>
-		alert("상품 주문을 완료 했습니다. 주문 내역은 마이페이지 > 주문 내역에서 확인해 주시기 바랍니다.");
-		location.href="WTBuy/WTBuyResult.jsp";
-	</script>
+	
 </body>
 </html>

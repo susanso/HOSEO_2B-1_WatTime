@@ -24,6 +24,9 @@
 	String productSimpleImgFilePath = "";
 	String productDetailImgFileName = "";
 	String productDetailImgFilePath = "";
+	int productVolume=0;
+	String productSimpleImgHidden = "";
+	String productDetailImgHidden = "";
 	int maxSize = 1024*1024*5;
 	String encType = "UTF-8";
 	
@@ -39,6 +42,14 @@
 		String productDetailImg  = (String)files.nextElement();
 		productSimpleImgFileName = multi.getFilesystemName(productSimpleImg);
 		productDetailImgFileName = multi.getFilesystemName(productDetailImg);
+
+		if(productSimpleImgFileName==""||productSimpleImgFileName==null){
+			productSimpleImgFileName = multi.getParameter("productSimpleImgHidden");
+		}
+		if(productDetailImgFileName==""||productDetailImgFileName==null){
+			productDetailImgFileName = multi.getParameter("productDetailImgHidden");
+		}
+		
 		productCode = multi.getParameter("productCode");
 		productName = multi.getParameter("productName");
 		brandEng = multi.getParameter("brand");
@@ -49,12 +60,15 @@
 		productPrice = multi.getParameter("productPrice");
 		tictok = multi.getParameter("tictok");
 		productCountry = multi.getParameter("productCountry");
+		productVolume = Integer.parseInt(multi.getParameter("productVolume"));
+		
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
 	productSimpleImgFilePath = realFolder + "\\" + productSimpleImgFileName;
 	productDetailImgFilePath = realFolder + "\\" + productDetailImgFileName;
 	
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
 	
 	productDTO.setProductCode(productCode);
 	productDTO.setBrandKor(brandKor);
@@ -67,13 +81,10 @@
 	productDTO.setTictok(Integer.parseInt(tictok));
 	productDTO.setProductCountry(productCountry);
 	productDTO.setProductOrder(0);
-	productDTO.setProductAddDate(new Timestamp(System.currentTimeMillis()));
 	productDTO.setProductSimpleImgFileName(productSimpleImgFileName);
 	productDTO.setProductDetailImgFileName(productDetailImgFileName);
-	productDTO.setProductSimpleImgFilePath(productSimpleImgFilePath);
-	productDTO.setProductDetailImgFilePath(productDetailImgFilePath);
+	productDTO.setProductVolume(productVolume);
 
-	WatTimeProductDAO productDAO = new WatTimeProductDAO();
 	productDAO.setProductModify(productDTO);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
