@@ -66,7 +66,7 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductMainManList() {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' order by productOrder DESC limit 0,8");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' and productVolume>0 order by productOrder DESC limit 0,8");
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
@@ -95,7 +95,7 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductMainWomanList() {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'woman' order by productOrder DESC limit 0,8");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'woman' and productVolume>0 order by productOrder DESC limit 0,8");
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
@@ -425,6 +425,16 @@ public class WatTimeProductDAO {
 			PreparedStatement pstmt = con.prepareStatement("update productTbl set productVolume=productVolume+? where productCode = ?");
 			pstmt.setInt(1, productCount);
 			pstmt.setString(2, productCode);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//결제 완료 후 주문수 올리기
+	public void setProductOrderUpdate(String productCode) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update productTbl set productOrder=productOrder+1 where productCode = ?");
+			pstmt.setString(1, productCode);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

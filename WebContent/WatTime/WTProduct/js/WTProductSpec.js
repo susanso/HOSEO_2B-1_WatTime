@@ -38,6 +38,8 @@ function countPlus(price,count,volume){
     var countNum = parseInt(count) + 1;
     if(parseInt(volume)<parseInt(countNum)){
     	alert("현재 개수가 재고량보다 많습니다.");
+    }else if(parseInt(count)>=100){
+    	alert("장바구니에 담을 수 있는 최대 개수는 100개입니다.");
     }else{
 	    document.getElementById("productCount").value = countNum;
 	    var total = price * countNum;

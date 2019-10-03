@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "java.text.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<%@ page import = "java.lang.*,java.text.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*, java.io.*" %>
 <%@ page import = "java.sql.Timestamp" %>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -38,6 +38,7 @@
 	String[] productPrice = request.getParameterValues("productPrice");
 	String[] productCount = request.getParameterValues("productCount");
 	String[] TicToks = request.getParameterValues("TicTok");
+	String[] productCode = request.getParameterValues("productCode");
 	//결제 날짜
 	Timestamp time = new Timestamp(System.currentTimeMillis());
 	String now = date.format(time);
@@ -53,12 +54,10 @@
 	bank = new String(bank.getBytes("8859_1"), "utf-8");
 	//배송 주소
 	String orderAddress = request.getParameter("memRoadAddress");
-	orderAddress = new String(orderAddress.getBytes("8859_1"), "utf-8");
 	//배송 우편번호
 	String orderPostCode = request.getParameter("memPostcode");
 	//배송 메세지
 	String orderMessage = request.getParameter("deliveryMessage");
-	orderMessage = new String(orderMessage.getBytes("8859_1"), "utf-8");
 	//결제 방법
 	String paymentMethod = request.getParameter("paymentMethod");
 	paymentMethod = new String(paymentMethod.getBytes("8859_1"), "utf-8");
@@ -74,7 +73,7 @@
 	
 	WatTimeBasketDAO basketDAO = new WatTimeBasketDAO();
 	WatTimeMemberDAO memberDAO = new WatTimeMemberDAO();
-	
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
 	//orderDTO 값 넣기
 	orderDTO.setMemId(memberDTO.getMemId());
 	orderDTO.setMemName(memberDTO.getMemName());
@@ -98,10 +97,9 @@
 	orderDAO.setOrder(orderDTO);
 	//넣은 번호 찾아오기
 	int orderNum = orderDAO.getOrderNum(orderDTO);
-	
+
 	 //orderProductTbldp 넣기
 	for(int i = 0 ; i < product.length ; i++){
-
 		orderProductDTO.setMemId(memberDTO.getMemId());
 		orderProductDTO.setMemName(memberDTO.getMemName());
 		orderProductDTO.setOrderDate(now_format);
@@ -110,11 +108,11 @@
 		orderProductDTO.setProductPrice(Integer.parseInt(productPrice[i]));
 		orderProductDTO.setTicTok(Integer.parseInt(TicToks[i]));
 		orderProductDTO.setOrderNum(orderNum);
+		orderProductDTO.setProductCode(productCode[i]);
 		
 		orderProductDAO.setProduct(orderProductDTO);
-		
-		productDTO.setProductName(product[i]);
-		//productDTO.
+		//주문수 올리기
+		productDAO.setProductOrderUpdate(productCode[i]);
 		//해당 장바구니 목록 삭제
 		basketDTO.setMemId(memberDTO.getMemId());
 		basketDTO.setMemName(memberDTO.getMemName());
@@ -126,8 +124,8 @@
 	memberDTO.setMemPoint(((memberDTO.getMemPoint()-useTicTok)+TicTok));
 	memberDTO = memberDAO.setUpdateTicTok(memberDTO);
 	session.setAttribute("member", memberDTO);
+	response.sendRedirect("../WTMain.jsp?pageChange=WTBuy/WTBuyResult.jsp");
 	
-	response.sendRedirect("../WTMain.jsp");
 %>
 <body>
 	

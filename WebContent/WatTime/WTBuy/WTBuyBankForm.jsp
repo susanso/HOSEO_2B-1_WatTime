@@ -42,8 +42,8 @@
 				</td>
 				<td>
 					<input type="number" id="cardNum1" name="cardNum1" maxlength="3" onkeydown="maxLengthCheck(this)">
-					<input type="password" id="cardNum2" name="cardNum2" maxlength="3" onkeydown="maxLengthCheck(this)">
-					<input type="password" id="cardNum3" name="cardNum3" maxlength="3" onkeydown="maxLengthCheck(this)">
+					<input type="password" id="cardNum2" name="cardNum2" maxlength="4" onkeydown="maxLengthCheck(this)">
+					<input type="password" id="cardNum3" name="cardNum3" maxlength="4" onkeydown="maxLengthCheck(this)">
 					<input type="number" id="cardNum4" name="cardNum4" maxlength="3" onkeydown="maxLengthCheck(this)">
 				</td>
 			</tr>
@@ -52,8 +52,8 @@
 					카드 유효기간
 				</td>
 				<td>
-					<input type="number" id="cardMonth" name="cardMonth" maxlength="1" onkeydown="maxLengthCheck(this)">/
-					<input type="number" id="cardYear" name="cardYear" maxlength="1" onkeydown="maxLengthCheck(this)">
+					<input type="number" id="cardMonth" name="cardMonth" maxlength="1" onkeydown="maxLengthCheck(this)" placeholder="월(00)">/
+					<input type="number" id="cardYear" name="cardYear" maxlength="1" onkeydown="maxLengthCheck(this)" placeholder="년(00)">
 				</td>
 			</tr>
 			<tr>

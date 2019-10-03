@@ -12,6 +12,15 @@ public class WatTimeOrderProductDTO {
 	private int productPrice;
 	private int TicTok;
 	private Timestamp orderDate;
+	private String productCode;
+	
+	
+	public String getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
+	}
 	public int getOrderProductNum() {
 		return orderProductNum;
 	}

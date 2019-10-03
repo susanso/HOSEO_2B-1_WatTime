@@ -4,6 +4,9 @@
 <jsp:useBean id="basketDTO" class = "WatTimePack.WatTimeBasketDTO" scope="page">
 	<jsp:setProperty name="basketDTO" property="*"/>
 </jsp:useBean>
+<jsp:useBean id="productDTO" class = "WatTimePack.WatTimeProductDTO" scope="page">
+	<jsp:setProperty name="productDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,24 +26,41 @@
 	int count = 0;
  	WatTimeBasketDAO basketDAO = new WatTimeBasketDAO();
  	WatTimeProductDAO productDAO = new WatTimeProductDAO();
+ 	
  	//수량 변경 전 초기 개수
  	productVolum = basketDAO.getBasketCount(memId,num);
+ 	
  	//수량이 감소했을 때
  	if(productVolum>productCount){
  		count = productVolum-productCount;
- 		basketDAO.setProductCountModify(memId, num, productCount);
- 		productDAO.setBasketProductVolume(productCode,count);
- 		out.println("<script>alert('상품 수량 수정을 완료했습니다.');</script>");	
+ 		//수정한 개수가 0일때
+ 		if(productCount==0){
+ 			out.println("<script>alert('최소 개수는 1개입니다.');</script>");
+ 		}else{
+	 		basketDAO.setProductCountModify(memId, num, productCount);
+	 		productDAO.setBasketProductVolume(productCode,count);
+	 		out.println("<script>alert('상품 개수 수정을 완료했습니다.');</script>");
+ 		}
  	//수량이 증가했을 때
  	}else if(productVolum<productCount){
- 		count = productCount-productVolum;
- 		basketDAO.setProductCountModify(memId, num, productCount);
- 		productDAO.setBasketProductVolume(productCode,count*-1);
- 		out.println("<script>alert('상품 수량 수정을 완료했습니다.');</script>");	
+ 		count = productVolum-productCount;
+ 		//productTbl에 해당 상품의 수량 가져오기
+ 		productDTO = productDAO.getProductSpec(productCode);
+ 		//재고량보다 수정한 개수가 클 때
+ 		if(productDTO.getProductVolume()<(count*-1)){
+ 			out.println("<script>alert('상품 개수 보다 입력 개수가 큽니다.');</script>");
+ 		}else if(productCount>100){
+ 			out.println("<script>alert('장바구니에 담을 수 있는 최대 개수는 100개입니다.');</script>");
+ 		}else{
+ 			basketDAO.setProductCountModify(memId, num, productCount);
+ 	 		productDAO.setBasketProductVolume(productCode,count);
+ 	 		out.println("<script>alert('상품 개수 수정을 완료했습니다.');</script>");
+ 		}	
  	//수량이 같을 때
  	}else if(productVolum==productCount){
- 		out.println("<script>alert('상품 수량과 수정 수량이 같습니다.');</script>");	
+ 		out.println("<script>alert('상품 개수와 수정 개수가 같습니다.');</script>");	
  	}
+		
 	  
 %>
 <body>

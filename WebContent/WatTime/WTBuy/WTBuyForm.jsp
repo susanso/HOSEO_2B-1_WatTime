@@ -62,11 +62,13 @@
 			basketDAO.setBasket(basketDTO);
 			//insert 한 후 select
 			basketList = basketDAO.getMemberBasketList(memberDTO.getMemId());
+			
+			productDAO.setProductVolumeChange(productCode,Integer.parseInt(productCount));
 		}
 	}
 %>
 <body>
-	<form method="post" action="WTMain.jsp?pageChange=WTBuy/WTBuyPro.jsp" id="BuyForm" name="BuyForm">
+	<form method="post" action="WTBuy/WTBuyPro.jsp" id="BuyForm" name="BuyForm">
 		<table width="1300px" border="1">
 			<th width="150px">
 				이미지
@@ -107,6 +109,7 @@
 					<td>
 						<%=basketDTO.getProductName() %>
 						<input type="hidden" name="product" value="<%=basketDTO.getProductName() %>">
+						<input type="hidden" name="productCode" value="<%=basketDTO.getProductCode() %>">
 					</td>
 					<!-- 상품 가격 -->
 					<td>
@@ -187,7 +190,7 @@
 					전화번호
 				</td>
 				<td>
-					<input type="text" id="deliveryMemPhone" name="deliveryMemPhone">
+					<input type="text" id="deliveryMemPhone" name="deliveryMemPhone" placeholder="전화번호(-없이)">
 				</td>
 			</tr>
 			<tr>
@@ -195,9 +198,9 @@
 					주소
 				</td>
 				<td>
-					<input type="text" id="memPostcode" name="memPostcode" readonly>
-					<input type="button" value="우편번호 찾기" onclick="postcode()">
-					<input type="text" id="memRoadAddress" name="memRoadAddress">
+					<input type="text" id="memPostcode" name="memPostcode" placeholder="우편번호" readonly>
+					<input type="button" value="우편번호 찾기" onclick="postcode()"><br>
+					<input type="text" id="memRoadAddress" name="memRoadAddress" placeholder="주소">
 				</td>
 			</tr>
 			<tr>
@@ -205,7 +208,7 @@
 					주문 메세지
 				</td>
 				<td>
-					<input type="text" name="deliveryMessage" value="부재시 전화주세요.">
+					<input type="text" id="deliveryMessage" name="deliveryMessage" value="부재시 전화주세요.">
 				</td>
 			</tr>
 		</table>

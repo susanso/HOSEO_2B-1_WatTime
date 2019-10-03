@@ -59,7 +59,42 @@ function order(){
 	var bankDeposit = $(check2).is(":checked");
 	var accountTransfer = $(check3).is(":checked");
 	var ret;
-	if(card==false && bankDeposit==false && accountTransfer==false){
+	
+	var nameCheck = /^[가-힣]+$/;
+	var name = document.getElementById("deliveryMemName");
+	var phone = document.getElementById("deliveryMemPhone");
+	var phoneCheck = /(01[0|1|6|9|7])(\d{3}|\d{4})(\d{4}$)/g;
+	var postCode= document.getElementById("memPostcode");
+	var roadAddress = document.getElementById("memRoadAddress");
+	var message = document.getElementById("deliveryMessage");
+	//배송정보 이름 유효성 검사
+	if(name.value==""){
+		alert("배송정보의 이름을 입력해주세요.");
+		name.focus();
+	}else if(nameCheck.test(name.value)==false){
+		alert("배송정보의 이름을 다시 입력해주세요.");
+		name.focus();
+	}
+	//배송정보 전화번호 유효성 검사
+	else if(phone.value==""){
+		alert("배송정보의 전화번호를 입력해주세요.");
+		phone.focus();
+	}else if(phoneCheck.test(phone.value)==false){
+		alert("배송정보의 전화번호를 다시 입력해주세요.");
+		phone.focus();
+	}
+	//배송정보 주소 유효성 검사
+	else if(postCode.value == ""){
+		alert("배송정보의 우편번호가 없습니다.");
+	}else if(roadAddress.value==""){
+		alert("배송정보의 주소가 없습니다.");
+		roadAddress.focus();
+	}/*else if(message.value==""){
+		alert("주문 메세지를 작성해주세요.");
+		message.focus();
+	}*/
+	//결제 방법 유효성 검사
+	else if(card==false && bankDeposit==false && accountTransfer==false){
 		alert("결제 방법을 선택해주세요.");
 	}else if(card==true){
 		var paymentMethod = document.getElementById("check1").value;

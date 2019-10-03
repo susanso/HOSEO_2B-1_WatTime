@@ -10,7 +10,7 @@ public class WatTimeOrderProductDAO {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
 			PreparedStatement pstmt = con.prepareStatement("insert into orderProductTbl(orderNum,memId,memName"
 														  +",productName,productCount,productPrice,TicTok,orderDate"
-														  +") values(?,?,?,?,?,?,?,?)");
+														  +",productCode) values(?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, orderProductDTO.getOrderNum());
 			pstmt.setString(2, orderProductDTO.getMemId());
 			pstmt.setString(3, orderProductDTO.getMemName());
@@ -19,6 +19,7 @@ public class WatTimeOrderProductDAO {
 			pstmt.setInt(6, orderProductDTO.getProductPrice());
 			pstmt.setInt(7, orderProductDTO.getTicTok());
 			pstmt.setTimestamp(8, orderProductDTO.getOrderDate());
+			pstmt.setString(9, orderProductDTO.getProductCode());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

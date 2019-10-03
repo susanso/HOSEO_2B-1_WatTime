@@ -102,37 +102,42 @@
 	for(int i = 0 ; i < productList.size() ; i++){
 		productDTO = productList.get(i);
 %>		
-		<li class="productLi" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
+		<li class="productLi">
+			<input type="hidden" id="productCode"value="<%=productDTO.getProductCode()%>">
 <%
 			//해당 상품 재고가 없을 때
 			if(productDTO.getProductVolume()==0){
 %>
 				<div>
-					<div style="background-image:url('../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>');
-						        width: 300px; height:300px; background-size:cover; margin: 5px auto;">
-						<!-- 품절 이미지 -->
-						<div style="background-color:rgba(255,255,255,0.6); width:300px; height:300px;">
-						<img alt="" src="../WatTime/img/soldout.png" width="300px" height="300px">
+					<a href="#" onclick="productSpec('<%=productDTO.getProductCode()%>')">
+						<div style="background-image:url('../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>');
+							        width: 300px; height:300px; background-size:cover; margin: 5px auto;">
+							<!-- 품절 이미지 -->
+							<div style="background-color:rgba(255,255,255,0.6); width:300px; height:300px;">
+								<img alt="" src="../WatTime/img/soldout.png" width="300px" height="300px">
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 <%
 			//재고가 있을 때
 			}else{
 %>
 				<div>
-					<img src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300">
+					<a href="#" onclick="productSpec('<%=productDTO.getProductCode()%>')">
+						<img src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>" width="300" height="300" onclick="productSpec('<%=productDTO.getProductCode()%>')">
+					</a>
 				</div>
 <%
 			}
 %>
 			<div><%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>]</div>
-			<div><h3><%=productDTO.getProductName() %></h3></div>
+			<div><a href="#" onclick="productSpec('<%=productDTO.getProductCode()%>')"><h3><%=productDTO.getProductName() %></h3></a></div>
 <%
 			//해당 상품 재고가 없을 때
 			if(productDTO.getProductVolume()==0){
 %>
-				<div><font style="font-size:24px; margin: 11px 0 10px 0; display: inline-block;">상품 준비중</font></div>
+				<div><a onclick="productSpec('<%=productDTO.getProductCode()%>')"><font style="font-size:24px; margin: 8px 0px 7px 0px; display: inline-block;">상품 준비중</font></a></div>
 <%
 			//재고가 있을 때
 			}else{
