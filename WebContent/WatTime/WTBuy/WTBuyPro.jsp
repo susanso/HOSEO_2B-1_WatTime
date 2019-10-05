@@ -63,7 +63,6 @@
 	paymentMethod = new String(paymentMethod.getBytes("8859_1"), "utf-8");
 	//orderTbl에 넣을 productName
 	String productName = request.getParameter("productTitle");
-	productName = new String(productName.getBytes("8859_1"), "utf-8");
 	//최종 가격
 	int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 	int TicTok = Integer.parseInt(request.getParameter("TicTok"));
@@ -125,7 +124,7 @@
 	memberDTO = memberDAO.setUpdateTicTok(memberDTO);
 	session.setAttribute("member", memberDTO);
 	response.sendRedirect("../WTMain.jsp?pageChange=WTBuy/WTBuyResult.jsp");
-	
+	request.setAttribute("product", product);
 %>
 <body>
 	

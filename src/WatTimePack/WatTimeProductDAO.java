@@ -9,21 +9,21 @@ import java.util.List;
 
 public class WatTimeProductDAO {
 	//전체 브랜드의 상품 갯수
-		public int getProductAllCount() {
-			int productCount=0;
-			try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("select count(*) from productTbl");
-				ResultSet rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					productCount = rs.getInt(1);
-				}
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
+	public int getProductAllCount() {
+		int productCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from productTbl");
+			ResultSet rs = pstmt.executeQuery();
 			
-			return productCount;
+			while(rs.next()) {
+				productCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+		
+		return productCount;
+	}
 
 	//전체 상품 리스트 가져오는 부분
 	public List<WatTimeProductDTO> getProductAllList(int start, int end, String sort) {
@@ -439,5 +439,21 @@ public class WatTimeProductDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	//주문 내역 이미지 가져오기
+	public String getProductImg(WatTimeOrderProductDTO orderProductDTO) {
+		String productImg = "";
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select productSimpleImgFileName from productTbl where productCode = ?");
+			pstmt.setString(1, orderProductDTO.getProductCode());
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				productImg= rs.getString("productSimpleImgFileName");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return productImg;
 	}
 }

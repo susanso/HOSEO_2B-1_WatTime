@@ -2,7 +2,10 @@ package WatTimePack;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WatTimeOrderProductDAO {
 	//결제 상품 목록
@@ -24,5 +27,33 @@ public class WatTimeOrderProductDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	//주문 내역에 상품 이름 클릭시 
+	public List<WatTimeOrderProductDTO> getOrderProductList(int orderNum) {
+		List<WatTimeOrderProductDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from orderProductTbl where orderNum = ?");
+			pstmt.setInt(1, orderNum);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeOrderProductDTO orderProductDTO = new WatTimeOrderProductDTO();
+					orderProductDTO.setProductCode(rs.getString("productCode"));
+					orderProductDTO.setOrderProductNum(rs.getInt("orderProductNum"));
+					orderProductDTO.setOrderNum(rs.getInt("orderNum"));
+					orderProductDTO.setMemId(rs.getString("memId"));
+					orderProductDTO.setMemName(rs.getString("memName"));
+					orderProductDTO.setProductName(rs.getString("productName"));
+					orderProductDTO.setProductCount(rs.getInt("productCount"));
+					orderProductDTO.setProductPrice(rs.getInt("productPrice"));
+					orderProductDTO.setTicTok(rs.getInt("TicTok"));
+					orderProductDTO.setOrderDate(rs.getTimestamp("orderDate"));
+					list.add(orderProductDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
 	}
 }

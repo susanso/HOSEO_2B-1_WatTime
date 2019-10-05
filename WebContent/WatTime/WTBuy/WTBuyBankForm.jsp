@@ -18,7 +18,7 @@
 	}
 </script>
 </head>
-<body>
+<body onresize="parent.resizeTo(500,400)" onload="parent.resizeTo(500,400)">
 <%
 	Date nowTime = new Date();
 	SimpleDateFormat year = new SimpleDateFormat("yy");
