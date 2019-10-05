@@ -68,6 +68,7 @@
 	}
 %>
 <body>
+	
 	<form method="post" action="WTBuy/WTBuyPro.jsp" id="BuyForm" name="BuyForm">
 		<table width="1300px" border="1">
 			<th width="150px">

@@ -100,6 +100,8 @@ function order(){
 		var paymentMethod = document.getElementById("check1").value;
 		url = "WTBuy/WTBuyBankList.jsp?paymentMethod="+paymentMethod;
 		ret = window.open(url,"_blank","toolbar=no, scrollbars=yes",false);
+		var modal = document.getElementById("Modal");
+		modal.style.display = "block";
 	}else if(accountTransfer==true){
 		var paymentMethod = document.getElementById("check3").value;
 		url = "WTBuy/WTBuyBankList.jsp?paymentMethod="+paymentMethod;

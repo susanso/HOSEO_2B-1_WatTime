@@ -4,12 +4,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href = "style.css	" rel = "stylesheet" type = "text/css">
+<script src="WTBuy/js/WTBuyForm.js"></script>
 <title>WatTime</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
-<body>
+<body id="modal">
 <%
 	//컨텐트 부분에 바뀔 jsp을 넣는 변수
        String content = request.getParameter("pageChange");
