@@ -23,36 +23,36 @@
 					<p>제품코드 : <input type="text" style="width:280px;" id="productCode" name="productCode" required  ></p>
 					<p>제품명 : <input type="text" style="width:299px;" id="productName" name="productName" required></p>
 					<p>브랜드 : <select class="brandSelect" style="width:300px;" id ="brand" name="brand" onchange="brandKorCon(this.options[this.selectedIndex].text)">
-							  <option value="" selected disabled required>선택</option>
-							  <option value="DKNY">DKNY</option>
-							  <option value="GEIGER">GEIGER</option>
-							  <option value="GUESS">GUESS</option>
-							  <option value="GUCCI">GUCCI</option>
-							  <option value="Daniel Wellington">Daniel Wellington</option>
-							  <option value="DIESEL">DIESEL</option>
-							  <option value="DISNEY">DISNEY</option>
-							  <option value="LACOSTE">LACOSTE</option>
-							  <option value="LUMINOX">LUMINOX</option>
-							  <option value="MONDAINE">MONDAINE</option>
-							  <option value="MONTBLANC">MONTBLANC</option>
-							  <option value="VALENTINO RUDY">VALENTINO RUDY</option>
-							  <option value="VOWOOD">VOWOOD</option>
-							  <option value="BOYLONDON">BOYLONDON</option>
-							  <option value="CHANEL">CHANEL</option>
-							  <option value="SPERA">SPERA</option>
-							  <option value="Alexandre Christie">Alexandre Christie</option>
-							  <option value="ORIS">ORIS</option>
-							  <option value="OMEGA">OMEGA</option>
-							  <option value="OBERON">OBERON</option>
-							  <option value="JULIUS">JULIUS</option>
-							  <option value="CASIO">CASIO</option>
-							  <option value="KANGOL">KANGOL</option>
-							  <option value="TAG HEUER">TAG HEUER</option>
-							  <option value="TISSOT">TISSOT</option>
-							  <option value="FOCE">FOCE</option>
-							  <option value="TID">TID</option>
-							  <option value="PAULBRIAL">PAULBRIAL</option>
-							  <option value="HAMILTON">HAMILTON</option>
+								  <option value="" selected disabled required>선택</option>
+								  <option value="DKNY">DKNY</option>
+								  <option value="GEIGER">GEIGER</option>
+								  <option value="GUESS">GUESS</option>
+								  <option value="GUCCI">GUCCI</option>
+								  <option value="Daniel Wellington">Daniel Wellington</option>
+								  <option value="DIESEL">DIESEL</option>
+								  <option value="DISNEY">DISNEY</option>
+								  <option value="LACOSTE">LACOSTE</option>
+								  <option value="LUMINOX">LUMINOX</option>
+								  <option value="MONDAINE">MONDAINE</option>
+								  <option value="MONTBLANC">MONTBLANC</option>
+								  <option value="VALENTINO RUDY">VALENTINO RUDY</option>
+								  <option value="VOWOOD">VOWOOD</option>
+								  <option value="BOYLONDON">BOYLONDON</option>
+								  <option value="CHANEL">CHANEL</option>
+								  <option value="SPERA">SPERA</option>
+								  <option value="Alexandre Christie">Alexandre Christie</option>
+								  <option value="ORIS">ORIS</option>
+								  <option value="OMEGA">OMEGA</option>
+								  <option value="OBERON">OBERON</option>
+								  <option value="JULIUS">JULIUS</option>
+								  <option value="CASIO">CASIO</option>
+								  <option value="KANGOL">KANGOL</option>
+								  <option value="TAG HEUER">TAG HEUER</option>
+								  <option value="TISSOT">TISSOT</option>
+								  <option value="FOCE">FOCE</option>
+								  <option value="TID">TID</option>
+								  <option value="PAULBRIAL">PAULBRIAL</option>
+								  <option value="HAMILTON">HAMILTON</option>
 							</select></p>
 					<p>브랜드(한글):<input type="text" style="width:258px;" id="brandKor" name="brandKor" required></p>
 					<p>타입 :<select id ="type" style="width:325px;" name="type">

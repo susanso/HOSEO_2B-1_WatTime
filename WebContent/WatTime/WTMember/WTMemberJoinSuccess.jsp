@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script language = "JavaScript" src = "../../js/WTMemberJoinSuccess.js"></script>
+<script language = "JavaScript" src = "WTMember/js/WTMemberJoinSuccess.js"></script>
 </head>
 <body>
 	<div class="joinForm">

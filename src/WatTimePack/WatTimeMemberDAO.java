@@ -97,9 +97,7 @@ public class WatTimeMemberDAO {
 		regBean.setMemBirth(rs.getString("memBirth"));
 		regBean.setMemPostcode(rs.getString("memPostcode"));
 		regBean.setMemRoadAddress(rs.getString("memRoadAddress"));
-		regBean.setMemJibunAddress(rs.getString("memJibunAddress"));
 		regBean.setMemDetailAddress(rs.getString("memDetailAddress"));
-		regBean.setMemEtcAddress(rs.getString("memEtcAddress"));
 		regBean.setMemPoint(rs.getInt("memPoint"));
 		regBean.setMemAdmin(rs.getInt("memAdmin"));
 		regBean.setMemJoinDate(rs.getTimestamp("memJoinDate"));
@@ -140,13 +138,13 @@ public class WatTimeMemberDAO {
 	}
 	
 	//회원가입
-	public WatTimeMemberDTO setMemberJoin(String memId, String memPass, String memName,String memEmail,String memPhone, String memBirth , String memPostcode, String memRoadAddress,String memJibunAddress, String memEtcAddress, String memDetailAddress) {
+	public WatTimeMemberDTO setMemberJoin(String memId, String memPass, String memName,String memEmail,String memPhone, String memBirth , String memPostcode, String memRoadAddress, String memDetailAddress) {
 		WatTimeMemberDTO rslt = new WatTimeMemberDTO();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
 			Timestamp memJoinDate = new Timestamp(System.currentTimeMillis());
 			int memPoint = 2000;
 			int memAdmin = 0;
-			PreparedStatement pstmt = con.prepareStatement("insert into memberTbl values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into memberTbl values(?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memPass);
 			pstmt.setString(3, memName);
@@ -155,12 +153,10 @@ public class WatTimeMemberDAO {
 			pstmt.setString(6, memBirth);
 			pstmt.setString(7, memPostcode);
 			pstmt.setString(8, memRoadAddress);
-			pstmt.setString(9, memJibunAddress);
-			pstmt.setString(10, memEtcAddress);
-			pstmt.setString(11, memDetailAddress);
-			pstmt.setInt(12, memPoint);
-			pstmt.setInt(13, memAdmin);
-			pstmt.setTimestamp(14, memJoinDate);
+			pstmt.setString(9, memDetailAddress);
+			pstmt.setInt(10, memPoint);
+			pstmt.setInt(11, memAdmin);
+			pstmt.setTimestamp(12, memJoinDate);
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -191,9 +187,7 @@ public class WatTimeMemberDAO {
 				memberDTO.setMemBirth(rs.getString("memBirth"));
 				memberDTO.setMemPostcode(rs.getString("memPostcode"));
 				memberDTO.setMemRoadAddress(rs.getString("memRoadAddress"));
-				memberDTO.setMemJibunAddress(rs.getString("memJibunAddress"));
 				memberDTO.setMemDetailAddress(rs.getString("memDetailAddress"));
-				memberDTO.setMemEtcAddress(rs.getString("memEtcAddress"));
 				memberDTO.setMemPoint(rs.getInt("memPoint"));
 				memberDTO.setMemAdmin(rs.getInt("memAdmin"));
 				memberDTO.setMemJoinDate(rs.getTimestamp("memJoinDate"));

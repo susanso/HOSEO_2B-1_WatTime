@@ -66,9 +66,6 @@
 							<td><input  type="text" id="memRoadAddress" name="memRoadAddress" placeholder="도로명주소" value=<%=memberDTO.getMemRoadAddress() %> readonly></td>
 						</tr>
 						<tr>
-							<td><input  type="text" id="memEtcAddress" name="memEtcAddress" placeholder="기타주소" value=<%=memberDTO.getMemEtcAddress() %> readonly></td>
-						</tr>
-						<tr>
 							<td><input  type="text" id="memDetailAddress" name="memDetailAddress" placeholder="상세주소" value=<%=memberDTO.getMemDetailAddress() %>></td>
 						</tr>
 						<tr>

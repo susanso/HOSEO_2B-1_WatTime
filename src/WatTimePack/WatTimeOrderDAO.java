@@ -52,10 +52,10 @@ public class WatTimeOrderDAO {
 		return orderNum;
 	}
 	//관리자
-	public List<WatTimeOrderDTO> getProductAdminList(int start, int end, Timestamp startDate, Timestamp endDateFormat) {
+	public List<WatTimeOrderDTO> getProductAdminList(int start, int end, Timestamp startDate, Timestamp endDateFormat,String orderStatus) {
 		List<WatTimeOrderDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from orderTbl where orderDate>=? and orderDate<=? limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from orderTbl where orderStatus like '%"+orderStatus+"%' and orderDate between ? and ? order by orderDate DESC limit ?,?");
 			pstmt.setTimestamp(1, startDate);
 			pstmt.setTimestamp(2, endDateFormat);
 			pstmt.setInt(3, start-1);
@@ -88,10 +88,12 @@ public class WatTimeOrderDAO {
 		return list;
 	}
 	//관리자 주문내역 주문 개수
-	public int getProductAllCount() {
+	public int getProductAllCount(Timestamp startDate,Timestamp endDate,String orderStatus) {
 		int orderCount=0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select count(*) from orderTbl");
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from orderTbl where orderStatus like '%"+orderStatus+"%' and orderDate between ? and ?");
+			pstmt.setTimestamp(1, startDate);
+			pstmt.setTimestamp(2, endDate);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				orderCount = rs.getInt(1);
@@ -103,11 +105,13 @@ public class WatTimeOrderDAO {
 		return orderCount;
 	}
 	//일반 사용자 주문내역 주문 개수
-	public int getProductUserCount(String memId) {
+	public int getProductUserCount(String memId,Timestamp startDate,Timestamp endDate) {
 		int orderCount=0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select count(*) from orderTbl where memId=?");
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from orderTbl where memId=? and orderDate between ? and ?");
 			pstmt.setString(1, memId);
+			pstmt.setTimestamp(2, startDate);
+			pstmt.setTimestamp(3, endDate);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				orderCount = rs.getInt(1);
@@ -118,14 +122,14 @@ public class WatTimeOrderDAO {
 		
 		return orderCount;
 	}
-	//관리자
+	//일반 유저
 	public List<WatTimeOrderDTO> getProductUserList(int start, int end, Timestamp startDate, Timestamp endDateFormat,String memId) {
 		List<WatTimeOrderDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from orderTbl where orderDate>=? and orderDate<=? and memId =? limit ?,?");
-			pstmt.setTimestamp(1, startDate);
-			pstmt.setTimestamp(2, endDateFormat);
-			pstmt.setString(3, memId);
+			PreparedStatement pstmt = con.prepareStatement("select * from orderTbl where (memId=?) and (orderDate between ? and ?) order by orderDate DESC limit ?,?");
+			pstmt.setString(1, memId);
+			pstmt.setTimestamp(2, startDate);
+			pstmt.setTimestamp(3, endDateFormat);
 			pstmt.setInt(4, start-1);
 			pstmt.setInt(5, end);
 			ResultSet rs = pstmt.executeQuery();
@@ -154,5 +158,16 @@ public class WatTimeOrderDAO {
 			throw new RuntimeException(e);
 		}
 		return list;
+	}
+	//상태 업데이트
+	public void setOrderStatusUpdate(int orderNum, String orderStatus) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update orderTbl set orderStatus = ? where orderNum = ?");
+			pstmt.setString(1, orderStatus);
+			pstmt.setInt(2, orderNum);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
