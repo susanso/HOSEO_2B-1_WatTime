@@ -20,12 +20,10 @@
 		String memPhone = request.getParameter("memPhone");
 		String memPostcode = request.getParameter("memPostcode");
 		String memRoadAddress = request.getParameter("memRoadAddress");
-		String memJibunAddress = request.getParameter("memJibunAddress");
-		String memEtcAddress= request.getParameter("memEtcAddress");
 		String memDetailAddress =  request.getParameter("memDetailAddress");
 		//정보를 테이블에 넣기 위해 setMemberJoin메소드 실행
 		WatTimeMemberDAO memberDAO = new WatTimeMemberDAO();
-		memberDTO = memberDAO.setMemberJoin(memId, memPass, memName,  memEmail, memPhone, memBirth,  memPostcode, memRoadAddress, memJibunAddress, memEtcAddress, memDetailAddress);
+		memberDTO = memberDAO.setMemberJoin(memId, memPass, memName,  memEmail, memPhone, memBirth,  memPostcode, memRoadAddress, memDetailAddress);
 %>
 </head>
 <body>

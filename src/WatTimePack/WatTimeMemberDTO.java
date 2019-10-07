@@ -11,9 +11,7 @@ public class WatTimeMemberDTO {
 	private String memBirth;
 	private String memPostcode;
 	private String memRoadAddress;
-	private String memJibunAddress;
 	private String memDetailAddress;
-	private String memEtcAddress;
 	private int memAdmin;
 	private Timestamp memJoinDate;
 	private int memPoint;
@@ -73,24 +71,11 @@ public class WatTimeMemberDTO {
 	public void setMemRoadAddress(String memRoadAddress) {
 		this.memRoadAddress = memRoadAddress;
 	}
-	public String getMemJibunAddress() {
-		return memJibunAddress;
-	}
-	public void setMemJibunAddress(String memJibunAddress) {
-		this.memJibunAddress = memJibunAddress;
-	}
 	public String getMemDetailAddress() {
 		return memDetailAddress;
 	}
 	public void setMemDetailAddress(String memDetailAddress) {
 		this.memDetailAddress = memDetailAddress;
-	}
-
-	public String getMemEtcAddress() {
-		return memEtcAddress;
-	}
-	public void setMemEtcAddress(String memEtcAddress) {
-		this.memEtcAddress = memEtcAddress;
 	}
 	public int getMemAdmin() {
 		return memAdmin;

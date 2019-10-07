@@ -30,10 +30,11 @@
 			<tr>
 				<td rowspan="2" class="picture">
 					<h2>미리보기 사진 등록</h2><br>
-					<input type="file" id="productSimpleImg" name="productSimpleImg" size=40 required>
+					<input type="file" id="productSimpleImg" name="productSimpleImg" size=40>
+					<input type="hidden" name="productSimpleImgHidden" value="<%=productDTO.getProductSimpleImgFileName()%>">
 				</td>
 				<td>
-					<p>제품코드 : <input type="text" style="width:280px;" id="productCode" name="productCode" value="<%=productDTO.getProductCode()%>" required></p>
+					<p>제품코드 : <input type="text" style="width:280px;" id="productCode" name="productCode" value="<%=productDTO.getProductCode()%>" readonly></p>
 					<p>제품명 : <input type="text" style="width:299px;" id="productName" name="productName" value="<%=productDTO.getProductName()%>" required></p>
 					<p>브랜드 : <select class="brandSelect" style="width:300px;" id ="brand" name="brand" value= "<%=productDTO.getBrandEng() %>" onchange="brandKorCon(this.options[this.selectedIndex].text)">
 							  <option value="" selected disabled required>선택</option>
@@ -78,6 +79,7 @@
 					<p>소비자가격 : <input type="number" id="productPrice" name="productPrice" value="<%=productDTO.getProductPrice()%>" readonly>원</p>
 					<p>TicTok : <input type="number" id="tictok" name="tictok" value="<%=productDTO.getTictok()%>" readonly ></p>
 					<p>제조국 : <input type="text" id="productCountry" name="productCountry" value="<%=productDTO.getProductCountry()%>" required></p>
+					<p>재고량 : <input type="number" style="width:300px;" id="productVolume" name="productVolume" value="<%=productDTO.getProductVolume()%>"></p>
 				</td>
 			</tr>
 			<!-- 등록버튼 -->
@@ -87,7 +89,8 @@
 			<tr>
 				<td class="picture">
 					상세 사진 등록<br>
-					<input type="file" id="productDetailImg" name="productDetailImg" size=100 required>
+					<input type="file" id="productDetailImg" name="productDetailImg" size=100>
+					<input type="hidden" name="productDetailImgHidden" value="<%=productDTO.getProductDetailImgFileName()%>">
 				</td>
 			</tr>
 			<tr>

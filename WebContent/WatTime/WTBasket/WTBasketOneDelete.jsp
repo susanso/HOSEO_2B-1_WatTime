@@ -15,8 +15,14 @@
 <%
 	String memId = request.getParameter("memId");
 	int num = Integer.parseInt(request.getParameter("num"));
-	WatTimeBasketDAO basketDAO = new WatTimeBasketDAO();
+	String productCode = request.getParameter("productCode");
+	int productCount = 0;
 	
+	WatTimeBasketDAO basketDAO = new WatTimeBasketDAO();
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
+	
+	productCount = basketDAO.getBasketCount(memId,num);
+	productDAO.setBasketProductVolume(productCode,productCount);
 	basketDAO.setBasketOneDelete(memId,num);
 %>
 <body>

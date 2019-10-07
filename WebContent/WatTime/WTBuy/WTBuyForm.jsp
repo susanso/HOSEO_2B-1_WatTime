@@ -62,11 +62,14 @@
 			basketDAO.setBasket(basketDTO);
 			//insert 한 후 select
 			basketList = basketDAO.getMemberBasketList(memberDTO.getMemId());
+			
+			productDAO.setProductVolumeChange(productCode,Integer.parseInt(productCount));
 		}
 	}
 %>
 <body>
-	<form method="post" action="WTMain.jsp?pageChange=WTBuy/WTBuyPro.jsp" id="BuyForm" name="BuyForm">
+	
+	<form method="post" action="WTBuy/WTBuyPro.jsp" id="BuyForm" name="BuyForm">
 		<table width="1300px" border="1">
 			<th width="150px">
 				이미지
@@ -107,6 +110,7 @@
 					<td>
 						<%=basketDTO.getProductName() %>
 						<input type="hidden" name="product" value="<%=basketDTO.getProductName() %>">
+						<input type="hidden" name="productCode" value="<%=basketDTO.getProductCode() %>">
 					</td>
 					<!-- 상품 가격 -->
 					<td>
@@ -165,8 +169,12 @@
 				</td>
 			</tr>
 		</table>
-		
-		<!-- 배송정보 -->
+		<!-- 위 정보 버튼을 누르면 들어가는 값 -->
+		<input type="hidden" id="memName" value="<%=memberDTO.getMemName()%>">
+		<input type="hidden" id="memPhone" value="<%=memberDTO.getMemPhone()%>">
+		<input type="hidden" id="postCode" value="<%=memberDTO.getMemPostcode()%>">
+		<input type="hidden" id="roadAddress" value="<%=memberDTO.getMemRoadAddress()%>">
+ 		<!-- 배송정보 -->
 		배송정보
 		<table border="1">
 			<tr>
@@ -174,8 +182,8 @@
 					이름
 				</td>
 				<td>
-					<input type="text" name="deliveryMemName">
-					<input type="button" value="위 정보와 동일">
+					<input type="text" id="deliveryMemName" name="deliveryMemName">
+					<input type="button" value="위 정보와 동일" onclick="contentSame()">
 				</td>
 			</tr>
 			<tr>
@@ -183,7 +191,7 @@
 					전화번호
 				</td>
 				<td>
-					<input type="text" name="deliveryMemPhone">
+					<input type="text" id="deliveryMemPhone" name="deliveryMemPhone" placeholder="전화번호(-없이)">
 				</td>
 			</tr>
 			<tr>
@@ -191,9 +199,9 @@
 					주소
 				</td>
 				<td>
-					<input type="text" id="memPostcode" readonly>
-					<input type="button" value="우편번호 찾기" onclick="postcode()">
-					<input type="text" id="memRoadAddress">
+					<input type="text" id="memPostcode" name="memPostcode" placeholder="우편번호" readonly>
+					<input type="button" value="우편번호 찾기" onclick="postcode()"><br>
+					<input type="text" id="memRoadAddress" name="memRoadAddress" placeholder="주소">
 				</td>
 			</tr>
 			<tr>
@@ -201,7 +209,7 @@
 					주문 메세지
 				</td>
 				<td>
-					<input type="text" name="deliveryMessage">
+					<input type="text" id="deliveryMessage" name="deliveryMessage" value="부재시 전화주세요.">
 				</td>
 			</tr>
 		</table>
@@ -226,7 +234,9 @@
 			<tr>
 				<td>
 					최종가격 : <span id="totalPrice"><%=df.format(total) %></span><br>
+					<input type="hidden" name="totalPrice" value="<%=total%>"> 
 					적립 TicTok : <%=df.format(TicTok) %>
+					<input type="hidden" name="TicTok" value="<%=TicTok%>"> 
 				</td>
 			</tr>
 		</table>
@@ -236,7 +246,7 @@
 			<tr>
 				<td>
 					<input type="radio" id="check1" name="check" value="card"> 신용카드<br>
-					<input type="radio" id="check2" name="check" value="bankDeposit"> 무통장입금<br>
+					<input type="radio" id="check2" name="check" value="bankDeposit"> 휴대폰 결제<br>
 					<input type="radio" id="check3" name="check" value="accountTransfer"> 실시간 계좌이체
 				</td>
 			</tr>
@@ -245,16 +255,24 @@
 		//결제 페이지에서 결제하는 상품의 갯수가 1개 초과
 		if(basketList.size()>1){
 %>
-			<input type="hidden" id="productTitle" name="" value="<%=firstProductName %> 외 <%=basketList.size()-1%>개">
+			<input type="hidden" id="productTitle" name="productTitle" value="<%=firstProductName %> 외 <%=basketList.size()-1%>개">
 <%
 		}else{
 %>
-			<input type="hidden" id="productTitle" name="" value="<%=firstProductName %>">
+			<input type="hidden" id="productTitle" name="productTitle" value="<%=firstProductName %>">
 <%
 		}
 %>
 		<input type="button" value="결제하기" onclick="order()">
 		<!-- 결제 팝업창 정보 보내기 -->
+		<!-- 시리얼 번호 -->
+		<input type="hidden" id="serialNumber" name="serialNumber">
+		<!-- 할부 기간 -->
+		<input type="hidden" id="installments" name="installments">
+		<!-- 은행 -->
+		<input type="hidden" id="bank" name="bank">
+		<!-- 결제 방법 -->
+		<input type="hidden" id="paymentMethod" name="paymentMethod">
 	</form>
 </body>
 </html>

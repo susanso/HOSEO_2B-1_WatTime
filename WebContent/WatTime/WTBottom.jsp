@@ -37,7 +37,9 @@
 				for(int i = 0 ; i < noticeList.size() ; i++){
 					noticeDTO = noticeList.get(i);
 %>
-					<li id="<%=noticeDTO.getNum()%>" onclick="noticeListClick(this.id)"><%=noticeDTO.getTitle() %></li>
+					<a href="#">
+						<li id="<%=noticeDTO.getNum()%>" onclick="noticeListClick(this.id)"><%=noticeDTO.getTitle() %></li>
+					</a>
 <%
 				}
 %>

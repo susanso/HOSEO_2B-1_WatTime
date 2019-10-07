@@ -50,24 +50,32 @@
 			totalPrice = totalPrice + basketDTO.getProductPrice()*basketDTO.getProductCount();
 %>
 		<tr>
+			<!-- 이미지 -->
 			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><img src="../WatTime/img/brand/<%=basketDTO.getProductSimpleImgFileName() %>" width="300px" height="300px"></td>
-			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')"><%=basketDTO.getProductName() %></td>
+			<!-- 상품명 -->
+			<td onclick="goProduct('<%=basketDTO.getProductCode() %>')">
+				<%=basketDTO.getProductName() %>
+				<input type="hidden" id="productCode" name="productCode" value="<%=basketDTO.getProductCode() %>">
+			</td>
+			<!-- 상품 가격 -->
 			<td><%=df.format(basketDTO.getProductPrice()*basketDTO.getProductCount()) %></td>
 			<td>
+				<!-- 상품 개수 -->
 				<input type="number" style="text-align:center;" id="productCountNum" name="productCountNum"
 					   min="1" max="2147483647" value=<%=basketDTO.getProductCount() %> onchange="productCountChange(this.value)"><br>
-				<!-- , -->
+				<!-- 수정 버튼 -->
 				<input type="button" id="productBasketModify" value="수정" class="basketBtn"
-					   onclick="productCountModify('<%=basketDTO.getMemId()%>','<%=basketDTO.getNum()%>')">
+					   onclick="productCountModify('<%=basketDTO.getMemId()%>','<%=basketDTO.getNum()%>','<%=basketDTO.getProductCode()%>')">
 			
 			</td>
+			<!-- 개수*해당 상품 TicTok -->
 			<td>
 				<%=df.format(basketDTO.getTictok()*basketDTO.getProductCount()) %>
 			</td>
-
+			<!-- 삭제 -->
 			<td>
 				<input type="button" class="basketBtn" id="<%=basketDTO.getNum() %>" value="삭제" 
-					   onclick="basketOneDelete(this.id,'<%=basketDTO.getMemId()%>')"><br>
+					   onclick="basketOneDelete(this.id,'<%=basketDTO.getMemId()%>','<%=basketDTO.getProductCode()%>')"><br>
 				<br>
 			</td>
 		</tr>

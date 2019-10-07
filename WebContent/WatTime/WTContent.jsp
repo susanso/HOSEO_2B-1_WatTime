@@ -141,16 +141,20 @@
 						for(int i = 0 ; i < productList.size() ; i++){
 							productDTO = productList.get(i);
 %>	
-							<div class="slideManClass" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
+							<div class="slideManClass" id="">
 								<p>
-									<a><img alt="시계사진" src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>">
+									<a href="#" onclick="productSpec('<%=productDTO.getProductCode()%>')">
+										<img alt="시계사진" src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>">
+									</a>
 									<br>
 									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
-									<span class="subSpan"><%=productDTO.getProductName() %></span>
+									<a href="#" onclick="productSpec('<%=productDTO.getProductCode()%>')">
+										<span class="subSpan"><%=productDTO.getProductName() %></span>
+									</a>
 							 		<span> 
 							 			<strong><%=df.format(productDTO.getProductPrice()) %>원</strong>
 							 		</span> 
-							 		</a>
+							 		
 								</p>
 							</div>
 <%
@@ -183,16 +187,20 @@
 								productDTO = productList.get(i);
 %>	
 						
-							<div class="slideManClass" id="<%=productDTO.getProductCode()%>" onclick="productSpec(this.id)">
+							<div class="slideManClass" id="">
 								<p>
-									<a><img alt="시계사진" src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>">
+									<a href="#" onclick="productSpec(<%=productDTO.getProductCode()%>)">
+										<img alt="시계사진" src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>">
+									</a>
 									<br>
 									<span>[<%=productDTO.getBrandKor() %>[<%=productDTO.getBrandEng() %>] ]</span>
-									<span class="subSpan"><%=productDTO.getProductName() %></span>
+									<a href="#" onclick="productSpec(<%=productDTO.getProductCode()%>)">
+										<span class="subSpan"><%=productDTO.getProductName() %></span>
+									</a>
 							 		<span> 
 							 			<strong><%=df.format(productDTO.getProductPrice()) %>원</strong>
 							 		</span> 
-							 		</a>
+							 		
 								</p>
 							</div>
 <%

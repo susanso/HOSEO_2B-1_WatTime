@@ -102,10 +102,17 @@
 						제조국 : <%=productDTO.getProductCountry() %>
 					</p>
 					<p>
-						수량: <input type="number" id="productCount" name="productCount" value="1" min="1" max="2147483648" onkeyup="countChange('<%=productDTO.getProductPrice() %>',this.value)">
+						현재 재고량 : <%=df.format(productDTO.getProductVolume()) %>개
+					</p>
+					<p>
+						수량: <input type="number" id="productCount" name="productCount"
+									value="1" min="1" max="2147483648" 
+									onkeyup="countChange('<%=productDTO.getProductPrice() %>',this.value,'<%=productDTO.getProductVolume() %>')"
+									readonly>
 					</p>
 	               <input type="button" name="plus" class="productCountBtn" value="+" 
-						  onclick="countPlus('<%=productDTO.getProductPrice() %>',productCount.value)">
+						  onclick="countPlus('<%=productDTO.getProductPrice() %>',productCount.value,
+						  					 '<%=productDTO.getProductVolume() %>')">
 	               <input type="button" name="minus" class="productCountBtn" value="-"
 						  onclick="countMinus('<%=productDTO.getProductPrice() %>',productCount.value)">
 					<p>
@@ -119,10 +126,21 @@
 	         </tr>
 	         <!-- 구매하기, 장바구니 버튼 -->
 			<tr height="150px">
+<%
+				if(productDTO.getProductVolume()!=0){
+%>
 				<td class="productInfo">
-					<input type = "button" id="gotcha" value="구매하기" onclick="buy('<%=productDTO.getProductCode() %>','<%=log%>',productCount.value)">
-					<input type = "button" class="specBtn"value="장바구니" onclick="basketPro(logCheck.value,productCount.value,'<%=productDTO.getProductCode()%>','<%=productDTO.getProductName()%>','<%=productDTO.getProductPrice()%>','<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>','<%=productDTO.getProductSimpleImgFileName()%>','<%=productDTO.getTictok()%>')">
+					<input type = "button" id="gotcha" value="구매하기"
+						   onclick="buy('<%=productDTO.getProductCode() %>','<%=log%>',productCount.value)">
+					<input type = "button" class="specBtn"value="장바구니"
+						   onclick="basketPro(logCheck.value,productCount.value,'<%=productDTO.getProductCode()%>',
+											  '<%=productDTO.getProductName()%>','<%=productDTO.getProductPrice()%>',
+											  '<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>',
+											  '<%=productDTO.getProductSimpleImgFileName()%>','<%=productDTO.getTictok()%>')">
 				</td>
+<%
+				}
+%>
 			</tr>
 	         <!-- 버튼구역 -->
 			<tr id="productDetailImg" >

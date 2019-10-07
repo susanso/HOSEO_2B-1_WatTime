@@ -70,12 +70,6 @@
 						<input class="inputText" type="text" id="memRoadAddress" name="memRoadAddress" placeholder="도로명주소" value="" readonly>
 					</div>
 					<div class="addressForm">
-						<input class="inputText" type="text" id="memJibunAddress" name="memJibunAddress" placeholder="지번주소" value="" readonly>
-					</div>
-					<div class="addressForm">
-						<input class="inputText" type="text" id="memEtcAddress" name="memEtcAddress" placeholder="기타주소" value="" readonly>
-					</div>
-					<div class="addressForm">
 						<input class="singleText" type="text" id="memDetailAddress" name="memDetailAddress" placeholder="상세주소" value="" onblur="addressCheck()">
 					</div>
 					<div class="addressForm">

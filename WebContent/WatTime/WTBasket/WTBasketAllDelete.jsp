@@ -14,9 +14,14 @@
 </head>
 <%
 	String memId = request.getParameter("memId");
-	
+	List<WatTimeBasketDTO> basketList = null;
 	WatTimeBasketDAO basketDAO = new WatTimeBasketDAO();
-	
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
+	basketList = basketDAO.getMemberBasketList(memId);
+	for(int i = 0 ; i < basketList.size() ; i++){
+		basketDTO = basketList.get(i);
+		productDAO.setBasketProductVolume(basketDTO.getProductCode(),basketDTO.getProductCount());
+	}
 	basketDAO.setBasketAllDelete(memId);
 %>
 <body>

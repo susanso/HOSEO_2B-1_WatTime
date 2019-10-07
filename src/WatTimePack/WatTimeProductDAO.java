@@ -9,21 +9,21 @@ import java.util.List;
 
 public class WatTimeProductDAO {
 	//전체 브랜드의 상품 갯수
-		public int getProductAllCount() {
-			int productCount=0;
-			try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-				PreparedStatement pstmt = con.prepareStatement("select count(*) from productTbl");
-				ResultSet rs = pstmt.executeQuery();
-				
-				while(rs.next()) {
-					productCount = rs.getInt(1);
-				}
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
+	public int getProductAllCount() {
+		int productCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from productTbl");
+			ResultSet rs = pstmt.executeQuery();
 			
-			return productCount;
+			while(rs.next()) {
+				productCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+		
+		return productCount;
+	}
 
 	//전체 상품 리스트 가져오는 부분
 	public List<WatTimeProductDTO> getProductAllList(int start, int end, String sort) {
@@ -52,6 +52,7 @@ public class WatTimeProductDAO {
 					productDTO.setProductSimpleImgFilePath(rs.getString("productSimpleImgFilePath"));
 					productDTO.setProductDetailImgFileName(rs.getString("productDetailImgFileName"));
 					productDTO.setProductDetailImgFilePath(rs.getString("productSimpleImgFilePath"));
+					productDTO.setProductVolume(rs.getInt("productVolume"));
 					list.add(productDTO);
 				}while(rs.next());
 			}
@@ -65,7 +66,7 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductMainManList() {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' order by productOrder DESC limit 0,8");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' and productVolume>0 order by productOrder DESC limit 0,8");
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
@@ -80,6 +81,7 @@ public class WatTimeProductDAO {
 					productDTO.setProductPrice(rs.getInt("productPrice"));
 					productDTO.setTictok(rs.getInt("tictok"));
 					productDTO.setProductSimpleImgFileName(rs.getString("productSimpleImgFileName"));
+					productDTO.setProductVolume(rs.getInt("productVolume"));
 					list.add(productDTO);
 				}while(rs.next());
 			}
@@ -93,7 +95,7 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductMainWomanList() {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'woman' order by productOrder DESC limit 0,8");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'woman' and productVolume>0 order by productOrder DESC limit 0,8");
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
@@ -108,6 +110,7 @@ public class WatTimeProductDAO {
 					productDTO.setProductPrice(rs.getInt("productPrice"));
 					productDTO.setTictok(rs.getInt("tictok"));
 					productDTO.setProductSimpleImgFileName(rs.getString("productSimpleImgFileName"));
+					productDTO.setProductVolume(rs.getInt("productVolume"));
 					list.add(productDTO);
 				}while(rs.next());
 			}
@@ -138,7 +141,7 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductTypeList(String type,int start, int end, String sort) {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType like '"+type+"' order by "+sort+" limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType like '"+type+"' order by "+sort+"  limit ?,?");
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			ResultSet rs = pstmt.executeQuery();
@@ -161,6 +164,7 @@ public class WatTimeProductDAO {
 					productDTO.setProductSimpleImgFilePath(rs.getString("productSimpleImgFilePath"));
 					productDTO.setProductDetailImgFileName(rs.getString("productDetailImgFileName"));
 					productDTO.setProductDetailImgFilePath(rs.getString("productSimpleImgFilePath"));
+					productDTO.setProductVolume(rs.getInt("productVolume"));
 					list.add(productDTO);
 				}while(rs.next());
 			}
@@ -216,6 +220,7 @@ public class WatTimeProductDAO {
 					productDTO.setProductSimpleImgFilePath(rs.getString("productSimpleImgFilePath"));
 					productDTO.setProductDetailImgFileName(rs.getString("productDetailImgFileName"));
 					productDTO.setProductDetailImgFilePath(rs.getString("productSimpleImgFilePath"));
+					productDTO.setProductVolume(rs.getInt("productVolume"));
 					list.add(productDTO);
 				}while(rs.next());
 			}
@@ -266,6 +271,7 @@ public class WatTimeProductDAO {
 					productDTO.setProductSimpleImgFilePath(rs.getString("productSimpleImgFilePath"));
 					productDTO.setProductDetailImgFileName(rs.getString("productDetailImgFileName"));
 					productDTO.setProductDetailImgFilePath(rs.getString("productSimpleImgFilePath"));
+					productDTO.setProductVolume(rs.getInt("productVolume"));
 					list.add(productDTO);
 				}while(rs.next());
 			}
@@ -300,6 +306,7 @@ public class WatTimeProductDAO {
 				productDTO.setProductSimpleImgFilePath(rs.getString("productSimpleImgFilePath"));
 				productDTO.setProductDetailImgFileName(rs.getString("productDetailImgFileName"));
 				productDTO.setProductDetailImgFilePath(rs.getString("productDetailImgFilePath"));
+				productDTO.setProductVolume(rs.getInt("productVolume"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -310,7 +317,7 @@ public class WatTimeProductDAO {
 	//상품 등록
 	public void setProduct(WatTimeProductDTO productDTO) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("insert into productTbl values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into productTbl values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, productDTO.getProductCode());
 			pstmt.setString(2, productDTO.getBrandKor());
 			pstmt.setString(3, productDTO.getBrandEng());
@@ -327,6 +334,7 @@ public class WatTimeProductDAO {
 			pstmt.setString(14, productDTO.getProductSimpleImgFilePath());
 			pstmt.setString(15, productDTO.getProductDetailImgFileName());
 			pstmt.setString(16, productDTO.getProductDetailImgFilePath());
+			pstmt.setInt(17, productDTO.getProductVolume());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -356,6 +364,7 @@ public class WatTimeProductDAO {
 				productDTO.setProductSimpleImgFilePath(rs.getString("productSimpleImgFilePath"));
 				productDTO.setProductDetailImgFileName(rs.getString("productDetailImgFileName"));
 				productDTO.setProductDetailImgFilePath(rs.getString("productSimpleImgFilePath"));
+				productDTO.setProductVolume(rs.getInt("productVolume"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -368,7 +377,7 @@ public class WatTimeProductDAO {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
 			PreparedStatement pstmt = con.prepareStatement("update productTbl set brandKor=?, brandEng=?, productName=?, productType=?, productOriginalPrice=?, "
 					+"productSale=?, productPrice=?, tictok=?, productCountry=?, productSimpleImgFileName=? "+
-					", productSimpleImgFilePath=?, productDetailImgFileName=?, productDetailImgFilePath=? where productCode = ?");
+					", productDetailImgFileName=?, productVolume=? where productCode = ?");
 			pstmt.setString(1, productDTO.getBrandKor());
 			pstmt.setString(2, productDTO.getBrandEng());
 			pstmt.setString(3, productDTO.getProductName());
@@ -379,10 +388,9 @@ public class WatTimeProductDAO {
 			pstmt.setInt(8, productDTO.getTictok());
 			pstmt.setString(9, productDTO.getProductCountry());
 			pstmt.setString(10, productDTO.getProductSimpleImgFileName());
-			pstmt.setString(11, productDTO.getProductSimpleImgFilePath());
-			pstmt.setString(12, productDTO.getProductDetailImgFileName());
-			pstmt.setString(13, productDTO.getProductDetailImgFilePath());
-			pstmt.setString(14, productDTO.getProductCode());
+			pstmt.setString(11, productDTO.getProductDetailImgFileName());
+			pstmt.setInt(12, productDTO.getProductVolume());
+			pstmt.setString(13, productDTO.getProductCode());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -398,5 +406,54 @@ public class WatTimeProductDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	//장바구니에 담을 때 재고 수량 바꾸기
+	public void setProductVolumeChange(String productCode, int productCount) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update productTbl set productVolume=productVolume-? where productCode = ?");
+			pstmt.setInt(1, productCount);
+			pstmt.setString(2, productCode);
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//장바구니 페이지에서 수량 바꿨을 때
+	public void setBasketProductVolume(String productCode, int productCount) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update productTbl set productVolume=productVolume+? where productCode = ?");
+			pstmt.setInt(1, productCount);
+			pstmt.setString(2, productCode);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//결제 완료 후 주문수 올리기
+	public void setProductOrderUpdate(String productCode) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update productTbl set productOrder=productOrder+1 where productCode = ?");
+			pstmt.setString(1, productCode);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//주문 내역 이미지 가져오기
+	public String getProductImg(WatTimeOrderProductDTO orderProductDTO) {
+		String productImg = "";
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select productSimpleImgFileName from productTbl where productCode = ?");
+			pstmt.setString(1, orderProductDTO.getProductCode());
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				productImg= rs.getString("productSimpleImgFileName");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return productImg;
 	}
 }

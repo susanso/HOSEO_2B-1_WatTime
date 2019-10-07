@@ -34,12 +34,18 @@ function productDeleteForm(productCode){
 }
 
 ////상품 상세 페이지
-function countPlus(price,count){
+function countPlus(price,count,volume){
     var countNum = parseInt(count) + 1;
-    document.getElementById("productCount").value = countNum;
-    var total = price * countNum;
-    var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById("totalPrice").textContent = totalfomat+"원";
+    if(parseInt(volume)<parseInt(countNum)){
+    	alert("현재 개수가 재고량보다 많습니다.");
+    }else if(parseInt(count)>=100){
+    	alert("장바구니에 담을 수 있는 최대 개수는 100개입니다.");
+    }else{
+	    document.getElementById("productCount").value = countNum;
+	    var total = price * countNum;
+	    var totalfomat = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	    document.getElementById("totalPrice").textContent = totalfomat+"원";
+    }
 }
 
 function countMinus(price,count){
@@ -57,7 +63,7 @@ function countMinus(price,count){
         document.getElementById("totalPrice").textContent = totalfomat+"원";
     }
 }
-function countChange(price,count){
+function countChange(price,count,volume){
 	var total = 0;
     if(count==0){
         alert("최소 수량은 1개입니다.");

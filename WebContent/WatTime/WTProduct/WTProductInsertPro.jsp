@@ -24,6 +24,7 @@
 	String productSimpleImgFilePath = "";
 	String productDetailImgFileName = "";
 	String productDetailImgFilePath = "";
+	String productVolume = "";
 	int maxSize = 1024*1024*5;
 	String encType = "UTF-8";
 	//저장할 폴더
@@ -50,6 +51,8 @@
 		productPrice = multi.getParameter("productPrice");
 		tictok = multi.getParameter("tictok");
 		productCountry = multi.getParameter("productCountry");
+		productVolume = multi.getParameter("productVolume");
+		
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -73,7 +76,7 @@
 	productDTO.setProductDetailImgFileName(productDetailImgFileName);
 	productDTO.setProductSimpleImgFilePath(productSimpleImgFilePath);
 	productDTO.setProductDetailImgFilePath(productDetailImgFilePath);
-
+	productDTO.setProductVolume(Integer.parseInt(productVolume));
 	WatTimeProductDAO productDAO = new WatTimeProductDAO();
 	productDAO.setProduct(productDTO);
 %>
