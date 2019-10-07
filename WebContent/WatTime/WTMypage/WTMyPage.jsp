@@ -24,7 +24,7 @@
 				<ul class="nav-list">
 					<li class="nav-item"><a href="WTMain.jsp?pageChange=WTMypage/WTMyPage.jsp" class="nav-link">회원 정보</a></li>
 					<li class="nav-item"><a href="WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1" class="nav-link">주문내역</a></li>
-					<li class="nav-item"><a href="" class="nav-link">TicTok</a></li>
+					<li class="nav-item"><a href="WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum=1" class="nav-link">TicTok</a></li>
 					<li class="nav-item"><a href="" class="nav-link">TicTok</a></li>
 				</ul>
 			</div>

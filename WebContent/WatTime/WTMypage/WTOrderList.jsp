@@ -23,6 +23,8 @@
 	}
 	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	WatTimeOrderDAO orderDAO = new WatTimeOrderDAO();
+	WatTimeOrderProductDAO orderProductDAO = new WatTimeOrderProductDAO();
+	WatTimeProductDAO productDAO = new WatTimeProductDAO();
 	List<WatTimeOrderDTO> orderList = new ArrayList<>();
 	
 	int pageSize = 10;
@@ -78,7 +80,7 @@
 		<input id="dateStart" type="date"> ~ <input id="dateEnd" type="date">
 		<input type="button" value="검색" onclick="dateCheck(dateStart.value,dateEnd.value)">
 <%
-		if(memberDTO.getMemAdmin() != 0){
+		if(memberDTO.getMemAdmin() != 0){ 
 %>
 			<select id="orderStatusSelect" onchange="selectOrderStatus(this.value,'<%=startDateFormat%>','<%=endDateFormat%>')">
 <%
@@ -168,6 +170,7 @@
 			<table border="1">
 				<tr>
 					<th>주문번호</th>
+					<th>상품 이미지</th>
 					<th>주문 상품명</th>
 					<th>주문자 아이디</th>
 					<th>주문자 이름</th>
@@ -179,11 +182,19 @@
 <%
 				for(int i = 0 ; i < orderList.size() ; i++){
 					orderDTO = orderList.get(i);
+					String productCode = orderProductDAO.getOrderProductName(orderDTO.getOrderNum());
+					String productImg = productDAO.getProductImg(productCode);
 %>	
 					<tr>
 						<!-- 주문번호 -->
 						<td>
 							<%=orderDTO.getOrderNum() %>
+						</td>
+						<td>
+							<img src="../WatTime/img/brand/<%=productImg %>"
+								 width="100px"
+								 height="100px"
+							>
 						</td>
 						<!-- 주문 상품 명-->
 						<td>
@@ -201,7 +212,7 @@
 						</td>
 						<!-- 주문 날짜 -->
 						<td>
-							<%=orderDTO.getOrderDate() %>
+							<%=date_format.format(orderDTO.getOrderDate()) %>
 						</td>
 						<!-- 우편번호 -->
 						<td>
@@ -267,7 +278,7 @@
 										   value="배송 준비"
 										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
 										   checked
-									>배송준비
+									>배송준비<br>
 <%
 								}else{
 %>
@@ -276,7 +287,7 @@
 										   name="<%=orderDTO.getOrderNum() %>status"
 										   value="배송 준비"
 										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-									>배송준비
+									>배송준비<br>
 <%
 								}
 								//배송중
@@ -374,7 +385,7 @@
 %>
 		</table>
 	</div>
-<div class="move">
+	<div class="move">
 <%
 		if (count > 0) {
 			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -392,23 +403,39 @@
 			}
 			if (startPage > 5) {
 %>
-				<input type="button"  id="PageNum" name="back" value="이전" onclick="back('<%=startPage - 5%>','<%=startDateFormat%>','<%=endDateFormat%>')">
+				<input type="button"
+					   id="PageNum"
+					   name="back"
+					   value="이전"
+					   onclick="back('<%=startPage - 5%>','<%=startDateFormat%>','<%=endDateFormat%>','<%=orderStatus%>')">
 <%      
 			}
 			for (int i = startPage ; i <= endPage ; i++) { 
 				if(i==pageNum){
 %>
-					<input type="button" id="nowPageNum" name="nowPageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=startDateFormat%>','<%=endDateFormat%>')">
+					<input type="button"
+						   id="nowPageNum"
+						   name="nowPageNum"
+						   value="<%=i %>"
+						   onclick="pageNum(this.value,'<%=startDateFormat%>','<%=endDateFormat%>','<%=orderStatus%>')">
 <%
 				}else{
 %>
-					<input type="button" id="PageNum" name="pageNum" value="<%=i %>" onclick="pageNum(this.value,'<%=startDateFormat%>','<%=endDateFormat%>')">
+					<input type="button"
+						   id="PageNum"
+						   name="pageNum"
+						   value="<%=i %>"
+						   onclick="pageNum(this.value,'<%=startDateFormat%>','<%=endDateFormat%>','<%=orderStatus%>')">
 <%      
 				}
 			}
 			if (endPage < pageCount) {
 %>
-				<input type="button" id="PageNum" name="back" value="다음" onclick="next('<%=startPage + 5%>','<%=startDateFormat%>','<%=endDateFormat%>')">
+				<input type="button"
+					   id="PageNum"
+					   name="back"
+					   value="다음"
+					   onclick="next('<%=startPage + 5%>','<%=startDateFormat%>','<%=endDateFormat%>','<%=orderStatus%>')">
 <%
 			}
 		}
