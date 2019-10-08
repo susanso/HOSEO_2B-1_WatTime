@@ -40,7 +40,7 @@
 %>
 </head>
 <body >
-	<div style=" line-height: 90px ;margin:0 auto; width:1300px ; font-size:50px; height:90px;font-family: 'Roboto', sans-serif; border-top:1px solid gray; border-bottom:1px solid gray;" >
+	<div style=" line-height: 90px ;margin:0 auto; width:1300px ; font-size:50px; height:90px;font-family: 'Roboto', sans-serif;border-bottom:1px solid gray;" >
 		<div id="faqMainBar">Notice</div>
 		<div id="faqMainBar"  class="faqBar">
 			<input type="button" id="faq" name="faq" value="FAQ" onclick="FAQPage()">
