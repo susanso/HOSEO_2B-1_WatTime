@@ -56,4 +56,19 @@ public class WatTimeOrderProductDAO {
 		}
 		return list;
 	}
+	//상품 이미지 불러오기 용
+	public String getOrderProductName(int orderNum) {
+		String productCode="";
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select productCode from orderProductTbl where orderNum = ? limit 0,1");
+			pstmt.setInt(1, orderNum);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				productCode = rs.getString("productCode");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return productCode;
+	}
 }

@@ -456,4 +456,20 @@ public class WatTimeProductDAO {
 		
 		return productImg;
 	}
+	//이미지 가져오기
+	public String getProductImg(String productCode) {
+		String productImg = "";
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select productSimpleImgFileName from productTbl where productCode = ?");
+			pstmt.setString(1, productCode);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				productImg= rs.getString("productSimpleImgFileName");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return productImg;
+	}
 }

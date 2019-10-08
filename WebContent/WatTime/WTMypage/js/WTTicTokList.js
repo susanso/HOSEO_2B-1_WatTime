@@ -5,12 +5,6 @@ function orderProductList(orderNum){
 }
 //검색 날짜 유효성
 function dateCheck(dateStart,dateEnd){
-	var orderStatus = document.getElementById("orderStatusSelect");
-	if(orderStatus==null){
-		orderStatus = null;
-	}else{
-		orderStatus = document.getElementById("orderStatusSelect").value;
-	}
 	var newDt = new Date();
 	var year = newDt.getFullYear();
     var month = newDt.getMonth()+1;
@@ -51,7 +45,7 @@ function dateCheck(dateStart,dateEnd){
 		var form = document.createElement("form");
 		form.setAttribute("charset", "utf-8");
 		form.setAttribute("method", "Post"); // Get 또는 Post 입력
-		form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1");
+		form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum=1");
 		
 		hiddenField = document.createElement("input");
 		hiddenField.setAttribute("type", "hidden");
@@ -63,12 +57,6 @@ function dateCheck(dateStart,dateEnd){
 		hiddenField.setAttribute("type", "hidden");
 		hiddenField.setAttribute("name", "endDate");
 		hiddenField.setAttribute("value", dateEnd);
-		form.appendChild(hiddenField);
-		
-		hiddenField = document.createElement("input");
-		hiddenField.setAttribute("type", "hidden");
-		hiddenField.setAttribute("name", "orderStatus");
-		hiddenField.setAttribute("value", orderStatus);
 		form.appendChild(hiddenField);
 		
 		document.body.appendChild(form);
@@ -95,7 +83,7 @@ function monthSearch(mm){
     var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1");
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum=1");
 	
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -114,93 +102,13 @@ function monthSearch(mm){
 	form.submit();
 	
 }
-//상태 라디오 버튼 클릭
-function radioclick(value,orderNum,pageNum,startDate,endDate){
-	var orderStatus = document.getElementById("orderStatusSelect");
-	if(orderStatus==null){
-		orderStatus = null;
-	}else{
-		orderStatus = document.getElementById("orderStatusSelect").value;
-	}
-	var form = document.createElement("form");
-	form.setAttribute("charset", "utf-8");
-	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderStatusUpdate.jsp");
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "orderStatus");
-	hiddenField.setAttribute("value", value);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "orderNum");
-	hiddenField.setAttribute("value", orderNum);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "pageNum");
-	hiddenField.setAttribute("value", pageNum);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "startDate");
-	hiddenField.setAttribute("value", startDate);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "endDate");
-	hiddenField.setAttribute("value", endDate);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "orderStatusRadio");
-	hiddenField.setAttribute("value", orderStatus);
-	form.appendChild(hiddenField);
-	
-	document.body.appendChild(form);
-	
-	form.submit();
-}
-function selectOrderStatus(orderStatus, startDate, endDate){
-	var form = document.createElement("form");
-	form.setAttribute("charset", "utf-8");
-	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1");
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "orderStatus");
-	hiddenField.setAttribute("value", orderStatus);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "startDate");
-	hiddenField.setAttribute("value", startDate);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "endDate");
-	hiddenField.setAttribute("value", endDate);
-	form.appendChild(hiddenField);
-	document.body.appendChild(form);
-	
-	form.submit();
-}
 //페이지 관련
 //이전
-function back(pageNum,startDate,endDate,orderStatus){
+function back(pageNum,startDate,endDate){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum="+pageNum);
 	
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -212,12 +120,6 @@ function back(pageNum,startDate,endDate,orderStatus){
 	hiddenField.setAttribute("type", "hidden");
 	hiddenField.setAttribute("name", "endDate");
 	hiddenField.setAttribute("value", endDate);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "orderStatus");
-	hiddenField.setAttribute("value", orderStatus);
 	form.appendChild(hiddenField);
 	
 	document.body.appendChild(form);
@@ -225,11 +127,11 @@ function back(pageNum,startDate,endDate,orderStatus){
 	form.submit();
 }
 //페이지
-function pageNum(pageNum,startDate,endDate,orderStatus){
+function pageNum(pageNum,startDate,endDate){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum="+pageNum);
 	
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -243,22 +145,16 @@ function pageNum(pageNum,startDate,endDate,orderStatus){
 	hiddenField.setAttribute("value", endDate);
 	form.appendChild(hiddenField);
 	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "orderStatus");
-	hiddenField.setAttribute("value", orderStatus);
-	form.appendChild(hiddenField);
-	
 	document.body.appendChild(form);
 	
 	form.submit();
 }
 //다음
-function next(pageNum,startDate,endDate,orderStatus){
+function next(pageNum,startDate,endDate){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum="+pageNum);
 
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -270,12 +166,6 @@ function next(pageNum,startDate,endDate,orderStatus){
 	hiddenField.setAttribute("type", "hidden");
 	hiddenField.setAttribute("name", "endDate");
 	hiddenField.setAttribute("value", endDate);
-	form.appendChild(hiddenField);
-	
-	hiddenField = document.createElement("input");
-	hiddenField.setAttribute("type", "hidden");
-	hiddenField.setAttribute("name", "orderStatus");
-	hiddenField.setAttribute("value", orderStatus);
 	form.appendChild(hiddenField);
 	
 	document.body.appendChild(form);

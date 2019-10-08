@@ -170,4 +170,113 @@ public class WatTimeOrderDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	//포인트 페이지 관리자
+	public List<WatTimeOrderDTO> getTicTokAdminList(int start, int end, Timestamp startDate, Timestamp endDateFormat) {
+		List<WatTimeOrderDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from orderTbl where orderDate between ? and ? order by orderDate DESC limit ?,?");
+			pstmt.setTimestamp(1, startDate);
+			pstmt.setTimestamp(2, endDateFormat);
+			pstmt.setInt(3, start-1);
+			pstmt.setInt(4, end);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeOrderDTO orderDTO = new WatTimeOrderDTO();
+					orderDTO.setOrderNum(rs.getInt("orderNum"));
+					orderDTO.setMemId(rs.getString("memId"));
+					orderDTO.setMemName(rs.getString("memName"));
+					orderDTO.setProductName(rs.getString("productName"));
+					orderDTO.setTotalPrice(rs.getInt("totalPrice"));
+					orderDTO.setUseTicTok(rs.getInt("useTicTok"));
+					orderDTO.setTicTok(rs.getInt("TicTok"));
+					orderDTO.setOrderDate(rs.getTimestamp("orderDate"));
+					orderDTO.setPaymentMethod(rs.getString("paymentMethod"));
+					orderDTO.setSerialNumber(rs.getString("serialNumber"));
+					orderDTO.setInstallments(rs.getInt("installments"));
+					orderDTO.setOrderStatus(rs.getString("orderStatus"));
+					orderDTO.setOrderMessage(rs.getString("orderMessage"));
+					orderDTO.setOrderAddress(rs.getString("orderAddress"));
+					orderDTO.setOrderPostCode(rs.getString("orderPostCode"));
+					list.add(orderDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	//관리자 주문내역 주문 개수
+	public int getTicTokAllCount(Timestamp startDate,Timestamp endDate) {
+		int orderCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from orderTbl where orderDate between ? and ?");
+			pstmt.setTimestamp(1, startDate);
+			pstmt.setTimestamp(2, endDate);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				orderCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return orderCount;
+	}
+	
+	//포인트 페이지 유저
+	public List<WatTimeOrderDTO> getTicTokUserList(int start, int end, Timestamp startDate, Timestamp endDateFormat, String memId) {
+		List<WatTimeOrderDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from orderTbl where memId=? and orderDate between ? and ? order by orderDate DESC limit ?,?");
+			pstmt.setString(1, memId);
+			pstmt.setTimestamp(2, startDate);
+			pstmt.setTimestamp(3, endDateFormat);
+			pstmt.setInt(4, start-1);
+			pstmt.setInt(5, end);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeOrderDTO orderDTO = new WatTimeOrderDTO();
+					orderDTO.setOrderNum(rs.getInt("orderNum"));
+					orderDTO.setMemId(rs.getString("memId"));
+					orderDTO.setMemName(rs.getString("memName"));
+					orderDTO.setProductName(rs.getString("productName"));
+					orderDTO.setTotalPrice(rs.getInt("totalPrice"));
+					orderDTO.setUseTicTok(rs.getInt("useTicTok"));
+					orderDTO.setTicTok(rs.getInt("TicTok"));
+					orderDTO.setOrderDate(rs.getTimestamp("orderDate"));
+					orderDTO.setPaymentMethod(rs.getString("paymentMethod"));
+					orderDTO.setSerialNumber(rs.getString("serialNumber"));
+					orderDTO.setInstallments(rs.getInt("installments"));
+					orderDTO.setOrderStatus(rs.getString("orderStatus"));
+					orderDTO.setOrderMessage(rs.getString("orderMessage"));
+					orderDTO.setOrderAddress(rs.getString("orderAddress"));
+					orderDTO.setOrderPostCode(rs.getString("orderPostCode"));
+					list.add(orderDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+	//유저 주문내역 주문 개수
+	public int getTicTokUserCount(Timestamp startDate,Timestamp endDate,String memId) {
+		int orderCount=0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from orderTbl where memId=? and orderDate between ? and ?");
+			pstmt.setString(1, memId);
+			pstmt.setTimestamp(2, startDate);
+			pstmt.setTimestamp(3, endDate);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				orderCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return orderCount;
+	}
 }
