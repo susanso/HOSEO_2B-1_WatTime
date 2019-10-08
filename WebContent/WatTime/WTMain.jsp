@@ -35,7 +35,7 @@
 		<div class="pageBottomBtn">
 			<a href="#mainBottom"><img src="img/bottom.png" alt="bottom" width="60px" height="60px" ></a>
 		</div>
-		<div class="pageHomeBtn" >
+		<div class="pageHomeBtn">
 			<a href="WTMain.jsp"><img src="img/home.png" alt="home" width="60px" height="60px" ></a>
 		</div>
 	</div>
