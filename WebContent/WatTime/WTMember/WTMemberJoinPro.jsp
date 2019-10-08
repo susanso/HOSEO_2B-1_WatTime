@@ -21,9 +21,32 @@
 		String memPostcode = request.getParameter("memPostcode");
 		String memRoadAddress = request.getParameter("memRoadAddress");
 		String memDetailAddress =  request.getParameter("memDetailAddress");
-		//정보를 테이블에 넣기 위해 setMemberJoin메소드 실행
+		
 		WatTimeMemberDAO memberDAO = new WatTimeMemberDAO();
-		memberDTO = memberDAO.setMemberJoin(memId, memPass, memName,  memEmail, memPhone, memBirth,  memPostcode, memRoadAddress, memDetailAddress);
+		
+		int phoneCount = memberDAO.getMemPhoneCheck(memPhone);
+		int emailCount = memberDAO.getMemEmailCheck(memEmail);
+		
+		if(phoneCount != 0){
+%>
+			<script>
+				alert("해당 전화번호는 가입된 전화번호입니다.");
+				location.href="../WTMain.jsp?pageChange=WTMember/WTMemberJoin.jsp"
+			</script>	
+<%
+		}
+		else if(emailCount != 0){
+%>
+			<script>
+				alert("해당 이메일은 가입된 이메일입니다.");
+				location.href="../WTMain.jsp?pageChange=WTMember/WTMemberJoin.jsp"
+			</script>
+<%
+		}
+		else{
+			memberDTO = memberDAO.setMemberJoin(memId, memPass, memName,  memEmail, memPhone, 
+												memBirth,  memPostcode, memRoadAddress, memDetailAddress);
+		}	
 %>
 </head>
 <body>

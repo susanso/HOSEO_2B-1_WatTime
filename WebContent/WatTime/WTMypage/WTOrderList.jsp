@@ -9,6 +9,7 @@
 <jsp:useBean id="orderDTO" class = "WatTimePack.WatTimeOrderDTO" scope="page">
    <jsp:setProperty name="orderDTO" property="*"/>
 </jsp:useBean>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -75,6 +76,18 @@
 
 %>
 <body>
+	<div class="frame">
+	<!-- //header -->
+		<div style="line-height: 90px;margin:30px auto;width:1300px;font-size:50px;height:90px;font-family: 'Roboto', sans-serif;/* border-top:1px solid gray; */border-bottom:1px solid gray;">
+			<div id="faqMainBar">주문 내역 </div>
+			<div id="faqMainBar" class="faqBar">
+				<input type="button" id="faq" name="faq" value="회원정보" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTMyPage.jsp'">
+				<input type="button" id="notice" name="notice" value="주문내역" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1'">
+				<input type="button" id="review" name="review" value="TicTok" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum=1'">
+				<input type="button" id="notice" name="notice" value="회원탈퇴" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTWithdrawalForm.jsp'">
+			</div>
+		</div>    
+	</div>
 	<!-- 날짜 버튼 -->
 	<div>
 		<input id="dateStart" type="date"> ~ <input id="dateEnd" type="date">
@@ -366,7 +379,7 @@
 									<br><input type="button"
 											   id="<%=orderDTO.getOrderNum() %>"
 											   value="결제 취소"
-											   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')">
+											   onclick="orderCancle(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')">
 <%						
 								}
 								//배송 중일때 배송 위치 버튼

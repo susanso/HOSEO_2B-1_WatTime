@@ -66,6 +66,18 @@
 	number = count-(currentPage-1)*pageSize;
 %>
 <body>
+	<div class="frame">
+	<!-- //header -->
+		<div style="line-height: 90px;margin:30px auto;width:1300px;font-size:50px;height:90px;font-family: 'Roboto', sans-serif;/* border-top:1px solid gray; */border-bottom:1px solid gray;">
+			<div id="faqMainBar">TicTok </div>
+			<div id="faqMainBar" class="faqBar">
+				<input type="button" id="faq" name="faq" value="회원정보" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTMyPage.jsp'">
+				<input type="button" id="notice" name="notice" value="주문내역" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1'">
+				<input type="button" id="review" name="review" value="TicTok" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum=1'">
+				<input type="button" id="notice" name="notice" value="회원탈퇴" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTWithdrawalForm.jsp'">
+			</div>
+		</div>    
+	</div>
 	<input id="dateStart" type="date"> ~ <input id="dateEnd" type="date">
 	<input type="button" value="검색" onclick="dateCheck(dateStart.value,dateEnd.value)">
 	<br>

@@ -67,6 +67,7 @@ function order(){
 	var postCode= document.getElementById("memPostcode");
 	var roadAddress = document.getElementById("memRoadAddress");
 	var message = document.getElementById("deliveryMessage");
+	var tictok = document.getElementById("useTicTok");
 	//배송정보 이름 유효성 검사
 	if(name.value==""){
 		alert("배송정보의 이름을 입력해주세요.");
@@ -89,10 +90,13 @@ function order(){
 	}else if(roadAddress.value==""){
 		alert("배송정보의 주소가 없습니다.");
 		roadAddress.focus();
-	}/*else if(message.value==""){
+	}else if(message.value==""){
 		alert("주문 메세지를 작성해주세요.");
 		message.focus();
-	}*/
+	}else if(tictok.value<1000){
+		alert("TicTok은 1,000부터 사용이 가능합니다.");
+		tictok.focus();
+	}
 	//결제 방법 유효성 검사
 	else if(card==false && bankDeposit==false && accountTransfer==false){
 		alert("결제 방법을 선택해주세요.");
@@ -116,5 +120,6 @@ function contentSame(){
 	document.getElementById("deliveryMemName").value = document.getElementById("memName").value;
 	document.getElementById("deliveryMemPhone").value = document.getElementById("memPhone").value;
 	document.getElementById("memPostcode").value = document.getElementById("postCode").value;
-	document.getElementById("memRoadAddress").value = document.getElementById("roadAddress").value;
+	document.getElementById("memRoadAddress").value = document.getElementById("roadAddress").value+" "
+													+document.getElementById("detailAddress").value;
 }

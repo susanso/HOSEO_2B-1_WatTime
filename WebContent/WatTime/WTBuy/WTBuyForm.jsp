@@ -174,6 +174,7 @@
 		<input type="hidden" id="memPhone" value="<%=memberDTO.getMemPhone()%>">
 		<input type="hidden" id="postCode" value="<%=memberDTO.getMemPostcode()%>">
 		<input type="hidden" id="roadAddress" value="<%=memberDTO.getMemRoadAddress()%>">
+		<input type="hidden" id="detailAddress" value="<%=memberDTO.getMemDetailAddress()%>">
  		<!-- 배송정보 -->
 		배송정보
 		<table border="1">
