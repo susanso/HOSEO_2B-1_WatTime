@@ -24,8 +24,8 @@
 		<div id="faqMainBar" class="faqBar">
 			<input type="button" id="faq" name="faq" value="회원정보" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTMyPage.jsp'">
 			<input type="button" id="notice" name="notice" value="주문내역" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1'">
-			<input type="button" id="review" name="review" value="TicTok" onclick="">
-			<input type="button" id="notice" name="notice" value="회원탈퇴" onclick="">
+			<input type="button" id="review" name="review" value="TicTok" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTTicTokList.jsp?pageNum=1'">
+			<input type="button" id="notice" name="notice" value="회원탈퇴" onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTWithdrawalForm.jsp'">
 		</div>
 	</div>		    
 	<div class="content">

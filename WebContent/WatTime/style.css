@@ -160,8 +160,12 @@ textarea{
 .subTopMenu li {font-size:16px}
 
 .title{
-   color:#fff;background-color:#000000;
-   padding: 7px;
+    color: #000;
+    padding: 7px;
+    border-bottom: 1px solid black;
+    width: 60%;
+    margin: 30px auto;
+    margin-bottom: 60px;
 }
 /*회원가입*/
 .member{
@@ -171,10 +175,10 @@ textarea{
    margin:auto;
 }
 .memberForm{
-   margin: auto;
-   width: 60%;
-   border: 2px solid #ccc;
-   padding: 10px;
+    margin: auto;
+    width: 60%;
+    border: 2px solid #000;
+    padding: 10px;
 }
 .memList{
    width: 100%;
@@ -609,6 +613,8 @@ textarea{
   min-width: 1300px;
   height: auto;
   z-index: 1;
+      border: 1px solid gray;
+  
   }
  
 .dropdownContent a {
@@ -626,9 +632,9 @@ textarea{
 }
 
 /* 하위메뉴 호버시 색변경 */
-.dropdownContent a:hover {  background-color: black;
-                     
-  background-color: rgba( 255, 255, 255, 0.8 );}
+.dropdownContent a:hover { 
+      background-color: rgba( 128, 128, 128, 0.2 );
+  }
 
 /* 각 메뉴 호버시 하위메뉴 출현 */
 #brand:hover #brandMenu {display:block;}
@@ -983,15 +989,15 @@ height:50px;
       }
       
 .infoClass{
-    float: left;
+        float: left;
     padding: 20px 20px;
     border: 1px solid #cbd4d9;
     width: 325px;
-    min-height: 242px;
+    min-height: 238px;
     border-left: 0px;
     box-sizing: border-box;
-    
-      }
+}
+
 #infoHelp div:nth-child(1) {border-left:1px solid #cbd4d9;}
 
 #customerCenter ul li{
@@ -1026,14 +1032,20 @@ height:50px;
  					}
 
  #note ul li{
-       width:100%;
-       display:inline-block;
+      width:100%;
+      display:inline-block;
       font-size: 13px;
       overflow:hidden;
       letter-spacing: -0.05em;
       text-overflow: ellipsis;
-       white-space: nowrap;
-       margin:10px;
+      white-space: nowrap;
+      margin:10px;
+      text-overflow: ellipsis;
+      margin-top: 12px;
+      color:#000;
+ 
+
+
  }
 #bank ul li{
        width:100%;
@@ -1476,6 +1488,7 @@ text-decoration:none ; color:#000000
 			    color:#000; 
 }
 #faqMainBar{
+	min-width: 400px;
 	    display: table-cell;
 }
 .panel{

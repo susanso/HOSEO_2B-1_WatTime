@@ -199,4 +199,36 @@ public class WatTimeMemberDAO {
 		
 		return memberDTO;
 	}
+	
+	//회원 탈퇴용(회원 탈퇴 전 회원 유효성)
+	public int getOutMember(String memId, String memPass) {
+		int count = 0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memId = ? and memPass = ?");
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPass);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return count;
+	}
+	//포인트 적립
+	public void setOutMember(String memId) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memPass=' ', memEmail = ' ',"+
+														   " memPhone = ' ', memBirth = ' ', memPostcode = ' ',"+
+														   " memRoadAddress = ' ', memDetailAddress = ' ', memPoint = 0,"+
+														   " memAdmin = 0 where memId = ?");
+			pstmt.setString(1, memId);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+			
+		}
 }
