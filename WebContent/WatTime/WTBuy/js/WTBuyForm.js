@@ -58,7 +58,7 @@ function order(){
 	var card = $(check1).is(":checked");
 	var bankDeposit = $(check2).is(":checked");
 	var accountTransfer = $(check3).is(":checked");
-	var ret;
+	
 	
 	var nameCheck = /^[가-힣]+$/;
 	var name = document.getElementById("deliveryMemName");
@@ -101,25 +101,101 @@ function order(){
 	else if(card==false && bankDeposit==false && accountTransfer==false){
 		alert("결제 방법을 선택해주세요.");
 	}else if(card==true){
-		var paymentMethod = document.getElementById("check1").value;
-		url = "WTBuy/WTBuyBankList.jsp?paymentMethod="+paymentMethod;
-		ret = window.open(url,"_blank","toolbar=no, scrollbars=yes",false);
-		var modal = document.getElementById("Modal");
-		modal.style.display = "block";
+		var card1 = document.getElementById("cardNum1").value;
+		var card2 = document.getElementById("cardNum2").value;
+		var card3 = document.getElementById("cardNum3").value;
+		var card4 = document.getElementById("cardNum4").value;
+		var check = document.getElementById("buyAgreed");
+		var year = document.getElementById("cardYear").value;
+		var month = document.getElementById("cardMonth").value;
+		year = "20"+year;
+		
+		var today = new Date();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+
+		//카드 번호 유효성
+		if(card1==""||card2==""||card3==""||card4==""){
+			alert("카드 번호를 작성해주세요.");
+			document.getElementById("cardNum1").focus();
+		}
+		//숫자가 아닐 때
+		else if(isNaN(card1)==true||isNaN(card2)==true||isNaN(card3)==true||isNaN(card4)==true){
+			alert("카드 번호를 다시 작성해주세요.");
+			document.getElementById("cardNum1").value="";
+			document.getElementById("cardNum2").value="";
+			document.getElementById("cardNum3").value="";
+			document.getElementById("cardNum4").value="";
+		}
+		//길이가 안맞을 때
+		else if(card1.length!=4||card2.length!=4||card3.length!=4||card4.length!=4){
+			alert("카드 번호를 다시 작성해주세요.");
+			document.getElementById("cardNum1").value="";
+			document.getElementById("cardNum2").value="";
+			document.getElementById("cardNum3").value="";
+			document.getElementById("cardNum4").value="";
+		}
+		else if(year == "" || month == ""){
+			alert("카드 유효기간을 작성해주세요.");
+		}
+		//월이 1~12가 아닐경우
+		else if(parseInt(month)<0 || parseInt(month)>12){
+			alert("카드 유효기간 중 월을 다시 입력해주세요.");
+			document.getElementById("cardMonth").value="";
+		}
+		//유효기간이 지났을 때
+		else if(year+"-"+month<yyyy+"-"+mm){
+			alert("유효 기간이 지났습니다.");
+			document.getElementById("cardYear").value = "";
+			document.getElementById("cardMonth").value = "";
+		}
+		//결제 동의 체크 안했을 때
+		else if(check.checked==false){
+			alert("결제 동의에 체크해주세요.");
+		}else{
+			document.BuyForm.submit();
+		}
 	}else if(accountTransfer==true){
-		var paymentMethod = document.getElementById("check3").value;
-		url = "WTBuy/WTBuyBankList.jsp?paymentMethod="+paymentMethod;
-		ret = window.open(url,"_blank","toolbar=no, scrollbars=yes",false);
+	
 	}else if(bankDeposit==true){
-		alert("무통장 입금");
+		
 	}
 }
 
 //위 정보와 동일
-function contentSame(){
-	document.getElementById("deliveryMemName").value = document.getElementById("memName").value;
-	document.getElementById("deliveryMemPhone").value = document.getElementById("memPhone").value;
-	document.getElementById("memPostcode").value = document.getElementById("postCode").value;
-	document.getElementById("memRoadAddress").value = document.getElementById("roadAddress").value+" "
-													+document.getElementById("detailAddress").value;
+function contentSame(memName,memPhone,memPostcode,memRoadAddress,memDetailAddress){
+	document.getElementById("deliveryMemName").value = memName;
+	document.getElementById("deliveryMemPhone").value = memPhone;
+	document.getElementById("memPostcode").value = memPostcode;
+	document.getElementById("memRoadAddress").value = memRoadAddress+" "+memDetailAddress;
+}
+//폼 보이기
+function buyForm(value){
+	//카드 폼
+	if(value=="card"){
+		document.getElementById("cardForm").style.display = "block";
+		document.getElementById("accountTransfer").style.display = "none";
+		document.getElementById("phoneForm").style.display = "none";
+		documnet.getElementById("paymentMethod").value="card";
+	}
+	//휴대폰
+	else if(value=="bankDeposit"){
+		document.getElementById("cardForm").style.display = "none";
+		document.getElementById("accountTransfer").style.display = "none";
+		document.getElementById("phoneForm").style.display = "block";
+		documnet.getElementById("paymentMethod").value="bankDeposit";
+	}
+	//실시간 계좌
+	else if(value=="accountTransfer"){
+		document.getElementById("cardForm").style.display = "none";
+		document.getElementById("accountTransfer").style.display = "block";
+		document.getElementById("phoneForm").style.display = "none";
+		documnet.getElementById("paymentMethod").value="accountTransfer";
+	}
+}
+//최대 길이
+function maxLengthCheck(object){
+    if (object.value.length >= object.maxLength){
+    	object.value = object.value.slice(0, object.maxLength);
+    }    
 }
