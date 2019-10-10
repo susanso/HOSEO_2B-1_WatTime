@@ -89,7 +89,7 @@
 		</div>    
 	</div>
 	<!-- 날짜 버튼 -->
-	<div class="dateSearchBuyList">
+	<div class="dateSearchList">
 		<input id="dateStart" type="date"> <h1>~</h1> <input id="dateEnd" type="date">
 		<img  src="img/search.png" width="48px" height="48px"alt="검색" onclick="dateCheck(dateStart.value,dateEnd.value)"><br>
 <%
@@ -165,7 +165,7 @@
 <%
 		}
 %>
-		<input class="monthSearch" type="button" value="3개월" onclick="monthSearch('3')">
+		<input class="pointMonthSearch" type="button" value="3개월" onclick="monthSearch('3')">
 		<input class="monthSearch" type="button" value="6개월" onclick="monthSearch('6')">
 		<input class="monthSearch" type="button" value="1년" onclick="monthSearch('12')">
 	</div>

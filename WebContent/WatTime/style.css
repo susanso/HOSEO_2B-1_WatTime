@@ -70,8 +70,8 @@ pre{
     width: 210px;
     height: 65px;
 }
-* img:hover{
-	cursor:point;
+ img:hover{
+	cursor:pointer;
 }
 .pageTopBtn{
 	float: left;
@@ -561,18 +561,55 @@ textarea{
     font-size: 18px;
 }
 #orderStatusSelect{
-	padding: 0;
+	position: absolute;
+    height: 51px;
+    padding: 0;
     font-size: 18px;
     margin: 0px 37px 0 79px;
+    right: 510px;
 }
-.dateSearchBuyList{
+.dateSearchList{
 	display: flex;
     margin: 40px auto;
+    width:1300px;
+}
+.pointSearchList{
+	display: flex;
+    margin: 0 auto;
+    width:1300px;
 }
 .monthSearch{
    margin: 0 0 0 16px;
-    width: 60px;
-    font-size: 18px;
+   width: 60px;
+   font-size: 18px;
+   background-color: black;
+   border: none;
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   transition: background-color 0.5s, transform 5s;
+}
+.monthSearch:hover{
+	background-color: #fff;
+	border: 1px solid #000;
+	 color: #000;
+}
+.pointMonthSearch{
+	margin: 0 0 0 165px;
+	width: 60px;
+	font-size: 18px;
+	background-color: black;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 0.5s, transform 5s;
+}
+
+.pointMonthSearch:hover{
+	background-color: #fff;
+	border: 1px solid #000;
+	color: #000;
 }
 /*---------------- 메뉴    ---------------     */
 
