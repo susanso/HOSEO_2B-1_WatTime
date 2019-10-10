@@ -8,6 +8,9 @@
 	<link href = "style.css" rel = "stylesheet" type = "text/css">
 	
 	<script language = "JavaScript" src = "WTMember/js/WTMemberJoin.js"></script>
+	<script>
+		allClear();
+	</script>
 	<title>회원가입</title>
 
 </head>

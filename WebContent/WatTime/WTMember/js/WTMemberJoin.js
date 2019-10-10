@@ -1,4 +1,15 @@
 ////회원가입 화면
+//초기화
+function allClear(){
+	document.getElementById("memId").value="";
+	document.getElementById("memPass").value="";
+	document.getElementById("memPassCheck").value="";
+	document.getElementById("memName").value="";
+	document.getElementById("memEmail").value="";
+	document.getElementById("memPhone").value="";
+	document.getElementById("memBirth").value="";
+	document.getElementById("memDetailAddress").value="";
+}
 //아이디  관련
 function idOnkey(){
 	document.memJoinForm.idHidden.value = "no";
@@ -140,7 +151,7 @@ function phoneCheck(){
 
 //생년월일 유효성 검사
 function birthCheck() {
-	var birth = document.getElementById("memBirth").value
+	var birth = document.getElementById("memBirth").value;
 	var check = /^[0-9]+$/;
     var year = Number(birth.substr(0,4)); 
     var month = Number(birth.substr(4,2));
@@ -205,7 +216,7 @@ function addressSearch(){
 }
 //주소 유효성 검사
 function addressCheck(){
-	var detailAddress = document.getElementById("memDetailAddress").value
+	var detailAddress = document.getElementById("memDetailAddress").value;
 	
 	if(detailAddress == "" || detailAddress == null){
 		document.getElementById("addressHidden").value="no";

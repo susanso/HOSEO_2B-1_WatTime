@@ -17,7 +17,7 @@ public class WatTimeMemberDAO {
 	public WatTimeMemberDTO getMember(String memId, String memPass) {
 		WatTimeMemberDTO rslt = new WatTimeMemberDTO();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from memberTbl where memId = ? and memPass = ?");
+			PreparedStatement pstmt = con.prepareStatement("select * from memberTbl where memId = ? and memPass = password(?)");
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memPass);
 			ResultSet rs = pstmt.executeQuery();
@@ -73,7 +73,7 @@ public class WatTimeMemberDAO {
 	public WatTimeMemberDTO setMemberNewPass(String memPass, String memId) {
 		WatTimeMemberDTO rslt = new WatTimeMemberDTO();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memPass = ? where memId = ?");
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memPass = password(?) where memId = ?");
 			pstmt.setString(1, memPass);
 			pstmt.setString(2, memId);
 			pstmt.executeUpdate();
@@ -81,11 +81,8 @@ public class WatTimeMemberDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
 		return rslt;
 	}
-	
-	
 	private WatTimeMemberDTO registerBeanMapper(ResultSet rs) throws SQLException {
 		WatTimeMemberDTO regBean = new WatTimeMemberDTO();
 		//
@@ -136,7 +133,38 @@ public class WatTimeMemberDAO {
 		
 		return rslt;
 	}
-	
+	//회원 가입 전 전화번호 검색
+	public int getMemPhoneCheck(String memPhone) {
+		int count = 0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memPhone = ?");
+			pstmt.setString(1, memPhone);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return count;
+	}
+	//회원 가입 전 전화번호 검색
+	public int getMemEmailCheck(String memEmail) {
+		int count = 0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memEmail = ?");
+			pstmt.setString(1, memEmail);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return count;
+	}
 	//회원가입
 	public WatTimeMemberDTO setMemberJoin(String memId, String memPass, String memName,String memEmail,String memPhone, String memBirth , String memPostcode, String memRoadAddress, String memDetailAddress) {
 		WatTimeMemberDTO rslt = new WatTimeMemberDTO();
@@ -144,7 +172,7 @@ public class WatTimeMemberDAO {
 			Timestamp memJoinDate = new Timestamp(System.currentTimeMillis());
 			int memPoint = 2000;
 			int memAdmin = 0;
-			PreparedStatement pstmt = con.prepareStatement("insert into memberTbl values(?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into memberTbl values(?,password(?),?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memPass);
 			pstmt.setString(3, memName);
@@ -204,7 +232,7 @@ public class WatTimeMemberDAO {
 	public int getOutMember(String memId, String memPass) {
 		int count = 0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memId = ? and memPass = ?");
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memId = ? and memPass = password(?)");
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memPass);
 			ResultSet rs = pstmt.executeQuery();
@@ -218,17 +246,76 @@ public class WatTimeMemberDAO {
 		return count;
 	}
 	//포인트 적립
-	public void setOutMember(String memId) {
+	public void setOutMember(String memId,String[] random) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memPass=' ', memEmail = ' ',"+
-														   " memPhone = ' ', memBirth = ' ', memPostcode = ' ',"+
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memPass= password(?), memEmail = ?,"+
+														   " memPhone = ?, memBirth = ' ', memPostcode = ' ',"+
 														   " memRoadAddress = ' ', memDetailAddress = ' ', memPoint = 0,"+
 														   " memAdmin = 0 where memId = ?");
-			pstmt.setString(1, memId);
+			pstmt.setString(1, random[0]);
+			pstmt.setString(2, random[1]);
+			pstmt.setString(3, random[2]);
+			pstmt.setString(4, memId);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 			
+	}
+	//회원 수정 전 패스워드 확인
+	public int getMemCheck(String memId, String memPass) {
+		int count = 0;
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memId = ? and memPass = password(?)");
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPass);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+		
+		return count;
+	}
+	//회원 정보 수정(패스워드x)
+	public void setMemberInfoUpdateNoPass(WatTimeMemberDTO memberDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memBirth = ?,memPhone = ?, "+
+														   "memEmail = ?, memPostcode = ?, memRoadAddress = ?, "+
+														   "memDetailAddress=? where memId = ?");
+			pstmt.setString(1, memberDTO.getMemBirth());
+			pstmt.setString(2, memberDTO.getMemPhone());
+			pstmt.setString(3, memberDTO.getMemEmail());
+			pstmt.setString(4, memberDTO.getMemPostcode());
+			pstmt.setString(5, memberDTO.getMemRoadAddress());
+			pstmt.setString(6, memberDTO.getMemDetailAddress());
+			pstmt.setString(7, memberDTO.getMemId());
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//회원 정보 수정(패스워드o)
+	public void setMemberInfoUpdate(WatTimeMemberDTO memberDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memBirth = ?,memPhone = ?, "+
+														   "memEmail = ?, memPostcode = ?, memRoadAddress = ?, "+
+														   "memDetailAddress=?, memPass = password(?) where memId = ?");
+			pstmt.setString(1, memberDTO.getMemBirth());
+			pstmt.setString(2, memberDTO.getMemPhone());
+			pstmt.setString(3, memberDTO.getMemEmail());
+			pstmt.setString(4, memberDTO.getMemPostcode());
+			pstmt.setString(5, memberDTO.getMemRoadAddress());
+			pstmt.setString(6, memberDTO.getMemDetailAddress());
+			pstmt.setString(7, memberDTO.getMemPass());
+			pstmt.setString(8, memberDTO.getMemId());
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

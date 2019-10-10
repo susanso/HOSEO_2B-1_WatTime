@@ -167,6 +167,62 @@ function radioclick(value,orderNum,pageNum,startDate,endDate){
 	
 	form.submit();
 }
+function orderCancle(value,orderNum,pageNum,startDate,endDate){
+	var result = confirm("결제 취소를 하시겠습니까?");
+	
+	if(result == true){
+		var orderStatus = document.getElementById("orderStatusSelect");
+		if(orderStatus==null){
+			orderStatus = null;
+		}else{
+			orderStatus = document.getElementById("orderStatusSelect").value;
+		}
+		var form = document.createElement("form");
+		form.setAttribute("charset", "utf-8");
+		form.setAttribute("method", "Post"); // Get 또는 Post 입력
+		form.setAttribute("action", "WTMain.jsp?pageChange=WTMypage/WTOrderStatusUpdate.jsp");
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "orderStatus");
+		hiddenField.setAttribute("value", value);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "orderNum");
+		hiddenField.setAttribute("value", orderNum);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "pageNum");
+		hiddenField.setAttribute("value", pageNum);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "startDate");
+		hiddenField.setAttribute("value", startDate);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "endDate");
+		hiddenField.setAttribute("value", endDate);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "orderStatusRadio");
+		hiddenField.setAttribute("value", orderStatus);
+		form.appendChild(hiddenField);
+		
+		document.body.appendChild(form);
+		
+		form.submit();
+	}
+}
 function selectOrderStatus(orderStatus, startDate, endDate){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
