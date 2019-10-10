@@ -81,11 +81,8 @@ public class WatTimeMemberDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
 		return rslt;
 	}
-	
-	
 	private WatTimeMemberDTO registerBeanMapper(ResultSet rs) throws SQLException {
 		WatTimeMemberDTO regBean = new WatTimeMemberDTO();
 		//
@@ -235,7 +232,7 @@ public class WatTimeMemberDAO {
 	public int getOutMember(String memId, String memPass) {
 		int count = 0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memId = ? and memPass = ?");
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from memberTbl where memId = ? and memPass = password(?)");
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memPass);
 			ResultSet rs = pstmt.executeQuery();
@@ -281,5 +278,44 @@ public class WatTimeMemberDAO {
 		}
 		
 		return count;
+	}
+	//회원 정보 수정(패스워드x)
+	public void setMemberInfoUpdateNoPass(WatTimeMemberDTO memberDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memBirth = ?,memPhone = ?, "+
+														   "memEmail = ?, memPostcode = ?, memRoadAddress = ?, "+
+														   "memDetailAddress=? where memId = ?");
+			pstmt.setString(1, memberDTO.getMemBirth());
+			pstmt.setString(2, memberDTO.getMemPhone());
+			pstmt.setString(3, memberDTO.getMemEmail());
+			pstmt.setString(4, memberDTO.getMemPostcode());
+			pstmt.setString(5, memberDTO.getMemRoadAddress());
+			pstmt.setString(6, memberDTO.getMemDetailAddress());
+			pstmt.setString(7, memberDTO.getMemId());
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//회원 정보 수정(패스워드o)
+	public void setMemberInfoUpdate(WatTimeMemberDTO memberDTO) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update memberTbl set memBirth = ?,memPhone = ?, "+
+														   "memEmail = ?, memPostcode = ?, memRoadAddress = ?, "+
+														   "memDetailAddress=?, memPass = password(?) where memId = ?");
+			pstmt.setString(1, memberDTO.getMemBirth());
+			pstmt.setString(2, memberDTO.getMemPhone());
+			pstmt.setString(3, memberDTO.getMemEmail());
+			pstmt.setString(4, memberDTO.getMemPostcode());
+			pstmt.setString(5, memberDTO.getMemRoadAddress());
+			pstmt.setString(6, memberDTO.getMemDetailAddress());
+			pstmt.setString(7, memberDTO.getMemPass());
+			pstmt.setString(8, memberDTO.getMemId());
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

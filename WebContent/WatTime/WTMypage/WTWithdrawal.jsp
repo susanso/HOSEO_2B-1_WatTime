@@ -13,7 +13,7 @@
 </head>
 <%
 	String pass = request.getParameter("withdrawalPass");
-
+	
 	if(session.getAttribute("member") != null){
     	memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
 	}
@@ -53,14 +53,11 @@
 %>
 	<script>
 		alert("회원 정보가 일치하지 않습니다.");
-		history.go(-1);
+		location.href="../WTMain.jsp?pageChange=WTMypage/WTWithdrawalForm.jsp";
 	</script>
 <%
 	}
 %>
 <body>
-<%=randomArray[0] %><br>
-<%=randomArray[1] %><br>
-<%=randomArray[2] %><br>
 </body>
 </html>

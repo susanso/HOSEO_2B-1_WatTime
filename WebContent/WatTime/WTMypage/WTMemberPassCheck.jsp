@@ -10,7 +10,7 @@
 	<form method="post" action="WTMain.jsp?pageChange=WTMypage/WTMemberInfoForm.jsp">
 		패스워드를 입력해주세요.<br>
 		<input type="password" name="passText">
-		<input type="submit">
+		<input type="submit" value="패스워드 확인">
 	</form>
 </body>
 </html>
