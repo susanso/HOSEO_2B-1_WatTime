@@ -21,18 +21,22 @@
 				</div>
 			</div>    
 		</div>
-		<form id="withdrawalForm" method="post" action="WTMypage/WTWithdrawal.jsp">
-			<div>
-				회원탈퇴를 진행하면 다시 복구하실수 없습니다.<br>
-				회원탈퇴를 진행하시려면 "<font color="red"><b>회원탈퇴</b></font>" 를 입력해주시기 바랍니다.<br>
-				<input type="text" id="checkText">
-			</div>
-			<div>
-				비밀번호를 입력해주세요.<br>
+		
+			<div class="withdrawalDivForm" >
+				<form id="withdrawalForm" method="post" action="WTMypage/WTWithdrawal.jsp">
+				<p>회원탈퇴를 진행하면 다시 복구하실수 없습니다.<p>
+				<p>회원탈퇴를 진행하시려면 “<font color="red"><b>회원탈퇴</b></font>” 를 입력해주시기 바랍니다. </p>
+				“ <input type="text" id="checkText"> ”
+				<br><br><br>
+				<p>비밀번호를 입력해주세요.</p>
 				<input type="password" name="withdrawalPass" id="withdrawalPass">
+				<br><br><br>
+				<input class="withdrawalSubmit" type="button" value="회원 탈퇴" onclick="withdrawalSubmit()">
+				</form>
 			</div>
-			<input type="button" value="확인" onclick="withdrawalSubmit()">
-		</div>
-	</form>
+			
+		
+	</div>
+	
 </body>
 </html>

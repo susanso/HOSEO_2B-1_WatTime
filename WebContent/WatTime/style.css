@@ -611,6 +611,45 @@ textarea{
 	border: 1px solid #000;
 	color: #000;
 }
+
+/*---------------- 회원 탈퇴    ---------------     */
+
+.withdrawalSubmit{
+ 	margin: 0;
+    width: 171px;
+    height: 75px;
+    font-size: 27px;
+    background-color: black;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.5s, transform 5s;
+}
+.withdrawalSubmit:hover{
+	background-color: #fff;
+	border: 1px solid #000;
+	color: #000;
+}
+
+.withdrawalDivForm{
+	text-align: center;
+    width: 1300px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.withdrawalDivForm p{
+	margin: 10px 0 0 0;
+}
+#checkText, #withdrawalPass{
+	font-size: 20px;
+	height: 30px;
+    width: 140px;
+    margin-top: 18px;
+}
+#checkText{
+	text-align:center;
+}
 /*---------------- 메뉴    ---------------     */
 
 /*  brand,man,woman,couple 을 감싸는 DIV */
