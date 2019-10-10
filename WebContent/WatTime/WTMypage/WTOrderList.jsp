@@ -174,13 +174,13 @@
 	if(count==0){
 %>
 	<div>
-		주문 내역이 없습니다.
+		<h2>주문 내역이 없습니다.</h2>
 	</div>
 <%
 	}else{
 %>
-		<div>
-			<table border="1">
+		<div class="oderListDivTable">
+			<table class="oderListTable">
 				<tr>
 					<th>주문번호</th>
 					<th>상품 이미지</th>
@@ -211,9 +211,9 @@
 						</td>
 						<!-- 주문 상품 명-->
 						<td>
-							<a href="#" onclick="orderProductList('<%=orderDTO.getOrderNum() %>')">
+							<font color="#000"><a href="#" onclick="orderProductList('<%=orderDTO.getOrderNum() %>')">
 								<%=orderDTO.getProductName() %>
-							</a>
+							</a></font>
 						</td>
 						<!-- 주문자 아이디 -->
 						<td>
