@@ -261,15 +261,18 @@
 									 id="cardMonth"
 									 maxlength="1"
 									 onkeydown="maxLengthCheck(this)"
-									 placeholder="월(00)"
+									 placeholder="월(MM)"
 							  >/
 							  <input type="number"
 							  		 id="cardYear"
 							  		 name="cardYear"
 							  		 maxlength="1"
 							  		 onkeydown="maxLengthCheck(this)"
-							  		 placeholder="년(00)"
+							  		 placeholder="년(YY)"
 							  >
+				</div>
+				<div>
+					카드 비밀번호 <input type="password" placeholder="**">**
 				</div>
 				<div>
 					지불 방법 <select class="installments" id="installments" name="installments">
@@ -295,6 +298,25 @@
 		</div>
 		<!-- 실시간 계좌이체 -->
 		<div id="accountTransfer" style="display:none;">
+			<!-- 은행 선택 -->
+			<div>
+				은행 선택 : <select name="bank">
+							 <option value="신한">신한</option>
+							 <option value="우리">우리</option>
+							 <option value="농협">농협</option>
+							 <option value="국민">국민</option>
+						 </select>
+			</div>
+			<!-- 계좌 폼-->
+			<div>
+				<!-- 계좌번호 -->
+				<div>
+					계좌번호 <input type="number" placeholder="계좌번호(-없이)">
+				</div>
+				<div>
+					계좌 비밀번호 <input type="password" placeholder="**">**
+				</div>
+			</div>
 		</div>
 		<!-- 휴대폰 결제 -->
 		<div id="phoneForm" style="display:none;">

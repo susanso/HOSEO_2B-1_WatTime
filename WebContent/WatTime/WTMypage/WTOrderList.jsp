@@ -173,7 +173,7 @@
 	if(count==0){
 %>
 	<div>
-		<h2>주문 내역이 없습니다.</h2>
+		<center><h2>주문 내역이 없습니다.</h2></center>
 	</div>
 <%
 	}else{
@@ -210,7 +210,7 @@
 						</td>
 						<!-- 주문 상품 명-->
 						<td>
-							<font color="#000"><a href="#" onclick="orderProductList('<%=orderDTO.getOrderNum() %>')">
+							<font color="#000"><a onclick="orderProductList('<%=orderDTO.getOrderNum() %>')">
 								<%=orderDTO.getProductName() %>
 							</a></font>
 						</td>
