@@ -89,9 +89,9 @@
 		</div>    
 	</div>
 	<!-- 날짜 버튼 -->
-	<div>
-		<input id="dateStart" type="date"> ~ <input id="dateEnd" type="date">
-		<input type="button" value="검색" onclick="dateCheck(dateStart.value,dateEnd.value)">
+	<div class="dateSearchBuyList">
+		<input id="dateStart" type="date"> <h1>~</h1> <input id="dateEnd" type="date">
+		<img  src="img/search.png" width="48px" height="48px"alt="검색" onclick="dateCheck(dateStart.value,dateEnd.value)"><br>
 <%
 		if(memberDTO.getMemAdmin() != 0){ 
 %>
@@ -165,10 +165,9 @@
 <%
 		}
 %>
-		<br>
-		<input type="button" value="3개월" onclick="monthSearch('3')">
-		<input type="button" value="6개월" onclick="monthSearch('6')">
-		<input type="button" value="1년" onclick="monthSearch('12')">
+		<input class="monthSearch" type="button" value="3개월" onclick="monthSearch('3')">
+		<input class="monthSearch" type="button" value="6개월" onclick="monthSearch('6')">
+		<input class="monthSearch" type="button" value="1년" onclick="monthSearch('12')">
 	</div>
 <%
 	if(count==0){
@@ -180,17 +179,17 @@
 	}else{
 %>
 		<div class="oderListDivTable">
-			<table class="oderListTable">
+			<table class="oderListTable" border="1px">
 				<tr>
 					<th>주문번호</th>
-					<th>상품 이미지</th>
-					<th>주문 상품명</th>
-					<th>주문자 아이디</th>
-					<th>주문자 이름</th>
-					<th>주문 날짜</th>
-					<th>우편번호</th>
+					<th>상품</th>
+					<th style="width:10px;">상품명</th>
+					<th>아이디</th>
+					<th> 이름</th>
+					<th style="width:100px;">주문 날짜</th>
+					<th style="width:77px;">우편번호</th>
 					<th>배송 주소</th>
-					<th>주문상태</th>
+					<th>상태</th>
 				</tr>
 <%
 				for(int i = 0 ; i < orderList.size() ; i++){
