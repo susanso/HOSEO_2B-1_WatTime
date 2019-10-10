@@ -39,14 +39,22 @@
 	String[] productCount = request.getParameterValues("productCount");
 	String[] TicToks = request.getParameterValues("TicTok");
 	String[] productCode = request.getParameterValues("productCode");
+	String[] serialNumber = request.getParameterValues("serialNumber");
+	//결제 방법
+	String paymentMethod = request.getParameter("paymentMethod");
+	paymentMethod = new String(paymentMethod.getBytes("8859_1"), "utf-8");
+	
+	String serialNumberText = "";
+	//결제 방법이 카드 일 때
+	if(paymentMethod == "card"){
+		serialNumberText = serialNumber[0]+serialNumber[1]+serialNumber[2]+serialNumber[3];
+	}
 	//결제 날짜
 	Timestamp time = new Timestamp(System.currentTimeMillis());
 	String now = date.format(time);
 	Timestamp now_format = Timestamp.valueOf(now);
 	//사용한 포인트
 	int useTicTok = Integer.parseInt(request.getParameter("useTicTok"));
-	//시리얼 번호
-	String serialNumber = request.getParameter("serialNumber");
 	//할부 기간
 	int installments = Integer.parseInt(request.getParameter("installments"));
 	//은행
@@ -58,9 +66,6 @@
 	String orderPostCode = request.getParameter("memPostcode");
 	//배송 메세지
 	String orderMessage = request.getParameter("deliveryMessage");
-	//결제 방법
-	String paymentMethod = request.getParameter("paymentMethod");
-	paymentMethod = new String(paymentMethod.getBytes("8859_1"), "utf-8");
 	//orderTbl에 넣을 productName
 	String productName = request.getParameter("productTitle");
 	//최종 가격
@@ -82,7 +87,7 @@
 	orderDTO.setTicTok(TicTok);
 	orderDTO.setOrderDate(now_format);
 	orderDTO.setPaymentMethod(paymentMethod);
-	orderDTO.setSerialNumber(serialNumber);
+	orderDTO.setSerialNumber(serialNumberText);
 	orderDTO.setInstallments(installments);
 	if(paymentMethod.equals("card")){
 		orderDTO.setOrderStatus("결제 완료");

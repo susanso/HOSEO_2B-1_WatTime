@@ -103,7 +103,9 @@
 					<!-- 상품 이미지 -->
 					<td>
 						<img src="../WatTime/img/brand/<%=basketDTO.getProductSimpleImgFileName() %>" 
-							 width="150px" height="150px">
+							 width="150px"
+							 height="150px"
+						>
 						<input type="hidden" name="productImg" value="<%=basketDTO.getProductSimpleImgFileName() %>">
 					</td>
 					<!-- 상품명 -->
@@ -130,6 +132,13 @@
 				</tr>
 <%
 			}
+			//결제 페이지에서 결제하는 상품의 갯수가 1개 초과
+			String productTitle="";
+			if(basketList.size()>1){
+				productTitle = firstProductName+" 외"+(basketList.size()-1)+"개";
+			}else{
+				productTitle = firstProductName;
+			}
 %>
 			<tr>
 				<td>
@@ -141,139 +150,158 @@
 				</td>
 			</tr>
 		</table>
+		<br><br><br>
 		<!-- 주문자 정보 -->
 		주문자 정보
-		<table border="1">
-			<tr>
-				<td>
-					이름
-				</td>
-				<td>
-					<%=memberDTO.getMemName() %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					이메일
-				</td>
-				<td>
-					<input type="text" name="orderMemEmail" value="<%=memberDTO.getMemEmail() %>">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					전화번호
-				</td>
-				<td>
-					<input type="text" name="orderMemPhone" value="<%=memberDTO.getMemPhone() %>">
-				</td>
-			</tr>
-		</table>
-		<!-- 위 정보 버튼을 누르면 들어가는 값 -->
-		<input type="hidden" id="memName" value="<%=memberDTO.getMemName()%>">
-		<input type="hidden" id="memPhone" value="<%=memberDTO.getMemPhone()%>">
-		<input type="hidden" id="postCode" value="<%=memberDTO.getMemPostcode()%>">
-		<input type="hidden" id="roadAddress" value="<%=memberDTO.getMemRoadAddress()%>">
-		<input type="hidden" id="detailAddress" value="<%=memberDTO.getMemDetailAddress()%>">
+		<div>
+			<div>
+				이름 <%=memberDTO.getMemName() %>
+			</div>
+			<div>
+				이메일 <%=memberDTO.getMemEmail() %>
+			</div>
+			<div>
+				전화번호 <%=memberDTO.getMemPhone() %>
+			</div>
+		</div>
+		<br><br><br>
  		<!-- 배송정보 -->
 		배송정보
-		<table border="1">
-			<tr>
-				<td>
-					이름
-				</td>
-				<td>
-					<input type="text" id="deliveryMemName" name="deliveryMemName">
-					<input type="button" value="위 정보와 동일" onclick="contentSame()">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					전화번호
-				</td>
-				<td>
-					<input type="text" id="deliveryMemPhone" name="deliveryMemPhone" placeholder="전화번호(-없이)">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					주소
-				</td>
-				<td>
-					<input type="text" id="memPostcode" name="memPostcode" placeholder="우편번호" readonly>
+		<div>
+			<div>
+				이름 <input type="text" id="deliveryMemName" name="deliveryMemName">
+					<input type="button"
+						   value="위 정보와 동일"
+						   onclick="contentSame('<%=memberDTO.getMemName()%>',
+						   						'<%=memberDTO.getMemPhone()%>',
+						   						'<%=memberDTO.getMemPostcode()%>',
+						   						'<%=memberDTO.getMemRoadAddress()%>',
+						   						'<%=memberDTO.getMemDetailAddress()%>'
+						   						)"
+					 >
+			</div>
+			<div>
+				전화번호 <input type="text"
+							 id="deliveryMemPhone"
+							 name="deliveryMemPhone"
+							 placeholder="전화번호(-없이)"
+					  >
+			</div>
+			<div>
+				주소 <input type="text" id="memPostcode" name="memPostcode" placeholder="우편번호" readonly>
 					<input type="button" value="우편번호 찾기" onclick="postcode()"><br>
 					<input type="text" id="memRoadAddress" name="memRoadAddress" placeholder="주소">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					주문 메세지
-				</td>
-				<td>
-					<input type="text" id="deliveryMessage" name="deliveryMessage" value="부재시 전화주세요.">
-				</td>
-			</tr>
-		</table>
+			</div>
+			<div>
+				주문 메세지  <input type="text"
+							    id="deliveryMessage"
+							    name="deliveryMessage"
+							    value="부재시 전화주세요."
+						 >
+			</div>
+		</div>
+		<br><br><br>
+		상품명 : <%=productTitle %>
+		<input type="hidden" name="productTitle" value="<%=productTitle %>">
 		<!-- 포인트 사용 여부-->
-		<table>
-			<tr>
-				<td>
-					현재 가격 : <%=df.format(total) %>원
-				</td>
-			</tr>
-			<tr>
-				<td>
-					보유 TicTok : <%=df.format(memberDTO.getMemPoint()) %><br>
-					사용할 TicTok : <input type="number" id="useTicTok" name="useTicTok" value="0" 
-										 onkeyup="totalPriceCul(this.value,'<%=total%>','<%=memberDTO.getMemPoint()%>')"
-										 onkeydown="totalPriceCul(this.value,'<%=total%>','<%=memberDTO.getMemPoint()%>')"
-								   >
-					<input type="button" value="전부 사용" onclick="allTicTok('<%=memberDTO.getMemPoint()%>','<%=total%>')"><br>
-					<font size="2px" color="gray">포인트는 1000TicTok부터 사용이 가능합니다.</font>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					최종가격 : <span id="totalPrice"><%=df.format(total) %></span><br>
-					<input type="hidden" name="totalPrice" value="<%=total%>"> 
-					적립 TicTok : <%=df.format(TicTok) %>
-					<input type="hidden" name="TicTok" value="<%=TicTok%>"> 
-				</td>
-			</tr>
-		</table>
+		<div>
+			<div>
+				현재 가격 : <%=df.format(total) %>원
+			</div>
+			<div>
+				보유 TicTok : <%=df.format(memberDTO.getMemPoint()) %><br>
+				사용할 TicTok : <input type="number"
+									 id="useTicTok"
+									 name="useTicTok"
+									 value="0" 
+									 onchange="totalPriceCul(this.value,'<%=total%>','<%=memberDTO.getMemPoint()%>')"
+							  >
+				<input type="button" value="전부 사용" onclick="allTicTok('<%=memberDTO.getMemPoint()%>','<%=total%>')"><br>
+				<font size="2px" color="gray">포인트는 1000TicTok부터 사용이 가능합니다.</font>
+			</div>
+			<div>
+				최종가격 : <span id="totalPrice">
+							<%=df.format(total) %>
+						</span><br>
+				<input type="hidden" name="totalPrice" value="<%=total%>"> 
+				적립 TicTok : <%=df.format(TicTok) %>
+				<input type="hidden" name="TicTok" value="<%=TicTok%>">
+			</div>
+		</div>
+		<br><br><br>
 		<!-- 결제방법 -->
-		<table>
+		<div>
 			<!-- 신용카드 -->
-			<tr>
-				<td>
-					<input type="radio" id="check1" name="check" value="card"> 신용카드<br>
-					<input type="radio" id="check2" name="check" value="bankDeposit"> 휴대폰 결제<br>
-					<input type="radio" id="check3" name="check" value="accountTransfer"> 실시간 계좌이체
-				</td>
-			</tr>
-		</table>
-<%
-		//결제 페이지에서 결제하는 상품의 갯수가 1개 초과
-		if(basketList.size()>1){
-%>
-			<input type="hidden" id="productTitle" name="productTitle" value="<%=firstProductName %> 외 <%=basketList.size()-1%>개">
-<%
-		}else{
-%>
-			<input type="hidden" id="productTitle" name="productTitle" value="<%=firstProductName %>">
-<%
-		}
-%>
-		<input type="button" value="결제하기" onclick="order()">
-		<!-- 결제 팝업창 정보 보내기 -->
-		<!-- 시리얼 번호 -->
-		<input type="hidden" id="serialNumber" name="serialNumber">
-		<!-- 할부 기간 -->
-		<input type="hidden" id="installments" name="installments">
-		<!-- 은행 -->
-		<input type="hidden" id="bank" name="bank">
-		<!-- 결제 방법 -->
-		<input type="hidden" id="paymentMethod" name="paymentMethod">
+			<input type="radio" id="check1" name="check" value="card" onclick="buyForm(this.value)"> 신용카드<br>
+			<input type="radio" id="check2" name="check" value="bankDeposit" onclick="buyForm(this.value)"> 휴대폰 결제<br>
+			<input type="radio" id="check3" name="check" value="accountTransfer" onclick="buyForm(this.value)"> 실시간 계좌이체
+			<input type="hidden" id="paymentMethod" name="paymentMethod">
+		</div>
+		<!-- 카드 -->
+		<div id="cardForm" style="display:none;">
+			<!-- 은행 선택 -->
+			<div>
+				은행 선택 : <select name="bank">
+							 <option value="신한">신한</option>
+							 <option value="우리">우리</option>
+							 <option value="농협">농협</option>
+							 <option value="국민">국민</option>
+						 </select>
+			</div>
+			<!-- 카드 결제 폼 -->
+			<div>
+				<div>
+					카드번호  <input type="number" id="cardNum1" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
+						   <input type="password" id="cardNum2" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
+						   <input type="password" id="cardNum3" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
+						   <input type="number" id="cardNum4" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
+				</div>
+				<div>
+					카드 유효기간 <input type="number"
+									 id="cardMonth"
+									 maxlength="1"
+									 onkeydown="maxLengthCheck(this)"
+									 placeholder="월(00)"
+							  >/
+							  <input type="number"
+							  		 id="cardYear"
+							  		 name="cardYear"
+							  		 maxlength="1"
+							  		 onkeydown="maxLengthCheck(this)"
+							  		 placeholder="년(00)"
+							  >
+				</div>
+				<div>
+					지불 방법 <select class="installments" id="installments" name="installments">
+								<option value="0" selected>일시불</option>
+								<option value="1">1개월</option>
+								<option value="2">2개월</option>
+								<option value="3">3개월</option>
+								<option value="4">4개월</option>
+								<option value="5">5개월</option>
+								<option value="6">6개월</option>
+								<option value="7">7개월</option>
+								<option value="8">8개월</option>
+								<option value="9">9개월</option>
+								<option value="10">10개월</option>
+								<option value="11">11개월</option>
+								<option value="12">12개월</option>
+							</select>
+				</div>			
+				<div>
+					<input type="checkbox" id="buyAgreed">구매를 동의합니다.
+				</div>
+			</div>
+		</div>
+		<!-- 실시간 계좌이체 -->
+		<div id="accountTransfer" style="display:none;">
+		</div>
+		<!-- 휴대폰 결제 -->
+		<div id="phoneForm" style="display:none;">
+		</div>
+		<!-- 결제 버튼 -->
+		<input type="button" value="구매하기" onclick="order()">
+		<input type="button" value="취소하기" onclick="">
 	</form>
 </body>
 </html>
