@@ -68,6 +68,7 @@
 <body>
 	<div class="frame">
 	<!-- //header -->
+	
 		<div style="line-height: 90px;margin:30px auto;width:1300px;font-size:50px;height:90px;font-family: 'Roboto', sans-serif;/* border-top:1px solid gray; */border-bottom:1px solid gray;">
 			<div id="faqMainBar">TicTok </div>
 			<div id="faqMainBar" class="faqBar">
@@ -78,23 +79,27 @@
 			</div>
 		</div>    
 	</div>
-	<input id="dateStart" type="date"> ~ <input id="dateEnd" type="date">
-	<input type="button" value="검색" onclick="dateCheck(dateStart.value,dateEnd.value)">
+	<!-- 날짜 버튼 -->
+	<div class="pointSearchList">
+	<input id="dateStart" type="date"> <h1>~</h1> <input id="dateEnd" type="date">
+	<img  src="img/search.png" width="48px" height="48px"alt="검색" onclick="dateCheck(dateStart.value,dateEnd.value)"><br>
+	
+	<input class="pointMonthSearch" type="button" value="3개월" onclick="monthSearch('3')">
+	<input class="monthSearch" type="button" value="6개월" onclick="monthSearch('6')">
+	<input class="monthSearch" type="button" value="1년" onclick="monthSearch('12')">
+	</div>
 	<br>
-	<input type="button" value="3개월" onclick="monthSearch('3')">
-	<input type="button" value="6개월" onclick="monthSearch('6')">
-	<input type="button" value="1년" onclick="monthSearch('12')">
-	<br>
-	보유 TicTok : <%=df.format(memberDTO.getMemPoint()) %>
+	<div style="padding: 0;width:1300px;margin: 0 auto;text-align: right;">보유 TicTok : <%=df.format(memberDTO.getMemPoint()) %></div>
 <%
 	if(count == 0){
 %>
-		<center><h2>포인트 사용 내역이 없습니다.</h2></center>
+		<h2>포인트 사용 내역이 없습니다.</h2>
 <%
 	}else{
 		
 %>
-		<table border="1">
+	<div class="oderListDivTable">
+		<table class="oderListTable" border="1px">
 			<th>주문 번호</th>
 			<th>상품 사진</th>
 			<th>주문명 </th>
@@ -154,6 +159,7 @@
 	}
 %>	
 	</table>
+	</div>
 	<div class="move">
 <%
 		if (count > 0) {
