@@ -13,8 +13,12 @@
 <title>Insert title here</title>
 </head>
 <%
+	Timestamp deliverySuccessDate = new Timestamp(System.currentTimeMillis());
+	String dateFormatString = "";
+	Timestamp nowFormat = null;
 	String orderStatus = request.getParameter("orderStatus");
 	orderStatus = new String(orderStatus.getBytes("8859_1"), "utf-8");
+	
 	int orderNum = Integer.parseInt(request.getParameter("orderNum"));
 	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	String startDate = request.getParameter("startDate");
@@ -23,8 +27,14 @@
 	orderStatusRadio = new String(orderStatusRadio.getBytes("8859_1"), "utf-8");
 	
 	WatTimeOrderDAO orderDAO = new WatTimeOrderDAO();
-	orderDAO.setOrderStatusUpdate(orderNum,orderStatus);
+	if(orderStatus.equals("배송 완료")){
+		orderDAO.setOrderStatusUpdate(orderNum,orderStatus,deliverySuccessDate);
+	}else{
+		orderDAO.setOrderStatusUpdate(orderNum,orderStatus);
+	}
+	
 %>
+
 <body>
 	<input type="hidden" id="pageNum" value="<%=pageNum%>">
 	<input type="hidden" id="startDate" value="<%=startDate%>">

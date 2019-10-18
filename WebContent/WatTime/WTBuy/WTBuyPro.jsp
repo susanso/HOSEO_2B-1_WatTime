@@ -48,6 +48,8 @@
 	//결제 방법이 카드 일 때
 	if(paymentMethod == "card"){
 		serialNumberText = serialNumber[0]+serialNumber[1]+serialNumber[2]+serialNumber[3];
+	}else if(paymentMethod == "accountTransfer"){
+		serialNumberText = serialNumber[0];
 	}
 	//결제 날짜
 	Timestamp time = new Timestamp(System.currentTimeMillis());
@@ -89,7 +91,7 @@
 	orderDTO.setPaymentMethod(paymentMethod);
 	orderDTO.setSerialNumber(serialNumberText);
 	orderDTO.setInstallments(installments);
-	if(paymentMethod.equals("card")){
+	if(paymentMethod.equals("card")||paymentMethod.equals("phoneBank")){
 		orderDTO.setOrderStatus("결제 완료");
 	}else{
 		orderDTO.setOrderStatus("결제 확인 중");

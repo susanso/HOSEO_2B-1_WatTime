@@ -81,7 +81,7 @@
 						<td class="comunicationTd" style="text-align:center;"><font color="red"><strong>추천</strong></font></td>
 						<!-- 게시글 제목 -->
 						<td class="comunicationTd" style="padding-left:20px;">
-			  				<strong><%=comunicationDTO.getTitle() %></strong>
+			  				<strong><%=comunicationDTO.getSubTitle()%><%=comunicationDTO.getTitle() %></strong>
 		  				</td>
 		  				<!-- 게시글 작성자 -->
 						<td class="comunicationTd" style="text-align:center;">
@@ -121,15 +121,15 @@
 					<!-- 게시글 제목 -->
 					<td class="comunicationTd" style="padding-left:20px;">
 						<img src="img/comu/level.png" width="<%=wid%>" height="16">
-		  				<img src="img/comu//re.png">
-		  				<%=comunicationDTO.getTitle() %>
+		  				<img src="img/comu//arrow.png" style="width:20px; heihgt:20px ; margin: 0 0 -4px 0;">
+		  				<%=comunicationDTO.getSubTitle()%><%=comunicationDTO.getTitle() %>
 	  				</td>
 <%
 				}else{
 %>
 					<!-- 게시글 제목 -->
 					<td class="comunicationTd" style="padding-left:20px;">
-		  				<%=comunicationDTO.getTitle() %>
+		  				<%=comunicationDTO.getSubTitle()%><%=comunicationDTO.getTitle() %>
 	  				</td>
 <%
 				}

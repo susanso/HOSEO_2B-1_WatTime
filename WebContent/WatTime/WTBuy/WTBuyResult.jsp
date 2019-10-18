@@ -9,19 +9,9 @@
 
 <body>
 	상품 주문을 완료 했습니다. 주문 내역은 마이페이지 > 주문 내역에서 확인해 주시기 바랍니다.
-	<input type="button" value="메인으로 가기" onclick="go()">
-
-	<script>
-		function go(){
-			var form = document.createElement("form");
-			form.setAttribute("charset", "utf-8");
-			form.setAttribute("method", "Post"); // Get 또는 Post 입력
-			form.setAttribute("action", "WTMain.jsp");
-	
-			document.body.appendChild(form);
-			
-			form.submit();
-		}
-	</script>
+	<input type="button"
+		   value="주문 내역"
+		   onclick="location.href='WTMain.jsp?pageChange=WTMypage/WTOrderList.jsp?pageNum=1'"
+	>
 </body>
 </html>

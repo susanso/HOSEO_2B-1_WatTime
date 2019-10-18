@@ -20,6 +20,15 @@ public class WatTimeComunicationDTO {
 	private String photo3;
 	private String photo4;
 	private String photo5;
+	private String subTitle;
+	
+	
+	public String getSubTitle() {
+		return subTitle;
+	}
+	public void setSubTitle(String subTitle) {
+		this.subTitle = subTitle;
+	}
 	public int getNum() {
 		return num;
 	}
