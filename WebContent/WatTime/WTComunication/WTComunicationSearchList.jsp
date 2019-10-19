@@ -122,7 +122,7 @@
 <%
 				int wid=0; 
 				if(comunicationDTO.getRe_level()>0){
-				   wid=10*(comunicationDTO.getRe_level());
+				   wid=10 *(comunicationDTO.getRe_level());
 %>
 					<!-- 게시글 제목 -->
 					<td class="comunicationTd" style="padding-left:20px;">
