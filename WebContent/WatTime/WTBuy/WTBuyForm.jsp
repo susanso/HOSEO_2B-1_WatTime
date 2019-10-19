@@ -346,7 +346,7 @@
 		</div>
 		<!-- 결제 버튼 -->
 		<input type="button" value="구매하기" onclick="order()">
-		<input type="button" value="취소하기" onclick="">
+		<input type="button" value="취소하기" onclick="location.href='WTMain.jsp?pageChange=WTBasket/WTBasketList.jsp?pageNum=1'">
 	</form>
 </body>
 </html>

@@ -94,7 +94,7 @@ function order(){
 		tictok.focus();
 	}
 	//결제 방법 유효성 검사
-	else if(paymentMethod==""){
+	if(paymentMethod==""){
 		alert("결제 방법을 선택해주세요.");
 	}else if(paymentMethod=="card"){
 		var card1 = document.getElementById("cardNum1").value;
@@ -208,7 +208,19 @@ function order(){
 		var phoneCheck = /(01[0|1|6|9|7])(\d{3}|\d{4})(\d{4}$)/g;
 		var birthCheck = /^[0-9]+$/;
 	    
-	    if(phoneBirth == ""){
+	    if(phoneNum == ""){
+			alert("전화번호를 입력해주세요.");
+			document.getElementById("phoneNum").focus();
+		}else if(phoneCheck.test(phoneNum)==false){
+			alert("전화번호 형식이 아닙니다.");
+			document.getElementById("phoneNum").focus();
+		}else if(phoneName == ""){
+			alert("이름을 입력해주세요.");
+			document.getElementById("phoneName").focus();
+		}else if(nameCheck.test(phoneName)==false){
+			alert("이름 형식이 아닙니다.");
+			document.getElementById("phoneName").focus();
+		}else if(phoneBirth == ""){
 	    	alert("생년월일을 입력해주세요.");
 	    	document.getElementById("phoneBirth").focus();
 	    }else if(birthCheck.test(phoneBirth)==false){
@@ -226,20 +238,8 @@ function order(){
 		}else if(phoneBirth.length >= 9){
 			alert("날짜 형식이 아닙니다.");
 			document.getElementById("phoneBirth").focus();
-		}else if(phoneNum == ""){
-			alert("전화번호를 입력해주세요.");
-			document.getElementById("phoneNum").focus();
-		}else if(phoneCheck.test(phoneNum)){
-			alert("전화번호 형식이 아닙니다.");
-			document.getElementById("phoneNum").focus();
-		}else if(phoneName == ""){
-			alert("이름을 입력해주세요.");
-			document.getElementById("phoneName").focus();
-		}else if(nameCheck.test(phoneName)){
-			alert("이름 형식이 아닙니다.");
-			document.getElementById("phoneName").focus();
 		}else{
-			//document.BuyForm.submit();
+			document.BuyForm.submit();
 		}
 	    
 	}
