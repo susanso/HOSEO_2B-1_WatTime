@@ -530,7 +530,7 @@ textarea{
 }
 
 
-/*---------------- 구매 목록  ---------------     */
+/*---------------- 주문내역 ---------------     */
 
 .oderListDivTable{
 	width:1300px;
@@ -1793,6 +1793,21 @@ text-decoration:none ; color:#000000
 	border-top: 1px solid gray;
 	padding:10px;
 }
+.comuDropBtn{
+  font-family: 'Roboto', sans-serif;
+  background-color:#000;
+  color: #fff;
+  width:150px;
+  height:50px;
+  font-size: 17px;
+  border: none;
+
+  transition: background-color 0.5s, transform 5s;
+}
+.comuDropBtn:hover{
+background-color:#D8D8D8;
+   color:#000; 
+		    }
 .comunicationTd{
 	border-bottom: 1px solid gray;
 	padding:10px;
