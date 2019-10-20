@@ -25,7 +25,7 @@ function addressSearch(){
 //보유 포인트 전부 사용
 function allTicTok(TicTok,total){
 	//보유 TicTok이 1000 미만일 때
-	if(0<TicTok<1000){
+	if(0<TicTok&&TicTok<1000){
 		alert("포인트는 1,000 TicTok부터 사용이 가능합니다.");
 	}else if(parseInt(TicTok)>=parseInt(total)){
 		document.getElementById("useTicTok").value=total;
@@ -55,11 +55,7 @@ function totalPriceCul(TicTok,total,Retention){
 }
 
 function order(){
-	var card = $(check1).is(":checked");
-	var bankDeposit = $(check2).is(":checked");
-	var accountTransfer = $(check3).is(":checked");
-	
-	
+	var paymentMethod = document.getElementById("paymentMethod").value;
 	var nameCheck = /^[가-힣]+$/;
 	var name = document.getElementById("deliveryMemName");
 	var phone = document.getElementById("deliveryMemPhone");
@@ -98,18 +94,19 @@ function order(){
 		tictok.focus();
 	}
 	//결제 방법 유효성 검사
-	else if(card==false && bankDeposit==false && accountTransfer==false){
+	if(paymentMethod==""){
 		alert("결제 방법을 선택해주세요.");
-	}else if(card==true){
+	}else if(paymentMethod=="card"){
 		var card1 = document.getElementById("cardNum1").value;
 		var card2 = document.getElementById("cardNum2").value;
 		var card3 = document.getElementById("cardNum3").value;
 		var card4 = document.getElementById("cardNum4").value;
 		var check = document.getElementById("buyAgreed");
+		var cardPass = document.getElementById("cardPass").value;
 		var year = document.getElementById("cardYear").value;
 		var month = document.getElementById("cardMonth").value;
 		year = "20"+year;
-		
+	
 		var today = new Date();
 		var mm = today.getMonth()+1; //January is 0!
 		var yyyy = today.getFullYear();
@@ -142,6 +139,7 @@ function order(){
 		else if(parseInt(month)<0 || parseInt(month)>12){
 			alert("카드 유효기간 중 월을 다시 입력해주세요.");
 			document.getElementById("cardMonth").value="";
+			document.getElementById("cardMonth").focus();
 		}
 		//유효기간이 지났을 때
 		else if(year+"-"+month<yyyy+"-"+mm){
@@ -149,16 +147,101 @@ function order(){
 			document.getElementById("cardYear").value = "";
 			document.getElementById("cardMonth").value = "";
 		}
+		//비밀번호
+		else if(isNaN(cardPass)==true){
+			alert("카드 비밀번호를 다시 입력해주세요.");
+			document.getElementById("cardPass").focus();
+		}
 		//결제 동의 체크 안했을 때
 		else if(check.checked==false){
 			alert("결제 동의에 체크해주세요.");
 		}else{
 			document.BuyForm.submit();
 		}
-	}else if(accountTransfer==true){
-	
-	}else if(bankDeposit==true){
-		
+	}
+	//실시간 계좌이체
+	else if(paymentMethod=="accountTransfer"){
+		var accountNumber = document.getElementById("accountNumber").value;
+		var bank = document.getElementById("bank").value;
+		var pass = document.getElementById("accountPass").value;
+		var name = document.getElementById("accountName").value;
+		//신한 계좌 (구)11자리 (신)12자리
+		if((bank=="신한" && accountNumber.length != 11) && (bank=="신한" && accountNumber.length != 12)) {
+			alert("계좌번호가 잘못되었습니다.");
+			document.getElementById("accountNumber").focus();
+		}
+		//우리 13자리
+		else if(bank=="우리" && accountNumber.length != 13){
+			alert("계좌번호가 잘못되었습니다.");
+			document.getElementById("accountNumber").focus();
+		}
+		//농협 13자리
+		else if(bank=="농협" && accountNumber.length != 13){
+			alert("계좌번호가 잘못되었습니다.");
+			document.getElementById("accountNumber").focus();
+		}
+		//국민 (구) 12자리 (신) 14자리
+		else if((bank=="국민" && accountNumber.length != 12) && (bank=="국민" && accountNumber.length != 14)) {
+			alert("계좌번호가 잘못되었습니다.");
+			document.getElementById("accountNumber").focus();
+		}
+		//패스워드 유효성 검사
+		else if(isNaN(pass)==true){
+			alert("비밀번호 형식이 아닙니다.");
+			document.getElementById("accountPass").focus();
+		}
+		//예금주 유효성 검사
+		else if(name==""||name==null){
+			alert("이름을 입력해주세요.");
+			document.getElementById("accountName").focus();
+		}
+		else{
+			document.BuyForm.submit();
+		}
+	}
+	//핸드폰 결제
+	else if(paymentMethod=="phoneBank"){
+		var phoneNum = document.getElementById("phoneNum").value;
+		var phoneName = document.getElementById("phoneName").value;
+		var phoneBirth = document.getElementById("phoneBirth").value;
+		var nameCheck = /^[가-힣]+$/;
+		var phoneCheck = /(01[0|1|6|9|7])(\d{3}|\d{4})(\d{4}$)/g;
+		var birthCheck = /^[0-9]+$/;
+	    
+	    if(phoneNum == ""){
+			alert("전화번호를 입력해주세요.");
+			document.getElementById("phoneNum").focus();
+		}else if(phoneCheck.test(phoneNum)==false){
+			alert("전화번호 형식이 아닙니다.");
+			document.getElementById("phoneNum").focus();
+		}else if(phoneName == ""){
+			alert("이름을 입력해주세요.");
+			document.getElementById("phoneName").focus();
+		}else if(nameCheck.test(phoneName)==false){
+			alert("이름 형식이 아닙니다.");
+			document.getElementById("phoneName").focus();
+		}else if(phoneBirth == ""){
+	    	alert("생년월일을 입력해주세요.");
+	    	document.getElementById("phoneBirth").focus();
+	    }else if(birthCheck.test(phoneBirth)==false){
+	    	alert("숫자만 적어주세요.");
+	    	document.getElementById("phoneBirth").focus();
+	    }else if(phoneBirth.length < 4){
+	    	alert("년도를 적어주세요");
+	    	document.getElementById("phoneBirth").focus();
+	    }else if(phoneBirth.length < 6){
+	    	alert("월을 적어주세요");
+	    	document.getElementById("phoneBirth").focus();
+	    }else if(phoneBirth.length < 8){
+	    	alert("일을 적어주세요");
+	    	document.getElementById("phoneBirth").focus();
+		}else if(phoneBirth.length >= 9){
+			alert("날짜 형식이 아닙니다.");
+			document.getElementById("phoneBirth").focus();
+		}else{
+			document.BuyForm.submit();
+		}
+	    
 	}
 }
 
@@ -176,21 +259,21 @@ function buyForm(value){
 		document.getElementById("cardForm").style.display = "block";
 		document.getElementById("accountTransfer").style.display = "none";
 		document.getElementById("phoneForm").style.display = "none";
-		documnet.getElementById("paymentMethod").value="card";
+		document.getElementById("paymentMethod").value="card";
 	}
 	//휴대폰
-	else if(value=="bankDeposit"){
+	else if(value=="phoneBank"){
 		document.getElementById("cardForm").style.display = "none";
 		document.getElementById("accountTransfer").style.display = "none";
 		document.getElementById("phoneForm").style.display = "block";
-		documnet.getElementById("paymentMethod").value="bankDeposit";
+		document.getElementById("paymentMethod").value="phoneBank";
 	}
 	//실시간 계좌
 	else if(value=="accountTransfer"){
 		document.getElementById("cardForm").style.display = "none";
 		document.getElementById("accountTransfer").style.display = "block";
 		document.getElementById("phoneForm").style.display = "none";
-		documnet.getElementById("paymentMethod").value="accountTransfer";
+		document.getElementById("paymentMethod").value="accountTransfer";
 	}
 }
 //최대 길이

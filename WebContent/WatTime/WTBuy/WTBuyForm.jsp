@@ -233,9 +233,9 @@
 		<div>
 			<!-- 신용카드 -->
 			<input type="radio" id="check1" name="check" value="card" onclick="buyForm(this.value)"> 신용카드<br>
-			<input type="radio" id="check2" name="check" value="bankDeposit" onclick="buyForm(this.value)"> 휴대폰 결제<br>
+			<input type="radio" id="check2" name="check" value="phoneBank" onclick="buyForm(this.value)"> 휴대폰 결제<br>
 			<input type="radio" id="check3" name="check" value="accountTransfer" onclick="buyForm(this.value)"> 실시간 계좌이체
-			<input type="hidden" id="paymentMethod" name="paymentMethod">
+			<input type="hidden" id="paymentMethod" name="paymentMethod" value="">
 		</div>
 		<!-- 카드 -->
 		<div id="cardForm" style="display:none;">
@@ -272,7 +272,7 @@
 							  >
 				</div>
 				<div>
-					카드 비밀번호 <input type="password" placeholder="**">**
+					카드 비밀번호 <input type="password" id="cardPass" maxlength="2" placeholder="**">**
 				</div>
 				<div>
 					지불 방법 <select class="installments" id="installments" name="installments">
@@ -300,7 +300,7 @@
 		<div id="accountTransfer" style="display:none;">
 			<!-- 은행 선택 -->
 			<div>
-				은행 선택 : <select name="bank">
+				은행 선택 : <select name="bank" id="bank">
 							 <option value="신한">신한</option>
 							 <option value="우리">우리</option>
 							 <option value="농협">농협</option>
@@ -311,19 +311,42 @@
 			<div>
 				<!-- 계좌번호 -->
 				<div>
-					계좌번호 <input type="number" placeholder="계좌번호(-없이)">
+					계좌번호 <input type="number" id="accountNumber" name="serialNumber" placeholder="계좌번호(-없이)">
 				</div>
 				<div>
-					계좌 비밀번호 <input type="password" placeholder="**">**
+					계좌 비밀번호 <input type="password" id="accountPass" maxlength="2" placeholder="**">**
+				</div>
+				<div>
+					예금주 <input type="text" id="accountName" value="<%=memberDTO.getMemName() %>">
 				</div>
 			</div>
 		</div>
 		<!-- 휴대폰 결제 -->
 		<div id="phoneForm" style="display:none;">
+			<!-- 통신사 -->
+			<div>
+				<select>
+					<option selected>SKT</option>
+					<option>KT</option>
+					<option>U+</option>
+				</select>
+			</div>
+			<!-- 전화번호 -->
+			<div>
+				전화번호 <input type="number" id="phoneNum" name="phoneNum" placeholder="전화번호(-없이)">
+			</div>
+			<!-- 이름 -->
+			<div>
+				이름 <input type="text" id="phoneName" name="phoneName" placeholder="이름">
+			</div>
+			<!-- 생년월일 -->
+			<div>
+				생년월일 <input type="text" id="phoneBirth" name="phoneBirth" placeholder="생년월일(-없이 8자)">
+			</div>
 		</div>
 		<!-- 결제 버튼 -->
 		<input type="button" value="구매하기" onclick="order()">
-		<input type="button" value="취소하기" onclick="">
+		<input type="button" value="취소하기" onclick="location.href='WTMain.jsp?pageChange=WTBasket/WTBasketList.jsp?pageNum=1'">
 	</form>
 </body>
 </html>

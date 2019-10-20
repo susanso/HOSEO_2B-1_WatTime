@@ -197,7 +197,8 @@ function birthCheck() {
 	         }
 	}else{
 		document.getElementById("birthCheckText").textContent= "";
-		document.getElementById("birthHidden").value="yes";}
+		document.getElementById("birthHidden").value="yes";
+	}
     
 }
 //우편번호찾기 팝업창 띄우기

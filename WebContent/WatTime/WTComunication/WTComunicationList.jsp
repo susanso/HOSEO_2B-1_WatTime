@@ -70,7 +70,13 @@
 						<td class="comunicationTd" style="text-align:center;"><font color="red"><strong>추천</strong></font></td>
 						<!-- 게시글 제목 -->
 						<td class="comunicationTd" style="padding-left:20px;">
-			  				<strong><%=comunicationDTO.getTitle() %></strong>
+			  				<strong><a href="#"
+									   onclick="comunicationForm('<%=comunicationDTO.getNum() %>',
+																 '<%=comunicationDTO.getMemId()%>',
+																 '<%=pageNum%>',
+																 '<%=listCount%>')"
+									><%=comunicationDTO.getSubTitle()%><%=comunicationDTO.getTitle() %></a>
+							</strong>
 		  				</td>
 		  				<!-- 게시글 작성자 -->
 						<td class="comunicationTd" style="text-align:center;">
@@ -89,7 +95,7 @@
 			for (int i = 0 ; i < comunicationList.size() ; i++) {
 			    comunicationDTO = comunicationList.get(i);
 %>
-			<tr onclick="comunicationForm('<%=comunicationDTO.getNum() %>','<%=comunicationDTO.getMemId()%>','<%=pageNum%>','<%=listCount%>')">
+			<tr>
 				<!-- 게시글 번호 -->
 				<td class="comunicationTd" style="text-align:center;">
 					<%=comunicationDTO.getNum() %>
@@ -97,20 +103,28 @@
 <%
 				int wid=0; 
 				if(comunicationDTO.getRe_level()>0){
-				   wid=5*(comunicationDTO.getRe_level());
+				   wid=10*(comunicationDTO.getRe_level());
 %>
 					<!-- 게시글 제목 -->
 					<td class="comunicationTd" style="padding-left:20px;">
 						<img src="img/comu/level.png" width="<%=wid%>" height="16">
 		  				<img src="img/comu//arrow.png" style="width:20px; heihgt:20px ; margin: 0 0 -4px 0;">
-		  				<%=comunicationDTO.getTitle() %>
+		  				<a href="#"
+		  				   onclick="comunicationForm('<%=comunicationDTO.getNum() %>',
+		  				   							 '<%=comunicationDTO.getMemId()%>',
+		  				   							 '<%=pageNum%>','<%=listCount%>')"
+		  				 ><%=comunicationDTO.getSubTitle()%><%=comunicationDTO.getTitle() %></a>
 	  				</td>
 <%
 				}else{
 %>
 					<!-- 게시글 제목 -->
 					<td class="comunicationTd" style="padding-left:20px;">
-		  				<%=comunicationDTO.getTitle() %>
+		  				<a href="#"
+		  				   onclick="comunicationForm('<%=comunicationDTO.getNum() %>',
+		  				   							 '<%=comunicationDTO.getMemId()%>',
+		  				   							 '<%=pageNum%>','<%=listCount%>')"
+		  				 ><%=comunicationDTO.getSubTitle()%><%=comunicationDTO.getTitle() %></a>
 	  				</td>
 <%
 				}

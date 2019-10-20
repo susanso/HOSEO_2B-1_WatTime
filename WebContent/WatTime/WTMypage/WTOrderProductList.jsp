@@ -42,7 +42,14 @@
 				<td>
 					<%=orderProductDTO.getProductCount()%>개<br>
 				<td>
-				
+				<!-- 상품 가격 -->
+				<td>
+					<%=orderProductDTO.getProductPrice() %>
+				</td>
+				<!-- TicTok -->
+				<td>
+					<%=orderProductDTO.getTicTok() %>
+				</td>
 			</tr>
 <%
 		}

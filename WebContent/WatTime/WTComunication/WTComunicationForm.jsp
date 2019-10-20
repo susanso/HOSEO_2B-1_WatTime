@@ -55,10 +55,8 @@
 				<td class="comunicationFormTd" colspan="6" style="text-align:center;"><%=comunicationDTO.getTitle() %></td>
 			</tr>
 			<tr class="comunicationFormTr">
-				<td class="comunicationFormTd" width="150px" style="text-align:center;">작성자</td>
-				<td class="comunicationFormTd" style="text-align:center;" width="200px">
-					<%=comunicationDTO.getMemName() %>
-				</td>
+				<td class="comunicationFormTd" width="150px" style="text-align:center;padding:10px;">작성자</td>
+				<td class="comunicationFormTd" style="text-align:center;" width="200px"><%=comunicationDTO.getMemName() %></td>
 				<td class="comunicationFormTd" width="150px" style="text-align:center;">작성일</td>
 				<td class="comunicationFormTd" colspan="1" style="text-align:center;" width="350px"><%=comunicationDTO.getWriteDate() %></td>
 				<td class="comunicationFormTd" width="150px" style="text-align:center;">조회수</td>
@@ -128,7 +126,7 @@
 				<td colspan="7">
 	<%
 					//현재 게시물의 작성자 아이디가 일치 할 때
-					if(log!="no"&&memberDTO.getMemId().equals(comunicationDTO.getMemId())){
+					if((log!="no"&&memberDTO.getMemId().equals(comunicationDTO.getMemId()))||memberDTO.getMemAdmin()!=0){
 	%>					
 						<input type="button" class="ComunicationBtn" value="글수정" 
 							   onclick="comunicationModifyForm('<%=num%>','<%=pageNum%>','<%=listPageNum%>','<%=listCount%>')">

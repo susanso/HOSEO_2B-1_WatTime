@@ -18,6 +18,7 @@ public class WatTimeOrderDTO {
 	private String orderMessage;
 	private String orderAddress;
 	private String orderPostCode;
+	private Timestamp deliverySuccessDate;
 	
 	public int getOrderNum() {
 		return orderNum;
@@ -109,4 +110,11 @@ public class WatTimeOrderDTO {
 	public void setOrderPostCode(String orderPostCode) {
 		this.orderPostCode = orderPostCode;
 	}
+	public Timestamp getDeliverySuccessDate() {
+		return deliverySuccessDate;
+	}
+	public void setDeliverySuccessDate(Timestamp deliverySuccessDate) {
+		this.deliverySuccessDate = deliverySuccessDate;
+	}
+	
 }

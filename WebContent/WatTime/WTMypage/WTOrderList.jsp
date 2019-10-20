@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "java.text.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*" %>
+<%@ page import = "java.lang.*,java.text.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.* ,WatTimePack.*, java.io.*" %>
 <%@ page import = "java.sql.Timestamp" %>
 <%request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
@@ -56,11 +56,27 @@
 	}
 	//주문 상태
 	String orderStatus = request.getParameter("orderStatus");
+	//현재 페이지가 처음 불러왔을 때
 	if(orderStatus == null){
 		orderStatus=" ";
 	}else{
 		orderStatus = new String(orderStatus.getBytes("8859_1"), "utf-8");
 	}
+	//구매확정 (배송 완료에서 1주일이 지나면 자동으로 바뀜)
+	Timestamp date = new Timestamp(System.currentTimeMillis());
+	String now = date_format.format(date);
+	Timestamp nowFormat = Timestamp.valueOf(now);
+	List<WatTimeOrderDTO> deliverySuccessList = new ArrayList<>();
+	deliverySuccessList = orderDAO.getDeliverySuccessCount();
+	for(int i=0;i<deliverySuccessList.size();i++){
+		orderDTO = deliverySuccessList.get(i);
+		String deliverySuccessDate = date_format.format(orderDTO.getDeliverySuccessDate());
+		Timestamp deliverySuccessDateFormat = Timestamp.valueOf(deliverySuccessDate);
+		if((nowFormat.getTime()-deliverySuccessDateFormat.getTime())/(1000*60*60*24)>=7){
+			orderDAO.setProductBuySuccess(orderDTO.getOrderNum());
+		}
+	}
+	
 	//관리자
 	if(memberDTO.getMemAdmin()!=0){
 		count = orderDAO.getProductAllCount(startDateFormat,endDateFormat,orderStatus);
@@ -89,7 +105,7 @@
 		</div>    
 	</div>
 	<!-- 날짜 버튼 -->
-	<div class="dateSearchList">
+	<div class="dateSearchBuyList">
 		<input id="dateStart" type="date"> <h1>~</h1> <input id="dateEnd" type="date">
 		<img  src="img/search.png" width="48px" height="48px"alt="검색" onclick="dateCheck(dateStart.value,dateEnd.value)"><br>
 <%
@@ -160,12 +176,21 @@
 					<option value="결제 취소">결제 취소</option>
 <%
 				}
+				if(orderStatus.equals("구매 확정")){
+%>
+					<option value="구매 확정" selected>구매 확정</option>
+<%
+				}else{
+%>
+					<option value="구매 확정">구매 확정</option>
+<%
+				}
 %>
 			</select>
 <%
 		}
 %>
-		<input class="pointMonthSearch" type="button" value="3개월" onclick="monthSearch('3')">
+		<input class="monthSearch" type="button" value="3개월" onclick="monthSearch('3')">
 		<input class="monthSearch" type="button" value="6개월" onclick="monthSearch('6')">
 		<input class="monthSearch" type="button" value="1년" onclick="monthSearch('12')">
 	</div>
@@ -239,135 +264,86 @@
 <%
 							//관리자
 							if(memberDTO.getMemAdmin()!= 0){
-								//라디오 버튼 체크
+%>
+								<!-- 주문 상태 -->
+								<select id="<%=orderDTO.getOrderNum() %>" 
+										onchange="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
+								>
+<%
+								//주문 상태가 결제 확인인 경우
 								if(orderDTO.getOrderStatus().equals("결제 확인")){
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="결제 확인"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-										   checked
-									>결제확인
+									<option value="결제 확인" selected>결제 확인</option>
 <%
 								}else{
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="결제 확인"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-									>결제확인
+									<option value="결제 확인">결제 확인</option>
 <%
 								}
-								//결제 완료
+								//주문 상태가 결제 완료인 경우
 								if(orderDTO.getOrderStatus().equals("결제 완료")){
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="결제 완료" 
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-										   checked
-									>결제완료
+									<option value="결제 완료" selected>결제 완료</option>
 <%
 								}else{
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="결제 완료"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-									>결제완료
+									<option value="결제 완료">결제 완료</option>
 <%
 								}
-								//배송 준비
+								//주문 상태가 배송 준비인 경우
 								if(orderDTO.getOrderStatus().equals("배송 준비")){
 %>
-									<input type="radio" 
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="배송 준비"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-										   checked
-									>배송준비<br>
+									<option value="배송 준비" selected>배송 준비</option>
 <%
 								}else{
 %>
-									<input type="radio" 
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="배송 준비"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-									>배송준비<br>
+									<option value="배송 준비">배송 준비</option>
 <%
 								}
-								//배송중
+								//주문 상태가 배송 중인 경우
 								if(orderDTO.getOrderStatus().equals("배송 중")){
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="배송 중" 
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-										   checked
-									>배송중
+									<option value="배송 중" selected>배송 중</option>
 <%
 								}else{
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="배송 중"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-									>배송중
+									<option value="배송 중">배송 중</option>
 <%
 								}
-								//배송 완료
+								//주문 상태가  배송 완료인 경우
 								if(orderDTO.getOrderStatus().equals("배송 완료")){
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="배송 완료"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-										   checked
-									>배송완료
+									<option value="배송 완료" selected>배송 완료</option>
 <%
 								}else{
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="배송 완료"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-									>배송완료
+									<option value="배송 완료">배송 완료</option>
 <%
 								}
-								//결제 취소
+								//주문 상태가  결제 취소인 경우
 								if(orderDTO.getOrderStatus().equals("결제 취소")){
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="결제 취소"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-										   checked
-									>결제 취소
+									<option value="결제 취소" selected>결제 취소</option>
 <%
 								}else{
 %>
-									<input type="radio"
-										   id="<%=orderDTO.getOrderNum() %>"
-										   name="<%=orderDTO.getOrderNum() %>status"
-										   value="결제 취소"
-										   onclick="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
-									>결제 취소
+									<option value="결제 취소">결제 취소</option>
+<%
+								}//주문 상태가  구매 확정인 경우
+								if(orderDTO.getOrderStatus().equals("구매 확정")){
+%>
+									<option value="구매 확정" selected>구매 확정</option>
+<%
+								}else{
+%>
+									<option value="구매 확정">구매 확정</option>
 <%
 								}
-							}
+%>
+								</select>
+<%
 							//일반 유저
-							else{
+							}else{
 %>
 								<%=orderDTO.getOrderStatus() %>
 <%								
@@ -385,6 +361,17 @@
 								else if(orderDTO.getOrderStatus().equals("배송 중")){
 %>
 									<br><input type="button" value="배송 위치 추적">
+<%
+								}else if(orderDTO.getOrderStatus().equals("배송 완료")){
+%>
+									<br><input type="button" 
+											   value="구매 확정"
+											   onclick="radioclick(this.value,
+											   					   this.id,
+											   					   '<%=pageNum%>',
+											   					   '<%=startDateFormat%>',
+											   					   '<%=endDateFormat%>')"
+										>
 <%
 								}
 							}

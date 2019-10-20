@@ -40,6 +40,7 @@ public class WatTimeComunicationDAO {
 					comunicationDTO.setRef(rs.getInt("ref"));
 					comunicationDTO.setRe_step(rs.getInt("re_step"));
 					comunicationDTO.setRe_level(rs.getInt("re_level"));
+					comunicationDTO.setSubTitle(rs.getString("subTitle"));
 					list.add(comunicationDTO);
 				}while(rs.next());
 			}
@@ -77,6 +78,7 @@ public class WatTimeComunicationDAO {
 					comunicationDTO.setPhoto3(rs.getString("photo3"));
 					comunicationDTO.setPhoto4(rs.getString("photo4"));
 					comunicationDTO.setPhoto5(rs.getString("photo5"));
+					comunicationDTO.setSubTitle(rs.getString("subTitle"));
 					list.add(comunicationDTO);
 				}while(rs.next());
 			}
@@ -117,6 +119,7 @@ public class WatTimeComunicationDAO {
 				comunicationDTO.setPhoto3(rs.getString("photo3"));
 				comunicationDTO.setPhoto4(rs.getString("photo4"));
 				comunicationDTO.setPhoto5(rs.getString("photo5"));
+				comunicationDTO.setSubTitle(rs.getString("subTitle"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -154,8 +157,8 @@ public class WatTimeComunicationDAO {
 			}	 
 			
 			pstmt = con.prepareStatement("insert into comunicationTbl(memId,memName,title,content,writeDate,readCount,"
-					+"recommend,unrecommend,ref,re_step,re_level,photo1,photo2,photo3,photo4,photo5)"+
-					" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+					+"recommend,unrecommend,ref,re_step,re_level,photo1,photo2,photo3,photo4,photo5,subTitle)"+
+					" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, comunicationDTO.getMemId());
 			pstmt.setString(2, comunicationDTO.getMemName());
 			pstmt.setString(3, comunicationDTO.getTitle());
@@ -172,6 +175,7 @@ public class WatTimeComunicationDAO {
 			pstmt.setString(14, comunicationDTO.getPhoto3());
 			pstmt.setString(15, comunicationDTO.getPhoto4());
 			pstmt.setString(16, comunicationDTO.getPhoto5());
+			pstmt.setString(17, "");
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -219,7 +223,10 @@ public class WatTimeComunicationDAO {
 	//글 삭제
 	public void setComunicationDelete(int num) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("delete from comunicationTbl where num=?");
+			PreparedStatement pstmt = con.prepareStatement("update comunicationTbl set subTitle = '[원글이 삭제된 글]' where ref=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			pstmt = con.prepareStatement("delete from comunicationTbl where num=?");
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 			
@@ -307,6 +314,7 @@ public class WatTimeComunicationDAO {
 						comunicationDTO.setRef(rs.getInt("ref"));
 						comunicationDTO.setRe_step(rs.getInt("re_step"));
 						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						comunicationDTO.setSubTitle(rs.getString("subTitle"));
 						list.add(comunicationDTO);
 					}while(rs.next());
 				}
@@ -336,6 +344,7 @@ public class WatTimeComunicationDAO {
 						comunicationDTO.setRef(rs.getInt("ref"));
 						comunicationDTO.setRe_step(rs.getInt("re_step"));
 						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						comunicationDTO.setSubTitle(rs.getString("subTitle"));
 						list.add(comunicationDTO);
 					}while(rs.next());
 				}
@@ -365,6 +374,7 @@ public class WatTimeComunicationDAO {
 						comunicationDTO.setRef(rs.getInt("ref"));
 						comunicationDTO.setRe_step(rs.getInt("re_step"));
 						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						comunicationDTO.setSubTitle(rs.getString("subTitle"));
 						list.add(comunicationDTO);
 					}while(rs.next());
 				}
@@ -394,6 +404,7 @@ public class WatTimeComunicationDAO {
 						comunicationDTO.setRef(rs.getInt("ref"));
 						comunicationDTO.setRe_step(rs.getInt("re_step"));
 						comunicationDTO.setRe_level(rs.getInt("re_level"));
+						comunicationDTO.setSubTitle(rs.getString("subTitle"));
 						list.add(comunicationDTO);
 					}while(rs.next());
 				}

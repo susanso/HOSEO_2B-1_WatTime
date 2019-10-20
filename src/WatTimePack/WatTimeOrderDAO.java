@@ -170,6 +170,18 @@ public class WatTimeOrderDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	//상태 업데이트
+	public void setOrderStatusUpdate(int orderNum, String orderStatus, Timestamp deliveryDate) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update orderTbl set orderStatus = ?, deliverySuccessDate=? where orderNum = ?");
+			pstmt.setString(1, orderStatus);
+			pstmt.setTimestamp(2, deliveryDate);
+			pstmt.setInt(3, orderNum);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	//포인트 페이지 관리자
 	public List<WatTimeOrderDTO> getTicTokAdminList(int start, int end, Timestamp startDate, Timestamp endDateFormat) {
 		List<WatTimeOrderDTO> list = new ArrayList<>();
@@ -278,5 +290,49 @@ public class WatTimeOrderDAO {
 		}
 		
 		return orderCount;
+	}
+	//배송 완료인 주문 내역 
+	public List<WatTimeOrderDTO> getDeliverySuccessCount() {
+		List<WatTimeOrderDTO> list = new ArrayList<>();
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("select * from orderTbl where orderStatus='배송 완료'");
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				do {
+					WatTimeOrderDTO orderDTO = new WatTimeOrderDTO();
+					orderDTO.setOrderNum(rs.getInt("orderNum"));
+					orderDTO.setMemId(rs.getString("memId"));
+					orderDTO.setMemName(rs.getString("memName"));
+					orderDTO.setProductName(rs.getString("productName"));
+					orderDTO.setTotalPrice(rs.getInt("totalPrice"));
+					orderDTO.setUseTicTok(rs.getInt("useTicTok"));
+					orderDTO.setTicTok(rs.getInt("TicTok"));
+					orderDTO.setOrderDate(rs.getTimestamp("orderDate"));
+					orderDTO.setPaymentMethod(rs.getString("paymentMethod"));
+					orderDTO.setSerialNumber(rs.getString("serialNumber"));
+					orderDTO.setInstallments(rs.getInt("installments"));
+					orderDTO.setOrderStatus(rs.getString("orderStatus"));
+					orderDTO.setOrderMessage(rs.getString("orderMessage"));
+					orderDTO.setOrderAddress(rs.getString("orderAddress"));
+					orderDTO.setOrderPostCode(rs.getString("orderPostCode"));
+					orderDTO.setDeliverySuccessDate(rs.getTimestamp("deliverySuccessDate"));
+					list.add(orderDTO);
+				}while(rs.next());
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return list;
+	}
+	//구매 확정으로 업데이트
+	public void setProductBuySuccess(int orderNum) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("update orderTbl set orderStatus = '구매 확정' where orderNum = ?");
+			pstmt.setInt(1, orderNum);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
