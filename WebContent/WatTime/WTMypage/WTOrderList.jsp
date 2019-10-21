@@ -190,7 +190,7 @@
 <%
 		}
 %>
-		<input class="monthSearch" type="button" value="3개월" onclick="monthSearch('3')">
+		<input  id="monthSearch" type="button" value="3개월" onclick="monthSearch('3')">
 		<input class="monthSearch" type="button" value="6개월" onclick="monthSearch('6')">
 		<input class="monthSearch" type="button" value="1년" onclick="monthSearch('12')">
 	</div>

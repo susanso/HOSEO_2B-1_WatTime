@@ -532,6 +532,11 @@ textarea{
 
 /*---------------- 주문내역 ---------------     */
 
+.dateSearchBuyList{
+	display: flex;
+    margin: 35px auto;
+    width: 1300px;
+}
 .oderListDivTable{
 	width:1300px;
 	margin:30px auto;
@@ -578,8 +583,24 @@ textarea{
 }
 .pointSearchList{
 	display: flex;
-    margin: 0 auto;
+    margin: 35px auto;
     width:1300px;
+}
+#monthSearch{
+	margin: 0 0 0 165px;
+   width: 60px;
+   font-size: 18px;
+   background-color: black;
+   border: none;
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   transition: background-color 0.5s, transform 5s;
+}
+#monthSearch:hover{
+	background-color: #fff;
+	border: 1px solid #000;
+	 color: #000;
 }
 .monthSearch{
    margin: 0 0 0 16px;

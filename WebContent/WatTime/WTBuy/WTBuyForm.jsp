@@ -288,7 +288,8 @@
 		</div>
 			<!-- 결제방법 -->
 			<div class="howToBuyProduct">
-				<!-- 신용카드 --><center><h2>결제 수단</h2></center>
+				<!-- 신용카드 -->
+				<center><h2>결제 수단</h2></center>
 				<br>
 				<hr>
 				<br>
