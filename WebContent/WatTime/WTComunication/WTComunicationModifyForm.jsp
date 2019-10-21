@@ -30,7 +30,7 @@
 		<input type="hidden" id="listPageNum" name="listPageNum" value="<%=listPageNum %>">
 		<input type="hidden" id="listCount" name="listCount" value="<%=listCount %>">
 		<!-- 글쓰기 폼 -->
-		<table border="1">
+		<table border="1" style="width: 900px;margin:10px auto;border-collapse: collapse;">
 			<tr>
 				<td>제목</td>
 				<td><input type="text" id="comunicationTitle" name="comunicationTitle" value="<%=comunicationDTO.getTitle() %>" required></td>
@@ -41,7 +41,7 @@
 				</td>
 			</tr>
 			<tr >
-				<td rowspan="6">
+				<td rowspan="6" style="text-align: center;">
 					이미지 업로드<br>
 					(사진은 최대 5개까지만 됩니다.<br>수정 시 사진을 사용하실려면 다시 올려주세요.)
 				</td>
@@ -72,8 +72,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="submit" name="imgButton" id="imgButton" value="글수정">
+				<td colspan="2" style="text-align: center;">
+					<input type="submit" class="comuDropBtn" name="imgButton" id="imgButton" value="글수정">
 				</td>
 			</tr>
 		</table>

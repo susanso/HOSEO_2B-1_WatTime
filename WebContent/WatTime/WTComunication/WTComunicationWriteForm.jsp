@@ -72,7 +72,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;">
-					<input type="submit" name="imgButton" id="imgButton" value="글쓰기">
+					<input type="submit" class="comuDropBtn" name="imgButton" name="imgButton" id="imgButton" value="글쓰기">
 				</td>
 			</tr>
 		</table>
