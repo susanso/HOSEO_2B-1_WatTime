@@ -132,7 +132,7 @@
 				<td class="productInfo">
 					<input type = "button" id="gotcha" value="구매하기"
 						   onclick="buy('<%=productDTO.getProductCode() %>','<%=log%>',productCount.value)">
-					<input type = "button" class="specBtn"value="장바구니"
+					<input type = "button" class="specBtn" value="장바구니"
 						   onclick="basketPro(logCheck.value,productCount.value,'<%=productDTO.getProductCode()%>',
 											  '<%=productDTO.getProductName()%>','<%=productDTO.getProductPrice()%>',
 											  '<%=memberDTO.getMemId()%>','<%=memberDTO.getMemName()%>',
@@ -340,8 +340,19 @@
 			<!-- 정렬 -->
 			<tr>
 				<td colspan="2">
-					<input type="button"  id="reviewLastestSort" class="specBtn" name="reviewLastestSort" value="최신순" onclick="reviewLastest('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
-					<input type="button" id="reviewScoreSort" class="specBtn" name="reviewScoreSort" value="별점순" onclick="scoreSort('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+					<input type="button" 
+						   id="reviewLastestSort"
+						   class="specBtn"
+						   name="reviewLastestSort"
+						   value="최신순"
+						   onclick="reviewLastest('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
+					
+					<input type="button"
+						   id="reviewScoreSort"
+						   class="specBtn"
+						   name="reviewScoreSort"
+						   value="별점순"
+						   onclick="scoreSort('<%=productCode%>','<%=modify%>','<%=pageNum%>')">
 				</td>
 			</tr>
 			<!-- 구매후기 리스트 -->

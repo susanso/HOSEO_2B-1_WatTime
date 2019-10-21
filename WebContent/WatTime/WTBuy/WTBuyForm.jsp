@@ -363,9 +363,9 @@
 								<option value="12">12개월</option>
 							</select>
 					</div>			
-					<div style="text-align:center; font-size:20px">
+					<!-- <div style="text-align:center; font-size:20px">
 						 <input type="checkbox" id="buyAgreed">구매를 동의합니다.
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- 실시간 계좌이체 -->
@@ -391,6 +391,12 @@
 					<div>
 					<p>	예금주 </p><input type="text" id="accountName" value="<%=memberDTO.getMemName() %>">
 					</div>
+					<!-- <div style="text-align:center;">
+						<font color="red" size="5px">입금 가능 계좌</font><br>
+						<font color="red" size="4px">국민  111-25-8585-997</font><br>
+						<font color="red" size="4px">신한  110-222-252525</font><br>
+						<font color="red" size="4px">IBK 411-255-85-302</font><br>
+					</div> -->
 				</div>
 			</div>
 			<!-- 휴대폰 결제 -->

@@ -101,7 +101,7 @@ function reviewLastest(productCode, modify, pageNum){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "UTF-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum+"#reviewAvgScore");
 
 	 
 	var hiddenField = document.createElement("input");
@@ -138,7 +138,7 @@ function scoreSort(productCode, modify, pageNum){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "UTF-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum+"#reviewAvgScore");
 
 	 
 	var hiddenField = document.createElement("input");
@@ -404,7 +404,7 @@ function back(pageNum, modify, productCode, sort){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum+"#reviewAvgScore");
 
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -435,7 +435,7 @@ function pageNum(pageNum, modify, productCode, sort){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum+"#reviewAvgScore");
 
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");
@@ -465,7 +465,7 @@ function next(pageNum, modify, productCode, sort){
 	var form = document.createElement("form");
 	form.setAttribute("charset", "utf-8");
 	form.setAttribute("method", "Post"); // Get 또는 Post 입력
-	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum);
+	form.setAttribute("action", "WTMain.jsp?pageChange=WTProduct/WTProductSpec.jsp?pageNum="+pageNum+"#reviewAvgScore");
 
 	hiddenField = document.createElement("input");
 	hiddenField.setAttribute("type", "hidden");

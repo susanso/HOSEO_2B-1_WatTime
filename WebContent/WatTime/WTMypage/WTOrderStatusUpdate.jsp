@@ -6,6 +6,9 @@
 <jsp:useBean id="orderDTO" class = "WatTimePack.WatTimeOrderDTO" scope="page">
    <jsp:setProperty name="orderDTO" property="*"/>
 </jsp:useBean>
+<jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
+   <jsp:setProperty name="memberDTO" property="*"/>
+</jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,9 +29,16 @@
 	String orderStatusRadio = request.getParameter("orderStatusRadio");
 	orderStatusRadio = new String(orderStatusRadio.getBytes("8859_1"), "utf-8");
 	
+	//로그인 된 회원 정보
+	memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
+	
 	WatTimeOrderDAO orderDAO = new WatTimeOrderDAO();
 	if(orderStatus.equals("배송 완료")){
 		orderDAO.setOrderStatusUpdate(orderNum,orderStatus,deliverySuccessDate);
+	}else if(orderStatus.equals("결제 취소")){
+		int TicTok = Integer.parseInt(request.getParameter("TicTok"));
+		memberDTO = orderDAO.setOrderStatusUpdate(orderNum,orderStatus,TicTok,memberDTO.getMemId());
+		session.setAttribute("member", memberDTO);
 	}else{
 		orderDAO.setOrderStatusUpdate(orderNum,orderStatus);
 	}

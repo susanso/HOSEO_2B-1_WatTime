@@ -19,6 +19,7 @@
 </head>
 <%
 	SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	DecimalFormat df = new DecimalFormat("#,###");
 	if(session.getAttribute("member") != null){
 	    memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
 	}
@@ -212,6 +213,8 @@
 					<th>아이디</th>
 					<th> 이름</th>
 					<th style="width:100px;">주문 날짜</th>
+					<th>가격</th>
+					<th>TicTok</th>
 					<th style="width:77px;">우편번호</th>
 					<th>배송 주소</th>
 					<th>상태</th>
@@ -251,6 +254,14 @@
 						<td>
 							<%=date_format.format(orderDTO.getOrderDate()) %>
 						</td>
+						<!-- 상품 가격 -->
+						<td>
+							<%=df.format(orderDTO.getTotalPrice()) %>
+						</td>
+						<!-- 적립 포인트 -->
+						<td>
+							<%=df.format(orderDTO.getTicTok()) %>
+						</td>
 						<!-- 우편번호 -->
 						<td>
 							<%=orderDTO.getOrderPostCode() %>
@@ -267,7 +278,12 @@
 %>
 								<!-- 주문 상태 -->
 								<select id="<%=orderDTO.getOrderNum() %>" 
-										onchange="radioclick(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')"
+										onchange="radioclick(this.value,
+															 this.id,
+															 '<%=pageNum%>',
+															 '<%=startDateFormat%>',
+															 '<%=endDateFormat%>'
+															 )"
 								>
 <%
 								//주문 상태가 결제 확인인 경우
@@ -354,7 +370,14 @@
 									<br><input type="button"
 											   id="<%=orderDTO.getOrderNum() %>"
 											   value="결제 취소"
-											   onclick="orderCancle(this.value,this.id,'<%=pageNum%>','<%=startDateFormat%>','<%=endDateFormat%>')">
+											   onclick="orderCancle(this.value,
+											   						this.id,
+											   						'<%=pageNum%>',
+											   						'<%=startDateFormat%>',
+											   						'<%=endDateFormat%>',
+											   						'<%=orderDTO.getTicTok() %>'
+											   						)"
+									>
 <%						
 								}
 								//배송 중일때 배송 위치 버튼

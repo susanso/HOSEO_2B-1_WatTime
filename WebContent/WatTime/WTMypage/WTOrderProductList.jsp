@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <%
+	DecimalFormat df = new DecimalFormat("#,###");
 	int orderNum = Integer.parseInt(request.getParameter("orderNum"));
 
 	WatTimeOrderProductDAO orderProductDAO = new WatTimeOrderProductDAO();
@@ -21,8 +22,15 @@
 
 	orderProductList = orderProductDAO.getOrderProductList(orderNum);
 %>
-<body onresize="parent.resizeTo(800,600)" onload="parent.resizeTo(800,600)">
-	<table>
+<body onresize="parent.resizeTo(500px,300px)" onload="parent.resizeTo(500px,300px)">
+	<table border ="0"width="1300px" style="text-align:center; border: 2px solid #ccc;">
+		<tr>
+			<th>이미지</th>
+			<th>상품명</th>
+			<th>상품 개수</th>
+			<th>상품 가격 </th>
+			<th>TicTok</th>
+		</tr>
 <%
 		for(int i = 0 ; i < orderProductList.size() ; i++){
 			orderProductDTO = orderProductList.get(i);
@@ -30,26 +38,28 @@
 			
 %>
 			<tr>
+				
 				<!-- 상품 이미지 -->
-				<td>
+				<td width="300px">
 					<img src="../../WatTime/img/brand/<%=productImg %>" width="200" height="200">
 				</td>
 				<!-- 상품명 -->
-				<td>
-					<%=orderProductDTO.getProductName() %>
+				<td width="200px">
+					<font size="5px"><%=orderProductDTO.getProductName() %></font>
 				</td>
 				<!-- 상품 개수 -->
-				<td>
-					<%=orderProductDTO.getProductCount()%>개<br>
-				<td>
+				<td width="100px">
+					<font size="5px"><%=orderProductDTO.getProductCount()%>개</font>
+				</td>
 				<!-- 상품 가격 -->
-				<td>
-					<%=orderProductDTO.getProductPrice() %>
+				<td width="200px">
+					<font size="5px"><%=df.format(orderProductDTO.getProductPrice()) %>원</font>
 				</td>
 				<!-- TicTok -->
-				<td>
-					<%=orderProductDTO.getTicTok() %>
+				<td width="200px">
+					<font size="5px"><%=df.format(orderProductDTO.getTicTok()) %>TicTok</font>
 				</td>
+				
 			</tr>
 <%
 		}

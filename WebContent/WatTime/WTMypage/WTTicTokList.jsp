@@ -129,7 +129,7 @@
 					</td>
 					<!-- 상품명 -->
 					<td>
-						<a href="#" onclick="orderProductList('<%=orderDTO.getOrderNum() %>')">
+						<a onclick="orderProductList('<%=orderDTO.getOrderNum() %>')">
 								<%=orderDTO.getProductName() %>
 							</a>
 					</td>
