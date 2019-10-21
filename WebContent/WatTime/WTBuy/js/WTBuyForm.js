@@ -30,10 +30,12 @@ function allTicTok(TicTok,total){
 	}else if(parseInt(TicTok)>=parseInt(total)){
 		document.getElementById("useTicTok").value=total;
 		document.getElementById("totalPrice").textContent= "0";
+		document.getElementById("finalTicTok").textContent = 0;
 	}else{
 		var totalPrice = total - TicTok;
 		document.getElementById("useTicTok").value=TicTok;
 		document.getElementById("totalPrice").textContent= totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		document.getElementById("finalTicTok").textContent = TicTok.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 }
 
@@ -45,12 +47,18 @@ function totalPriceCul(TicTok,total,Retention){
 	if(TicTok>RetentionFormat){
 		alert("입력한 수치가 보유 TicTok보다 큽니다.");
 		document.getElementById("useTicTok").value=0;
+		document.getElementById("finalTicTok").textContent = 0;
 	}else if(parseInt(TicTok)>=parseInt(total)){
 		alert("입력한 수치가 상품 가격보다 큽니다.");
 		document.getElementById("useTicTok").value=0;
 		document.getElementById("totalPrice").textContent = total;
+		document.getElementById("finalTicTok").textContent = 0;
+	}else if(isNaN(TicTok)==true){
+		document.getElementById("useTicTok").value=0;
+		document.getElementById("finalTicTok").textContent = 0;
 	}else{
 		document.getElementById("totalPrice").textContent = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		document.getElementById("finalTicTok").textContent = TicTok.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 }
 
@@ -64,6 +72,9 @@ function order(){
 	var roadAddress = document.getElementById("memRoadAddress");
 	var message = document.getElementById("deliveryMessage");
 	var tictok = document.getElementById("useTicTok");
+	var agree1 = document.getElementById("agree1");
+	var agree2 = document.getElementById("agree2");
+	var agree3 = document.getElementById("agree3");
 	//배송정보 이름 유효성 검사
 	if(name.value==""){
 		alert("배송정보의 이름을 입력해주세요.");
@@ -92,9 +103,15 @@ function order(){
 	}else if(0<tictok.value && tictok.value<1000){
 		alert("TicTok은 1,000부터 사용이 가능합니다.");
 		tictok.focus();
+	}else if(agree1.checked==false){
+		alert("약관 동의를 모두 체크해주세요.");
+	}else if(agree2.checked==false){
+		alert("약관 동의를 모두 체크해주세요.");
+	}else if(agree3.checked==false){
+		alert("약관 동의를 모두 체크해주세요.");
 	}
 	//결제 방법 유효성 검사
-	if(paymentMethod==""){
+	else if(paymentMethod==""){
 		alert("결제 방법을 선택해주세요.");
 	}else if(paymentMethod=="card"){
 		var card1 = document.getElementById("cardNum1").value;
@@ -158,9 +175,8 @@ function order(){
 		}else{
 			document.BuyForm.submit();
 		}
-	}
 	//실시간 계좌이체
-	else if(paymentMethod=="accountTransfer"){
+	}else if(paymentMethod=="accountTransfer"){
 		var accountNumber = document.getElementById("accountNumber").value;
 		var bank = document.getElementById("bank").value;
 		var pass = document.getElementById("accountPass").value;
@@ -281,4 +297,21 @@ function maxLengthCheck(object){
     if (object.value.length >= object.maxLength){
     	object.value = object.value.slice(0, object.maxLength);
     }    
+}
+//모두 동의 누를 때
+function allCheck(){
+	
+	var agreeAll = document.getElementById("agreeAll");
+	var agree1 = document.getElementById("agree1");
+	var agree2 = document.getElementById("agree2");
+	var agree3 = document.getElementById("agree3");
+	if(agreeAll.checked==true){
+		agree1.checked = true;
+		agree2.checked = true;
+		agree3.checked = true;
+	}else{
+		agree1.checked = false;
+		agree2.checked = false;
+		agree3.checked = false;
+	}
 }

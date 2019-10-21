@@ -165,6 +165,12 @@
 				<div>
 					<p>전화번호</p>  <%=memberDTO.getMemPhone() %>
 				</div>
+				<div>
+					<p>우편 번호</p> 	<%=memberDTO.getMemPostcode() %>
+				</div>
+				<div>
+					<p>주소</p> <%=memberDTO.getMemRoadAddress() %>
+				</div>
 				<!--  패드백#1 :주소,주소는 반드시 넣어야 뒤에꺼랑 비교할수 있을것 같음 -->
 			</div>
 	 		<!-- 배송정보 -->
@@ -211,7 +217,6 @@
 					<hr>
 					<div>
 					<p>상품명</p> <%=productTitle %>
-					<!-- 피트백#2 상품명 출력할수 있으면 전부 다 출력하기 칸이 살짝 남아서 있어도 될것 같음-->
 					</div>
 				<input type="hidden" name="productTitle" value="<%=productTitle %>">
 				
@@ -224,21 +229,26 @@
 					<p>사용할 TicTok</p>  <input type="number"
 										 id="useTicTok"
 										 name="useTicTok"
-										 value="0" 
-										 onchange="totalPriceCul(this.value,'<%=total%>','<%=memberDTO.getMemPoint()%>',)TicTok"
+										 value="0"
+										 onkeyup="totalPriceCul(this.value,'<%=total%>','<%=memberDTO.getMemPoint()%>')"
+										 onkeydown="totalPriceCul(this.value,'<%=total%>','<%=memberDTO.getMemPoint()%>')"
+										 onchange="totalPriceCul(this.value,'<%=total%>','<%=memberDTO.getMemPoint()%>')"
 								  >
 					<!--피드백#3 사용한 포인트 넣기 [원래가격-사용한가격=최종가격]을 넣는게 좋을것 같아서 추천해봄 -->
 					<input type="button" value="전부 사용" onclick="allTicTok('<%=memberDTO.getMemPoint()%>','<%=total%>')"><br>
 						<!--피드백#4 포인트를 전부 사용시 원 표기가 사라짐-->
 					<font size="2px" color="gray">포인트는 1000TicTok부터 사용이 가능합니다.</font>
+					<br>
+					<p>사용 TicTok</p> <font color="red"><span id="finalTicTok">0</span><span> TicTok</span></font>
 					<img alt="빼기" src="./img/equers.png" width="30px">
 				</div>
 				<div>
 					<font size="6" color="red"> <p>최종가격</p> <span id="totalPrice">
-								<%=df.format(total) %>원
-							</span></font><br>
+								<%=df.format(total) %>
+								
+							</span><span> 원</span></font><br>
 					<input type="hidden" name="totalPrice" value="<%=total%>">
-					<font size="6"> <p>적립 TicTok</p> <%=df.format(TicTok) %> TicTok</font>
+					<font size="6" color="red"> <p>적립 TicTok</p> <%=df.format(TicTok) %> TicTok</font>
 					<input type="hidden" name="TicTok" value="<%=TicTok%>">
 				</div>
 			</div>
@@ -249,7 +259,7 @@
 			고객님께서는 아래 내용에 대하여 동의를 거부하실 수 있으며, 거부시 상품 배송, CS가 제한됩니다.제공받는자	[(주)다난기술]	목적	주문상품의 배송(예약), 고객상담 및 불만처리 항목, 성명, 주소, 연락처(안심번호 적용 시 연락처는 제외), 개인통관고유부호(선택시), 현관비밀번호(입력시)
 			보유기간:구매확정 후 3개월까지
 			</textarea>
-			<p><input type="checkbox" name = "agree"> 개인정보 판매자 제공에 동의합니다.</p>
+			<p><input type="checkbox" id="agree1" name = "agree"> 개인정보 판매자 제공에 동의합니다.</p>
 		</div>
 		<div>
 			<textarea readonly="readonly" cols="50" rows="4" style="resize: none;">
@@ -262,7 +272,7 @@
 			이용계약(이용약관)이 존속중인 탈퇴하지 않은 회원의 경우 보유기간은 보존의무기간 이상 보관할 수 있으며 이 기간이 경과된 기록에 대해서 파기요청이 있는 경우 파기함
 			결제수단에 따른 개인정보 수집.이용 항목이 상이할 수 있음
 			</textarea>
-			<p><input type="checkbox" name = "agree"> 개인정보 수집 및 이용에 동의합니다.</p>
+			<p><input type="checkbox" id="agree2" name = "agree"> 개인정보 수집 및 이용에 동의합니다.</p>
 		</div>
 		<div>
 			<textarea readonly="readonly" cols="50" rows="4" style="resize: none;">
@@ -270,9 +280,11 @@
 			이용계약(이용약관)이 존속중인 탈퇴하지 않은 회원의 경우 보유기간은 보존의무기간 이상 보관할 수 있으며 이 기간이 경과된 기록에 대해서 파기요청이 있는 경우 파기함
 			결제수단에 따른 개인정보 수집.이용 항목이 상이할 수 있음
 			</textarea>
-			<p><input type="checkbox" name = "agree"> 주문 상품정보 확인 및 동의합니다.</p>
+			<p><input type="checkbox" id="agree3" name = "agree"> 주문 상품정보 확인 및 동의합니다.</p>
 		</div>
-		<center><input type="checkbox" name = "agree"> 위 내용을 확인하였으며 모든 내용에 동의합니다.</center>
+		<center>
+			<input type="checkbox" id="agreeAll" name = "agree" onclick="allCheck()"> 위 내용을 확인하였으며 모든 내용에 동의합니다.
+		</center>
 		</div>
 			<!-- 결제방법 -->
 			<div class="howToBuyProduct">
@@ -281,9 +293,15 @@
 				<hr>
 				<br>
 				<ul>
-					<li><input type="radio" id="check1" name="check" value="card" onclick="buyForm(this.value)"> 신용카드<br></li>
-					<li><input type="radio" id="check2" name="check" value="phoneBank" onclick="buyForm(this.value)"> 휴대폰 결제<br></li>
-					<li><input type="radio" id="check3" name="check" value="accountTransfer" onclick="buyForm(this.value)"> 실시간 계좌이체</li>
+					<li>
+						<input type="radio" id="check1" name="check" value="card" onclick="buyForm(this.value)"> 신용카드<br>
+					</li>
+					<li>
+						<input type="radio" id="check2" name="check" value="phoneBank" onclick="buyForm(this.value)"> 휴대폰 결제<br>
+					</li>
+					<li>
+						<input type="radio" id="check3" name="check" value="accountTransfer" onclick="buyForm(this.value)"> 실시간 계좌이체
+					</li>
 					<input type="hidden" id="paymentMethod" name="paymentMethod" value="">
 				</ul>
 			</div>
@@ -302,10 +320,11 @@
 				<!-- 카드 결제 폼 -->
 				<div>
 					<div>
-						<p>카드번호</p>  <input type="number" id="cardNum1" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
-							   <input type="password" id="cardNum2" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
-							   <input type="password" id="cardNum3" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
-							   <input type="number" id="cardNum4" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
+						<p>카드번호</p>
+							<input type="number" id="cardNum1" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
+							<input type="password" id="cardNum2" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
+							<input type="password" id="cardNum3" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
+							<input type="number" id="cardNum4" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
 					</div>
 					<div>
 						<p>카드 유효기간</p> <input type="number"
@@ -326,21 +345,22 @@
 						<p>카드 비밀번호</p> <input type="password" id="cardPass" maxlength="2" placeholder="**">**
 					</div>
 					<div>
-						<p>지불 방법</p> <select class="installments" id="installments" name="installments">
-									<option value="0" selected>일시불</option>
-									<option value="1">1개월</option>
-									<option value="2">2개월</option>
-									<option value="3">3개월</option>
-									<option value="4">4개월</option>
-									<option value="5">5개월</option>
-									<option value="6">6개월</option>
-									<option value="7">7개월</option>
-									<option value="8">8개월</option>
-									<option value="9">9개월</option>
-									<option value="10">10개월</option>
-									<option value="11">11개월</option>
-									<option value="12">12개월</option>
-								</select>
+						<p>지불 방법</p> 
+							<select class="installments" id="installments" name="installments">
+								<option value="0" selected>일시불</option>
+								<option value="1">1개월</option>
+								<option value="2">2개월</option>
+								<option value="3">3개월</option>
+								<option value="4">4개월</option>
+								<option value="5">5개월</option>
+								<option value="6">6개월</option>
+								<option value="7">7개월</option>
+								<option value="8">8개월</option>
+								<option value="9">9개월</option>
+								<option value="10">10개월</option>
+								<option value="11">11개월</option>
+								<option value="12">12개월</option>
+							</select>
 					</div>			
 					<div style="text-align:center; font-size:20px">
 						 <input type="checkbox" id="buyAgreed">구매를 동의합니다.
