@@ -318,7 +318,7 @@
 			<!-- 구매후기 작성 -->
 			<tr>
 				<td>
-					<textarea name = "productReview" id="productReview" onkeyup="productReviewLength()" onfocus="logCheck()" cols="40" rows="8" ></textarea><br>
+					<textarea name = "productReview" id="productReview" maxlength="200" onkeyup="productReviewLength()" onfocus="logCheck()" cols="40" rows="8" ></textarea><br>
 					<span id = "productReviewLength" >현재 문자 길이 0/200</span>
 					<select name = "score" id= "score">
 						<option value="5" checked>★★★★★</option>
@@ -384,11 +384,31 @@
 						작성일 : <%=sf.format(reviewDTO.getReg_date())+"      "%><br>
 <%					
 						//session.getAttribute("member") != null 이게 없으면 널 포인트 에러 뜸(memberDTO.getMemId() 이게 null 이기 때문)
-						if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(reviewDTO.getMemId()) ||memberDTO.getMemAdmin() == 1)){
+						if(session.getAttribute("member") != null && (memberDTO.getMemId().equals(reviewDTO.getMemId()) ||memberDTO.getMemAdmin() >= 1)){
 %>						
 							
-							<input type="button" id="modify"   name="modify" value="수정" onclick="reviewModifyForm('<%=reviewDTO.getNum()%>','<%=reviewDTO.getProductCode()%>','<%=sort%>','<%=pageNum%>')">
-							<input type="button" id="delete"   name="delete" value="삭제" onclick="reviewDelete('<%=memberDTO.getMemId() %>','<%=reviewDTO.getNum() %>','<%=sort%>','<%=pageNum%>','<%=reviewDTO.getProductCode()%>')"><br>
+							<input type="button" 
+								   id="modify"
+								   name="modify"
+								   value="수정"
+								   onclick="reviewModifyForm('<%=reviewDTO.getNum()%>',
+								   							 '<%=reviewDTO.getProductCode()%>',
+								   							 '<%=sort%>',
+								   							 '<%=pageNum%>'
+								   							 )"
+							>
+							<input type="button"
+								   id="delete"
+								   name="delete"
+								   value="삭제"
+								   onclick="reviewDelete('<%=memberDTO.getMemId() %>',
+								   						 '<%=reviewDTO.getNum() %>',
+								   						 '<%=sort%>',
+								   						 '<%=pageNum%>',
+								   						 '<%=reviewDTO.getProductCode()%>'
+								   						 )"
+							>
+							<br>
 <%
 						}
 %>						

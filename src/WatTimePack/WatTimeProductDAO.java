@@ -66,7 +66,8 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductMainManList() {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' and productVolume>0 order by productOrder DESC limit 0,8");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'man' and "+
+														   "productVolume>0 order by productOrder DESC limit 0,8");
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
@@ -95,7 +96,8 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductMainWomanList() {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'woman' and productVolume>0 order by productOrder DESC limit 0,8");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productType = 'woman' and "+
+														   "productVolume>0 order by productOrder DESC limit 0,8");
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				do {
@@ -196,7 +198,8 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getProductList(String brand,String type, int start, int end, String sort) {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where brandEng=? and productType like '%"+type+"%' order by "+sort+" limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where brandEng=? and productType like '%"+type+"%'"+
+															" order by "+sort+" limit ?,?");
 			pstmt.setString(1, brand);
 			pstmt.setInt(2, start-1);
 			pstmt.setInt(3, end);
@@ -234,7 +237,8 @@ public class WatTimeProductDAO {
 	public int getSearchProductCount(String searchText) {
 		int searchProductCount = 0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select count(*) from productTbl where productName like '%"+searchText+"%' or brandEng like '%"+searchText+"%' or brandKor like '%"+searchText+"%' or productType like '"+searchText+"'");
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from productTbl where productName like '%"+searchText+"%' or"+
+														   " brandEng like '%"+searchText+"%' or brandKor like '%"+searchText+"%' or productType like '"+searchText+"'");
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				searchProductCount = rs.getInt(1);
@@ -248,7 +252,9 @@ public class WatTimeProductDAO {
 	public List<WatTimeProductDTO> getSearchProductList(String searchText, int start, int end, String sortText) {
 		List<WatTimeProductDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productName like '%"+searchText+"%' or brandEng like '%"+searchText+"%' or brandKor like '%"+searchText+"%' or productType like '"+searchText+"' order by "+sortText+" limit ?,?");
+			PreparedStatement pstmt = con.prepareStatement("select * from productTbl where productName like '%"+searchText+"%' or "+
+														   "brandEng like '%"+searchText+"%' or brandKor like '%"+searchText+"%' or "+
+														   "productType like '"+searchText+"' order by "+sortText+" limit ?,?");
 			pstmt.setInt(1, start-1);
 			pstmt.setInt(2, end);
 			ResultSet rs = pstmt.executeQuery();

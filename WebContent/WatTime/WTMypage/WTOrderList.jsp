@@ -387,14 +387,17 @@
 <%
 								}else if(orderDTO.getOrderStatus().equals("배송 완료")){
 %>
-									<br><input type="button" 
+									<br>
+									<font size="2px" color="red">*배송 완료일로부터 7일 후 자동으로 구매 확정이 됩니다.</font>
+									<br>
+									<input type="button" 
 											   value="구매 확정"
 											   onclick="radioclick(this.value,
 											   					   this.id,
 											   					   '<%=pageNum%>',
 											   					   '<%=startDateFormat%>',
 											   					   '<%=endDateFormat%>')"
-										>
+									>
 <%
 								}
 							}

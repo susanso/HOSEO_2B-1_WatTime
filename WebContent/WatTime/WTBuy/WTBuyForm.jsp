@@ -408,6 +408,7 @@
 						<option selected>SKT</option>
 						<option>KT</option>
 						<option>U+</option>
+						<option>알뜰폰</option>
 					</select>
 				</div>
 				<!-- 전화번호 -->

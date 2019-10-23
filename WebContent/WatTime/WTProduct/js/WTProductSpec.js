@@ -80,10 +80,20 @@ function countChange(price,count,volume){
 function productReviewLength(){
 	var productReview = document.getElementById("productReview").value;
 	document.getElementById("productReviewLength").textContent= "현재 문자 길이 "+productReview.length+"/200";
+	
+	if(productReview.length>200){
+		alert("최대 길이를 초과했습니다.");
+		event.returnValue = false;
+	}
 }
 function productReviewLengthRe(){
 	var productReview = document.getElementById("productReviewRe").value;
 	document.getElementById("productReviewLengthRe").textContent= "현재 문자 길이 "+productReview.length+"/200";
+	
+	if(productReview.length>200){
+		alert("최대 길이를 초과했습니다.");
+		event.returnValue = false;
+	}
 }
 //유효성 검사
 function reviewCheck(){
