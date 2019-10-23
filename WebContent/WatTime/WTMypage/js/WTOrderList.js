@@ -167,9 +167,8 @@ function radioclick(value,orderNum,pageNum,startDate,endDate){
 	
 	form.submit();
 }
-function orderCancle(value,orderNum,pageNum,startDate,endDate){
+function orderCancle(value,orderNum,pageNum,startDate,endDate,TicTok){
 	var result = confirm("결제 취소를 하시겠습니까?");
-	
 	if(result == true){
 		var orderStatus = document.getElementById("orderStatusSelect");
 		if(orderStatus==null){
@@ -216,6 +215,12 @@ function orderCancle(value,orderNum,pageNum,startDate,endDate){
 		hiddenField.setAttribute("type", "hidden");
 		hiddenField.setAttribute("name", "orderStatusRadio");
 		hiddenField.setAttribute("value", orderStatus);
+		form.appendChild(hiddenField);
+		
+		hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "TicTok");
+		hiddenField.setAttribute("value", TicTok);
 		form.appendChild(hiddenField);
 		
 		document.body.appendChild(form);

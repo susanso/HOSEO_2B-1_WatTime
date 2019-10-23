@@ -118,7 +118,7 @@ function order(){
 		var card2 = document.getElementById("cardNum2").value;
 		var card3 = document.getElementById("cardNum3").value;
 		var card4 = document.getElementById("cardNum4").value;
-		var check = document.getElementById("buyAgreed");
+		//var check = document.getElementById("buyAgreed");
 		var cardPass = document.getElementById("cardPass").value;
 		var year = document.getElementById("cardYear").value;
 		var month = document.getElementById("cardMonth").value;
@@ -170,9 +170,9 @@ function order(){
 			document.getElementById("cardPass").focus();
 		}
 		//결제 동의 체크 안했을 때
-		else if(check.checked==false){
+		/*else if(check.checked==false){
 			alert("결제 동의에 체크해주세요.");
-		}else{
+		}*/else{
 			document.BuyForm.submit();
 		}
 	//실시간 계좌이체
