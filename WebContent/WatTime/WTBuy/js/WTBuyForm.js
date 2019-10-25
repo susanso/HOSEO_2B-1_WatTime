@@ -114,6 +114,7 @@ function order(){
 	else if(paymentMethod==""){
 		alert("결제 방법을 선택해주세요.");
 	}else if(paymentMethod=="card"){
+		var bank = document.getElementById("bank").value;
 		var card1 = document.getElementById("cardNum1").value;
 		var card2 = document.getElementById("cardNum2").value;
 		var card3 = document.getElementById("cardNum3").value;
@@ -169,11 +170,44 @@ function order(){
 			alert("카드 비밀번호를 다시 입력해주세요.");
 			document.getElementById("cardPass").focus();
 		}
-		//결제 동의 체크 안했을 때
-		/*else if(check.checked==false){
-			alert("결제 동의에 체크해주세요.");
-		}*/else{
-			document.BuyForm.submit();
+		else{
+			//각 분리된 카드 번호 합치기
+			var cardNum = ""+card1+card2+card3+card4;
+			//배열 선언
+			var cardArray = new Array();
+			var sumNum = 0;
+			var checkNum = 0;
+			//배열에 값 넣기
+			for(i=0;i<15;i++){
+				//짝수번호일 경우 
+				if(i%2==0){
+					var overNumb = parseInt(cardNum.substr(i,1))*2;
+					//곱한 값이 10이 넘을 경우
+					if(overNumb>=10){
+						cardArray[i] = parseInt(overNumb.toString().substr(0,1))+
+									   parseInt(overNumb.toString().substr(1,1));
+					}else{
+						cardArray[i] = overNumb;
+					}
+				}
+				//홀수번호일 경우
+				else{
+					cardArray[i] = parseInt(cardNum.substr(i,1))*1;
+				}
+				sumNum = sumNum + cardArray[i];
+			}
+			//체크 번호 구하기
+			if(sumNum>=10){
+				checkNum = 10 - parseInt(sumNum.toString().substr(1,1));
+			}else if(sumNum>=100){
+				checkNum = 10 - sumNum.toString().substr(2,1);
+			}
+			//카드번호 마지막과 체크 번호와 일치하는지 검사
+			if(checkNum!=parseInt(cardNum.substr(15,1))){
+				alert("카드번호가 잘못되었습니다.");
+			}else{
+				document.BuyForm.submit();
+			}
 		}
 	//실시간 계좌이체
 	}else if(paymentMethod=="accountTransfer"){
@@ -217,12 +251,21 @@ function order(){
 	}
 	//핸드폰 결제
 	else if(paymentMethod=="phoneBank"){
-		var phoneNum = document.getElementById("phoneNum").value;
+		var phone1 = document.getElementById("phoneNum1").value;
+		var phone2 = document.getElementById("phoneNum2").value;
+		var phone3 = document.getElementById("phoneNum3").value;
+		var phoneNum = ""+phone1+phone2+phone3;
 		var phoneName = document.getElementById("phoneName").value;
 		var phoneBirth = document.getElementById("phoneBirth").value;
 		var nameCheck = /^[가-힣]+$/;
 		var phoneCheck = /(01[0|1|6|9|7])(\d{3}|\d{4})(\d{4}$)/g;
 		var birthCheck = /^[0-9]+$/;
+		var year = Number(phoneBirth.substr(0,4)); 
+	    var month = Number(phoneBirth.substr(4,2));
+	    var day = Number(phoneBirth.substr(6,2));
+	    var today = new Date(); // 날짜 변수 선언
+	    var yearNow = today.getFullYear();
+	    var adultYear = yearNow-20;
 	    
 	    if(phoneNum == ""){
 			alert("전화번호를 입력해주세요.");
@@ -254,10 +297,53 @@ function order(){
 		}else if(phoneBirth.length >= 9){
 			alert("날짜 형식이 아닙니다.");
 			document.getElementById("phoneBirth").focus();
+		}else if (year < 1900 || year > adultYear){
+	    	alert("년도를 확인하세요. "+adultYear+"년생 이전 출생자만 가능합니다.");
+	    	document.getElementById("phoneBirth").focus();
+	    }else if (month < 1 || month > 12) { 
+	    	alert("월은 1월부터 12월까지 입력 가능합니다.");
+	    	document.getElementById("phoneBirth").focus();
+		}else if(day < 1 || day > 31) {
+			alert("일은 1일부터 31일까지 입력가능합니다.");
+			document.getElementById("phoneBirth").focus();
+		}else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+			alert(month+"월은 31일이 존재하지 않습니다.");
+			document.getElementById("phoneBirth").focus();
+		}else if (month == 2) {
+			var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+			if (day>29 || (day==29 && !isleap)) {
+				alert(year + "년 2월은  " + day + "일이 없습니다.");
+				document.getElementById("phoneBirth").focus();
+			}
 		}else{
 			document.BuyForm.submit();
 		}
-	    
+	}
+}
+//자동 넘어가기
+function nextPhoneNum(){
+	var phone1 = document.getElementById("phoneNum1").value;
+	var phone2 = document.getElementById("phoneNum2").value;
+	var phone3 = document.getElementById("phoneNum3").value;
+	
+	if(isNaN(phone1)==true){
+		document.getElementById("phoneNum1").value = "";
+	}else if(phone1.length>=3){
+		document.getElementById("phoneNum2").focus();
+	}else{
+		document.getElementById("phoneNum1").focus();
+	}
+	
+	if(isNaN(phone2)==true){
+		document.getElementById("phoneNum2").value = "";
+	}else if(phone2.length>=4){
+		document.getElementById("phoneNum3").focus();
+	}
+	
+	if(isNaN(phone3)==true){
+		document.getElementById("phoneNum3").value = "";
+	}else if(phone3.length>=4){
+		document.getElementById("phoneNum3").blur();
 	}
 }
 
@@ -313,5 +399,50 @@ function allCheck(){
 		agree1.checked = false;
 		agree2.checked = false;
 		agree3.checked = false;
+	}
+}
+
+function cardNum(){
+	//카드 번호 가져오기
+	var card1 = document.getElementById("cardNum1").value;
+	var card2 = document.getElementById("cardNum2").value;
+	var card3 = document.getElementById("cardNum3").value;
+	var card4 = document.getElementById("cardNum4").value;
+	//각 분리된 카드 번호 합치기
+	var cardNum = ""+card1+card2+card3+card4;
+	//배열 선언
+	var cardArray = new Array();
+	var sumNum = 0;
+	var checkNum = 0;
+	//배열에 값 넣기
+	for(i=0;i<15;i++){
+		//짝수번호일 경우 
+		if(i%2==0){
+			var overNumb = parseInt(cardNum.substr(i,1))*2;
+			//곱한 값이 10이 넘을 경우
+			if(overNumb>=10){
+				cardArray[i] = parseInt(overNumb.toString().substr(0,1))+
+							   parseInt(overNumb.toString().substr(1,1));
+			}else{
+				cardArray[i] = overNumb;
+			}
+		}
+		//홀수번호일 경우
+		else{
+			cardArray[i] = parseInt(cardNum.substr(i,1))*1;
+		}
+		sumNum = sumNum + cardArray[i];
+	}
+	//체크 번호 구하기
+	if(sumNum>=10){
+		checkNum = 10 - parseInt(sumNum.toString().substr(1,1));
+	}else if(sumNum>=100){
+		checkNum = 10 - parseInt(sumNum.toString().substr(2,1));
+	}
+	//카드번호 마지막과 체크 번호와 일치하는지 검사
+	if(checkNum!=parseInt(cardNum.substr(15,1))){
+		alert("카드번호 아님");
+	}else{
+		alert("일치");
 	}
 }

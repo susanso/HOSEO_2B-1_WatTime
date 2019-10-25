@@ -11,7 +11,7 @@ public class WatTimeBasketDAO {
 	//장바구니 넣기
 	public void setBasket(WatTimeBasketDTO basketDTO) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("insert into basketTbl(productCode,productName,memId,memName"
+			PreparedStatement pstmt = con.prepareStatement("insert into baskettbl(productCode,productName,memId,memName"
 					+",productSimpleImgFileName,productPrice,productCount,basketAddDate,tictok) values(?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, basketDTO.getProductCode());
 			pstmt.setString(2, basketDTO.getProductName());
@@ -31,7 +31,7 @@ public class WatTimeBasketDAO {
 	public int getBasketOverlapCheck(String memId,String productCode) {
 		int basketOverlapCheckCount = 0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select count(*) from basketTbl where memId = ? and productCode = ?");
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from baskettbl where memId = ? and productCode = ?");
 			pstmt.setString(1, memId);
 			pstmt.setString(2, productCode);
 			ResultSet rs = pstmt.executeQuery();
@@ -47,7 +47,7 @@ public class WatTimeBasketDAO {
 	public int getBasketListCount(String memId) {
 		int basketCount = 0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select count(*) from basketTbl where memId = ?");
+			PreparedStatement pstmt = con.prepareStatement("select count(*) from baskettbl where memId = ?");
 			pstmt.setString(1, memId);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -62,7 +62,7 @@ public class WatTimeBasketDAO {
 	public List<WatTimeBasketDTO> getMemberBasketList(String memId) {
 		List<WatTimeBasketDTO> list = new ArrayList<>();
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from basketTbl where memId = ? order by basketAddDate DESC");
+			PreparedStatement pstmt = con.prepareStatement("select * from baskettbl where memId = ? order by basketAddDate DESC");
 			pstmt.setString(1, memId);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -90,7 +90,7 @@ public class WatTimeBasketDAO {
 	//장바구니 구매 수량 변경
 	public void setProductCountModify(String memId, int num, int productCount) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("UPDATE basketTbl SET productCount="+productCount+" WHERE num=? and memId=?");
+			PreparedStatement pstmt = con.prepareStatement("update baskettbl set productCount="+productCount+" WHERE num=? and memId=?");
 			pstmt.setInt(1, num);
 			pstmt.setString(2, memId);
 			pstmt.executeUpdate();
@@ -101,7 +101,7 @@ public class WatTimeBasketDAO {
 	//장바구니 모두 삭제
 	public void setBasketAllDelete(String memId) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("delete from basketTbl where memId = ?");
+			PreparedStatement pstmt = con.prepareStatement("delete from baskettbl where memId = ?");
 			pstmt.setString(1, memId);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -111,7 +111,7 @@ public class WatTimeBasketDAO {
 	//장바구니 하나 삭제
 	public void setBasketOneDelete(String memId, int num) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("delete from basketTbl where memId = ? and num = ?");
+			PreparedStatement pstmt = con.prepareStatement("delete from baskettbl where memId = ? and num = ?");
 			pstmt.setString(1, memId);
 			pstmt.setInt(2, num);
 			pstmt.executeUpdate();
@@ -119,10 +119,10 @@ public class WatTimeBasketDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	//orderProductTbl에 insert 후 해당 아이디 장바구니 비우기
+	//orderProducttbl에 insert 후 해당 아이디 장바구니 비우기
 	public void setDeleteBasket(WatTimeBasketDTO basketDTO) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("delete from basketTbl where memId=? and memName=? and productName=?");
+			PreparedStatement pstmt = con.prepareStatement("delete from baskettbl where memId=? and memName=? and productName=?");
 			pstmt.setString(1, basketDTO.getMemId());
 			pstmt.setString(2, basketDTO.getMemName());
 			pstmt.setString(3, basketDTO.getProductName());
@@ -135,7 +135,7 @@ public class WatTimeBasketDAO {
 	public int getBasketCount(String memId,int num) {
 		int basketCount = 0;
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
-			PreparedStatement pstmt = con.prepareStatement("select * from basketTbl where memId = ? and num=?");
+			PreparedStatement pstmt = con.prepareStatement("select * from baskettbl where memId = ? and num=?");
 			pstmt.setString(1, memId);
 			pstmt.setInt(2, num);
 			ResultSet rs = pstmt.executeQuery();

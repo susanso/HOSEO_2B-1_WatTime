@@ -311,7 +311,7 @@
 			<div id="cardForm" class="cardForm">
 				<!-- 은행 선택 -->
 				<div>
-					<p>은행 선택 </p> <select name="bank">
+					<p>은행 선택 </p> <select id="bank" name="bank">
 								 <option value="신한">신한</option>
 								 <option value="우리">우리</option>
 								 <option value="농협">농협</option>
@@ -322,10 +322,10 @@
 				<div>
 					<div>
 						<p>카드번호</p>
-							<input type="number" id="cardNum1" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
-							<input type="password" id="cardNum2" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
-							<input type="password" id="cardNum3" name="serialNumber" maxlength="4" onkeydown="maxLengthCheck(this)">
-							<input type="number" id="cardNum4" name="serialNumber" maxlength="3" onkeydown="maxLengthCheck(this)">
+							<input type="number" id="cardNum1" name="serialNumber" maxlength="3" onkeyup="maxLengthCheck(this)">
+							<input type="password" id="cardNum2" name="serialNumber" maxlength="4" onkeyup="maxLengthCheck(this)">
+							<input type="password" id="cardNum3" name="serialNumber" maxlength="4" onkeyup="maxLengthCheck(this)">
+							<input type="number" id="cardNum4" name="serialNumber" maxlength="3" onkeyup="maxLengthCheck(this)">
 					</div>
 					<div>
 						<p>카드 유효기간</p> <input type="number"
@@ -363,6 +363,7 @@
 								<option value="12">12개월</option>
 							</select>
 					</div>			
+					<!-- <input type="button" value="카드 번호 유효성 검사" onclick="cardNum()"> -->
 					<!-- <div style="text-align:center; font-size:20px">
 						 <input type="checkbox" id="buyAgreed">구매를 동의합니다.
 					</div> -->
@@ -389,14 +390,11 @@
 						<p>계좌 비밀번호</p> <input type="password" id="accountPass" maxlength="2" placeholder="**">**
 					</div>
 					<div>
-					<p>	예금주 </p><input type="text" id="accountName" value="<%=memberDTO.getMemName() %>">
+					<p>	예금주 </p><input type="text"
+										id="accountName"
+										value="<%=memberDTO.getMemName() %>"
+										style="width:150px;">
 					</div>
-					<!-- <div style="text-align:center;">
-						<font color="red" size="5px">입금 가능 계좌</font><br>
-						<font color="red" size="4px">국민  111-25-8585-997</font><br>
-						<font color="red" size="4px">신한  110-222-252525</font><br>
-						<font color="red" size="4px">IBK 411-255-85-302</font><br>
-					</div> -->
 				</div>
 			</div>
 			<!-- 휴대폰 결제 -->
@@ -404,16 +402,35 @@
 				<!-- 통신사 -->
 				<div>
 				<p>통신사</p>
-					<select>
+					<select style="width:150px">
 						<option selected>SKT</option>
 						<option>KT</option>
 						<option>U+</option>
-						<option>알뜰폰</option>
+						<option>알뜰폰(SKT)</option>
+						<option>알뜰폰(KT)</option>
+						<option>알뜰폰(U+)</option>
 					</select>
 				</div>
 				<!-- 전화번호 -->
 				<div>
-					<p>전화번호</p> <input type="number" id="phoneNum" name="phoneNum" placeholder="전화번호(-없이)">
+					<p>전화번호</p> <input type="text"
+										 id="phoneNum1"
+										 name="phoneNum1"
+										 maxlength="3"
+										 onkeyup="nextPhoneNum()"
+										 style="width:100px"> - 
+								 <input type="text"
+										id="phoneNum2"
+										name="phoneNum2"
+										maxlength="4"
+										onkeyup="nextPhoneNum()"
+										style="width:100px"> -
+								 <input type="text"
+								 		id="phoneNum3"
+								 		name="phoneNum3"
+								 		maxlength="4"
+								 		onkeyup="nextPhoneNum()"
+								 		style="width:100px">
 				</div>
 				<!-- 이름 -->
 				<div>

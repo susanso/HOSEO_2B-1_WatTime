@@ -13,26 +13,6 @@
 <script src="WTProduct/js/WTProduct.js"></script>
 <script src="../code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 최신버전 제이쿼리 -->
-<!-- <script>
-	
-	$(function() {
-		  $("#newProduct").click(function() {
-		   var allData = "select * from productTbl order by productAddDate DESC limit 0,5";
-		   alert(allData);
-		   $.ajax({
-		    type : "POST",
-		    //dataType: "json",
-		    dataType : "text",
-		    url : "../servlet.WatTimeProductServlet",
-		    data : {"sql": allData},
-		    success : function(data) {
-		     alert(data);
-		    }
-		   });
-		  });
-		 });
-</script>
- -->
 </head>
 <%
 	DecimalFormat df = new DecimalFormat("#,###");
@@ -189,7 +169,7 @@
 						
 							<div class="slideManClass" id="">
 								<p>
-									<a href="#" onclick="productSpec(<%=productDTO.getProductCode()%>)">
+									<a href="#" onclick="productSpec('<%=productDTO.getProductCode()%>')">
 										<img alt="시계사진" src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>">
 									</a>
 									<br>

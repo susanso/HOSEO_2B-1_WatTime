@@ -4,7 +4,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href = "style.css	" rel = "stylesheet" type = "text/css">
-<script src="WTBuy/js/WTBuyForm.js"></script>
 <title>WatTime</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -43,8 +42,6 @@
 	<div>
 		<jsp:include page="chatbot.jsp" flush="false"/>
 	</div>
-	
-	
 	<script> 
 		$( document ).ready( function() {
 			var jbOffset = $( '.subTopBarBody' ).offset();
@@ -58,5 +55,4 @@
 		} );
 	</script>
 </body>
-
 </html>
