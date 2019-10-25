@@ -189,13 +189,12 @@ textarea{
    width: 100%;
    margin-top :20px;
    border: 1px solid #ccc;
-   padding:8px 8px 8px 8px;
 }
 .singleText{
-   height: 40px;
-   padding:8px 8px 8px 8px;
-   border:none;
-   width:100%;
+     padding: 8px 8px 0px 8px;
+    height: 40px;
+    border: none;
+    width: 400px;
 }
 .memList .idText{
    height: 40px;
@@ -204,26 +203,25 @@ textarea{
    width:80%;
 }
 .memList  .postText{
-   height: 40px;
-   padding:8px 8px 8px 8px;
-   border:none;
-   border-bottom:1px solid #ccc;
-   width:40%;
+     height: 40px;
+    padding: 8px 8px 8px 8px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 400px;
 }
 .inputText{
-   height: 40px;
-   padding:8px 8px 8px 8px;
-   border:none;
-   border-bottom:1px solid #ccc;
-   width:100%;
+  padding: 8px 8px 8px 8px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 400px;
 }
 .passInputText{
-   height: 40px;
-   padding:8px 8px 8px 8px;
-   border-bottom:1px solid #ccc;
-   border:none;
-   width:100%;
-   margin-bottom:8px 0px 8px 0px;
+  height: 40px;
+    padding: 0px 0px 0px 8px;
+    border-bottom: 1px solid #ccc;
+    border: none;
+    width: 99%;
 }
 .checkBtn{
    background-color: black;
@@ -243,10 +241,8 @@ textarea{
 }
 
 .join{
-   
    margin: auto;
    width: 100%;
-   padding: 10px;
 }
 .join .btn {
      background-color: black; 
@@ -259,8 +255,6 @@ textarea{
    border-radius:8px;
    width: 100%;
     margin-top:1%;
-    margin-left: 4px;
-    margin-right: 4px;
 }
 .addressForm{
    padding-top:8px;
@@ -1378,7 +1372,7 @@ height:50px;
 	width: 160px;
     display: inline-block;
 }
-#memRoadAddress{
+.finalBuyUserInfo #memRoadAddress{
 	width: 380px;
     margin-left: 165px;
     margin-top: 10px;
@@ -1631,6 +1625,7 @@ font-size: 20px;
 }
 
 .productLi{
+	min-height:400px;
 	text-align:center;
 	margin: 10px 0 0 10px;
     border: 1px solid #ccc;

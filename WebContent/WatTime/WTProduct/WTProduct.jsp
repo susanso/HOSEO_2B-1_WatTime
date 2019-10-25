@@ -137,7 +137,7 @@
 			//해당 상품 재고가 없을 때
 			if(productDTO.getProductVolume()==0){
 %>
-				<div><a onclick="productSpec('<%=productDTO.getProductCode()%>')"><font style="font-size:24px; margin: 8px 0px 7px 0px; display: inline-block;">상품 준비중</font></a></div>
+				<div><a onclick="productSpec('<%=productDTO.getProductCode()%>')"><font style="font-size:24px; margin: 6px 0px 11px 0px; display: inline-block;">상품 준비중</font></a></div>
 <%
 			//재고가 있을 때
 			}else{

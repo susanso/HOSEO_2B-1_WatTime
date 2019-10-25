@@ -12,7 +12,7 @@
 </head>
 <body id="modal">
 <%
-	//컨텐트 부분에 바뀔 jsp을 넣는 변수
+	    //컨텐트 부분에 바뀔 jsp을 넣는 변수
        String content = request.getParameter("pageChange");
 		//메인 초기
        if (content == null) {

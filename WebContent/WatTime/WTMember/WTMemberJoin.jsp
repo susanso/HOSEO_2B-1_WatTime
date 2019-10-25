@@ -32,9 +32,13 @@
 				</div>
 				<!-- 패스워드 -->
 				<div class="memList">
-					<div><input class="passInputText" type="password" id="memPass" name="memPass" value="" placeholder="패스워드(영문,숫자,특수문자 조합 8~25자)" onblur="passCheck()" required></div>
+					<div style="border-bottom: 1px solid #ccc;">
+						<input class="passInputText" type="password" id="memPass" name="memPass" value="" placeholder="패스워드(영문,숫자,특수문자 조합 8~25자)" onblur="passCheck()" required>
+					</div>
 				<!-- 패스워드 확인 -->
-					<div><input class="passInputText" type="password" id="memPassCheck" name="memPassCheck" value=""  placeholder="패스워드 확인" onblur="passCheck()" required></div>
+					<div style="border-bottom: 1px solid #ccc;">
+						<input class="passInputText" type="password" id="memPassCheck" name="memPassCheck" value=""  placeholder="패스워드 확인" onblur="passCheck()" required>
+					</div>
 					<div><input class="inputText" type="hidden" id="passHidden" name="passHidden" value="no"></div>
 					<div><span class="checkText" id = "passCheckText" style="display:hidden;"></span></div>
 				</div>

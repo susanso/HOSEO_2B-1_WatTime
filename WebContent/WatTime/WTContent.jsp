@@ -11,28 +11,9 @@
 <meta charset="UTF-8">
 <link href = "style.css" rel = "stylesheet" type = "text/css">
 <script src="WTProduct/js/WTProduct.js"></script>
+<script src="WTTop.js"></script>
 <script src="../code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 최신버전 제이쿼리 -->
-<!-- <script>
-	
-	$(function() {
-		  $("#newProduct").click(function() {
-		   var allData = "select * from productTbl order by productAddDate DESC limit 0,5";
-		   alert(allData);
-		   $.ajax({
-		    type : "POST",
-		    //dataType: "json",
-		    dataType : "text",
-		    url : "../servlet.WatTimeProductServlet",
-		    data : {"sql": allData},
-		    success : function(data) {
-		     alert(data);
-		    }
-		   });
-		  });
-		 });
-</script>
- -->
 </head>
 <%
 	DecimalFormat df = new DecimalFormat("#,###");
@@ -125,8 +106,12 @@
 			 </div>
 			 <div id="mainSlideMan">	
 				 <ul id="wattimeContentMan" val="1" mx="5">
-				 	<li id="wattimeContentM1" ><a href="#"><img src="img/wattimeContentM1.jpg" class="slideWatch"/></a></li>
-				 	<li id="wattimeContentM2" ><a href="#"><img src="img/wattimeContentM2.jpg" class="slideWatch"/></a></li>
+				 	<li id="wattimeContentM1" >
+					 	<a onclick="brand(this.name, this.title)" title="" name="VALENTINO RUDY"> 
+					 		<img src="img/wattimeContentM1.jpg" class="slideWatch"/>
+					 	</a>
+				 	</li>
+				 	<li id="wattimeContentM2" ><a href="#" onclick="brand(this.name, this.title)" title="" name="FOCE"> <img src="img/wattimeContentM2.jpg" class="slideWatch"/></a></li>
 				 	<li id="wattimeContentM3" ><a href="#"><img src="img/wattimeContentM3.jpg" class="slideWatch"/></a></li>
 				 	<li id="wattimeContentM4" ><a href="#"><img src="img/wattimeContentM4.jpg" class="slideWatch"/></a></li>
 				 	<li id="wattimeContentM5" ><a href="#"><img src="img/wattimeContentM5.jpg" class="slideWatch"/></a></li>
