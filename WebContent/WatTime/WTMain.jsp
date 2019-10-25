@@ -5,9 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href = "style.css	" rel = "stylesheet" type = "text/css">
 <title>WatTime</title>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </head>
 <body id="modal">
 <%

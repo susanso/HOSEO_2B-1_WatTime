@@ -41,16 +41,11 @@ TID2               스페라
    ㄴ015               ㄴ030
 --------------------------------------------
 */
-
-
-
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
 * {margin:0; padding:0;}
 /*main페이지 출현*/
 #mainTop{width:100%;}
-
 pre{
 	line-height: 1.7em;
     letter-spacing: 0.15em;
@@ -92,41 +87,33 @@ a:hover{
 html{
 	scroll-behavior: smooth;
 }
-
 .mainForm{
    margin: auto;
    padding:0px;
 }
-#top{ background-color : #fff; 
+#top{
+	 background-color : #fff; 
      width:100%; 
      margin: auto;
      height:177px;
-     border-bottom:1px solid gray; }   
+     border-bottom:1px solid gray;
+}   
 .topContent {float:left; width:33%;}
 #logoImg{
       text-align:center;
       margin-top:30px;
 }
-a {
-   text-decoration:none;
+a {text-decoration:none;}
+textarea{resize: none;}
+#topMenu {
+	list-style-type:none;
+	margin:10px 0 0 20px;
+	padding:0; 
+	font-size:14px;
 }
-textarea{
-	resize: none;
-}
-
-#topMenu {list-style-type:none;
-			margin:10px 0 0 20px;
-			padding:0; 
-			font-size:14px;
-}
-
 #topMenu li  {display:inline-block; margin-right:15px;}
-
-#topMenu a {
-   text-decoration:none; color:#333; }
-   
+#topMenu a {text-decoration:none; color:#333;}
 .search {position:relative; right:10px;}
-
 .search input[type=text] {
   position:absolute; top:60px; right:50px;
   padding: 10px;
@@ -136,7 +123,6 @@ textarea{
   width: 250px;
   background: #f1f1f1;
 }
-
 .search button {
   position:absolute; top:60px; right:0px;
   width: 50px;
@@ -148,22 +134,17 @@ textarea{
   border-left: none;
   cursor: pointer;
 }
-
 .search button:hover {
   background: #585b51;
 }
-
 .search::after {
   content: "";
   clear: both;
   display: table;
 }
-
 #subTop{ width:1300px; margin:0 auto; height:auto;}
 .subTopMenu{ margin: 0 30px 0 0;}
-
 .subTopMenu li {font-size:16px}
-
 .title{
     color: #000;
     padding: 7px;
@@ -191,7 +172,7 @@ textarea{
    border: 1px solid #ccc;
 }
 .singleText{
-     padding: 8px 8px 0px 8px;
+    padding: 8px 8px 0px 8px;
     height: 40px;
     border: none;
     width: 400px;
@@ -203,7 +184,7 @@ textarea{
    width:80%;
 }
 .memList  .postText{
-     height: 40px;
+    height: 40px;
     padding: 8px 8px 8px 8px;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -217,7 +198,7 @@ textarea{
     width: 400px;
 }
 .passInputText{
-  height: 40px;
+    height: 40px;
     padding: 0px 0px 0px 8px;
     border-bottom: 1px solid #ccc;
     border: none;
@@ -239,7 +220,6 @@ textarea{
    font-size:12px;
    font-color:red;
 }
-
 .join{
    margin: auto;
    width: 100%;
@@ -254,7 +234,7 @@ textarea{
    font-size: 1vw;
    border-radius:8px;
    width: 100%;
-    margin-top:1%;
+   margin-top:1%;
 }
 .addressForm{
    padding-top:8px;
@@ -329,13 +309,13 @@ textarea{
    font-size: 1vw;
    border-radius:8px;
    width: 80%;
-    margin-top:1%;
-    margin-left: 4px;
-    margin-right: 4px;
+   margin-top:1%;
+   margin-left: 4px;
+   margin-right: 4px;
 }
 /*아이디 찾기/패스워드 찾기*/
 .findForm{
-    margin: auto;
+   margin: auto;
    width: 60%;
    border: 2px solid #ccc;
    padding: 10px;
@@ -353,23 +333,22 @@ textarea{
    font-size: 1vw;
    border-radius:8px;
    width: 30%;
-    margin-left: 4px;
-    margin-right: 4px;
+   margin-left: 4px;
+   margin-right: 4px;
 }
 .findForm .inputContain{
    transform: translate(20%);
 }
 .inputContain .findInputText{
    width:60%;
-    height: 40px;
+   height: 40px;
    padding:8px 8px 8px 8px;
    border:1px solid #ccc;
    font-size:15pt;
-    margin-top:3%;
+   margin-top:3%;
 }
 .findForm .finContain{
    transform: translate(20%);
-    
 }
 .findContain .findBtn{
    background-color: black; 
@@ -381,13 +360,13 @@ textarea{
    font-size: 1vw;
    border-radius:8px;
    width: 30%;
-    margin-top:3%;
-    margin-left: 4px;
-    margin-right: 4px;
+   margin-top:3%;
+   margin-left: 4px;
+   margin-right: 4px;
 }
 /*아이디 찾고 난 후*/
 .resultForm{
-    margin: auto;
+   margin: auto;
    width: 60%;
    border: 2px solid #ccc;
    padding: 10px;
@@ -403,12 +382,10 @@ textarea{
 .resultContain .resultText{
    width:100%;
    font-size:3vw;
-   
 }
 .resultForm .resultBtn{
    transform: translate(20%);
    margin-bottom:2%;
-    
 }
 .resultBtn .nextBtn{
    background-color: black; 
@@ -420,13 +397,13 @@ textarea{
    font-size: 1vw;
    border-radius:8px;
    width: 60%;
-    margin-top:1%;
-    margin-left: 4px;
-    margin-right: 4px;
+   margin-top:1%;
+   margin-left: 4px;
+   margin-right: 4px;
 }
 /*패스워드 찾기 버튼 누른 후*/
 .newPassForm{
-    margin: auto;
+   margin: auto;
    width: 60%;
    border: 2px solid #ccc;
    padding: 10px;
@@ -439,15 +416,14 @@ textarea{
 }
 .inputContain .newPassInputText{
    width:60%;
-    height: 40px;
+   height: 40px;
    padding:8px 8px 8px 8px;
    border:1px solid #ccc;
    font-size:15pt;
-    margin-top:5%;
+   margin-top:5%;
 }
 .newPassForm .newPassContain{
-   transform: translate(0%);
-    
+   transform: translate(0%); 
 }
 .newPassContain .newPassBtn{
    background-color: black; 
@@ -463,14 +439,10 @@ textarea{
     margin-left: 4px;
     margin-right: 4px;
 }
-
-
-
 /*                      마이페이지                                           */
 .frame {
-  width: 1300px;
-  margin: auto;
- 
+	  width: 1300px;
+	  margin: auto;
 }
 .memInfo input[type=text]{
 	padding: 0;
@@ -478,7 +450,6 @@ textarea{
     margin: 0;
     min-width: 270px;
 }
-
 .memInfo input[type=password]{
 	padding: 0;
     height: 24px;
@@ -497,7 +468,6 @@ textarea{
     margin: 0 auto;
     border-collapse: collapse;
 }
-}
 .content {
     width: 1300px;
     margin: 0 auto;
@@ -515,17 +485,11 @@ textarea{
    height:10%;
    padding: 4px;
 }
-.memInfo {
-
-}
 .memInfoChange{
 	margin: 0 auto;
     display: block;
 }
-
-
 /*---------------- 주문내역 ---------------     */
-
 .dateSearchBuyList{
 	display: flex;
     margin: 35px auto;
@@ -581,7 +545,7 @@ textarea{
     width:1300px;
 }
 #monthSearch{
-	margin: 0 0 0 165px;
+   margin: 0 0 0 165px;
    width: 60px;
    font-size: 18px;
    background-color: black;
@@ -594,7 +558,7 @@ textarea{
 #monthSearch:hover{
 	background-color: #fff;
 	border: 1px solid #000;
-	 color: #000;
+	color: #000;
 }
 .monthSearch{
    margin: 0 0 0 16px;
@@ -610,7 +574,7 @@ textarea{
 .monthSearch:hover{
 	background-color: #fff;
 	border: 1px solid #000;
-	 color: #000;
+	color: #000;
 }
 .pointMonthSearch{
 	margin: 0 0 0 165px;
@@ -623,15 +587,12 @@ textarea{
 	text-decoration: none;
 	transition: background-color 0.5s, transform 5s;
 }
-
 .pointMonthSearch:hover{
 	background-color: #fff;
 	border: 1px solid #000;
 	color: #000;
 }
-
 /*---------------- 회원 탈퇴    ---------------     */
-
 .withdrawalSubmit{
  	margin: 0;
     width: 171px;
@@ -649,7 +610,6 @@ textarea{
 	border: 1px solid #000;
 	color: #000;
 }
-
 .withdrawalDivForm{
 	text-align: center;
     width: 1300px;
@@ -669,28 +629,24 @@ textarea{
 	text-align:center;
 }
 /*---------------- 메뉴    ---------------     */
-
 /*  brand,man,woman,couple 을 감싸는 DIV */
 .subTopBarBody{
 	width:100%;
 	 border-bottom:1px solid gray;
 	 background-color:#fff;
 }
-#subTopBar{ 
- 
+#subTopBar{
    margin:auto;
    width:1300px;
    height:50px;
    z-index:3;
 }
-
 .jbFixed {
 		position: fixed;
         top: 0px;
         width:100%;
         z-index:4;
-      }
-
+}
 .jbFixed #brandMenu {
 	display: none;
     position: absolute;
@@ -735,7 +691,6 @@ textarea{
     height: auto;
     z-index: 1;
 }
-
 .dropBtn{
   font-family: 'Roboto', sans-serif;
   background-color:white;
@@ -755,13 +710,11 @@ textarea{
   left:auto;
   background-color: black;
   background-color: rgba( 255, 255, 255, 0.9 );
-  min-width: 1300px;
+  width: 1300px;
   height: auto;
   z-index: 1;
-      border: 1px solid gray;
-  
-  }
- 
+  border: 1px solid gray;
+}
 .dropdownContent a {
   font-weight:bold ;
   text-align:center;
@@ -775,12 +728,10 @@ textarea{
   float:left;
   left:30%;
 }
-
 /* 하위메뉴 호버시 색변경 */
 .dropdownContent a:hover { 
       background-color: rgba( 128, 128, 128, 0.2 );
-  }
-
+}
 /* 각 메뉴 호버시 하위메뉴 출현 */
 #brand:hover #brandMenu {display:block;}
 #man:hover #manMenu {display:block;}
@@ -788,57 +739,59 @@ textarea{
 #couple:hover #coupleMenu {display:block;}
 
 /* 하위메뉴 호버시 해당 상위메뉴 색 변경  */
-#brand:hover #brandDropBtn {background-color: black;
-                        color:white;}
-#man:hover #manDropBtn {background-color: black;
-                        color:white;}
-#woman:hover #womanDropBtn {background-color: black;
-                        color:white;}
-#couple:hover #coupleDropBtn {background-color: black;
-                        color:white;}
+#brand:hover #brandDropBtn {
+	background-color: black;
+    color:white;
+}
+#man:hover #manDropBtn {
+	background-color: black;
+    color:white;
+}
+#woman:hover #womanDropBtn {
+	background-color: black;
+    color:white;
+}
+#couple:hover #coupleDropBtn {
+	background-color: black;
+    color:white;
+}
 /* 메뉴  */
-
 /* 로그인 부분 시작*/
-
-#LoginContent{
-   
+#LoginContent{ 
    position: relative;
    width:1300px;
    height:600px;
    background:white;
-   margin: 200px auto;
-   
+   margin: 200px auto; 
 }
-
-#login div { margin:auto;
-         text-align:center;   }
-         
+#login div {
+	margin:auto;
+    text-align:center;
+} 
 #login{
-   
    margin:auto;
    width:80%;
    height:500px;
    background:#FFFFFF;
    border: 1px #ccc solid;
 }
-.LoginId, .LoginPass {width: 550px;
-height:50px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 30px;
-  font-size:20px;
-  resize: vertical;
-  margin:auto;      
+.LoginId, .LoginPass {
+	width: 550px;
+	height:50px;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 30px;
+	font-size:20px;
+	resize: vertical;
+	margin:auto;      
 }
 #signIn, #findInfo{  display: inline-block;
   text-decoration: none;
   padding: 4px 10px;
-  color: #000;}
-
-
-
+  color: #000;
+}
 #memLogin{
   background:#000000;
   color:#ffffff;
@@ -853,16 +806,12 @@ height:50px;
   background:#eee;
   color:#000000;
 }
-
-
-
 #login div{
    font-size:16px;
    posotion:relative;
    margin-top: 30px;
 }
 /* 로그인 부분 종료*/
-
 /*우편번호 찾기*/
 .row{
    margin:auto;
@@ -876,39 +825,31 @@ height:50px;
    padding-bottom:4px;
 }
 /**/
-
 /* main content 시작 */
-
 #mainContent{
    position:relative;
    top:0;
    left:0;
 }
 /* banner  */
-#bannerContent{}
-
 #mainSlide{
    margin:0;
-     padding:0;
-      width: 100%;
-    }
-            
-#img1{ width: 100%;
-      list-style:none;
-      }
-      
+   padding:0;
+   width: 100%;
+}      
+#img1{
+	width: 100%;
+    list-style:none;
+}
 #img2,#img3,#img4,#img5{
-      width: 100%;
-      display:none;
-      list-style:none;
-    }
-
+    width: 100%;
+    display:none;
+    list-style:none;
+}
 .banner img{
-      width:100%;
-      height: 500px;
-    } 
-    
-    
+    width:100%;
+    height: 500px;
+} 
 #wattimeContent {
    margin:0px;
    width:1300px;
@@ -916,30 +857,26 @@ height:50px;
    background-color:yellow;
    display:inline-block;
 }  
-
 .wattimeSale{
    width:650px;
    height:280px;
    float:left;
 }
-
 .wattimeSubSale div {
    width:260px; float:left;
    border: 1px solid #ddd;
-   box-sizing:border-box;
-     
+   box-sizing:border-box; 
 }
 .wattimeSubSale div p{
    padding:10px;
 }
-
 .wattimeSubSale::after {
   content: "";
   clear: both;
   display: table;
 }
 .wattimeSubSale{
-    width: 1300px;
+  width: 1300px;
 }
 .slideWatch{
    width:500px;height:600px;
@@ -948,7 +885,6 @@ height:50px;
 	width:500px;
 	height:600px;
 	margin:0;
-	
 	border: 1px solid #ccc;
 	box-sizing:border-box;
 	float:left;
@@ -957,62 +893,56 @@ height:50px;
 	width:500px;
 	height:600px;
 	margin:0;
-	
 	border: 1px solid #ccc;
 	box-sizing:border-box;
 	float:left;
 }
-
 #wattimeContentMan{
    margin:0;
    padding:0;
-   
 }
 #wattimecontentWoman{
    margin:0;
    padding:0;
-   
 }
 #wattimeContentM1{ 
    padding:0;
    margin:0;
    width: 100%;
-    list-style:none;
-      }
+   list-style:none;
+}
  #wattimeContentW1{ 
    padding:0;
    margin:0;
    width: 100%;
-    list-style:none;
-      }     
-      
+   list-style:none;
+}
  #wattimeContentM2, #wattimeContentM3, #wattimeContentM4, #wattimeContentM5 {
    padding:0;
    margin:0;
    display:none;
-   list-style:none;}
-
+   list-style:none;
+}
 #wattimeContentW2, #wattimeContentW3, #wattimeContentW4 {
    padding:0;
    margin:0;
    display:none;
-   list-style:none;}
+   list-style:none;
+}
 /* banner  */
-
 /* midelBanner*/
 #midelContent{
    margin:-60px auto;
    width:1300px;
    height:auto;             /*홈페이지 길이 ~!!*/
-
 }
 #brandDiv{   
-         width: 100%;
+          width: 100%;
           height: 50px;
           background: url(img/line-bg.gif) repeat-x;
           margin-bottom: 100px;
           margin-top: -20px;
-       }
+}
 #brandP{width:300px;
       height:50px;
       line-height:80px;
@@ -1020,8 +950,7 @@ height:50px;
       background:#fff;
       font:40px 'Roboto', sans-serif;
       margin:100px auto;
-      }
-
+}
 .mainSpan{
    display: block; 
    line-height: 25px; 
@@ -1031,7 +960,6 @@ height:50px;
    overflow: hidden; 
    white-space: nowrap;
 }
-
 .subSpan{
    text-overflow: ellipsis; 
    overflow: hidden; 
@@ -1041,9 +969,7 @@ height:50px;
    line-height: 25px; 
    font-size: 13px; 
    text-align: center;
-   
 }
-
 #slideMan{
     width: 800px;
     height: 600px;
@@ -1052,35 +978,24 @@ height:50px;
 }
 .slideManForm::after{
     content:" ";
-  clear: both;
-  
-   
+    clear: both;
 }
-
-
-
 .slideManUl{
    display: block;
-   
 }
 .slideManUl li{
    border: 1px solid #ddd;
    display: inline-block;
-
-    width: 100%;
+   width: 100%;
 }
-
-
 .slideManClass p{
 	padding:10px 0 5px 10px;	
 }
 .slideManClass img{
-   
    width: 190px;
-    height: 200px;
+   height: 200px;
    margin-bottom:5px;
 }
-
 .slideManClass{
    text-align:center;
     float: left;
@@ -1090,26 +1005,19 @@ height:50px;
     background: #fff;
     box-sizing: border-box;
 }
-
-
-
-
 /* midelBanner  */
-
 /* main content 종료 */
-
 /* -----------------약관 동의 -----------------*/
 #agreeMain{
    margin-top:60px;
    display:block;
    text-align:center;
-      }
-
+}
 #agreeMain div {
    margin-top:30px;
 }
 .sv_button{
-       background: #000000;
+    background: #000000;
     color: #ffffff;
     border: none;
     height: 60px;
@@ -1118,23 +1026,18 @@ height:50px;
     transition: 800ms ease all;
     border-radius: 8px;
 }
-
 .sv_button:hover{
-  background:#eee;
-  color:#000000;
+	background:#eee;
+	color:#000000;
 }
 /* -----------------약관 동의 -----------------*/
-
-
 /* -----------------bottom -----------------*/
 #infoHelp{
    width:1300px;
    margin:100px auto;
-      
-      }
-      
+} 
 .infoClass{
-        float: left;
+    float: left;
     padding: 20px 20px;
     border: 1px solid #cbd4d9;
     width: 325px;
@@ -1142,13 +1045,12 @@ height:50px;
     border-left: 0px;
     box-sizing: border-box;
 }
-
-#infoHelp div:nth-child(1) {border-left:1px solid #cbd4d9;}
-
+#infoHelp div:nth-child(1) {
+	border-left:1px solid #cbd4d9;
+}
 #customerCenter ul li{
    list-style: none;
-               }
-               
+}             
 #customerCenter button{
 		border:1px solid;
 	    display: inline-block;
@@ -1157,25 +1059,22 @@ height:50px;
 	    color: #000;
 	    transition: background-color 0.5s, transform 5s;
 }	
-
 #customerCenter button:hover{
-            background-color:#000;
-             color: #fff;    
-                     }
-#textSpan{
-   color:red;
-   }
+    background-color:#000;
+    color: #fff;    
+}
+#textSpan{color:red;}
 #customerText{
-           display: block;
-           margin-top: 15px;
-           font-size: 13px;
-           line-height: 200%;
-           letter-spacing: -0.05em;
-         }
- #customerButton{   margin: 30px auto;
- 					text-align:center;
- 					}
-
+     display: block;
+     margin-top: 15px;
+     font-size: 13px;
+     line-height: 200%;
+     letter-spacing: -0.05em;
+}
+ #customerButton{
+    margin: 30px auto;
+ 	text-align:center;
+}
  #note ul li{
       width:100%;
       display:inline-block;
@@ -1188,17 +1087,14 @@ height:50px;
       text-overflow: ellipsis;
       margin-top: 12px;
       color:#000;
- 
-
-
  }
 #bank ul li{
-       width:100%;
-       display:inline-block;
-      font-size: 18px;
-      letter-spacing: -0.05em;
-       white-space: nowrap;
-       margin:10px;
+    width:100%;
+     display:inline-block;
+    font-size: 18px;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+    margin:10px;
 }
 .snsIcon{
 	margin-top: 13px;
@@ -1206,26 +1102,22 @@ height:50px;
     width: 64px;
     float: left;
     box-sizing: border-box;
-    
-    }
+}
 .snsInfo{
 	height: 100px;
     width: 140px;
     float: left;
-    }
+}
  #qrcord{
     margin-top: 14px;
     width: 144px;
- }
- 
+}
 #mainBottom{
-   
    margin-top:100px;
    display:block;
-   
-   }
+}
 #utilMenu{
-   width: 100%;
+    width: 100%;
     margin: 0 auto;
     height: 60px;
     border-top: 1px solid #cbd4d9;
@@ -1236,7 +1128,6 @@ height:50px;
     margin: 0 auto;
     height: 60px;
 }
-
 #utilMenu ul li {
     float: left;
     margin: 0 10px;
@@ -1246,7 +1137,6 @@ height:50px;
 }
 #bank li{
     list-style: none;
-   
 }
 #companyInfo {
     width: 1300px;
@@ -1284,7 +1174,7 @@ height:50px;
     position: absolute;
     top: 30px;
     right: 45px;
-    }
+}
 #footer_banner {
     width: 100%;
     margin: 30px auto 0;
@@ -1292,7 +1182,6 @@ height:50px;
     border-top: 1px solid #cbd4d9;
     border-bottom: 1px solid #cbd4d9;
 }
-
 #footer_banner ul {
     width: 700px;
     margin: 0 auto;
@@ -1393,7 +1282,7 @@ height:50px;
     color:#000; 
 }
 .finalBuyUserInfo input[type=button]{
-   background-color: #000;
+    background-color: #000;
     border: none;
     color: #fff;
     width: 150px;
@@ -1416,16 +1305,15 @@ height:50px;
     float: left;
     background-color: #FAFAFA;
 }
-
 .fanalBuyForm::after {
-  content:"";
-  clear: both;
-  display: table;
+	content:"";
+	clear: both;
+	display: table;
 }
 .howToBuyProduct::before{
-	 content: "";
-  clear: both;
-  display: table;
+	content: "";
+	clear: both;
+	display: table;
 }
 .fanalBuyProductInfo img{
 	padding: 23px 0 0 0;
@@ -1446,9 +1334,8 @@ height:50px;
     width: 115px;
     text-align: center;
 }
-
 .fanalBuyProductInfo input[type=button]{
-   background-color: #000;
+    background-color: #000;
     border: none;
     color: #fff;
     width: 78px;
@@ -1493,9 +1380,9 @@ height:50px;
     text-align: center;
 }
 .howToBuyProduct ul::after{
-  content: "";
-  clear: both;
-  display: table;
+	content: "";
+	clear: both;
+	display: table;
 }
 .cardForm{
 	height: 300px;
@@ -1512,7 +1399,6 @@ height:50px;
     height: 41px;
     margin: 5px;
 }
-
 .cardForm p{
 	width: 141px;
     display: inline-block;
@@ -1552,7 +1438,7 @@ height:50px;
     margin: 5px;
 }
 .accountTransfer select{
-font-size: 20px;
+	font-size: 20px;
     text-align: center;
     width: 67px;
     height: 41px;
@@ -1573,19 +1459,17 @@ font-size: 20px;
     margin: 5px;
 }
 .phoneForm select{
-font-size: 20px;
+	font-size: 20px;
     text-align: center;
     width: 67px;
     height: 41px;
     margin: 5px;
 }
-    
 .phoneForm p{
 	width: 141px;
     display: inline-block;
     font-size: 20px;
 }
-
 .fanalSelectBuy{
 	text-align: center;
     width: 500px;
@@ -1610,21 +1494,18 @@ font-size: 20px;
      width: 165px;
 	font-size: 30px;
 }
-
 /* -----------------구매하기 -----------------*/
 /* -----------------product -----------------*/
 .autoMove{
 	width:300px;
 	display:inline;
-	
 }
-
 .productUl{
 	margin: 0 auto;
 	width:1200px;
 }
-
 .productLi{
+	padding-top:10px;
 	height: 415px;
 	text-align:center;
 	margin: 10px 0 0 10px;
@@ -1634,18 +1515,16 @@ font-size: 20px;
     float:left;
     box-sizing: border-box;
 }
-
 .productUl::after {
-  content: "";
-  clear: both;
-  display: table;
+	content: "";
+	clear: both;
+	display: table;
 }
 .move{   
     margin: 20px auto;
     text-align: center;
 }
 #PageNum{
-	
 	background-color: #fff;
     background-image: none !important;
     border-color: transparent;
@@ -1656,7 +1535,7 @@ font-size: 20px;
     font-size: 15px;
     transition: background-color 0.5s, transform 5s;
     color: #000;
-		}
+}
 #nowPageNum{
 	background-color: black; 
 	border: none;
@@ -1665,21 +1544,18 @@ font-size: 20px;
     width: 35px;
     height: 27px;
     font-size: 15px;
-			}
-
+}
 #PageNum:hover{
-				background-color:#000;
-			    color: #fff; 
-				}
+	background-color:#000;
+    color: #fff; 
+}
 .inputBtn{
-   margin: 20px auto;
+    margin: 20px auto;
     position: relative;
     left: 1220px;
 }
-
 .inputBtn input[type=button]{
-   
-   background-color: transparent !important;
+    background-color: transparent !important;
     background-image: none !important;
     border-color: transparent;
     border: none;
@@ -1688,7 +1564,6 @@ font-size: 20px;
 #productCount{
 	width:60px;
 }
-
 .productInsert{
 	margin:30px auto;
 	width: auto;
@@ -1698,15 +1573,14 @@ font-size: 20px;
 	margin: 40px 30px 20px 40px;
     display: block;
     font-size: 20px;
-
 }
 .productInsert td p{
 	margin:30px;
 }
 .productInsert td input[type=text],.productInsert select,.productInsert input[type=number]{
 font-size: 20px;
+ width: 60px;
 }
-    width: 60px;
 .picture{
 	text-align:center;
 }
@@ -1723,11 +1597,8 @@ font-size: 20px;
 }
 .picture input[type=submit]:hover{
 	background-color:#D8D8D8;
-    color:#000; 
-
-	}
-
-					
+    color:#000;
+}			
 .spec{
 	margin:30px auto;
 	width:1300px;
@@ -1741,7 +1612,6 @@ font-size: 20px;
 	border-left:1px solid #F2F2F2;
 	border-right:1px solid #F2F2F2;
 }
-	
 .productInfo p{
 	margin-top :20px;
 	text-align:left;
@@ -1771,16 +1641,14 @@ font-size: 20px;
     border-radius: 8px;
 }
 #gotcha:hover{
-				background-color:#FE2E2E;
-			    color:#fff; 
-			    font-size:20px;
-				}
-
+	background-color:#FE2E2E;
+    color:#fff; 
+    font-size:20px;
+}
 .specBtn:hover{
-				background-color:#D8D8D8;
-			    color:#000; 
-				}
-				
+	background-color:#D8D8D8;
+    color:#000; 
+}	
 .productCountBtn{
 	position: relative;
     display: inline-block;
@@ -1796,29 +1664,25 @@ font-size: 20px;
     font-size: 33px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
-
 .productCountBtn:hover{
-				background-color:#D8D8D8;
-			    color:#000; 
-				}
-					
-
+	background-color:#D8D8D8;
+    color:#000; 
+}
 .delivery_txt ul li{
 	list-style-type:none;
-			font-size:14px;
+	font-size:14px;
 }
 .delivery_txt ul{
 	margin-bottom:10px;
 }
-
 #howService{
 	margin:auto;
 	background-color:#F2F2F2;
-	 border-collapse: collapse;
+	border-collapse: collapse;
 }
 #howService th, #howService td{
 	margin: 10px;
-	 border-bottom:1px solid gray;
+	border-bottom:1px solid gray;
 }
 #productReview{
 	display: inline-block;
@@ -1831,14 +1695,13 @@ font-size: 20px;
     font-size: 18px;
 	width: 731px;
     height: auto;
-
 }
 .reviewComent{
 	width:650px;
 	border:1px solid gray;
 }
 .spec pre p{
-	    font-size: 23px;
+    font-size: 23px;
     text-align: center;
 }
 #modify,#delete {
@@ -1854,17 +1717,14 @@ font-size: 20px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
 #modify:hover{
-				background-color:#D8D8D8;
-			    color:#000; 
-				}
-#delete:hover{
-				background-color:#D8D8D8;
-			    color:#000; 
-				}
-.reviewScore{
-	width:500px;
+	background-color:#D8D8D8;
+    color:#000; 
 }
-
+#delete:hover{
+	background-color:#D8D8D8;
+    color:#000; 
+}
+.reviewScore{width:500px;}
 #reviewRegistration{
 	display: inline-block;
     background-color: #000;
@@ -1878,20 +1738,17 @@ font-size: 20px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
 #reviewRegistration:hover{
-				background-color:#D8D8D8;
-			    color:#000; 
-				}
-
+	background-color:#D8D8D8;
+    color:#000; 
+}
 /* -----------------product -----------------*/
-
 /* -----------------FAQ -----------------*/
-
 .faqBar{
 	margin: 30px auto;
     text-align: right;
     width: 1300px;
 }
-.faqBar  input[type=button]{
+.faqBar input[type=button]{
 	background-color: #000;
     border: none;
     color: #fff;
@@ -1900,14 +1757,11 @@ font-size: 20px;
     font-size: 20px;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
-
 .faqBar  input[type=button]:hover{
-				background-color:#D8D8D8;
-			    color:#000; 
-				}
-
+	background-color:#D8D8D8;
+    color:#000; 
+}
 .tab_area{
-	
 	width: 1300px;
 	margin: 0 auto;
 }
@@ -1918,32 +1772,29 @@ font-size: 20px;
     font-size: 20px;
     display: inline-block;
     margin: 10px auto;
-   transition: background-color 0.5s, font-size 0.7s, transform 5s;
+    transition: background-color 0.5s, font-size 0.7s, transform 5s;
     padding: 0;
     line-height: 37px;
 }
 .tab li a{
-text-decoration:none ; color:#000000
+	text-decoration:none ; color:#000000
 }
 .tab li:hover{
 	background-color:#D8D8D8;
-			    color:#000; 
+	color:#000; 
 }
 #faqMainBar{
 	min-width: 400px;
-	    display: table-cell;
+	display: table-cell;
 }
 .panel{
 	font-family: 'Noto Sans Korean', AppleSDGothicNeo-Regular, "Malgun Gothic", dotum, sans-serif;
 }
-
-
 .panel dd:before {
     content: 'A . ';
     position: absolute;
     left: 18px;
 }
-
 .panel dd {
     padding: 10px 0 20px 40px;
     font-size: 14px;
@@ -1951,14 +1802,12 @@ text-decoration:none ; color:#000000
     border-top: 1px dashed #ddd;
     position: relative;
 }
-
 .panel dl dt{
 	font-size: 20px;
     margin-top: 20px;
 }
 /* -----------------FAQ -----------------*/
-
-/* -----------------notice -----------------*/
+/* ----------------notice -----------------*/
 .noticeTable{
 	width: 1300px;
     margin: 0px auto;
@@ -1969,7 +1818,6 @@ text-decoration:none ; color:#000000
 	margin:50px auto;
 }
 .noticeTable input[type=button]{
-	
 	margin:10px auto;
     display: inline-block;
     background-color: #000;
@@ -2006,7 +1854,6 @@ text-decoration:none ; color:#000000
 .noticeTable table td{
 	height:60px;
 }
-
 .noticeWriteForm{
 	font-size: 20px;
     border-collapse: collapse;
@@ -2040,12 +1887,8 @@ text-decoration:none ; color:#000000
     color: #fff;
 	border:1px solid black;
 }
-
-
 /* -----------------notice -----------------*/
-
 /*---------------------------구매후기 리스트------------------*/
-
 #productReviewTable{
 	width:1300px;
 	margin:30px auto;
@@ -2064,10 +1907,9 @@ text-decoration:none ; color:#000000
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
 #reviewLastestSort:hover{
-				background-color:#D8D8D8;
-			    color:#000; 
-			    }
-			    
+	background-color:#D8D8D8;
+    color:#000; 
+}
 #reviewScoreSort {
     display: inline-block;
     background-color: #000;
@@ -2083,21 +1925,18 @@ text-decoration:none ; color:#000000
 #reviewScoreSort:hover{
 	background-color:#D8D8D8;
     color:#000; 
-			    }
-			    
+}
 .reviewReview{
 	padding:20px;
 }
 #reviewContent{
 	white-space:pre-line;
 }
-
 /*------------------------커뮤니티 게시판----------------------*/
 .reContentImg{
     padding: 0;
 	width:30px;
 	height:30px;
-	
 }
 #comunicationList{
 	border-collapse: collapse;
@@ -2113,12 +1952,11 @@ text-decoration:none ; color:#000000
   height:50px;
   font-size: 17px;
   border: none;
-
   transition: background-color 0.5s, transform 5s;
 }
 .comuDropBtn:hover{
-background-color:#D8D8D8;
-   color:#000; 
+	background-color:#D8D8D8;
+    color:#000; 
 		    }
 .comunicationTd{
 	border-bottom: 1px solid gray;
@@ -2153,8 +1991,7 @@ background-color:#D8D8D8;
 .noticeSearch input[type=button]:hover{
 background-color:#D8D8D8;
    color:#000; 
-		    }
-
+}
 .comunicationTh{
 	text-align:center;
 	padding:10px;
@@ -2173,9 +2010,9 @@ background-color:#D8D8D8;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
 .ComunicationBtn:hover{
-background-color:#D8D8D8;
-   color:#000; 
-		    }
+	background-color:#D8D8D8;
+    color:#000; 
+}
 .comunicationFormBtn{
 	display: inline-block;
     background-color: #000;
@@ -2191,7 +2028,7 @@ background-color:#D8D8D8;
 .comunicationFormBtn:hover{
 background-color:#D8D8D8;
    color:#000; 
-		    }
+}
 /*---------------------커뮤니티 게시판 폼--------------------*/
 .comunicationForm{
 	width:1300px;
@@ -2206,9 +2043,7 @@ background-color:#D8D8D8;
 	border: 1px solid gray;
 	white-space:pre-line;
 }
-.textarea{
-	height:150px;
-}
+.textarea{height:150px;}
 .text1{
 	margin:10px;
 	height:200px;
@@ -2235,8 +2070,7 @@ background-color:#D8D8D8;
 #modifycencle:hover{
 	background-color:#D8D8D8;
     color:#000; 
-			    }
-			    
+}
 #comunicationContentTd{
 	padding:10px;
 }
@@ -2256,18 +2090,17 @@ background-color:#D8D8D8;
     line-height: 0;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
-
 #commit:hover{
 	background-color:#D8D8D8;
     color:#000; 
-			    }
+}
 #comunicationTitle{
     width: 763px;
     margin: 0;
     height: 21px;
 }
 .ComunicationWriteBtn{
-		display: inline-block;
+	display: inline-block;
     background-color: #000;
     border: none;
     color: #fff;
@@ -2281,7 +2114,7 @@ background-color:#D8D8D8;
 .ComunicationWriteBtn:hover{
 	background-color:#D8D8D8;
     color:#000; 
-			    }
+}
 /*-------------------------공지사항 리스트-------------------------------*/
 
 /*-------------------------장바구니 리스트-------------------------------*/
@@ -2290,7 +2123,7 @@ background-color:#D8D8D8;
     width: 1300px;
     text-align: center;
     border-collapse: collapse;
-	}
+}
 .basketBtn{
     display: inline-block;
     background-color: #000;
@@ -2306,13 +2139,12 @@ background-color:#D8D8D8;
 .basketBtn:hover{
 	background-color:#D8D8D8;
     color:#000; 
-			    }
+}
 /*-------------------------장바구니 리스트-------------------------------*/
 /*-------------------------공지사항 폼-------------------------------*/
 #noticeForm{
 	width:1300px;
 	margin:30px auto;
-	
 }
 #noticeFormTable{
 	width:1300px;
@@ -2341,23 +2173,20 @@ background-color:#D8D8D8;
     line-height: 0;
     transition: background-color 0.5s, font-size 0.7s, transform 5s;
 }
- 
 .noticeFormButton:hover{
     background-color:#D8D8D8;
     color:#000;
 }
-
 /*모달창 실험*/
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-    
+/* .modal { */
+/* 	display: none; Hidden by default */
+/* 	position: fixed; Stay in place */
+/* 	z-index: 1; Sit on top */
+/* 	left: 0; */
+/* 	top: 0; */
+/* 	width: 100%; Full width */
+/* 	height: 100%; Full height */
+/* 	overflow: auto; Enable scroll if needed */
+/* 	background-color: rgb(0,0,0); Fallback color */
+/* 	background-color: rgba(0,0,0,0.4); Black w/ opacity */
+/* } */
