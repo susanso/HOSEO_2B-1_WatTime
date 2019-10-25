@@ -174,7 +174,7 @@
 						
 							<div class="slideManClass" id="">
 								<p>
-									<a href="#" onclick="productSpec(<%=productDTO.getProductCode()%>)">
+									<a href="#" onclick="productSpec('<%=productDTO.getProductCode()%>')">
 										<img alt="시계사진" src="../WatTime/img/brand/<%=productDTO.getProductSimpleImgFileName() %>">
 									</a>
 									<br>

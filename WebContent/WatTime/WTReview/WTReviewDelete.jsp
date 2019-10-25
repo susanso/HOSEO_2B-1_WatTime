@@ -5,15 +5,24 @@
 <jsp:useBean id="reviewDTO" class = "WatTimePack.WatTimeReviewDTO" scope="page">
 	<jsp:setProperty name="reviewDTO" property="*"/>
 </jsp:useBean>
+<jsp:useBean id="memberDTO" class = "WatTimePack.WatTimeMemberDTO" scope="page">
+   <jsp:setProperty name="memberDTO" property="*"/>
+</jsp:useBean>
 <%
 	
+	memberDTO = (WatTimeMemberDTO)session.getAttribute("member");
+
 	String memId = request.getParameter("memId");
 	int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
 	String productCode = request.getParameter("productCode");
 	String sort = request.getParameter("sort");
 	String pageNum = request.getParameter("pageNum");
 	WatTimeReviewDAO reviewDAO = new WatTimeReviewDAO();
-	reviewDAO.setReviewDelete(reviewNum,memId);
+	if(memberDTO.getMemAdmin()>=1){
+		reviewDAO.setReviewDelete(reviewNum);
+	}else if(memberDTO.getMemAdmin()==0){
+		reviewDAO.setReviewDelete(reviewNum,memId);
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

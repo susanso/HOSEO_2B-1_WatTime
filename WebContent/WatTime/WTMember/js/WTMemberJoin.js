@@ -190,11 +190,11 @@ function birthCheck() {
 		document.getElementById("birthCheckText").textContent= month+"월은 31일이 존재하지 않습니다.";
 		document.getElementById("birthHidden").value="no";
 	}else if (month == 2) {
-	         var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
-	         if (day>29 || (day==29 && !isleap)) {
-	        	 document.getElementById("birthCheckText").textContent=year + "년 2월은  " + day + "일이 없습니다.";
-	        	 document.getElementById("birthHidden").value="no";
-	         }
+		var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+		if (day>29 || (day==29 && !isleap)) {
+			document.getElementById("birthCheckText").textContent=year + "년 2월은  " + day + "일이 없습니다.";
+			document.getElementById("birthHidden").value="no";
+		}
 	}else{
 		document.getElementById("birthCheckText").textContent= "";
 		document.getElementById("birthHidden").value="yes";

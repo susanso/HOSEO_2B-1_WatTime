@@ -7,10 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="WTMain.jsp?pageChange=WTMypage/WTMemberInfoForm.jsp">
-		패스워드를 입력해주세요.<br>
-		<input type="password" name="passText">
-		<input type="submit" value="패스워드 확인">
-	</form>
+	<div style="width:1300px; text-align:center; margin: 200px auto;">
+		<form method="post" action="WTMain.jsp?pageChange=WTMypage/WTMemberInfoForm.jsp">
+			<font size="5px">패스워드를 입력해주세요.</font><br><br>
+			<input type="password"
+				   name="passText"
+				   style="width:300px;
+				   		  height:25px;
+				   		  font-size:20px;
+				   		  text-align:center;
+				   		  padding:0 5px 0 5px;
+				   		 "
+			><br>
+			<input type="submit" value="패스워드 확인" class="specBtn">
+		</form>
+	</div>
 </body>
 </html>

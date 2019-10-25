@@ -82,14 +82,24 @@ public class WatTimeReviewDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	//구매후기 삭제
-	public void setReviewDelete(int reviewNum, String memId) {
+	//구매후기 삭제 일반 유저
+	public void setReviewDelete(int reviewNum,String memId) {
 		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
 			PreparedStatement pstmt = con.prepareStatement("delete from reviewTbl where num=? and memId=?");
 			pstmt.setInt(1, reviewNum);
 			pstmt.setString(2, memId);
 			pstmt.executeUpdate();
 			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	//구매후기 삭제 관리자
+	public void setReviewDelete(int reviewNum) {
+		try(Connection con = WatTimeDBConnection.getInstance().getConnection()){
+			PreparedStatement pstmt = con.prepareStatement("delete from reviewTbl where num=?");
+			pstmt.setInt(1, reviewNum);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

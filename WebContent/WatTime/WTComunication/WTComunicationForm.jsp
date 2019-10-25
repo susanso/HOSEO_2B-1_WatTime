@@ -52,7 +52,7 @@
 		<table class="comunicationForm">
 			<tr class="comunicationFormTr">
 				<td class="comunicationFormTd" width="150px" style="text-align:center; padding:10px;">제목</td>
-				<td class="comunicationFormTd" colspan="6" style="text-align:center;"><%=comunicationDTO.getTitle() %></td>
+				<td class="comunicationFormTd" colspan="6" style="text-align:center;"><%=comunicationDTO.getSubTitle()%> <%=comunicationDTO.getTitle() %></td>
 			</tr>
 			<tr class="comunicationFormTr">
 				<td class="comunicationFormTd" width="150px" style="text-align:center;padding:10px;">작성자</td>
@@ -203,7 +203,6 @@
 					   wid=18*(commentsDTO.getRe_level());
 %>
 					<tr class="comunicationFormTr">
-					
 						<td colspan="7" class="textarea" style="padding-left:<%=wid%>px;">
 			  				<img src="img/comu//arrow.png" class="reContentImg">
 							<br>
