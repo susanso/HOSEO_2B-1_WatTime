@@ -255,14 +255,14 @@
 		</div>
 		<div class="BuyWarning">
 		<div>
-			<textarea readonly="readonly" cols="50" rows="4" style="resize: none;">
+			<textarea readonly="readonly" cols="50" rows="4">
 			고객님께서는 아래 내용에 대하여 동의를 거부하실 수 있으며, 거부시 상품 배송, CS가 제한됩니다.제공받는자	[(주)다난기술]	목적	주문상품의 배송(예약), 고객상담 및 불만처리 항목, 성명, 주소, 연락처(안심번호 적용 시 연락처는 제외), 개인통관고유부호(선택시), 현관비밀번호(입력시)
 			보유기간:구매확정 후 3개월까지
 			</textarea>
 			<p><input type="checkbox" id="agree1" name = "agree"> 개인정보 판매자 제공에 동의합니다.</p>
 		</div>
 		<div>
-			<textarea readonly="readonly" cols="50" rows="4" style="resize: none;">
+			<textarea readonly="readonly" cols="50" rows="4" >
 			고객님께서는 아래 내용에 대하여 동의를 거부하실 수 있으며, 거부 시 상품배송, 구매 및 결제, 일부 포인트 적립이 제한됩니다.
 			수집이용목적	수집 항목	보유기간
 			대금 결제/환불 서비스 제공, 주문/배송/거래 내역 조회 서비스 제공, 전자상거래법 준수 등	신용카드 정보, 계좌 정보, 주문/배송/거래 내역	회원탈퇴 시 까지
@@ -274,8 +274,8 @@
 			</textarea>
 			<p><input type="checkbox" id="agree2" name = "agree"> 개인정보 수집 및 이용에 동의합니다.</p>
 		</div>
-		<div>
-			<textarea readonly="readonly" cols="50" rows="4" style="resize: none;">
+		<div class="BuyWarningAfter">
+			<textarea readonly="readonly" cols="50" rows="4" >
 			주문 상품의 상품명, 가격, 배송정보에 동의합니다.단, 관계 법령의 규정에 따라 보존할 의무가 있으면 해당 기간 동안 보존
 			이용계약(이용약관)이 존속중인 탈퇴하지 않은 회원의 경우 보유기간은 보존의무기간 이상 보관할 수 있으며 이 기간이 경과된 기록에 대해서 파기요청이 있는 경우 파기함
 			결제수단에 따른 개인정보 수집.이용 항목이 상이할 수 있음

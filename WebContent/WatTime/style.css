@@ -1211,6 +1211,7 @@ textarea{resize: none;}
     border-collapse: collapse;
     text-align:center;
 }
+
 .finalBuy th{
 	background-color:#EFEFFB;
 }
@@ -1353,12 +1354,23 @@ textarea{resize: none;}
     margin: 0 auto;
     width: 1300px;
     left: 305px;
+    box-sizing: border-box;
 }
+
 .BuyWarning p{
 	margin-top:10px;
 }
+.BuyWarning textarea{
+	resize: none;
+	width:350px;
+	height:100px;
+}
+.BuyWarning div:nth-child(1) {
+	margin-left:32px;
+}
 .BuyWarning div{
-	margin: 32px;
+	width: 368px;
+    margin: 32px;
     float: left;
 }
 .BuyWarning div::after{
